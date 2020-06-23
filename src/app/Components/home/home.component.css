@@ -1,0 +1,35 @@
+.animacion {
+    margin-top: -15vh;
+    margin-left: 20vw;
+    width: 50%;
+}
+
+.contenedor {
+    text-align: center;
+}
+
+.info {
+    font-size: 20px;
+}
+
+#noticia {
+    margin-right: 30vw;
+    margin-left: 30vw;
+}
+
+hr {
+    height: 2vh;
+    background-color: black;
+}
+
+.rubros {
+    background-color: #bbc3b4;
+}
+
+#rubro {
+    text-align: center;
+}
+
+footer {
+    background-color: black;
+}

@@ -1,0 +1,51 @@
+.navbar {
+    background-color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #111111;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.usuarios {
+    cursor: default;
+}
+
+.underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #111111;
+}
+
+.underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #111111;
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+.underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
