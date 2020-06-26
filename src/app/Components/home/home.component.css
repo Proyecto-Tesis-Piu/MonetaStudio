@@ -1,7 +1,7 @@
 .container{
     max-width: 100%;
     margin: 0 auto;
-    background: #f8f9fa;
+    background: #fff;
 }
 
 .parrallax{
@@ -15,23 +15,58 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 1%;
-}
+    background: #f8f9fa;
 
-.separador{
-    margin-left: 0.5vw;
-}
-
-.card{
-    width: 25vw;
 }
 
 .card-footer{
     text-align: right;
 }
 
-/*#botonf{
-    margin-left: 0;
-    position: static;
-}
-*/
+/*Post slider*/
 
+.post-slider{
+    position: relative;
+    margin-bottom: 1%;
+}
+
+.slider-title{
+    text-align: center;
+    margin: 30px auto;
+}
+
+.next{
+    position: absolute;
+    top: 50%;
+    right: 30px;    
+    font-size: 2rem;
+    color: gray;
+    cursor: pointer;
+}
+
+.prev{
+    position: absolute;
+    top: 50%;
+    left: 30px;  
+    font-size: 2rem;
+    color: gray;  
+    cursor: pointer;
+}
+
+.post-wrapper{
+    width: 84%;
+    height: 350px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+ .post{
+    height: 350px;
+    width: 300px;
+    margin: 0px 10px;
+    display: inline-block;
+}
+
+footer{
+    background-color: #000;
+}
