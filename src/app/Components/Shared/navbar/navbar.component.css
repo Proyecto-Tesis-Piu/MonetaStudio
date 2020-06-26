@@ -1,3 +1,15 @@
+* {
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+#aligned {
+    margin-left: 63.8vw;
+}
+
+.container {
+    max-width: 100%;
+}
+
 .navbar {
     background-color: #ffffff;
     position: fixed;
@@ -7,50 +19,49 @@
     width: 100%;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #ffffff;
+.navbar-inner li {
+    line-height: 40px;
+    letter-spacing: 2px;
 }
 
-li {
-    float: left;
+.nav-link:hover {
+    border-top: 4px solid white;
+    transition: border-top 0.3s;
+    border-top: 4px solid dodgerblue;
 }
 
-li a {
-    display: block;
-    color: #111111;
+.brand {
+    max-width: 100%;
+}
+
+.brand:hover {
+    letter-spacing: 4px;
+    border-top: 4px solid white;
+    transition: border-top 0.3s;
+    border-top: 4px solid dodgerblue;
+    border-top: 4px solid dodgerblue;
+}
+
+.triangle-down {
+    position: fixed;
+    margin-top: 65px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid dodgerblue;
+}
+
+.triangle-down p:hover {
     text-align: center;
-    padding: 16px;
-    text-decoration: none;
+    color: white;
+    margin-top: -33px;
+    margin-left: -13px;
+    transition: color 0.2s;
+    color: rgba(0, 0, 0, 0.4);
 }
 
-.usuarios {
-    cursor: default;
-}
-
-.underline-animation {
-    display: inline-block;
-    position: relative;
-    color: #111111;
-}
-
-.underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #111111;
-    transform-origin: bottom left;
-    transition: transform 0.25s ease-out;
-}
-
-.underline-animation:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.logo {
+    height: 11vh;
+    width: 8vw;
 }
