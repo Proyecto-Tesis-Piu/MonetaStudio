@@ -121,8 +121,5 @@
       }
     }
   },
-  "defaultProject": "Savio",
-  "cli": {
-    "analytics": "0716288c-5c9c-4bb5-ac06-d723d36138e4"
-  }
+  "defaultProject": "Savio"
 }
