@@ -1,39 +1,37 @@
-.animacion {
-    margin-top: -15vh;
-    margin-left: 20vw;
-    width: 50%;
+.container{
+    max-width: 100%;
+    margin: 0 auto;
+    background: #f8f9fa;
 }
 
-.contenedor {
-    text-align: center;
+.parrallax{
+    background: url('../../../assets/img/Finanzas.png') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 500px;
 }
 
-.info {
-    font-size: 20px;
+.containerbody{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1%;
 }
 
-#noticia {
-    margin-right: 30vw;
-    margin-left: 30vw;
+.separador{
+    margin-left: 0.5vw;
 }
 
-hr {
-    height: 2vh;
-    background-color: black;
+.card{
+    width: 25vw;
 }
 
-.rubros {
-    background-color: #bbc3b4;
+.card-footer{
+    text-align: right;
 }
 
-#rubro {
-    text-align: center;
+/*#botonf{
+    margin-left: 0;
+    position: static;
 }
+*/
 
-footer {
-    background-color: black;
-}
-
-body {
-    background-color: green;
-}
