@@ -228,8 +228,36 @@ text-align: left;
 }
 
 footer{
-    background: linear-gradient(270deg, #fff,#353535);
+    background-color: #353535;
+    text-align: center;
 }
+
+footer a {
+    position: relative;
+    display: inline-block;
+    font-size: 1.5em;
+    color: royalblue;
+    overflow: hidden;
+    background: linear-gradient(to right, #06D755, #06D755 50%, #fff 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 475ms ease;
+}
+
+footer a:hover {
+    background-position: 0 100%;
+  }
+
+  .logo img{
+    margin-top: 0;
+    margin-left: 10px;
+    width: 200px;
+    height: 100px;
+  }
+  
 
 
 
