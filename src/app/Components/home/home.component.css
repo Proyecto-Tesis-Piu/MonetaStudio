@@ -32,6 +32,39 @@
     text-align: right;
 }
 
+
+
+.slider-title{
+    text-align: center;
+    margin: 30px auto;
+}
+
+.next{
+    position: absolute;
+    top: 50%;
+    right: 30px;    
+    font-size: 2rem;
+    color: gray;
+    cursor: pointer;
+}
+
+.prev{
+    position: absolute;
+    top: 50%;
+    left: 30px;  
+    font-size: 2rem;
+    color: gray;  
+    cursor: pointer;
+}
+
+.post-wrapper{
+    width: 84%;
+    height: 350px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+/*Post slider*/
 .post-slider{
     position: relative;
     margin-bottom: 1%;
@@ -257,8 +290,7 @@ footer a:hover {
     width: 200px;
     height: 100px;
   }
-  
 
-
-
-
+footer{
+    background-color: #000;
+}
