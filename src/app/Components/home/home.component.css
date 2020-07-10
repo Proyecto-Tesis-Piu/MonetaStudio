@@ -9,7 +9,7 @@
     background: url('../../../assets/img/Finanzas.png') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-    height: 500px;
+    height: 400px;
 }
 
 .containerbody{
@@ -26,7 +26,21 @@
     margin-bottom: 1%;
     background: #fff;
     text-align: justify;
+    height: 400px;
 }
+
+.half {
+    box-sizing: border-box;
+    width: 50%;
+    display: inline-block;
+  }
+
+  .center {    
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+ }
+
 
 .card-footer{
     text-align: right;
@@ -49,6 +63,7 @@
     text-align: center;
     color: #000; 
     font-size: 2vh;
+    margin-bottom: 2vh;
 }
 
 .next{
@@ -94,7 +109,6 @@
 .rubros-title{
     text-align: center;
     margin-top: 10vh;
-    margin-bottom: 0px;
     color: #06D755;
     font-size: 6vh;
 }
@@ -103,7 +117,6 @@
     text-align: center;
     color: #000; 
     font-size: 2vh;
-    margin-bottom: 4vh;
 }
 
 
@@ -257,8 +270,66 @@ footer a:hover {
     width: 200px;
     height: 100px;
   }
+
+  .box{
+      width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+
+  .icon{
+      width: 120px;
+      position: relative;
+      display: inline-block;
+  }
   
+    .icon i {
+      color: black;   
+      font-size: 80px;
+      display: block;
+      text-align: center;
+      cursor: pointer;
+}
+
+.icon span{
+    position: relative;
+    width: 120px;
+    background: black;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0;
+    transition: 0.6s opacity;
+}
+
+.icon span:before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: -5px;
+    background: black;
+    z-index: -1;
+    left: 60px;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.icon:hover > span{
+    opacity: 1;
+}
 
 
 
-
+.centers{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%)
+}
