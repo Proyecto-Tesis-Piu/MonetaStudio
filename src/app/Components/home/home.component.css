@@ -1,39 +1,9 @@
-.container{
-    max-width: 100%;
-    margin: 0 auto;
-    background: #fff;
-    margin-top: 1%;
-}
-
 .parrallax{
-    background: url('../../../assets/img/Finanzas.png') no-repeat center;
+    background: url('../../../assets/img/Finanzas.png');
     background-size: cover;
-    background-attachment: fixed;
-    height: 400px;
+    height: 300px;
 }
 
-.containerbody{
-    margin-left:5%;
-    margin-right: 5%;
-    margin-top: 1%;
-    background: #f8f9fa;
-}
-
-.containerintro{
-    margin-left:5%;
-    margin-right: 5%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    background: #fff;
-    text-align: justify;
-    height: 400px;
-}
-
-.half {
-    box-sizing: border-box;
-    width: 50%;
-    display: inline-block;
-  }
 
   .center {    
     margin-left: auto;
@@ -55,7 +25,7 @@
     text-align: center;
     margin-top: 30px auto;
     margin-bottom: 0px;
-    color: #06D755;
+    color: #0061ae;
     font-size: 6vh;
 }
 
@@ -69,7 +39,7 @@
 .next{
     position: absolute;
     top: 50%;
-    right: 30px;    
+    right: 5%;    
     font-size: 2rem;
     color: gray;
     cursor: pointer;
@@ -78,7 +48,7 @@
 .prev{
     position: absolute;
     top: 50%;
-    left: 30px;  
+    left: 5%;  
     font-size: 2rem;
     color: gray;  
     cursor: pointer;
@@ -86,7 +56,7 @@
 
 .post-wrapper{
     width: 84%;
-    height: 400px;
+    height: 450px;
     margin: 0px auto;
     overflow: hidden;
 }
@@ -109,7 +79,7 @@
 .rubros-title{
     text-align: center;
     margin-top: 10vh;
-    color: #06D755;
+    color: #0061ae;
     font-size: 6vh;
 }
 
@@ -139,110 +109,10 @@ text-align: left;
 }
 
 
-.particle{
-    top:-170px;
-    background-image: url('../../../assets/img/moneda.png');
-    background-size: 100px 100px;
-    background-repeat: no-repeat;
-    position: absolute;
-    border-radius: 50%;
-    animation: fall 10s infinite; 
-}
-
-@keyframes fall {
-    0% {top: -30%}
-    80% {top: 85%}
-    100% {top: 100%;}
-}
-
-.particle:nth-of-type(2n){
-    width: 100px;
-    height: 100px;
-}
-
-.particle:nth-of-type(3n){
-    width: 100px;
-    height: 100px;
-}
-
-.particle:nth-of-type(1){
-    left: 10%;
-    animation-delay: 1s;
-}
-
-.particle:nth-of-type(2){
-    right: 10%;
-    animation-delay: 2s;
-}
-
-.particle:nth-of-type(3){
-    left: 25%;
-    animation-delay: 2s;
-}
-
-.particle:nth-of-type(4){
-    left: 75%;
-    animation-delay: 4s;
-}
-
-.particle:nth-of-type(5){
-    left: 35%;
-    animation-delay: 5s;
-}
-
-.particle:nth-of-type(6){
-    left: 50%;
-    animation-delay: 6s;
-}
-
-.particle:nth-of-type(7){
-    right: 65%;
-    animation-delay: 7s;
-}
-
-.particle:nth-of-type(8){
-    left: 100%;
-    animation-delay: 8s;
-}
-
-.particle:nth-of-type(9){
-    right: 5%;
-    animation-delay: 9s;
-}
-
-.particle:nth-of-type(10){
-    left: 55%;
-    animation-delay: 10s;
-}
-
-.particle:nth-of-type(11){
-    left: 35%;
-    animation-delay: 11s;
-}
-
-.particle:nth-of-type(12){
-    left: 50%;
-    animation-delay: 12s;
-}
-
-.particle:nth-of-type(13){
-    right: 65%;
-    animation-delay: 13s;
-}
-
-.particle:nth-of-type(14){
-    left: 40%;
-    animation-delay: 1s;
-}
-
-.particle:nth-of-type(15){
-    left: 5%;
-    animation-delay: 15s;
-}
-
 footer{
     background-color: #353535;
     text-align: center;
+    height: 400px;
 }
 
 footer a {
@@ -333,3 +203,81 @@ footer a:hover {
     margin-right: -50%;
     transform: translate(-50%)
 }
+
+.rubros{
+    background-color: #f5f4f2;
+}
+
+.calculadora{
+    background-color: chartreuse;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+  }
+  
+  /* Create four equal columns */
+  .column1 {
+    flex: 25%;
+  }
+
+  .column2 {
+    flex: 25%;
+  }
+
+  .column3 {
+    flex: 25%;
+  }
+
+  #c1{
+      height: 600px;
+  }
+
+  #c2{
+    height: 600px;
+    background-color: cyan;
+}
+
+#c3{
+    height: 600px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  
+  /* Create four equal columns */
+  .column1 {
+    flex: 9%;
+    padding: 1%;
+    height: 600px;
+    background-color: #063f6c;
+  }
+
+  .column1 h4{
+      color: #fff;
+      text-align: center;
+  }
+
+  .column3 h2{
+    color: #fff;
+    text-align: center;
+}
+
+  .column2 {
+    flex: 35%;
+    text-align: center;
+  }
+
+  .column3 {
+    flex: 20%;
+    text-align: center;
+    background-color: #0061ae;
+  }
+
+
