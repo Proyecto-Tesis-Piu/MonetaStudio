@@ -9,7 +9,7 @@ HEAD .container {
     background: url('../../../assets/img/Finanzas.png') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-    height: 500px;
+    height: 300px;
 }
 
 .containerbody {
@@ -354,7 +354,7 @@ footer {
     text-align: center;
     margin-top: 30px auto;
     margin-bottom: 0px;
-    color: #06D755;
+    color: #0061ae;
     font-size: 6vh;
 }
 
@@ -368,7 +368,7 @@ footer {
 .next {
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 5%;    
     font-size: 2rem;
     color: gray;
     cursor: pointer;
@@ -377,7 +377,7 @@ footer {
 .prev {
     position: absolute;
     top: 50%;
-    left: 30px;
+    left: 5%; 
     font-size: 2rem;
     color: gray;
     cursor: pointer;
@@ -385,7 +385,7 @@ footer {
 
 .post-wrapper {
     width: 84%;
-    height: 400px;
+    height: 450px;
     margin: 0px auto;
     overflow: hidden;
 }
@@ -408,7 +408,7 @@ footer {
 .rubros-title {
     text-align: center;
     margin-top: 10vh;
-    color: #06D755;
+    color: #0061ae;
     font-size: 6vh;
 }
 
@@ -545,6 +545,7 @@ footer {
 footer {
     background-color: #353535;
     text-align: center;
+    height: 400px;
 }
 
 footer a {
@@ -632,4 +633,81 @@ footer a:hover {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%)
+}
+
+.rubros{
+    background-color: #f5f4f2;
+}
+
+.calculadora{
+    background-color: chartreuse;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+  }
+  
+  /* Create four equal columns */
+  .column1 {
+    flex: 25%;
+  }
+
+  .column2 {
+    flex: 25%;
+  }
+
+  .column3 {
+    flex: 25%;
+  }
+
+  #c1{
+      height: 600px;
+  }
+
+  #c2{
+    height: 600px;
+    background-color: cyan;
+}
+
+#c3{
+    height: 600px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  
+  /* Create four equal columns */
+  .column1 {
+    flex: 9%;
+    padding: 1%;
+    height: 600px;
+    background-color: #063f6c;
+  }
+
+  .column1 h4{
+      color: #fff;
+      text-align: center;
+  }
+
+  .column3 h2{
+    color: #fff;
+    text-align: center;
+}
+
+  .column2 {
+    flex: 35%;
+    text-align: center;
+  }
+
+  .column3 {
+    flex: 20%;
+    text-align: center;
+    background-color: #0061ae;
+  }
 }
