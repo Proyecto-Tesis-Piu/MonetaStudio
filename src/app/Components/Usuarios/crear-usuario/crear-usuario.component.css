@@ -1,0 +1,26 @@
+HEAD .container {
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 1%;
+}
+
+.containerbody {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    background: #f8f9fa;
+    height: 680px;
+}
+
+.colum1 {
+    margin-top: 2vh;
+    text-align: center;
+}
+
+.inpcen {
+    margin-left: 4vw;
+}
+
+#boton {
+    margin-left: 16vw;
+}
