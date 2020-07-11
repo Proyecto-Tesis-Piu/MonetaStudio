@@ -1,67 +1,44 @@
-* {
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+
+nav{
+  width: 100%;
+  background: linear-gradient(90deg, #fff,#0080ff);
+  overflow: auto;
+  height: 100px;
 }
 
-#aligned {
-    margin-left: 63.8vw;
+ul{
+  padding: 0;
+  margin: 0 0 0 150px;
+  list-style: none;
 }
 
-.container {
-    max-width: 100%;
+li{
+float: right;
 }
 
-.navbar {
-    background-color: #ffffff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 100%;
+.logo img{
+  position: absolute;
+  margin-top: 0;
+  margin-left: 10px;
+  width: 200px;
+  height: 100px;
 }
 
-.navbar-inner li {
-    line-height: 40px;
-    letter-spacing: 2px;
+nav a {
+  width: 200px;
+  display: block;
+  padding: 35px 10px;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  height: 100px;
+  letter-spacing: 2px;
 }
 
 .nav-link:hover {
-    border-top: 4px solid white;
-    transition: border-top 0.3s;
-    border-top: 4px solid dodgerblue;
+  border-top: 6px solid #fff;
+  transition: border-top 0.4s;
+  border-top: 6px solid #fff;
+  cursor: pointer;  
 }
 
-.brand {
-    max-width: 100%;
-}
-
-.brand:hover {
-    letter-spacing: 4px;
-    border-top: 4px solid white;
-    transition: border-top 0.3s;
-    border-top: 4px solid dodgerblue;
-    border-top: 4px solid dodgerblue;
-}
-
-.triangle-down {
-    position: fixed;
-    margin-top: 65px;
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-top: 30px solid dodgerblue;
-}
-
-.triangle-down p:hover {
-    text-align: center;
-    color: white;
-    margin-top: -33px;
-    margin-left: -13px;
-    transition: color 0.2s;
-    color: rgba(0, 0, 0, 0.4);
-}
-
-.logo {
-    height: 11vh;
-    width: 8vw;
-}
