@@ -4,6 +4,11 @@ nav{
   background: linear-gradient(90deg, #fff,#063f6c);
   overflow: auto;
   height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 ul{
@@ -19,12 +24,11 @@ float: right;
 .logo img{
   position: absolute;
   margin-top: 0;
-  margin-left: 10px;
   width: 200px;
   height: 100px;
 }
 
-nav a {
+.as {
   width: 200px;
   display: block;
   padding: 35px 10px;
@@ -42,3 +46,7 @@ nav a {
   cursor: pointer;  
 }
 
+
+li:last-child{
+  float: left;
+}
