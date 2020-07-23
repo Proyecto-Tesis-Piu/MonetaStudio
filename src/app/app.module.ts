@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CrearUsuarioComponent } from './Components/Usuarios/crear-usuario/crear-usuario.component';
 import { IniciarSesionComponent } from './Components/Usuarios/iniciar-sesion/iniciar-sesion.component';
+
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,8 @@ import { IniciarSesionComponent } from './Components/Usuarios/iniciar-sesion/ini
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

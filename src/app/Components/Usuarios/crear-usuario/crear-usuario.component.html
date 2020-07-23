@@ -11,7 +11,11 @@
                         <h5 class="colum1">Nombre</h5>
                         <input class="inpcen" type="text">
                         <h5 class="colum1">País de residencia</h5>
-                        <input class="inpcen" type="text">
+                        <select name="cars" id="country">
+                           <option *ngFor="let country of countryArray">
+                                {{country.name}}
+                            </option>
+                        </select>
                         <h5 class="colum1">Edad</h5>
                         <input class="inpcen" type="number">
                         <h5 class="colum1">Ocupacion</h5>
