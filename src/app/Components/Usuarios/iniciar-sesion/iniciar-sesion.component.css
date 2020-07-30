@@ -1,7 +1,10 @@
-HEAD .container {
-    margin: 0 auto;
+.container {
     background: #fff;
-    margin-top: 1%;
+    margin-top: 100px;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
 }
 
 .containerbody {
@@ -11,6 +14,7 @@ HEAD .container {
     background: #f8f9fa;
     height: 680px;
 }
+
 
 .prueba {
     margin-top: 11vh;
