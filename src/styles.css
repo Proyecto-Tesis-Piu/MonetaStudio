@@ -1,7 +1,13 @@
 body {
     background-color: #fff;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
 .space{
     margin-top: 100px;
+}
+
+html, body { 
+    height: 100%; 
 }

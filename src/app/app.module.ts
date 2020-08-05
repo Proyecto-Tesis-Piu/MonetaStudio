@@ -8,7 +8,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CrearUsuarioComponent } from './Components/Usuarios/crear-usuario/crear-usuario.component';
 import { IniciarSesionComponent } from './Components/Usuarios/iniciar-sesion/iniciar-sesion.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,12 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

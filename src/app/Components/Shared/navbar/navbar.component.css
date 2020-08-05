@@ -18,7 +18,7 @@ ul{
 }
 
 li{
-float: right;
+  float: right;
 }
 
 .logo img{
@@ -47,6 +47,10 @@ float: right;
 }
 
 
-li:last-child{
+/*li:last-child{
   float: left;
+}*/
+
+div li a {
+  margin: 30px 10px;
 }
