@@ -5,13 +5,15 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="prueba">
-                    <img class="logo" src="../../../../assets/img/LogoSavioo.png" alt="">
-                    <h3 class="eti">Email</h3>
-                    <input class="inp" type="text">
-                    <h3 class="eti">Contraseña</h3>
-                    <input class="inp" type="password">
-                    <br><br>
-                    <input id="but" class="btn-info" type="submit" value="Iniciar Sesión">
+                    <form [formGroup]=loginForm>
+                        <img class="logo" src="../../../../assets/img/LogoSavioo.png" alt="">
+                        <h3 class="eti">Email</h3>
+                        <input formControlName="userEmail" class="inp" type="text">
+                        <h3 class="eti">Contraseña</h3>
+                        <input formControlName="password" class="inp" type="password">
+                        <br><br>
+                        <input id="but" class="btn-info" type="submit" value="Iniciar Sesión" (click)="submit_onClick()">
+                    </form>>
                 </div>
             </div>
             <div class="col-md-4">

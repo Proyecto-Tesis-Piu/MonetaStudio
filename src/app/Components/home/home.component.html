@@ -43,7 +43,7 @@
                         aria-label="Example home icon" 
                         matTooltip="Entretenimiento"
                         [matTooltipPosition]="'below'"
-                        matTooltipClass="tooltip-icon">theaters</mat-icon>
+                        matTooltipClass="tooltip-icon">live_tv</mat-icon>
             </div>
 
             <div class="icon">
@@ -64,12 +64,21 @@
                         matTooltipClass="tooltip-icon">local_hospital</mat-icon>
             </div>
 
-            <div class="icon" style="bottom: 18px; text-align: left;">
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip"
+                        aria-hidden="false" 
+                        aria-label="Example home icon" 
+                        matTooltip="Ropa y Accesorios"
+                        [matTooltipPosition]="'below'"
+                        matTooltipClass="tooltip-icon">watch</mat-icon>
+            </div>
+
+            <!-- <div class="icon" style="bottom: 18px; text-align: left;">
                 <i class="fas fa-tshirt" 
                 matTooltip="Ropa"
                 [matTooltipPosition]="'below'"
                 matTooltipClass="tooltip-icon" style="font-size: 60px; padding: 13px 0px"></i>
-            </div>
+            </div> -->
 
             <div class="icon">
                 <mat-icon #tooltip="matTooltip"
@@ -93,7 +102,7 @@
     
     <div class="row">
         <div class="col-md-12">
-            <h2 class="rubros-subtitle">Con categorías prediseñadas para administrar mejor tus gastos</h2>
+            <h2 class="rubros-subtitle">Para administrar mejor tus gastos</h2>
         </div>
     </div>
 
