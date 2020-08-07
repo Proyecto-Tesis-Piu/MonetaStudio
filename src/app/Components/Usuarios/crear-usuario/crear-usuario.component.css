@@ -7,6 +7,10 @@
     transform: translate(-50%, -50%);
 }
 
+hr {
+    border: solid blue -1px;
+}
+
 
 .containerbody {
     margin-left: 5%;
@@ -16,15 +20,6 @@
     height: 680px;
 }
 
-.colum1 {
-    margin-top: 2vh;
-    text-align: center;
-}
-
-.inpcen {
-    margin-left: 4vw;
-}
-
-#boton {
-    margin-left: 16vw;
+label {
+    font-size: 20px;
 }

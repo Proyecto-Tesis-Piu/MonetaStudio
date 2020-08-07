@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
@@ -22,4 +23,7 @@ export class CrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar(){
+    console.log("Jala")
+  }
 }
