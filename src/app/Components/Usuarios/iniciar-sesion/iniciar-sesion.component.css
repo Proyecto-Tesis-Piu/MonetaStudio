@@ -23,10 +23,11 @@
     background-color: white;
     height: 400px;
     width: 400px;
+    border-radius: 20px;
+    text-align: center;
 }
 
 .logo {
-    margin-left: 8.5vw;
     margin-top: 2vh;
     height: 100px;
     width: 100px;
@@ -42,5 +43,7 @@
 }
 
 #but {
-    margin-left: 8vw;
+    position: relative;
+    width: 150px;
+    margin: 0px auto;
 }

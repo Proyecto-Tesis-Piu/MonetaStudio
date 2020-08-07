@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { LoginService } from 'src/app/Services/login.service';
 import { User } from '../usuario.model';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-iniciar-sesion',

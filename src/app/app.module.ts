@@ -11,7 +11,8 @@ import { IniciarSesionComponent } from './Components/Usuarios/iniciar-sesion/ini
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
 
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
+    MatInputModule,
     FormsModule, 
     ReactiveFormsModule
   ],
