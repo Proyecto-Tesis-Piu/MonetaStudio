@@ -11,7 +11,6 @@ hr {
     border: solid blue -1px;
 }
 
-
 .containerbody {
     margin-left: 5%;
     margin-right: 5%;
@@ -21,5 +20,27 @@ hr {
 }
 
 label {
+    color: white;
     font-size: 20px;
+}
+
+.container {
+    margin-top: 30vh;
+    background: rgb(88, 87, 87);
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: blue !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: blue !important;
+    ;
 }

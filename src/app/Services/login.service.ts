@@ -19,7 +19,7 @@ export class LoginService extends BaseService {
 
   serviceUrl: string = this.baseUrl + "User/Login/";
 
-  constructor(private http: HttpClient) { super() }
+  constructor(private http: HttpClient) { super() }  
 
   public login (email: string, password: string): Observable<User> {
     var temp: User = new User();

@@ -1,157 +1,160 @@
 <h2>Crear Cuenta</h2>
-<hr>
-<form autocomplete="off" (ngSubmit)="guardar()">
-
-    <div>
-
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Crear Usuario:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="CrearUsuario" ngModel placeholder="Crear Usuario...">
-
+<div class="container">
+    <form autocomplete="off" (ngSubmit)="guardar()">
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Nombre:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="Nombre" ngModel placeholder="Nombre...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Apellido...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Apellido:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="Apellido" ngModel placeholder="Apellido...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">País:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>País...</mat-label>
+                        <mat-select>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">País:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="Pais" ngModel placeholder="País...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Estado:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Estado...</mat-label>
+                        <mat-select>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Estado:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="Estado" ngModel placeholder="Estado...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Edad:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Edad...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Edad:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="number" name="Edad" ngModel placeholder="Edad...">
-
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Sexo:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sexo...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Sexo:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="Sexo" ngModel placeholder="Sexo...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Ocupación:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ocupación...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Ocupación:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="Ocupacion" ngModel placeholder="Ocupación...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Estado civil:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Estado Civil...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Estado civil:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="text" name="EstadoCivil" ngModel placeholder="Estado Civil...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Email:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>ejemplo@hotmail.com</mat-label>
+                        <input matInput placeholder="pat@example.com">
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Email:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="email" name="Email" ngModel placeholder="ejemplo@hotmail.com">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Contraseña:</label>
+                <div class="col-2">
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" placeholder="User Password" type="password">
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
+        <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Contraseña:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="password" name="Contraseña" ngModel placeholder="Constraseña...">
-
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Confirmación de contraseña:</label>
+                <div class="col-2">
+                    <mat-form-field>
+                        <mat-label>Re-Password</mat-label>
+                        <input matInput formControlName="Repassword" placeholder="Re-Password" type="password">
+                    </mat-form-field>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
 
         <div class="form-group row">
-            <label class="col-2 col-form-label">Confirmación de contraseña:</label>
-            <div class="col-2">
-
-                <input class="form-control" type="password" name="coContraseña" ngModel placeholder="Confirmación de contraseña...">
-
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-2">
+                <button mat-stroked-button color="primary">Crear cuenta</button>
             </div>
         </div>
-    </div>
 
+    </form>
 
-    <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-2">
-            <button type="submit" class="btn btn-outline-primary btn-block">Guardar</button>
-        </div>
-    </div>
-
-</form>
+</div>

@@ -7,25 +7,23 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CrearUsuarioComponent } from './Components/Usuarios/crear-usuario/crear-usuario.component';
 import { IniciarSesionComponent } from './Components/Usuarios/iniciar-sesion/iniciar-sesion.component';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
-
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './Services/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
     IniciarSesionComponent,
-    CrearUsuarioComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +37,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTooltipModule,
     MatInputModule,
     FormsModule, 
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    MatSelectModule
+    ],
   providers: [LoginService],
   bootstrap: [AppComponent]
 })
