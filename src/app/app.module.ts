@@ -13,13 +13,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
-
 import { HttpClientModule } from "@angular/common/http";
+import { MatSelectModule } from '@angular/material/select';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './Services/login.service';
 import { UserService } from './Services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     IniciarSesionComponent,
-    CrearUsuarioComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +41,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTooltipModule,
     MatInputModule,
     FormsModule, 
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    MatSelectModule
+    ],
   providers: [LoginService, UserService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

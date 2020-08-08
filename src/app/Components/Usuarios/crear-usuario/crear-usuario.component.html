@@ -1,49 +1,160 @@
-<div class="space"></div>
-
+<h2>Crear Cuenta</h2>
 <div class="container">
-    <div class="containerbody">
-        <div class="row">
-            <div class="col-md-8">
-                <h5 style="text-align: center;">Crear usuario</h5>
-                <input style="margin-left: 13.5vw;" type="text">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="colum1">Nombre</h5>
-                        <input class="inpcen" type="text">
-                        <h5 class="colum1">País de residencia</h5>
-                        <select name="cars" id="country">
-                           <option *ngFor="let country of countryArray">
-                                {{country.name}}
-                            </option>
-                        </select>
-                        <h5 class="colum1">Edad</h5>
-                        <input class="inpcen" type="number">
-                        <h5 class="colum1">Ocupacion</h5>
-                        <input class="inpcen" type="text">
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="colum1">Apellido</h5>
-                        <input class="inpcen" type="text">
-                        <h5 class="colum1">Estado</h5>
-                        <input class="inpcen" type="text">
-                        <h5 class="colum1">Sexo</h5>
-                        <input class="inpcen" type="text">
-                        <h5 class="colum1">Estado Civil</h5>
-                        <input class="inpcen" type="text">
-                    </div>
+    <form autocomplete="off" (ngSubmit)="guardar()">
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nombre...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
                 </div>
-                <h5 class="colum1" style="text-align: center;">Email</h5>
-                <input style="margin-left: 13.5vw;" type="text">
-                <h5 class="colum1" style="text-align: center;">Contraseña</h5>
-                <input style="margin-left: 13.5vw;" type="password">
-                <h5 class="colum1" style="text-align: center;">Confirmación de contraseña</h5>
-                <input style="margin-left: 13.5vw;" type="password">
-                <br><br>
-                <input id="boton" class="btn-info" type="submit" value="Crear Usuario">
-            </div>
-            <div class="col-md-4">
-                <h3 style="text-align: center;">Video</h3>
             </div>
         </div>
-    </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Apellido...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">País:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>País...</mat-label>
+                        <mat-select>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Estado:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Estado...</mat-label>
+                        <mat-select>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Edad:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Edad...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Sexo:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sexo...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Ocupación:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ocupación...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Estado civil:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Estado Civil...</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Email:</label>
+                <div class="col-2">
+                    <mat-form-field appearance="fill">
+                        <mat-label>ejemplo@hotmail.com</mat-label>
+                        <input matInput placeholder="pat@example.com">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Contraseña:</label>
+                <div class="col-2">
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" placeholder="User Password" type="password">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Confirmación de contraseña:</label>
+                <div class="col-2">
+                    <mat-form-field>
+                        <mat-label>Re-Password</mat-label>
+                        <input matInput formControlName="Repassword" placeholder="Re-Password" type="password">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-2">
+                <button mat-stroked-button color="primary">Crear cuenta</button>
+            </div>
+        </div>
+
+    </form>
+
 </div>
