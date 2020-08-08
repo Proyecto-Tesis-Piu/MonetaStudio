@@ -21,12 +21,12 @@ const httpOptions = {
   
     constructor(private http: HttpClient) { super() }
   
-    public user (firstName: string, lastName:string, age: number,
-                sex: boolean, job: string, civilStateString: string,
-                email: string, password: string, countryCode: string,
-                stateCode: string 
-                ): Observable<User> {
-      var temp: User = new User();
+    // public user (firstName: string, lastName:string, age: number,
+    //             sex: boolean, job: string, civilStateString: string,
+    //             email: string, password: string, countryCode: string,
+    //             stateCode: string 
+    public user (user: User): Observable<User> {
+      /* var temp: User = new User();
       
       temp.firstName = firstName;
       temp.lastName = lastName;
@@ -37,9 +37,9 @@ const httpOptions = {
       temp.email = email;
       temp.password = password;
       temp.countryCode = countryCode;
-      temp.stateCode = stateCode;
+      temp.stateCode = stateCode; */
 
-      return this.http.post<User>(this.serviceUrl, temp, httpOptions)
+      return this.http.post<User>(this.serviceUrl, user, httpOptions)
       .pipe(
             catchError(this.handleError)
       );
