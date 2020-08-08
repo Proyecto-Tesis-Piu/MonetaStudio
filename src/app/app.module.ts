@@ -17,7 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './Services/login.service';
+import { UserService } from './Services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
