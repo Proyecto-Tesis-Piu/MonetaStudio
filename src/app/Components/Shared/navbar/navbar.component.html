@@ -1,9 +1,11 @@
 
 <nav>
     <ul>
-        <li><a [routerLink]="['iniciarsesion']" class='as nav-link'>Iniciar Sesión</a></li>
-        <li><a [routerLink]="['crearusuario']" class='as nav-link'>Crear Cuenta</a></li>
-        <li><a href="" class='as nav-link'>Acerca de SAVIO</a></li>
-        <li class="logo"><a href=""><img src="../../../../assets/img/logo.png"></a></li>
+        <div>
+            <li><a mat-raised-button color="accent" [routerLink]="['iniciarsesion']" >Iniciar Sesión</a></li>
+            <li><a mat-raised-button color="warn" [routerLink]="['crearusuario']">Crear Cuenta</a></li>
+            <li><a mat-raised-button color="primary">Acerca de SAVIO</a></li>
+        </div>
+        <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li>
     </ul>
 </nav>
