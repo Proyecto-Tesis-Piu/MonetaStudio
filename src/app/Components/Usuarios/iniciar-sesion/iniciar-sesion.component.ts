@@ -22,7 +22,7 @@ export class IniciarSesionComponent implements OnInit {
     this.loginForm = new FormGroup({
       userEmail: new FormControl(''),
       password: new FormControl('')
-    })
+    });
   }
 
   ngOnInit(): void {

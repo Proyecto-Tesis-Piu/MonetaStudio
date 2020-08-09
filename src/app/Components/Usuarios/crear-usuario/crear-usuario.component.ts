@@ -4,6 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormGroup, FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { User } from '../usuario.model';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -21,26 +22,29 @@ export class CrearUsuarioComponent implements OnInit {
   response:any;
   countryArray:any[] = [];
   UserForm:FormGroup;
+  user:User;
 
   constructor( private http: HttpClient) { 
+    this.user = new User();
     this.UserForm = new FormGroup({
-      formUserName: new FormControl('', Validators.required),
-      formUserLName: new FormControl('', Validators.required),
-      formCountrySelect: new FormControl('', Validators.required),
-      formStateSelect: new FormControl('', Validators.required),
-      formAge: new FormControl('', [Validators.required, Validators.number]),
-      userEmail: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      formUserName: new FormControl(''),
+      formUserLName: new FormControl(''),
+      formCountrySelect: new FormControl(''),
+      formStateSelect: new FormControl(''),
+      formAge: new FormControl(''),
+      userEmail: new FormControl(''),
+      password: new FormControl('')
     });
+    
+
+  }
+
+  ngOnInit(): void {
     
     this.http.get('http://localhost:49755/api/Country')
         .subscribe((countries:any) =>{
           this.countryArray = countries;
         });
-
-  }
-
-  ngOnInit(): void {
   }
 
   guardar(){

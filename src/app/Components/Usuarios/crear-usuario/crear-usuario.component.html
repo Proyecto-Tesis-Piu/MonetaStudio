@@ -1,161 +1,119 @@
 <h2>Crear Cuenta</h2>
 <div class="container">
-    <form autocomplete="off" (ngSubmit)="guardar()" [formGroup]="UserForm">
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Nombre:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Nombre...</mat-label>
-                        <input matInput formControlName="formUserName">
-                    </mat-form-field>
-                </div>
-            </div>
+    <form autocomplete="off" [formGroup]="UserForm">
+        <div class="row">
+            <label class="col-2 col-form-label">Nombre:</label>
+            <mat-form-field>
+                <mat-label>Nombre...</mat-label>
+                <input matInput type="text" [(ngModel)]="user.firstName" formControlName="formUserName">
+                <button mat-button *ngIf="user.firstName" matSuffix mat-icon-button aria-label="Clear" (click)="user.firstName=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Apellido:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Apellido...</mat-label>
-                        <input matInput formControlName="formUserLName">
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Apellido:</label>
+            <mat-form-field>
+                <mat-label>Apellido...</mat-label>
+                <input matInput formControlName="formUserLName">
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">País:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>País...</mat-label>
-                        <mat-select formControlName="formCountrySelect">
-                            <!-- <mat-option value="option">Option</mat-option> -->
-                            <mat-option *ngFor="let country of countryArray" [value]="country.countryCode">
-                                {{country.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">País:</label>
+            <mat-form-field>
+                <mat-label>País...</mat-label>
+                <mat-select formControlName="formCountrySelect">
+                    <!-- <mat-option value="option">Option</mat-option> -->
+                    <mat-option *ngFor="let country of countryArray" [value]="country.countryCode">
+                        {{country.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Estado:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Estado...</mat-label>
-                        <mat-select formControlName="formStateSelect">
-                            <mat-option value="option">Option</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Estado:</label>
+            <mat-form-field>
+                <mat-label>Estado...</mat-label>
+                <mat-select formControlName="formStateSelect">
+                    <mat-option value="option">Option</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Edad:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Edad...</mat-label>
-                        <input matInput type="number" formControlName="formAge">
-                        <mat-error *ngIf="formAge.hasError('number') && !formAge.hasError('required')">
-                            Por favor introduzca una edad válida
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Edad:</label>
+            <mat-form-field>
+                <mat-label>Edad...</mat-label>
+                <input matInput type="number" formControlName="formAge">
+                <!-- <mat-error *ngIf="formAge.hasError('number') && !formAge.hasError('required')">
+                    Por favor introduzca una edad válida
+                </mat-error> -->
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Sexo:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-select formControlName="formSexSelect">
-                            <mat-label>Sexo...</mat-label>
-                            <mat-option value="true">Masculino</mat-option>
-                            <mat-option value="false">Femenino</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Sexo:</label>
+            <mat-form-field>
+                <mat-select formControlName="formSexSelect">
+                    <mat-label>Sexo...</mat-label>
+                    <mat-option value="true">Masculino</mat-option>
+                    <mat-option value="false">Femenino</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Ocupación:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Ocupación...</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Ocupación:</label>
+            <mat-form-field>
+                <mat-label>Ocupación...</mat-label>
+                <input matInput formControlName="formUserJob">
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Estado civil:</label>
-                <div class="col-2">
-                    <!--Para ser cambiado proximamente a dropdown-->
-                    <mat-form-field appearance="fill">
-                        <mat-label>Estado Civil...</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Estado civil:</label>
+            <!--TODO: Para ser cambiado proximamente a dropdown-->
+            <mat-form-field>
+                <mat-label>Estado Civil...</mat-label>
+                <input matInput formControlName="formCivilState">
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Email:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>ejemplo@hotmail.com</mat-label>
-                        <input matInput formControlName="formUserEmail" placeholder="Ej. pat@example.com">
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                            Por favor introduzca una direccion válida de correo
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                            El correo es <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Email:</label>
+            <mat-form-field>
+                <mat-label>ejemplo@hotmail.com</mat-label>
+                <input matInput formControlName="formUserEmail" placeholder="Ej. pat@example.com">
+                <!-- <mat-error *ngIf="formUserEmail.hasError('email') && !formUserEmail.hasError('required')">
+                    Por favor introduzca una direccion válida de correo
+                </mat-error>
+                <mat-error *ngIf="formUserEmail.hasError('required')">
+                    El correo es <strong>requerido</strong>
+                </mat-error> -->
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Contraseña:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Password</mat-label>
-                        <input matInput formControlName="password" placeholder="Password" type="password">
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Contraseña:</label>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" placeholder="Password" type="password">
+            </mat-form-field>
         </div>
 
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Confirmación de contraseña:</label>
-                <div class="col-2">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Password</mat-label>
-                        <input matInput formControlName="Repassword" placeholder="Password" type="password">
-                    </mat-form-field>
-                </div>
-            </div>
+        <div class="row">
+            <label class="col-2 col-form-label">Confirmación de contraseña:</label>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="Repassword" placeholder="Password" type="password">
+            </mat-form-field>
         </div>
 
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="row">
             <div class="input-group col-2">
                 <button mat-flat-button color="accent" type="submit">Crear cuenta</button>
             </div>
