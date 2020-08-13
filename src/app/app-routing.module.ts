@@ -10,13 +10,12 @@ import { UserComponent } from './Components/Users/user.component';
 const routes: Routes = [
   {path:'home', component: HomeComponent },
   {path:'user', component: UserComponent, children: [
+    {path:'modify', component: RegistrationComponent },
     {path:'create', component: RegistrationComponent },
     {path:'login', component: LoginComponent },
   ]},
-  
   {
-    path:'transactions', component: TransactionsComponent,
-    canActivate: [AuthGuard], canActivateChild: [AuthGuard]
+    path:'transactions', component: TransactionsComponent, canActivate: [AuthGuard]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
