@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { temp } from './temp.model'
+import { MatProgressSpinner } from '@angular/material/progress-spinner'
 
 @Component({
   selector: 'app-transactions',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsComponent implements OnInit {
 
-  constructor() { }
+  transactions:temp[] = [];
+  constructor() {
+    var aux:temp = new temp();
+    aux.color = "#fff";
+    aux.value = 100;
+    this.transactions.push(aux);
+    var aux:temp = new temp();
+    aux.color = "accent";
+    aux.value = 80;
+    this.transactions.push(aux);
+    var aux:temp = new temp();
+    aux.color = "warn";
+    aux.value = 60;
+    this.transactions.push(aux);
+    var aux:temp = new temp();
+    aux.color = "#999999";
+    aux.value = 40;
+    this.transactions.push(aux);
+    var aux:temp = new temp();
+    aux.color = "#777777";
+    aux.value = 20;
+    this.transactions.push(aux);
+   }
 
   ngOnInit(): void {
+    
   }
 
 }

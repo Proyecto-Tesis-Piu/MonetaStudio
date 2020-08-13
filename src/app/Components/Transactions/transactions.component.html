@@ -1,2 +1,15 @@
 <div class="space"></div>
 <p>transactions works!</p>
+<div class="container">
+    <div class="containerbody">
+        <div class="row">
+            <mat-progress-spinner *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner'+i"
+                mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}" >
+            </mat-progress-spinner>
+
+            <mat-progress-spinner class="custom-spinner" *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner1'+i"
+                mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}" >
+            </mat-progress-spinner>
+        </div>
+    </div>
+</div>

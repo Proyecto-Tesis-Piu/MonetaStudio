@@ -17,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from "@angular/common/http";
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './Components/Users/shared/user.service';
@@ -50,7 +51,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule, 
     ReactiveFormsModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
     ],
   providers: [UserService, AuthGuard],
 

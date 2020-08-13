@@ -1,0 +1,60 @@
+mat-progress-spinner{
+    top:50%;
+    left:50%;
+    position: absolute;
+}
+
+.containerbody{
+    height: auto;
+}
+
+::ng-deep .custom-spinner0 circle{
+    stroke: #000000;
+    stroke-width: 9.1% !important;
+}
+
+::ng-deep .custom-spinner1 circle{
+    stroke: #222222;
+    stroke-width: 9.3% !important;
+}
+
+::ng-deep .custom-spinner2 circle{
+    stroke: #444444;
+    stroke-width: 9.5% !important;
+}
+
+::ng-deep .custom-spinner3 circle{
+    stroke: #777777;
+    stroke-width: 9.7% !important;
+}
+
+::ng-deep .custom-spinner4 circle{
+    stroke: #aaaaaa;
+    stroke-width: 9.9% !important;
+}
+
+.custom-spinner{
+    top:70%;
+    left:50%;
+    position: absolute;
+}
+
+::ng-deep .custom-spinner10 circle{
+    stroke: #000000;
+}
+
+::ng-deep .custom-spinner11 circle{
+    stroke: #222222;
+}
+
+::ng-deep .custom-spinner12 circle{
+    stroke: #444444;
+}
+
+::ng-deep .custom-spinner13 circle{
+    stroke: #777777;
+}
+
+::ng-deep .custom-spinner14 circle{
+    stroke: #aaaaaa;
+}
