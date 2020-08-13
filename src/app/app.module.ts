@@ -5,8 +5,10 @@ import { NavbarComponent } from './Components/Shared/navbar/navbar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CrearUsuarioComponent } from './Components/Usuarios/crear-usuario/crear-usuario.component';
-import { IniciarSesionComponent } from './Components/Usuarios/iniciar-sesion/iniciar-sesion.component';
+import { RegistrationComponent } from './Components/Users/registration/registration.component';
+import { LoginComponent } from './Components/Users/login/login.component';
+import { UserComponent } from './Components/Users/user.component';
+import { TransactionsComponent } from './components/Transactions/transactions.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,17 +19,22 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatSelectModule } from '@angular/material/select';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginService } from './Services/login.service';
-import { UserService } from './Services/user.service';
+import { UserService } from './Components/Users/shared/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AuthGuard } from './Components/Users/shared/auth.guard';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    IniciarSesionComponent,
-    CrearUsuarioComponent
+    LoginComponent,
+    RegistrationComponent,
+    TransactionsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +49,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
     ],
-  providers: [LoginService, UserService],
+  providers: [UserService, AuthGuard],
 
   bootstrap: [AppComponent]
 })

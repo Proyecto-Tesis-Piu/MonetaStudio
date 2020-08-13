@@ -1,0 +1,189 @@
+<div class="containerbody">
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="guardar()">
+        <div class="row">
+            <label class="col-4 col-form-label">Nombre:</label>
+            <mat-form-field class="form-field">
+                <mat-label>Nombre...</mat-label>
+                <input matInput [value]="user.firstName" formControlName="firstName"
+                    (keyup)="updateForm($event.srcElement.value, 'firstName')">
+                <button mat-button *ngIf="user.firstName" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="user.firstName=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error
+                    *ngIf="service.formModel.get('firstName').touched && service.formModel.get('firstName').hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Apellido:</label>
+            <mat-form-field class="form-field">
+                <mat-label>Apellido...</mat-label>
+                <input matInput [value]="user.lastName" formControlName="lastName"
+                    (keyup)="updateForm($event.srcElement.value, 'lastName')">
+                <button mat-button *ngIf="user.lastName" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="user.lastName=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">País:</label>
+            <mat-form-field class="form-field">
+                <mat-label>País...</mat-label>
+                <mat-select [value]="user.countryCode" formControlName="countryCode"
+                    (selectionChange)="updateForm($event.value, 'countryCode'); fillStates($event.value)">
+                    <!-- <mat-option value="option">Option</mat-option> -->
+                    <mat-option *ngFor="let country of countryArray" [value]="country.countryCode">
+                        {{country.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Estado:</label>
+            <mat-form-field class="form-field">
+                <mat-label>Estado...</mat-label>
+                <mat-select [value]="user.stateCode" formControlName="stateCode"
+                    (selectionChange)="updateForm($event.value, 'stateCode')">
+                    <!-- <mat-option value="option">Option</mat-option> -->
+                    <mat-option *ngFor="let state of stateArray" [value]="state.stateCode">
+                        {{state.name}}
+                    </mat-option>
+                    <mat-option *ngIf="user.stateName && stateArray.length > 0" [value]="user.stateCode">
+                        {{user.stateName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Edad:</label>
+            <mat-form-field class="form-field">
+                <mat-label>Edad...</mat-label>
+                <input matInput type="number" [value]="user.age" formControlName="age"
+                    (change)="updateForm($event.srcElement.value, 'age')">
+                <!-- <mat-error *ngIf="formAge.hasError('number') && !formAge.hasError('required')">
+                    Por favor introduzca una edad válida
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Sexo:</label>
+            <mat-form-field class="form-field">
+                <mat-select [value]="user.sex" formControlName="sex"
+                    (selectionChange)="updateForm($event.value, 'sex')">
+                    <mat-label>Sexo...</mat-label>
+                    <mat-option value="Male">Masculino</mat-option>
+                    <mat-option value="Female">Femenino</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Ocupación:</label>
+            <mat-form-field class="form-field">
+                <mat-label>Ocupación...</mat-label>
+                <input matInput [value]="user.job" formControlName="job"
+                    (keyup)="updateForm($event.srcElement.value, 'job')">
+                <button mat-button *ngIf="user.job" matSuffix mat-icon-button aria-label="Clear" (click)="user.job=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Estado civil:</label>
+            <!--TODO: Para ser cambiado proximamente a dropdown-->
+            <mat-form-field class="form-field">
+                <mat-select [value]="user.civilStateString" formControlName="civilStateString"
+                    (selectionChange)="updateForm($event.value, 'civilStateString')">
+                    <mat-label>Estado Civil...</mat-label>
+                    <mat-option value="Single">Soltero/a</mat-option>
+                    <mat-option value="Married">Casado/a</mat-option>
+                    <mat-option value="Divorced">Divorciado/a</mat-option>
+                    <mat-option value="Widowed">Viudo/a</mat-option>
+                    <mat-option value="FreeUnion">Union Libre</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <label class="col-4 col-form-label">Email:</label>
+            <mat-form-field class="form-field">
+                <mat-label>ejemplo@hotmail.com</mat-label>
+                <input matInput placeholder="Ej. pat@example.com" [value]="user.email" formControlName="email"
+                    (keyup)="updateForm($event.srcElement.value, 'email')">
+                <button mat-button *ngIf="user.email" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="user.email=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-error
+                    *ngIf="service.formModel.get('email').touched && service.formModel.get('email').hasError('required')">
+                    Este campo es requerido.
+                </mat-error>
+                <mat-error
+                    *ngIf="service.formModel.get('email').touched && service.formModel.get('email').hasError('email')">
+                    Direccion inválida de correo.
+                </mat-error>
+                <!-- <mat-error *ngIf="formUserEmail.hasError('email') && !formUserEmail.hasError('required')">
+                    Por favor introduzca una direccion válida de correo
+                </mat-error>
+                <mat-error *ngIf="formUserEmail.hasError('required')">
+                    El correo es <strong>requerido</strong>
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+
+        <div formGroupName="passwords">
+            <div class="row">
+                <label class="col-4 col-form-label">Contraseña:</label>
+                <mat-form-field class="form-field">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" type="password" [value]="user.password"
+                        formControlName="password" (keyup)="updateForm($event.srcElement.value, 'password')">
+                    <button mat-button *ngIf="user.password" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="user.password=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error
+                        *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').hasError('required')">
+                        Este campo es requerido.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').hasError('minlength')">
+                        Debe contener mínimo 8 caracteres alfanuméricos.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <label class="col-4 col-form-label">Confirmación de contraseña:</label>
+                <mat-form-field class="form-field">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" type="password" formControlName="passwordConfirm">
+                    <mat-error
+                        *ngIf="service.formModel.get('passwords.passwordConfirm').touched && service.formModel.get('passwords.passwordConfirm').hasError('required')">
+                        Este campo es requerido.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="service.formModel.get('passwords.passwordConfirm').touched && service.formModel.get('passwords.passwordConfirm').hasError('passwordMismatch')">
+                        Las contraseñas no coinciden
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group col-4">
+                <button mat-flat-button color="accent" type="submit" [disabled]="!service.formModel.valid">Crear
+                    cuenta</button>
+            </div>
+        </div>
+    </form>
+</div>

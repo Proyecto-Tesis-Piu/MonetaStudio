@@ -2,8 +2,9 @@
 <nav>
     <ul>
         <div>
-            <li><a mat-raised-button color="accent" [routerLink]="['iniciarsesion']" >Iniciar Sesión</a></li>
-            <li><a mat-raised-button color="warn" [routerLink]="['crearusuario']">Crear Cuenta</a></li>
+            <li *ngIf="token"><a mat-raised-button color="accent" (click)="logout()">Cerrar Sesión</a></li>
+            <li><a mat-raised-button color="accent" [routerLink]="['user','login']" >Iniciar Sesión</a></li>
+            <li><a mat-raised-button color="warn" [routerLink]="['user','create']">Crear Cuenta</a></li>
             <li><a mat-raised-button color="primary">Acerca de SAVIO</a></li>
         </div>
         <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li>
