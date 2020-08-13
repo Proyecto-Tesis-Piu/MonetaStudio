@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit {
 
   updateForm(value: any, property: string) {
     this.user[property] = value;
-    console.log(this.user);
+    //console.log(this.user);
   }
 
   fillStates(countryCode: string) {
