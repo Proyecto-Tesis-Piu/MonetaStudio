@@ -36,13 +36,23 @@ export class RegistrationComponent implements OnInit {
               private router: Router,
               private _snackBar: MatSnackBar) {
     
-
-    this.user = new User();
-
     this.http.get('http://localhost:49755/api/Country')
       .subscribe((countries: Country[]) => {
         this.countryArray = countries;
       });
+
+    if(localStorage.getItem('token')){
+      this.service.getUserProfile().subscribe(
+        (res:User) => {
+          this.user = res
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }else{
+      this.user = new User();
+    }
   }
 
   ngOnInit(): void {
