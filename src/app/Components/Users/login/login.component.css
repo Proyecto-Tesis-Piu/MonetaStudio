@@ -1,0 +1,48 @@
+/* .container {
+    background: #fff;
+    margin-top: 100px;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+} */
+
+.containerbody {
+/*     margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%; */
+    background: #f8f9fa;
+    height: 680px;
+}
+
+
+.prueba {
+    margin: 11vh auto 0px auto;
+    border: solid black 2px;
+    background-color: dimgray;
+    height: 400px;
+    width: 400px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.logo {
+    margin-top: 2vh;
+    height: 100px;
+    width: 100px;
+}
+
+.eti {
+    margin-top: 1vh;
+    text-align: center;
+}
+
+.inp {
+    margin-left: 5.5vw;
+}
+
+#but {
+    position: relative;
+    width: 150px;
+    margin: 0px auto;
+}
