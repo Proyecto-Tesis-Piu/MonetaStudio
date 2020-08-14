@@ -1,3 +1,8 @@
+@font-face {
+    src: url(assets/fonts/Musket.otf);
+    font-family: Musket;
+  }
+
 body {
     background-color: #fff;
     margin: 0; 

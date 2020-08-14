@@ -1,9 +1,74 @@
 <div class="space"></div>
-<p>transactions works!</p>
-<div class="container">
+
+
+<!--<div class="container">-->
     <div class="containerbody">
+        <div class="show"> Mostrar: Mensual &#x23f7; </div>
         <div class="row">
-            <mat-progress-spinner *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner'+i"
+            <div class="negative col-sm-5">
+                <h1>GASTOS</h1>
+            </div>  
+            <div class="positive col-sm-5">
+                <h1>INGRESOS</h1>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="graph-negative col-sm-5">
+                <h1>Lorem ipsum</h1>
+
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>  
+                    <div class="col-sm-4">
+                            
+                    </div>  
+                </div>
+
+
+                <h1 class="calendar">Calendario > 2020 </h1>
+            </div>  
+            <div class="graph-positive col-sm-5">
+                <h1>Lorem ipsum</h1>
+
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>  
+                    <div class="col-sm-4">
+                          
+                    </div>  
+                </div>
+
+                <h1 class="table-register">Tabla de registro </h1>
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="mounth col-sm-5">
+                <h1>AGO</h1>
+            </div>  
+            <div class="table col-sm-5">
+                <h1>GASTOS | INGRESOS </h1>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <P>Salario</P>
+                        <P>Ahorro</P>
+                        <P>Intereses</P>
+                    </div>  
+                    <div class="col-sm-8">
+
+                    </div>  
+                </div>
+            </div>             
+        </div>
+
+        <div class="row">
+            <mat-progress-spinner id="Spinn" *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner'+i"
                 mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}" >
             </mat-progress-spinner>
 
@@ -12,4 +77,3 @@
             </mat-progress-spinner>
         </div>
     </div>
-</div>

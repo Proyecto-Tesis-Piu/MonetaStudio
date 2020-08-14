@@ -1,11 +1,141 @@
+@font-face {
+    src: url(../../../assets/fonts/Musket.otf);
+    font-family: mus;
+  }
+
 mat-progress-spinner{
     top:50%;
     left:50%;
     position: absolute;
 }
 
+.show{
+    text-align: right;
+    margin-right: 4vw;
+    margin-bottom: 2vh;
+    font-family: mus !important;
+}
+
 .containerbody{
-    height: auto;
+    height: 82vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-top: 15vh;
+}
+
+.negative{
+    margin-left: 4vw;
+    background-color: #04ECD6;
+    max-width: 80vw;
+    border-radius: 25px;
+    font-family: mus !important;
+    font-size: 18px;
+    height: 20vh;
+}
+
+.negative h1{
+    font-family: mus !important;
+    font-size: 18px;
+    text-align: left;
+    padding: 10px;
+}
+
+.graph-negative{
+    background-color: #fff;
+    max-width: 80vw;
+    border-radius: 25px;
+    font-family: mus !important;
+    height: 30vh;
+    margin-left: 4vw;
+
+}
+
+.graph-negative h1{
+    font-family: mus !important;
+    font-size: 18px;
+    text-align: left;
+}
+
+.calendar{
+    position:absolute;
+    bottom:0;
+}
+
+.mounth{
+    background-color: #04ECD6;
+    max-width: 80vw;
+    border-radius: 25px;
+    font-family: mus !important;
+    font-size: 18px;
+    height: 40vh;
+    margin-left: 4vw;
+
+}
+
+.mounth h1{
+    font-family: mus !important;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.positive{
+    margin-left: 4vw;
+    background-color: #04ECD6;
+    max-width: 80vw;
+    border-radius: 25px;
+    font-family: mus !important;
+    font-size: 18px;
+    height: 20vh;
+}
+
+.positive h1{
+    font-family: mus !important;
+    font-size: 18px;
+    text-align: left;
+    padding: 10px;
+}
+
+.graph-positive{
+    background-color: #fff;
+    max-width: 80vw;
+    border-radius: 25px;
+    font-family: mus !important;
+    height: 30vh;
+    margin-left: 4vw;
+
+}
+
+.graph-positive h1{
+    font-family: mus !important;
+    font-size: 18px;
+    text-align: left;
+}
+
+.table-register{
+    position:absolute;
+    bottom:0;
+}
+
+.table{
+    margin-left: 4vw;
+    background-color: #04ECD6;
+    max-width: 80vw;
+    border-radius: 25px;
+    font-family: mus !important;
+    font-size: 18px;
+    height: 40vh;
+}
+
+.table h1{
+    font-family: mus !important;
+    font-size: 18px;
+    text-align: right;
+    padding: 10px;
+}
+
+.table p {
+    text-align: right;
 }
 
 ::ng-deep .custom-spinner0 circle{
@@ -37,6 +167,13 @@ mat-progress-spinner{
     top:70%;
     left:50%;
     position: absolute;
+    margin-left: -11.5vw;
+    margin-top: -28vh;
+}
+
+#Spinn{
+    margin-left: 22vw;
+    margin-top: -8vh;
 }
 
 ::ng-deep .custom-spinner10 circle{
