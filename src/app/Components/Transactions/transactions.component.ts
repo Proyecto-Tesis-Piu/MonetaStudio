@@ -32,9 +32,14 @@ export class TransactionsComponent implements OnInit {
     aux.value = 20;
     this.transactions.push(aux);
    }
+   public selectedVal: string;
 
-  ngOnInit(): void {
-    
+   ngOnInit(){
+    this.selectedVal ='option1';
+  } 
+  
+  public onValChange(val: string) {
+    this.selectedVal = val;
   }
 
 }

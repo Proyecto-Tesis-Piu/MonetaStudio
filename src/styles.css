@@ -1,11 +1,12 @@
+@font-face {
+    src: url(assets/fonts/Musket.otf);
+    font-family: Musket;
+  }
+
 body {
     background-color: #fff;
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-}
-
-.space{
-    margin-top: 100px;
 }
 
 html, body { 
