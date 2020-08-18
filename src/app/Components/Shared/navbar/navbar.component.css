@@ -1,19 +1,11 @@
 
 nav{
   width: 100%;
-  background: linear-gradient(90deg, #fff,#063f6c);
-  overflow: auto;
-  height: 100px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
+  background-color: #fff;
 }
 
 ul{
   padding: 0;
-  margin: 0 0 0 150px;
   list-style: none;
 }
 
@@ -21,35 +13,6 @@ li{
   float: right;
 }
 
-.logo img{
-  position: absolute;
-  margin-top: 0;
-  width: 200px;
-  height: 100px;
-}
-
-.as {
-  width: 200px;
-  display: block;
-  padding: 35px 10px;
-  text-decoration: none;
-  color: #fff;
-  text-align: center;
-  height: 100px;
-  letter-spacing: 2px;
-}
-
-.nav-link:hover {
-  border-top: 6px solid #fff;
-  transition: border-top 0.4s;
-  border-top: 6px solid #fff;
-  cursor: pointer;  
-}
-
-
-/*li:last-child{
-  float: left;
-}*/
 
 div li a {
   margin: 30px 10px;

@@ -52,16 +52,24 @@
                 <h1>AGO</h1>
             </div>  
             <div class="table col-sm-5">
-                <h1>GASTOS | INGRESOS </h1>
 
-                <div class="row">
+                <mat-button-toggle-group [value]="selectedVal" >
+                    <mat-button-toggle value="option1">GASTOS</mat-button-toggle>
+                    <mat-button-toggle value="option2">INGRESOS</mat-button-toggle>
+                </mat-button-toggle-group>
+
+                <div class="categories row">
                     <div class="col-sm-4">
-                        <P>Salario</P>
-                        <P>Ahorro</P>
-                        <P>Intereses</P>
+                        <P>Vivienda</P>
+                        <P>Transporte</P>
+                        <P>Entretenimiento</P>
+                        <P>Despensa</P>
+                        <P>Salud</P>
+                        <P>Ropa</P>
+                        <p>Ahorro</p>
                     </div>  
                     <div class="col-sm-8">
-
+                        <button mat-button>TRANSACCIÓN</button>
                     </div>  
                 </div>
             </div>             

@@ -138,6 +138,43 @@ mat-progress-spinner{
     text-align: right;
 }
 
+  
+  mat-button-toggle-group {
+    border-radius: 4px;
+    margin-top: 10px;
+    float: right;
+  }
+  
+  mat-button-toggle {
+    font-size: 15px;
+    background-color: #fff;
+    color: #000000;
+    font-family: mus;
+  }
+
+  .mat-button-toggle-checked {
+    background-color: #000;
+    color: white;
+  }
+
+  .categories{
+      margin-top: 10vh;
+  }
+
+  .mat-button{
+    font-family: mus;
+    bottom: 0px;
+    float: right;
+    margin-top: 23vh;
+    border: 1px solid black;
+    width: 194px;
+    background-color: white;
+    color: black;
+    letter-spacing: 2px;
+  }
+
+/*********************SPIN*********************************/
+
 ::ng-deep .custom-spinner0 circle{
     stroke: #000000;
     stroke-width: 9.1% !important;
