@@ -6,7 +6,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RegistrationComponent } from './Components/Users/registration/registration.component';
-import { LoginComponent } from './Components/Users/login/login.component';
+import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { UserComponent } from './Components/Users/user.component';
 import { TransactionsComponent } from './components/Transactions/transactions.component';
 
@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from "@angular/common/http";
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './Components/Users/shared/user.service';
@@ -34,7 +35,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    LoginComponent,
+    LoginDialogComponent,
     RegistrationComponent,
     TransactionsComponent,
     UserComponent
@@ -55,7 +56,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
     ],
   providers: [UserService, AuthGuard],
 
