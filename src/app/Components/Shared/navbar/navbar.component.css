@@ -19,9 +19,22 @@ li{
 }
 
 div li a {
+  margin: 30px 10px;
+  cursor: pointer;
+  color: #007bff;
+  
   margin: 30px 20px;
   font-family: mus;
   text-decoration: none;
+}
+
+div li .custom-button {
+  background-color: #007bff;
+  color: white;
+}
+
+div li a:hover {
+  text-decoration: underline;
 }
 
 .mat-raised-button{
@@ -50,11 +63,3 @@ transition: width .3s;
 color: #007bff;
 margin-top: 3px;
 }
-
-.close:hover{
-  color: red !important;
-  color: red;
-}
-
-
-

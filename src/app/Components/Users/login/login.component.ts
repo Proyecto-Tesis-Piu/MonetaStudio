@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { User } from '../shared/user.model';
@@ -6,19 +6,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-dialog-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  response:any;
+export class LoginDialogComponent implements OnInit {
+  //response:any;
   loginForm:FormGroup;
-  currentUser: User;
-  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
+  //currentUser: User;
+  //private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
-  constructor(public formBuilder: FormBuilder, 
+  constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
+    public formBuilder: FormBuilder, 
     public service: UserService,
     private router: Router,
     private _snackBar: MatSnackBar
@@ -40,7 +42,6 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res: any) => {
             localStorage.setItem('token', res.token);
-            window.location.reload();
           }, 
           err => {
             if(err.status == 400){
@@ -48,7 +49,11 @@ export class LoginComponent implements OnInit {
             }
             console.log(err)
           }, 
-          () => console.log('Complete'));
+          () => {
+            console.log('Complete');
+            this.dialogRef.close();
+            window.location.reload();
+        });
     }
   }
 }
