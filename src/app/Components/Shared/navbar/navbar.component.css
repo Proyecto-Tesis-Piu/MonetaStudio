@@ -1,4 +1,7 @@
-
+@font-face {
+  src: url(../../../../assets/fonts/Musket.otf);
+  font-family: mus;
+}
 nav{
   width: 100%;
   background-color: #fff;
@@ -7,13 +10,50 @@ nav{
 ul{
   padding: 0;
   list-style: none;
+  margin-right: 90px;
 }
 
 li{
   float: right;
 }
 
-
 div li a {
-  margin: 30px 10px;
+  margin: 30px 20px;
+  font-family: mus;
+  text-decoration: none;
 }
+
+.mat-raised-button{
+  background-color: #007bff;
+  margin-bottom: 10px;
+}
+
+a:hover{
+  color: #007bff;
+}
+
+.line::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: width .3s;
+  color: #007bff;
+  margin-top: 3px;
+}
+
+.line:hover::after{
+width: 100%;
+transition: width .3s;
+color: #007bff;
+margin-top: 3px;
+}
+
+.close:hover{
+  color: red !important;
+  color: red;
+}
+
+
+
