@@ -126,5 +126,10 @@
   "defaultProject": "Savio",
   "cli": {
     "analytics": "fa461669-7009-4da9-ab83-1f7f75b26157"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
