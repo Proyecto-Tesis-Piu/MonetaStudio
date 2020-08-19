@@ -2,12 +2,13 @@
 <nav>
     <ul>
         <div>
-            <li *ngIf="token"><a  (click)="logout()">Cerrar Sesión</a></li>
-            <li *ngIf="token"><a  [routerLink]="['user','modify']">Modificar Datos</a></li>
-            <li *ngIf="!token"><a  [routerLink]="['user','login']" >Iniciar Sesión</a></li>
-            <li *ngIf="!token"><a  [routerLink]="['user','create']">Crear Cuenta</a></li>
-            <li><a> Savio </a></li>
-            <li><a href="#news">Noticias</a></li>
+            <li style="margin-top: 20px; font-size: 20px; cursor: pointer;" *ngIf="token"><a (click)="logout()" >Cerrar Sesión</a></li>
+            <li style="margin-top: 20px; font-size: 20px;"  class="line" *ngIf="token"><a  [routerLink]="['user','modify']">Modificar Datos</a></li>
+            <li style="margin-top: 15px;" *ngIf="!token"><a  [routerLink]="['user','login']">  <button mat-raised-button>Iniciar Sesión</button></a></li>
+            <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a  [routerLink]="['user','create']"> Crear Cuenta</a></li>
+            <li style="margin-top: 20px; font-size: 20px;" class="line"><a href="#savio" > Savio </a></li>
+            <li style="margin-top: 20px; font-size: 20px;" class="line"><a href="#news" >Noticias</a></li>
+            <div class="line"></div>
         </div>
          <!--  <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li> -->
     </ul>
