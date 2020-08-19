@@ -1,3 +1,20 @@
-<router-outlet>
-    <!-- <app-navbar></app-navbar> -->
-</router-outlet>
+<mat-sidenav-container class="example-container" autosize hasBackdrop="'true'">
+    <mat-sidenav [(opened)]="openSidenav" class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Toggle extra text
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="menu-button"
+            #tooltip="matTooltip" matTooltip="Menu" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon"
+            (click)="openSidenav = !openSidenav">
+            <mat-icon class="mat-menu-icon">menu</mat-icon>
+        </button>
+        <router-outlet>
+            <!-- <app-navbar></app-navbar> -->
+        </router-outlet>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

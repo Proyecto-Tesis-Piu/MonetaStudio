@@ -1,14 +1,16 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Toggle extra text
+        </button>
+    </mat-drawer>
 
-<nav>
-    <ul>
-        <div>
-            <li *ngIf="token"><a  (click)="logout()">Cerrar Sesión</a></li>
-            <li *ngIf="token"><a  [routerLink]="['user','modify']">Modificar Datos</a></li>
-            <li *ngIf="!token"><a mat-raised-button class="custom-button" (click)="openDialog()" >Iniciar Sesión</a></li>
-            <li *ngIf="!token"><a  [routerLink]="['user','create']">Crear Cuenta</a></li>
-            <li><a> Savio </a></li>
-            <li><a href="#news">Noticias</a></li>
-        </div>
-         <!--  <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li> -->
-    </ul>
-</nav>
+    <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+            Toggle sidenav
+        </button>
+    </div>
+    
+</mat-drawer-container>
