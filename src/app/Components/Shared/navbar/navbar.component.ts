@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../../Users/login/login.component';
+import { MatDrawer } from '@angular/material/sidenav'
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,11 @@ import { LoginDialogComponent } from '../../Users/login/login.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
   token:any;
+  showFiller = false;
 
+  constructor(public dialog: MatDialog) { }
+  
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
   }

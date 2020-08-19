@@ -5,14 +5,26 @@
 
 /********************************Nav Bar***************************************************/
 
+.navbar {
+    z-index: 2;
+    position: relative;
+    padding: unset;
+}
+
+#grad1 {
+    height: 50px;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    width: 100%;
+}
+
 ul {
     padding: 0;
     list-style: none;
     height: 100px;
     background-color: white;
     font-family: mus;
-    z-index: 2;
-    position: relative;
+    width: 100%;
+    margin-bottom: unset;
 }
 
 li {
@@ -36,29 +48,7 @@ div li .custom-button {
     text-decoration: underline;
 } */
 
-.menu-button {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    cursor: pointer;
-    z-index: 1;
-}
 
-.mat-menu-icon {
-    padding: 0px;
-    line-height: unset;
-    font-size: 40px;
-    height: unset;
-    width: unset;
-    left: unset;
-    cursor: pointer;
-}
-
-.example-button-row .mat-button-base {
-    margin: 8px 8px 8px 0;
-}
 
 /********************************Rubros****************************************************/
 

@@ -4,7 +4,7 @@
   }
 
 mat-progress-spinner{
-    top:50%;
+    top:40%;
     left:50%;
     position: absolute;
 }
@@ -17,10 +17,10 @@ mat-progress-spinner{
 }
 
 .containerbody{
-    height: 82vh;
-    margin-left: 15vw;
-    margin-right: 15vw;
-    margin-top: 15vh;
+    height: fit-content;
+    padding-left: 15vw;
+    padding-right: 15vw;
+    margin-top: -2vh;
 }
 
 .negative{
@@ -45,7 +45,7 @@ mat-progress-spinner{
     max-width: 80vw;
     border-radius: 25px;
     font-family: mus !important;
-    height: 30vh;
+    height: 20vh;
     margin-left: 4vw;
 
 }
@@ -61,7 +61,7 @@ mat-progress-spinner{
     bottom:0;
 }
 
-.mounth{
+.month{
     background-color: #04ECD6;
     max-width: 80vw;
     border-radius: 25px;
@@ -72,7 +72,7 @@ mat-progress-spinner{
 
 }
 
-.mounth h1{
+.month h1{
     font-family: mus !important;
     font-size: 24px;
     text-align: center;
@@ -101,7 +101,7 @@ mat-progress-spinner{
     max-width: 80vw;
     border-radius: 25px;
     font-family: mus !important;
-    height: 30vh;
+    height: 20vh;
     margin-left: 4vw;
 
 }
@@ -201,7 +201,7 @@ mat-progress-spinner{
 }
 
 .custom-spinner{
-    top:70%;
+    top:60%;
     left:50%;
     position: absolute;
     margin-left: -11.5vw;
