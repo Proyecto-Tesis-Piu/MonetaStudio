@@ -19,6 +19,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './Components/Users/shared/user.service';
@@ -57,7 +58,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatButtonToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
     ],
   providers: [UserService, AuthGuard],
 

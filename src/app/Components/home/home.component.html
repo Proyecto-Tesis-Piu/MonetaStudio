@@ -1,4 +1,20 @@
 <!-- Rubros -->
+<button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="menu-button"
+    #tooltip="matTooltip" matTooltip="Menu" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">
+    <mat-icon class="mat-menu-icon">menu</mat-icon>
+</button>
+
+<ul>
+    <div>
+        <li *ngIf="token"><a (click)="logout()">Cerrar Sesión</a></li>
+        <li *ngIf="token"><a [routerLink]="['user','modify']">Modificar Datos</a></li>
+        <li *ngIf="!token"><a mat-raised-button class="custom-button" (click)="openDialog()">Iniciar Sesión</a></li>
+        <li *ngIf="!token"><a [routerLink]="['/user','create']">Crear Cuenta</a></li>
+        <li><a> Savio </a></li>
+        <li><a href="#news">Noticias</a></li>
+    </div>
+    <!--  <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li> -->
+</ul>
 <div class="rubros">
 
     <div class="row">
@@ -63,9 +79,11 @@
         </div>
         <div class="col-md-7">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus ultrices
-                velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. Vivamus laoreet nisl at tortor
+                velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. Vivamus laoreet nisl at
+                tortor
                 pharetra, quis ultricies massa consequat.
-                <br> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus
+                <br> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam.
+                Phasellus
                 ultrices velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. </p>
         </div>
     </div>
@@ -160,8 +178,9 @@
             <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
             <div class="card-body2">
                 <h5 class="card-title2">TÍTULO NOTICIA 1</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
-                </div>
+                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                    diam id mollis.</p>
+            </div>
             <div class="card-footer2">
                 <small class="text-muted2">Publicado el 00/00/0000</small>
             </div>
@@ -171,7 +190,8 @@
             <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
             <div class="card-body2">
                 <h5 class="card-title2">TÍTULO NOTICIA 2</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                    diam id mollis.</p>
             </div>
             <div class="card-footer2">
                 <small class="text-muted2">Publicado el 00/00/0000</small>
@@ -182,7 +202,8 @@
             <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
             <div class="card-body2">
                 <h5 class="card-title2">TÍTULO NOTICIA 3</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                    diam id mollis.</p>
             </div>
             <div class="card-footer2">
                 <small class="text-muted2">Publicado el 00/00/0000</small>
@@ -195,7 +216,8 @@
             <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
             <div class="card-body2">
                 <h5 class="card-title2">TÍTULO NOTICIA 4</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                    diam id mollis.</p>
             </div>
             <div class="card-footer2">
                 <small class="text-muted2">Publicado el 00/00/0000</small>
@@ -206,7 +228,8 @@
             <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
             <div class="card-body2">
                 <h5 class="card-title2">TÍTULO NOTICIA 5</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                    diam id mollis.</p>
             </div>
             <div class="card-footer2">
                 <small class="text-muted2">Publicado el 00/00/0000</small>
@@ -217,12 +240,12 @@
             <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
             <div class="card-body2">
                 <h5 class="card-title2">TÍTULO NOTICIA 6</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                    diam id mollis.</p>
             </div>
             <div class="card-footer2">
                 <small class="text-muted2">Publicado el 00/00/0000</small>
             </div>
         </div>
     </div>
-
 </div>
