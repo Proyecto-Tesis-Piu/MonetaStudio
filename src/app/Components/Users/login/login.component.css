@@ -1,25 +1,7 @@
-/* .container {
-    background: #fff;
-    margin-top: 100px;
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
-} */
-
-.containerbody {
-/*     margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 1%; */
-    background: #f8f9fa;
-    height: 680px;
-}
-
-
-.prueba {
-    margin: 11vh auto 0px auto;
+::ng-deep .mat-dialog-container {
+/*.prueba {*/
     border: solid black 2px;
-    background-color: dimgray;
+    background-color: white;
     height: 400px;
     width: 400px;
     border-radius: 20px;
@@ -29,7 +11,7 @@
 .logo {
     margin-top: 2vh;
     height: 100px;
-    width: 100px;
+    width: auto;
 }
 
 .eti {
@@ -45,4 +27,38 @@
     position: relative;
     width: 150px;
     margin: 0px auto;
+    background-color:blue;
+}
+
+#but[disabled] {
+    background-color:dimgray;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /* change color of label */
+    color: dimgrey !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    /* change color of underline */
+    background-color: dimgrey !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+    /* change color of underline when focused */
+    background-color: blue !important;
+}
+
+::ng-deep mat-label{
+    color: dimgray;
+}
+
+.mat-input-element {
+    color:black;
+}
+
+.mat-dialog-actions {
+    margin-bottom: 12px;
+    padding: 0px;
+    min-height: unset;
 }
