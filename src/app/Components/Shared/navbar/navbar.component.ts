@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from '../../Users/login/login.component';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
   token:any;
+  showFiller = false;
 
+  constructor(public dialog: MatDialog) { }
+  
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
   }
@@ -17,5 +21,9 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     localStorage.removeItem('token');
     window.location.reload();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {});
   }
 }

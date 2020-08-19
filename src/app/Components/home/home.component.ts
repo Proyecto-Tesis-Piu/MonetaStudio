@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from '../Users/login/login.component';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +9,21 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  token:any;
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.token = localStorage.getItem('token');
   }
-  faCoffee = faCoffee;
+
+  logout(): void {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {});
+  }
+
 }

@@ -1,6 +1,6 @@
-<div class="containerbody">
-    <div class="row">
-        <!-- <div class="col-md-8">
+<!-- <div class="containerbody">
+    <div class="row"> -->
+<!-- <div class="col-md-8">
             <div class="prueba">
                 <form [formGroup]=loginForm>
                     <img class="logo" src="../../../../assets/img/LogoSavioo.png" alt="">
@@ -13,26 +13,33 @@
                 </form>
             </div>
         </div> -->
-        <!-- <div class="col-md-4"> -->
-            <!-- <h3 style="text-align: center;">video</h3> -->
-            <div class="prueba">
-                <img class="logo" src="../../../../assets/img/LogoSavioo.png" alt="">
-                <br><br>
-                <form [formGroup]="loginForm" autocomplete="off">
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="userEmail" placeholder="User Email" required>
-                    </mat-form-field>
-                    <br><br>
-                    <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input matInput formControlName="password" placeholder="User Password" type="password" required>
-                    </mat-form-field>
-                    <br><br>
-                    <button mat-raised-button id="but" class="btn-info" (click)="submit_onClick()" [disabled]="loginForm.invalid">Iniciar
-                        Sesión</button>
-                </form>
-            </div>
-        <!-- </div> -->
-    </div>
+<!-- <div class="col-md-4"> -->
+<!-- <h3 style="text-align: center;">video</h3> -->
+<!-- <div class="prueba"> -->
+<div mat-dialog-content>
+    <!-- <img class="logo" src="../../../../assets/img/LogoSavioo.png" alt=""> -->
+    <img class="logo" src="../../../../assets/img/single_user.png" alt="">
+    <br><br>
+    <form [formGroup]="loginForm" autocomplete="off">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="userEmail" placeholder="User Email" required>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="User Password" type="password" required>
+        </mat-form-field>
+        <br><br>
+
+    </form>
 </div>
+<div mat-dialog-actions>
+    <button mat-raised-button id="but" (click)="submit_onClick()"
+        [disabled]="loginForm.invalid">Iniciar
+        Sesión</button>
+</div>
+<!-- </div> -->
+<!-- </div> -->
+<!--    </div>
+</div> -->

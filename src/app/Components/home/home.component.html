@@ -1,228 +1,253 @@
 <!-- Rubros -->
-<div class="rubros">
 
-    <div class="row">
-        <div class="col-md-7">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus ultrices
-                velit sapien,
-                <br> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. </p>
-        </div>
-        <div class="col-md-5">
-            <!--   <img  src="../../../assets/img/savio-message.jpg"> -->
-        </div>
-
+<div style="background-color: white; color:black; overflow-x: hidden; margin-top:-57px;">
+    <div class="navbar">
+        <ul>
+            <div>
+                <li *ngIf="token"><a (click)="logout()">Cerrar Sesión</a></li>
+                <li *ngIf="token"><a [routerLink]="['user','modify']">Modificar Datos</a></li>
+                <li *ngIf="!token"><a mat-raised-button class="custom-button" (click)="openDialog()">Iniciar Sesión</a>
+                </li>
+                <li *ngIf="!token"><a [routerLink]="['/user','create']">Crear Cuenta</a></li>
+                <li><a> Savio </a></li>
+                <li><a href="#news">Noticias</a></li>
+            </div>
+            <!--  <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li> -->
+        </ul>
+        <div id="grad1"></div>
     </div>
+    <div class="rubros">
 
-    <div style="padding-top: 100px; left: 50%; transform: translate(9%)" class="row">
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Vivienda"
-                [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">home</mat-icon>
-        </div>
-
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Transporte"
-                [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">directions_car
-            </mat-icon>
-        </div>
-
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon"
-                matTooltip="Entretenimiento" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">live_tv
-            </mat-icon>
-        </div>
-
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Despensa"
-                [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">local_grocery_store</mat-icon>
-        </div>
-
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Salud"
-                [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">local_hospital</mat-icon>
-        </div>
-
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon"
-                matTooltip="Ropa y Accesorios" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">watch
-            </mat-icon>
-        </div>
-
-        <div class="icon">
-            <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Ahorro"
-                [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">local_atm</mat-icon>
-        </div>
-    </div>
-</div>
-
-<!-- Mensaje Acerca de savio -->
-
-<div class="savio-message">
-    <div class="row">
-        <div class="col-md-5">
-            <img class="image-savio-message" src="../../../assets/img/test.jpg">
-        </div>
-        <div class="col-md-7">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus ultrices
-                velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. Vivamus laoreet nisl at tortor
-                pharetra, quis ultricies massa consequat.
-                <br> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus
-                ultrices velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. </p>
-        </div>
-    </div>
-</div>
-
-
-<!-- Moticias -->
-
-<div id="news" class="news">
-
-    <h1 class="slider-title">Noticias</h1>
-    <h2 class="slider-subtitle">Mantente al tanto de lo último en inclusión financiera en México</h2>
-
-    <div class="post-slider">
-        <i class="fas fa-chevron-left prev"></i>
-        <i class="fas fa-chevron-right next"></i>
-
-        <div class="post-wrapper">
-            <div class="post">
-                <div class="card">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TÍTULO NOTICIA 1</h5>
-                        <p class="card-text">Breve descripción de noticia.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-7">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus ultrices
+                    velit sapien,
+                    <br> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. </p>
             </div>
-            <div class="post">
-                <div class="card">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TÍTULO NOTICIA 2</h5>
-                        <p class="card-text">Breve descripción de noticia.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
+            <div class="col-md-5">
+                <!--   <img  src="../../../assets/img/savio-message.jpg"> -->
             </div>
-            <div class="post">
-                <div class="card">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TÍTULO NOTICIA 3</h5>
-                        <p class="card-text">Breve descripción de noticia.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
-            </div>
-            <div class="post">
-                <div class="card">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TÍTULO NOTICIA 4</h5>
-                        <p class="card-text">Breve descripción de noticia.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
-            </div>
-            <div class="post">
-                <div class="card">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TÍTULO NOTICIA 5</h5>
-                        <p class="card-text">Breve descripción de noticia.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-
-<!-- Moticias 2-->
-<div id="news2" class="news2">
-
-    <h1 style="padding-top: 20px;" class="slider-title2">Noticias</h1>
-    <h2 class="slider-subtitle2">Mantente al tanto de lo último en inclusión financiera en México</h2>
-
-    <div style="margin-top: 2%;" class="container">
-        <div class="card2">
-            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-            <div class="card-body2">
-                <h5 class="card-title2">TÍTULO NOTICIA 1</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
-                </div>
-            <div class="card-footer2">
-                <small class="text-muted2">Publicado el 00/00/0000</small>
-            </div>
         </div>
 
-        <div class="card2">
-            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-            <div class="card-body2">
-                <h5 class="card-title2">TÍTULO NOTICIA 2</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+        <div style="padding-top: 100px; left: 50%; transform: translate(9%)" class="row">
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Vivienda"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">home</mat-icon>
             </div>
-            <div class="card-footer2">
-                <small class="text-muted2">Publicado el 00/00/0000</small>
-            </div>
-        </div>
 
-        <div class="card2">
-            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-            <div class="card-body2">
-                <h5 class="card-title2">TÍTULO NOTICIA 3</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon"
+                    matTooltip="Transporte" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">directions_car
+                </mat-icon>
             </div>
-            <div class="card-footer2">
-                <small class="text-muted2">Publicado el 00/00/0000</small>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon"
+                    matTooltip="Entretenimiento" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">live_tv
+                </mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Despensa"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">local_grocery_store</mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Salud"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">local_hospital</mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon"
+                    matTooltip="Ropa y Accesorios" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">watch
+                </mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="Example home icon" matTooltip="Ahorro"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon">local_atm</mat-icon>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="card2">
-            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-            <div class="card-body2">
-                <h5 class="card-title2">TÍTULO NOTICIA 4</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
-            </div>
-            <div class="card-footer2">
-                <small class="text-muted2">Publicado el 00/00/0000</small>
-            </div>
-        </div>
+    <!-- Mensaje Acerca de savio -->
 
-        <div class="card2">
-            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-            <div class="card-body2">
-                <h5 class="card-title2">TÍTULO NOTICIA 5</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
+    <div class="savio-message">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="image-savio-message" src="../../../assets/img/test.jpg">
             </div>
-            <div class="card-footer2">
-                <small class="text-muted2">Publicado el 00/00/0000</small>
-            </div>
-        </div>
-
-        <div class="card2">
-            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-            <div class="card-body2">
-                <h5 class="card-title2">TÍTULO NOTICIA 6</h5>
-                <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis diam id mollis.</p>
-            </div>
-            <div class="card-footer2">
-                <small class="text-muted2">Publicado el 00/00/0000</small>
+            <div class="col-md-7">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam. Phasellus ultrices
+                    velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. Vivamus laoreet nisl at
+                    tortor
+                    pharetra, quis ultricies massa consequat.
+                    <br> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tristique diam.
+                    Phasellus
+                    ultrices velit sapien, sed porttitor sem venenatis vel. Duis non interdum quam. </p>
             </div>
         </div>
     </div>
 
+
+    <!-- Moticias -->
+
+    <div id="news" class="news">
+
+        <h1 class="slider-title">Noticias</h1>
+        <h2 class="slider-subtitle">Mantente al tanto de lo último en inclusión financiera en México</h2>
+
+        <div class="post-slider">
+            <i class="fas fa-chevron-left prev"></i>
+            <i class="fas fa-chevron-right next"></i>
+
+            <div class="post-wrapper">
+                <div class="post">
+                    <div class="card">
+                        <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">TÍTULO NOTICIA 1</h5>
+                            <p class="card-text">Breve descripción de noticia.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Publicado el 00/00/0000</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="card">
+                        <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">TÍTULO NOTICIA 2</h5>
+                            <p class="card-text">Breve descripción de noticia.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Publicado el 00/00/0000</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="card">
+                        <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">TÍTULO NOTICIA 3</h5>
+                            <p class="card-text">Breve descripción de noticia.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Publicado el 00/00/0000</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="card">
+                        <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">TÍTULO NOTICIA 4</h5>
+                            <p class="card-text">Breve descripción de noticia.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Publicado el 00/00/0000</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="card">
+                        <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">TÍTULO NOTICIA 5</h5>
+                            <p class="card-text">Breve descripción de noticia.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Publicado el 00/00/0000</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Moticias 2-->
+    <div id="news2" class="news2">
+
+        <h1 style="padding-top: 20px;" class="slider-title2">Noticias</h1>
+        <h2 class="slider-subtitle2">Mantente al tanto de lo último en inclusión financiera en México</h2>
+
+        <div style="margin-top: 2%;" class="container">
+            <div class="card2">
+                <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                <div class="card-body2">
+                    <h5 class="card-title2">TÍTULO NOTICIA 1</h5>
+                    <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                        diam id mollis.</p>
+                </div>
+                <div class="card-footer2">
+                    <small class="text-muted2">Publicado el 00/00/0000</small>
+                </div>
+            </div>
+
+            <div class="card2">
+                <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                <div class="card-body2">
+                    <h5 class="card-title2">TÍTULO NOTICIA 2</h5>
+                    <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                        diam id mollis.</p>
+                </div>
+                <div class="card-footer2">
+                    <small class="text-muted2">Publicado el 00/00/0000</small>
+                </div>
+            </div>
+
+            <div class="card2">
+                <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                <div class="card-body2">
+                    <h5 class="card-title2">TÍTULO NOTICIA 3</h5>
+                    <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                        diam id mollis.</p>
+                </div>
+                <div class="card-footer2">
+                    <small class="text-muted2">Publicado el 00/00/0000</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="card2">
+                <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                <div class="card-body2">
+                    <h5 class="card-title2">TÍTULO NOTICIA 4</h5>
+                    <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                        diam id mollis.</p>
+                </div>
+                <div class="card-footer2">
+                    <small class="text-muted2">Publicado el 00/00/0000</small>
+                </div>
+            </div>
+
+            <div class="card2">
+                <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                <div class="card-body2">
+                    <h5 class="card-title2">TÍTULO NOTICIA 5</h5>
+                    <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                        diam id mollis.</p>
+                </div>
+                <div class="card-footer2">
+                    <small class="text-muted2">Publicado el 00/00/0000</small>
+                </div>
+            </div>
+
+            <div class="card2">
+                <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
+                <div class="card-body2">
+                    <h5 class="card-title2">TÍTULO NOTICIA 6</h5>
+                    <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia sagittis
+                        diam id mollis.</p>
+                </div>
+                <div class="card-footer2">
+                    <small class="text-muted2">Publicado el 00/00/0000</small>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

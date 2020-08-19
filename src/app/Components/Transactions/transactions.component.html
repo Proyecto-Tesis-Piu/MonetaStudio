@@ -1,87 +1,85 @@
-<div class="space"></div>
-
-
-<!--<div class="container">-->
-    <div class="containerbody">
-        <div class="show"> Mostrar: Mensual &#x23f7; </div>
-        <div class="row">
-            <div class="negative col-sm-5">
-                <h1>GASTOS</h1>
-            </div>  
-            <div class="positive col-sm-5">
-                <h1>INGRESOS</h1>
-            </div>  
+<div class="containerbody">
+    <div class="show"> Mostrar: Mensual &#x23f7; </div>
+    <div class="row">
+        <div class="negative col-sm-5">
+            <h1>GASTOS</h1>
         </div>
-
-        <div class="row">
-            <div class="graph-negative col-sm-5">
-                <h1>Lorem ipsum</h1>
-
-
-                <div class="row">
-                    <div class="col-sm-8">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                    </div>  
-                    <div class="col-sm-4">
-                            
-                    </div>  
-                </div>
-
-
-                <h1 class="calendar">Calendario > 2020 </h1>
-            </div>  
-            <div class="graph-positive col-sm-5">
-                <h1>Lorem ipsum</h1>
-
-
-                <div class="row">
-                    <div class="col-sm-8">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                    </div>  
-                    <div class="col-sm-4">
-                          
-                    </div>  
-                </div>
-
-                <h1 class="table-register">Tabla de registro </h1>
-            </div>  
-        </div>
-
-        <div class="row">
-            <div class="mounth col-sm-5">
-                <h1>AGO</h1>
-            </div>  
-            <div class="table col-sm-5">
-
-                <mat-button-toggle-group [value]="selectedVal" >
-                    <mat-button-toggle value="option1">GASTOS</mat-button-toggle>
-                    <mat-button-toggle value="option2">INGRESOS</mat-button-toggle>
-                </mat-button-toggle-group>
-
-                <div class="categories row">
-                    <div class="col-sm-4">
-                        <P>Vivienda</P>
-                        <P>Transporte</P>
-                        <P>Entretenimiento</P>
-                        <P>Despensa</P>
-                        <P>Salud</P>
-                        <P>Ropa</P>
-                        <p>Ahorro</p>
-                    </div>  
-                    <div class="col-sm-8">
-                        <button mat-button>TRANSACCIÓN</button>
-                    </div>  
-                </div>
-            </div>             
-        </div>
-
-        <div class="row">
-            <mat-progress-spinner id="Spinn" *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner'+i"
-                mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}" >
-            </mat-progress-spinner>
-
-            <mat-progress-spinner class="custom-spinner" *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner1'+i"
-                mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}" >
-            </mat-progress-spinner>
+        <div class="positive col-sm-5">
+            <h1>INGRESOS</h1>
         </div>
     </div>
+
+    <div class="row">
+        <div class="graph-negative col-sm-5">
+            <h1>Lorem ipsum</h1>
+
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit</p>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+            </div>
+
+
+            <h1 class="calendar">Calendario > 2020 </h1>
+        </div>
+        <div class="graph-positive col-sm-5">
+            <h1>Lorem ipsum</h1>
+
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit</p>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+            </div>
+
+            <h1 class="table-register">Tabla de registro </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="month col-sm-5">
+            <h1>AGO</h1>
+        </div>
+        <div class="table col-sm-5">
+
+            <mat-button-toggle-group [value]="selectedVal">
+                <mat-button-toggle value="option1">GASTOS</mat-button-toggle>
+                <mat-button-toggle value="option2">INGRESOS</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <div class="categories row">
+                <div class="col-sm-4">
+                    <P>Vivienda</P>
+                    <P>Transporte</P>
+                    <P>Entretenimiento</P>
+                    <P>Despensa</P>
+                    <P>Salud</P>
+                    <P>Ropa</P>
+                    <p>Ahorro</p>
+                </div>
+                <div class="col-sm-8">
+                    <button mat-button>TRANSACCIÓN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <mat-progress-spinner id="Spinn" *ngFor="let temp of transactions; let i = index" [ngClass]="'custom-spinner'+i"
+            mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}">
+        </mat-progress-spinner>
+
+        <mat-progress-spinner class="custom-spinner" *ngFor="let temp of transactions; let i = index"
+            [ngClass]="'custom-spinner1'+i" mode="determinate" [value]="temp.value" [ngStyle]="{'z-index':i}">
+        </mat-progress-spinner>
+    </div>
+</div>
