@@ -29,6 +29,8 @@
     z-index: 1;
     outline: none;
     border: 0;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .mat-menu-icon {
