@@ -4,13 +4,21 @@
     <div class="navbar">
         <ul>
             <div>
-                <li  style=" font-size: 20px;" *ngIf="token"><a style="padding-bottom: 6px; background-color: red;" mat-raised-button (click)="logout()">Cerrar Sesión</a></li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token"><a [routerLink]="['user','modify']">Modificar Datos</a></li>
-                <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button (click)="openDialog()">Iniciar Sesión</a>
+                <li style=" font-size: 20px;" *ngIf="token"><a style="padding-bottom: 6px; background-color: red;"
+                        mat-raised-button (click)="logout()">Cerrar Sesión</a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token"><a
+                        [routerLink]="['user','modify']">Modificar Datos</a></li>
+                <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button
+                        (click)="openDialog()">Iniciar Sesión</a>
                 </li>
-                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a [routerLink]="['/user','create']">Crear Cuenta</a></li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line" (click)="savio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a style="color: #007bff;"   > Savio </a></li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line" (click)="news.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a style="color: #007bff;">Noticias</a></li>
+                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a [routerLink]="['/user','create']">Crear
+                        Cuenta</a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line"
+                    (click)="savio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a style="color: #007bff;">
+                        Savio </a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line"
+                    (click)="news.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
+                        style="color: #007bff;">Noticias</a></li>
             </div>
             <!--  <li class="logo" style="float:left"><a href=""><img src="../../../../assets/img/logo.png"></a></li> -->
         </ul>

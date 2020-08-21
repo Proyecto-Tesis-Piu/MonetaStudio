@@ -31,7 +31,6 @@ ul {
 li {
     float: right;
     cursor: pointer;
-
 }
 
 div li a {
@@ -41,14 +40,14 @@ div li a {
     font-size: 20px;
 }
 
-a:hover{
+a:hover {
     color: #007bff;
 }
 
 div li .custom-button {
     background-color: #007bff;
     color: white;
-  }
+}
 
 .line::after {
     content: '';
@@ -60,36 +59,34 @@ div li .custom-button {
     color: #007bff;
     margin-top: 3px;
     margin-top: 10px;
-  }
-  
-  .line:hover::after {
+}
+
+.line:hover::after {
     width: 100%;
     transition: width .3s;
     color: #007bff;
     margin-top: 10px;
-  }
+}
 
-  .mat-raised-button{
+.mat-raised-button {
     background-color: #007bff;
     margin-bottom: 10px;
     color: #fff;
     border-radius: 20px;
     font-family: mus;
-  }
+}
 
-  .mat-raised-button:hover{
-      color: #fff;
-  }
-  
-  .close{
-      color: #000;
-  }
+.mat-raised-button:hover {
+    color: #fff;
+}
 
-  .close:hover{
+.close {
+    color: #000;
+}
+
+.close:hover {
     color: red;
-  }
-
-
+}
 
 /********************************Rubros****************************************************/
 
