@@ -4,7 +4,7 @@
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.mat-drawer-container{
+.mat-drawer-container {
     background-color: white;
     color: black;
 }
@@ -29,6 +29,8 @@
     z-index: 1;
     outline: none;
     border: 0;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .mat-menu-icon {
