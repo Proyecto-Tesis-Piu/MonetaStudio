@@ -1,7 +1,7 @@
 export class User {
     firstName: string = '';
     lastName: string = '';
-    age: number = 0;
+    birthDate: Date = new Date();
     sex: string = '';
     job: string = '';
     civilStateString: string = '';

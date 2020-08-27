@@ -27,8 +27,8 @@ export class UserService extends BaseService {
     //validators van aqui
     firstName: ['', Validators.required],
     lastName: [''],
-    age: ['0'],
-    sex: ['true'],
+    birthDate: [''],
+    sex: ['Male'],
     job: [''],
     civilStateString: [''],
     email: ['', [Validators.required, Validators.email] ],
@@ -55,7 +55,7 @@ export class UserService extends BaseService {
     var user: User = new User();
     user.firstName = this.formModel.value.firstName;
     user.lastName = this.formModel.value.lastName;
-    user.age = this.formModel.value.age;
+    user.birthDate = this.formModel.value.birthDate;
     user.sex = this.formModel.value.sex;
     user.job = this.formModel.value.job;
     user.civilStateString = this.formModel.value.civilStateString;

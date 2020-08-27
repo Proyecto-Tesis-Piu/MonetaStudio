@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './Components/Users/shared/user.service';
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -50,15 +52,17 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatIconModule,
     MatTooltipModule,
     MatInputModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatButtonToggleModule,
     MatDialogModule,
-    MatSidenavModule
-    ],
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   providers: [UserService, AuthGuard],
 
   bootstrap: [AppComponent]
