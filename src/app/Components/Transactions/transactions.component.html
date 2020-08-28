@@ -4,7 +4,26 @@
         <div class="negative col-sm-5">
             <h1 style="margin: 0px;">GASTOS</h1>
 
-            <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                <!-- This is the tree node template for leaf nodes -->
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                  <!-- use a disabled button to provide padding for tree leaf -->
+                  <button mat-icon-button disabled></button>
+                  {{node.concept}}
+                </mat-tree-node>
+                <!-- This is the tree node template for expandable nodes -->
+                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                  <button mat-icon-button matTreeNodeToggle
+                          [attr.aria-label]="'toggle ' + node.concept">
+                    <mat-icon class="mat-icon-rtl-mirror">
+                      {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                  </button>
+                  {{node.concept}}
+                </mat-tree-node>
+              </mat-tree>
+
+            <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
                 <mat-list-item style="color: #000; " class="list-item" *ngFor="let transaction of transactionsARR">
                     <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
                         matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
@@ -12,13 +31,13 @@
                     <div mat-line> {{transaction.date | date}} </div>
                     <div style="float: right;"> {{transaction.amount | currency}} </div>
                 </mat-list-item>
-            </mat-list>
+            </mat-list> -->
 
         </div>
         <div class="positive col-sm-5">
             <h1 style="margin: 0px;">INGRESOS</h1>
 
-            <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
+            <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
                 <mat-list-item class="list-item" *ngFor="let transaction of transactionsARR">
                     <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
                         matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
@@ -26,7 +45,7 @@
                     <div mat-line> {{transaction.date | date}} </div>
                     <div style="float: right;"> {{transaction.amount | currency}} </div>
                 </mat-list-item>
-            </mat-list>
+            </mat-list> -->
 
         </div>
     </div>

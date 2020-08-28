@@ -1,6 +1,79 @@
 import { Component, OnInit } from '@angular/core';
 import { temp } from './temp.model'
-import { Transaction } from "./transaction.model";
+import { Transaction, TransactionFlatNode } from "./transaction.model";
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+
+
+const transactionTree: Transaction[] = [
+  {
+    concept: "Vivienda",
+    icon: "home",
+    childrenTransactions: [
+      {
+        concept: "Luz",
+        date: new Date('8/03/2020'),
+        amount: 400,
+        isExpense: true,
+        id:"123"
+      }
+    ],
+    amount:400,
+    isExpense: true,
+    id:"123"
+
+  }, 
+  {
+    concept: "Transporte",
+    icon: "directions_car",
+    childrenTransactions: [
+      {
+        concept: "uber",
+        date: new Date('8/03/2020'),
+        amount: 148.32,
+        isExpense: true,
+        id:"123",
+      }
+    ],
+    amount:148.32,
+    isExpense: true,
+    id:"123"
+  },
+  {
+    concept: "Despensa",
+    icon: "local_grocery_store",
+    childrenTransactions: [
+      {
+        concept: "Despensa",
+        date: new Date('8/03/2020'),
+        amount: 756,
+        isExpense: true,
+        id:"123"
+      }
+    ],
+    amount:756,
+    isExpense: true,
+    id:"123"
+  },
+  {
+    concept: "Entretenimiento",
+    icon: "live_tv",
+    childrenTransactions: [
+      {
+        concept: "Cine",
+        date: new Date('8/03/2020'),
+        amount: 86,
+        isExpense: true,
+        id:"123"
+      }
+    ],
+    amount:86,
+    isExpense: true,
+    id:"123"
+  },
+];
+
+
 
 @Component({
   selector: 'app-transactions',
@@ -8,29 +81,49 @@ import { Transaction } from "./transaction.model";
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
+  private _transformer = (node: Transaction, level: number) => {
+    return {
+      expandable: !!node.childrenTransactions && node.childrenTransactions.length > 0,
+      concept: node.concept,
+      date: node.date,
+      amount: node.amount,
+      isExpense: node.isExpense,
+      id: node.id,
+      icon: node.icon,
+      level: level,
+    };
+  }
+  
+  transactions: temp[] = [{
+    color : "#fff",
+    value : 100
+  },
+  {
+    color : "#fff",
+    value : 80
+  },
+  {
+    color : "#fff",
+    value : 60
+  },
+  {
+    color : "#fff",
+    value : 40
+  },
+  {
+    color : "#fff",
+    value : 20
+  }];
 
-  transactions: temp[] = [];
+  treeControl = new FlatTreeControl<TransactionFlatNode>(
+    node => node.level, node => node.expandable);
+
+treeFlattener = new MatTreeFlattener(
+    this._transformer, node => node.level, node => node.expandable, node => node.childrenTransactions);
+
   constructor() {
-    var aux: temp = new temp();
-    aux.color = "#fff";
-    aux.value = 100;
-    this.transactions.push(aux);
-    var aux: temp = new temp();
-    aux.color = "accent";
-    aux.value = 80;
-    this.transactions.push(aux);
-    var aux: temp = new temp();
-    aux.color = "warn";
-    aux.value = 60;
-    this.transactions.push(aux);
-    var aux: temp = new temp();
-    aux.color = "#999999";
-    aux.value = 40;
-    this.transactions.push(aux);
-    var aux: temp = new temp();
-    aux.color = "#777777";
-    aux.value = 20;
-    this.transactions.push(aux);
+
+    this.dataSource.data = transactionTree;
   }
   public selectedVal: string;
 
@@ -41,8 +134,9 @@ export class TransactionsComponent implements OnInit {
   public onValChange(val: string) {
     this.selectedVal = val;
   }
-
-  transactionsARR: Transaction[] = [
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  hasChild = (_: number, node: TransactionFlatNode) => node.expandable;
+  /* transactionsARR: Transaction[] = [
     {
       concept: 'Luz',
       date: new Date('8/03/2020'),
@@ -52,7 +146,6 @@ export class TransactionsComponent implements OnInit {
       userId: "",
       isExpense: true
     },
-
     {
       concept: 'uber',
       date: new Date('8/03/2020'),
@@ -62,7 +155,6 @@ export class TransactionsComponent implements OnInit {
       userId: "",
       isExpense: true
     },
-
     {
       concept: 'Cine',
       date: new Date('8/03/2020'),
@@ -81,7 +173,6 @@ export class TransactionsComponent implements OnInit {
       userId: "",
       isExpense: true
     },
-
     {
       concept: 'Salud',
       date: new Date('8/03/2020'),
@@ -91,7 +182,6 @@ export class TransactionsComponent implements OnInit {
       userId: "",
       isExpense: true
     },
-
     {
       concept: 'Tenis lacoste',
       date: new Date('8/03/2020'),
@@ -101,7 +191,7 @@ export class TransactionsComponent implements OnInit {
       userId: "",
       isExpense: true
     },
-  ]
+  ] */
 }
 
 
