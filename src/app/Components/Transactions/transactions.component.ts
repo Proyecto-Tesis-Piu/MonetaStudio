@@ -16,9 +16,16 @@ const transactionTree: Transaction[] = [
         amount: 400,
         isExpense: true,
         id:"123"
+      },
+      {
+        concept: "Agua",
+        date: new Date('8/03/2020'),
+        amount: 112,
+        isExpense: true,
+        id:"123"
       }
     ],
-    amount:400,
+    amount:800,
     isExpense: true,
     id:"123"
 

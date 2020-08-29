@@ -4,24 +4,29 @@
         <div class="negative col-sm-5">
             <h1 style="margin: 0px;">GASTOS</h1>
 
-            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="custom-tree">
                 <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                  <!-- use a disabled button to provide padding for tree leaf -->
-                  <button mat-icon-button disabled></button>
-                  {{node.concept}}
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
+                    <!-- use a disabled button to provide padding for tree leaf -->
+                    <button mat-icon-button disabled></button>
+                    <div style="width: 70%;">
+                        <strong>{{node.concept}}</strong><br>
+                        {{node.date | date}}
+                    </div>
+                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
                 </mat-tree-node>
                 <!-- This is the tree node template for expandable nodes -->
-                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-                  <button mat-icon-button matTreeNodeToggle
-                          [attr.aria-label]="'toggle ' + node.concept">
-                    <mat-icon class="mat-icon-rtl-mirror">
-                      {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                    </mat-icon>
-                  </button>
-                  {{node.concept}}
+                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+                    class="tree-node-category">
+                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" style="height: 24px;">
+                        <mat-icon class="mat-icon-rtl-mirror" style="vertical-align:initial;">
+                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                    </button>
+                    <mat-icon mat-list-icon style="margin-right: 10px;">{{node.icon}}</mat-icon>
+                    {{node.concept}}
                 </mat-tree-node>
-              </mat-tree>
+            </mat-tree>
 
             <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
                 <mat-list-item style="color: #000; " class="list-item" *ngFor="let transaction of transactionsARR">
@@ -36,6 +41,34 @@
         </div>
         <div class="positive col-sm-5">
             <h1 style="margin: 0px;">INGRESOS</h1>
+
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="custom-tree">
+                <!-- This is the tree node template for leaf nodes -->
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
+                    <!-- use a disabled button to provide padding for tree leaf -->
+                    <button mat-icon-button disabled></button>
+                    <div style="width: 70%;">
+                        <strong>{{node.concept}}</strong><br>
+                        {{node.date | date}}
+                    </div>
+                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
+                </mat-tree-node>
+                <!-- This is the tree node template for expandable nodes -->
+                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+                    class="tree-node-category">
+                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" style="height: 24px;">
+                        <mat-icon class="mat-icon-rtl-mirror" style="vertical-align:initial;">
+                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                    </button>
+
+                    <mat-icon mat-list-icon style="margin-right: 10px;">{{node.icon}}</mat-icon>
+                    <span class="category-name" style="width: 60%;">
+                        {{node.concept}}
+                    </span>
+                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
+                </mat-tree-node>
+            </mat-tree>
 
             <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
                 <mat-list-item class="list-item" *ngFor="let transaction of transactionsARR">
