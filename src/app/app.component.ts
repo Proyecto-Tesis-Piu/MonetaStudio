@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatSidenavModule } from '@angular/material/sidenav'
+import { LoginDialogComponent } from './Components/Users/login/login.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,18 @@ export class AppComponent {
   title = 'Savio';
   showFiller = false;
   openSidenav = false;
+  token:any;
 
-  constructor(){
+  constructor(public dialog: MatDialog){
+    this.token = localStorage.getItem('token');
   }
 
+  logout(): void {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {});
+  }
 }
