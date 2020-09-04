@@ -225,43 +225,59 @@ mat-button-toggle {
 }
 
 /**  List **/
-
-::ng-deep .tooltip-icon {
-    position: relative;
-    font-size: 15px;
-    min-width: 120px;
-    background: #555555;
-    color: white;
-    display: block;
-    text-align: center;
+::ng-deep .custom-tree{
+    overflow-y: auto; 
+    height: 25vh; 
+    padding-top: 0px; 
+    background-color: rgb(255 255 255 / 25%);
+    border-radius: 10px;
 }
 
-::ng-deep .list-item {
-    height: 47px !important;
+::ng-deep .mat-icon-button:hover,
+ .mat-icon-button:active,
+ .mat-icon-button:focus{
+    outline: none;
+    border: 0;
 }
 
-/* width */
+::ng-deep .tree-node-category {
+    height: 40px;
+    min-height: unset !important;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
 
+::ng-deep .mat-tree-node {
+    color:black !important;
+}
+
+::ng-deep .tree-node{
+    min-height: unset !important;
+}
+
+.category-name *{
+    height: 16px;
+}
+
+/* Width */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 /* Track */
-
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
 }
 
 /* Handle */
-
 ::-webkit-scrollbar-thumb {
     background: dimgray;
     border-radius: 10px;
 }
 
 /* Handle on hover */
-
 ::-webkit-scrollbar-thumb:hover {
     background: #444;
 }
