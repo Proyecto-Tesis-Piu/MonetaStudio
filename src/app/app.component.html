@@ -1,10 +1,38 @@
 <mat-sidenav-container class="example-container" autosize hasBackdrop="'true'">
     <mat-sidenav [(opened)]="openSidenav" class="example-sidenav" mode="side">
-        <p>Auto-resizing sidenav</p>
-        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-            Toggle extra text
-        </button>
+
+        <mat-icon class="material-icons-round close" (click)="openSidenav = false;">close</mat-icon>
+
+
+        <div class="menu-buttons">
+                <button mat-raised-button>
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Noticias
+                </button> <br><br>
+                <button mat-raised-button>
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Savio
+                </button> <br><br>
+                <button mat-raised-button *ngIf="token">
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Transacciones
+                </button> <br><br>
+                <button mat-raised-button [routerLink]="['user','modify']" *ngIf="token">
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Modificar Datos
+                </button> <br><br>
+                <button mat-raised-button *ngIf="!token">
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Crear cuenta
+                </button>
+            </div>
+
+            <div class="logout">
+                <button mat-raised-button class="button-logout" (click)="openDialog()" *ngIf="!token">
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Iniciar Sesión
+                </button> <br><br> 
+
+                <button mat-raised-button class="button-logout" (click)="logout()" *ngIf="token">
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Cerrar Sesión
+                </button> <br><br> 
+
+        </div>
+
     </mat-sidenav>
     <mat-sidenav-content>
         <button mat-fab aria-label="Example icon button with a delete icon" class="menu-button" #tooltip="matTooltip"

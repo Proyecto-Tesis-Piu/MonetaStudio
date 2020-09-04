@@ -20,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatListModule } from '@angular/material/list';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './Components/Users/shared/user.service';
@@ -29,6 +30,9 @@ import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatTreeModule} from '@angular/material/tree';
+import { VideoSavioComponent } from './Components/video-savio/video-savio.component';
+
 
 
 
@@ -39,7 +43,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     LoginDialogComponent,
     RegistrationComponent,
     TransactionsComponent,
-    UserComponent
+    UserComponent,
+    VideoSavioComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatSidenavModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatListModule,
+    MatTreeModule
   ],
   providers: [UserService, AuthGuard],
 
