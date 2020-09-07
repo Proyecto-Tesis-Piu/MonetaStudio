@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../Users/login/login.component';
-import { VideoSavioComponent } from '../video-savio/video-savio.component';
+import { VideoSavioComponent } from '../home/video-savio/video-savio.component';
 
 @Component({
   selector: 'app-home',

@@ -31,7 +31,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTreeModule} from '@angular/material/tree';
-import { VideoSavioComponent } from './Components/video-savio/video-savio.component';
+import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
 
 
 
