@@ -6,6 +6,9 @@ export class Transaction {
     childrenTransactions?:Transaction[];
     id:string = "";
     icon?:String;
+    userId?:String;
+    percentage?:number;
+    category?:String; //categoryId for transaction
 }
 
 export class TransactionFlatNode {
@@ -17,4 +20,7 @@ export class TransactionFlatNode {
     id:string;
     icon?:String;
     level: number;
+    userId?:String;
+    percentage?:number;
+    category?:String; //categoryId for transaction
   }
