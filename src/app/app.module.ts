@@ -32,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TransactionService } from './Components/Transactions/transactions.service';
 import { MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
@@ -69,7 +70,7 @@ import { MatTreeModule} from '@angular/material/tree';
     MatListModule,
     MatTreeModule
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, AuthGuard, TransactionService],
 
   bootstrap: [AppComponent]
 })
