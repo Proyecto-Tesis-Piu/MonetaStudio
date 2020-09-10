@@ -11,6 +11,16 @@
     padding: unset;
 }
 
+.tutorial-link{
+    text-align: center; 
+    cursor: pointer;
+    
+}
+
+.tutorial-link:hover{
+    text-decoration: underline;
+}
+
 #grad1 {
     height: 50px;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
@@ -68,6 +78,35 @@ div li .custom-button {
     margin-top: 10px;
 }
 
+.line-tutorial{
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.line-tutorial::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #007bff;
+    transition: width .3s;
+    color: #007bff;
+    margin-top: 3px;
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+
+.line-tutorial:hover::after {
+    width: 100%;
+    transition: width .3s;
+    color: #007bff;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
 .mat-raised-button {
     background-color: #007bff;
     margin-bottom: 10px;
@@ -86,6 +125,11 @@ div li .custom-button {
 
 .close:hover {
     color: red;
+}
+
+.image-savio-intro{
+    height: 60vh;
+    width: 40vw;
 }
 
 /********************************Rubros****************************************************/
