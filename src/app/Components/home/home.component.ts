@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../Users/login/login.component';
+import { VideoSavioComponent } from '../home/video-savio/video-savio.component';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,10 @@ export class HomeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {});
+  }
+
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(VideoSavioComponent, {});
   }
 
 }

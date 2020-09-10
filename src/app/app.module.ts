@@ -19,6 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatListModule } from '@angular/material/list';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './Components/Users/shared/user.service';
@@ -26,7 +28,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatTreeModule} from '@angular/material/tree';
+import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
+import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
+
 
 
 
@@ -37,7 +44,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     LoginDialogComponent,
     RegistrationComponent,
     TransactionsComponent,
-    UserComponent
+    UserComponent,
+    VideoSavioComponent,
+    NewTransactionComponent
   ],
   imports: [
     BrowserModule,
@@ -50,15 +59,19 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatIconModule,
     MatTooltipModule,
     MatInputModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatButtonToggleModule,
     MatDialogModule,
-    MatSidenavModule
-    ],
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatTreeModule
+  ],
   providers: [UserService, AuthGuard],
 
   bootstrap: [AppComponent]

@@ -62,12 +62,17 @@
         </div>
 
         <div class="row">
-            <label class="col-4 col-form-label">Edad:</label>
+            <label class="col-4 col-form-label">Fecha de Nacimiento:</label>
             <mat-form-field class="form-field">
-                <mat-label>Edad...</mat-label>
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker1" [value]="user.birthDate" formControlName="birthDate"
+                    [formControl]="date" (dateChange)="updateForm($event.value, 'birthDate')">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <!-- <mat-label>Edad...</mat-label>
                 <input matInput type="number" [value]="user.age" formControlName="age"
                     (change)="updateForm($event.srcElement.value, 'age')">
-                <!-- <mat-error *ngIf="formAge.hasError('number') && !formAge.hasError('required')">
+                <mat-error *ngIf="formAge.hasError('number') && !formAge.hasError('required')">
                     Por favor introduzca una edad válida
                 </mat-error> -->
             </mat-form-field>
@@ -101,9 +106,9 @@
             <label class="col-4 col-form-label">Estado civil:</label>
             <!--TODO: Para ser cambiado proximamente a dropdown-->
             <mat-form-field class="form-field">
+                <mat-label>Estado Civil...</mat-label>
                 <mat-select [value]="user.civilStateString" formControlName="civilStateString"
                     (selectionChange)="updateForm($event.value, 'civilStateString')">
-                    <mat-label>Estado Civil...</mat-label>
                     <mat-option value="Single">Soltero/a</mat-option>
                     <mat-option value="Married">Casado/a</mat-option>
                     <mat-option value="Divorced">Divorciado/a</mat-option>

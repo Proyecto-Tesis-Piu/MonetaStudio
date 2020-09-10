@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -10,6 +8,25 @@ import { Country } from '../../Shared/Countries/countries.model';
 import { State } from '../../Shared/Countries/states.model';
 import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
+
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import * as _moment from 'moment';
+import { default as _rollupMoment } from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -21,7 +38,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css'],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 export class RegistrationComponent implements OnInit {
   response: any;
@@ -30,11 +57,13 @@ export class RegistrationComponent implements OnInit {
   user: User;
   formModel:FormGroup;
   ErrorMessage:any;
+  date = new FormControl(moment());
 
   constructor(private http: HttpClient, 
               public service: UserService, 
               private router: Router,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private _adapter: DateAdapter<any>) {
     
     this.http.get('http://localhost:49755/api/Country')
       .subscribe((countries: Country[]) => {
@@ -56,7 +85,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
 
   }
 
