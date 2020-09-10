@@ -1,0 +1,37 @@
+<div mat-dialog-content>
+    <form [formGroup]="" autocomplete="off">
+        <mat-form-field appearance="fill">
+            <mat-label>Categoria</mat-label>
+            <mat-select disableRipple>
+                <mat-label>-Categoria</mat-label>
+                <mat-option value="Vivienda">Vivienda</mat-option>
+                <mat-option value="Transporte">Transporte</mat-option>
+                <mat-option value="Entretenimiento">Entretenimiento</mat-option>
+                <mat-option value="Despensa">Despensa</mat-option>
+                <mat-option value="Salud">Salud</mat-option>
+                <mat-option value="Ropa">Ropa y Accesorios</mat-option>
+                <mat-option value="Ahorro">Ahorro</mat-option>
+                <mat-option value="Educación">Educación</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+            <mat-label>Concepto</mat-label>
+            <input matInput formControlName="Concepto" placeholder="Concepto" required>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+            <mat-label>Monto</mat-label>
+            <input matInput formControlName="Monto" placeholder="Monto" required>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+            <br><br>
+        <button mat-raised-button color="primary">Registrar</button>
+    </form>
+</div>

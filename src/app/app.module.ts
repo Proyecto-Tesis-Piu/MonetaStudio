@@ -32,6 +32,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTreeModule} from '@angular/material/tree';
 import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
+import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
 
 
 
@@ -44,7 +45,8 @@ import { VideoSavioComponent } from './Components/home/video-savio/video-savio.c
     RegistrationComponent,
     TransactionsComponent,
     UserComponent,
-    VideoSavioComponent
+    VideoSavioComponent,
+    NewTransactionComponent
   ],
   imports: [
     BrowserModule,

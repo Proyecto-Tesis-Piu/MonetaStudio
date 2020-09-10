@@ -3,7 +3,8 @@ import { temp } from './temp.model'
 import { Transaction, TransactionFlatNode } from "./transaction.model";
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-
+import { MatDialog } from '@angular/material/dialog';
+import {NewTransactionComponent } from '../Transactions/new-transaction/new-transaction.component';
 
 const transactionTree: Transaction[] = [
   {
@@ -128,7 +129,7 @@ export class TransactionsComponent implements OnInit {
 treeFlattener = new MatTreeFlattener(
     this._transformer, node => node.level, node => node.expandable, node => node.childrenTransactions);
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
 
     this.dataSource.data = transactionTree;
   }
@@ -199,6 +200,9 @@ treeFlattener = new MatTreeFlattener(
       isExpense: true
     },
   ] */
+  TransactionDialog(): void {
+    const dialogRef = this.dialog.open(NewTransactionComponent);
+  }
 }
 
 
