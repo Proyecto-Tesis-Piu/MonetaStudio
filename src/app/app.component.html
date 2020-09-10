@@ -11,25 +11,27 @@
                 <button mat-raised-button>
                     <mat-icon class="material-icons-round lens">lens</mat-icon> Savio
                 </button> <br><br>
+                <button mat-raised-button *ngIf="!token">
+                    <mat-icon class="material-icons-round lens">lens</mat-icon> Crear cuenta
+                </button>
                 <button mat-raised-button *ngIf="token">
                     <mat-icon class="material-icons-round lens">lens</mat-icon> Transacciones
                 </button> <br><br>
                 <button mat-raised-button [routerLink]="['user','modify']" *ngIf="token">
                     <mat-icon class="material-icons-round lens">lens</mat-icon> Modificar Datos
-                </button> <br><br>
-                <button mat-raised-button *ngIf="!token">
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Crear cuenta
                 </button>
+                
             </div>
 
             <div class="logout">
+                <br *ngIf="!token"> <br *ngIf="!token">
                 <button mat-raised-button class="button-logout" (click)="openDialog()" *ngIf="!token">
                     <mat-icon class="material-icons-round lens">lens</mat-icon> Iniciar Sesión
-                </button> <br><br> 
+                </button> 
 
                 <button mat-raised-button class="button-logout" (click)="logout()" *ngIf="token">
                     <mat-icon class="material-icons-round lens">lens</mat-icon> Cerrar Sesión
-                </button> <br><br> 
+                </button>
 
         </div>
 
