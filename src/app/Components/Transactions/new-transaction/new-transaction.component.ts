@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
@@ -20,17 +19,10 @@ export const MY_FORMATS = {
   },
 };
 
-
-interface Categoria {
-  value: string;
-  viewValue: string;
-}
-
-
 @Component({
   selector: 'app-new-transaction',
   templateUrl: './new-transaction.component.html',
-  //styleUrls: ['./new-transaction.component.css']
+  styleUrls: ['./new-transaction.component.css']
 })
 export class NewTransactionComponent implements OnInit {
 

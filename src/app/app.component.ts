@@ -9,7 +9,6 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppComponent {
   title = 'Savio';
-  showFiller = false;
   openSidenav = false;
   token:any;
 

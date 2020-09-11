@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { temp } from './temp.model'
 import { Transaction, TransactionFlatNode } from "./transaction.model";
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { MatDialog } from '@angular/material/dialog';
-import {NewTransactionComponent } from '../Transactions/new-transaction/new-transaction.component';
+import { NewTransactionComponent } from './new-transaction/new-transaction.component';
 
 const transactionTree: Transaction[] = [
   {
@@ -16,21 +15,21 @@ const transactionTree: Transaction[] = [
         date: new Date('8/03/2020'),
         amount: 400,
         isExpense: true,
-        id:"123"
+        id: "123"
       },
       {
         concept: "Agua",
         date: new Date('8/03/2020'),
         amount: 112,
         isExpense: true,
-        id:"123"
+        id: "123"
       }
     ],
-    amount:800,
+    amount: 800,
     isExpense: true,
-    id:"123"
+    id: "123"
 
-  }, 
+  },
   {
     concept: "Transporte",
     icon: "directions_car",
@@ -40,12 +39,12 @@ const transactionTree: Transaction[] = [
         date: new Date('8/03/2020'),
         amount: 148.32,
         isExpense: true,
-        id:"123",
+        id: "123",
       }
     ],
-    amount:148.32,
+    amount: 148.32,
     isExpense: true,
-    id:"123"
+    id: "123"
   },
   {
     concept: "Despensa",
@@ -56,12 +55,12 @@ const transactionTree: Transaction[] = [
         date: new Date('8/03/2020'),
         amount: 756,
         isExpense: true,
-        id:"123"
+        id: "123"
       }
     ],
-    amount:756,
+    amount: 756,
     isExpense: true,
-    id:"123"
+    id: "123"
   },
   {
     concept: "Entretenimiento",
@@ -72,12 +71,12 @@ const transactionTree: Transaction[] = [
         date: new Date('8/03/2020'),
         amount: 86,
         isExpense: true,
-        id:"123"
+        id: "123"
       }
     ],
-    amount:86,
+    amount: 86,
     isExpense: true,
-    id:"123"
+    id: "123"
   },
 ];
 
@@ -132,6 +131,7 @@ export class TransactionsComponent implements OnInit {
   dataSourceExpenses = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   dataSourceIncomes = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   hasChild = (_: number, node: TransactionFlatNode) => node.expandable;
+
   TransactionDialog(): void {
     const dialogRef = this.dialog.open(NewTransactionComponent);
   }
