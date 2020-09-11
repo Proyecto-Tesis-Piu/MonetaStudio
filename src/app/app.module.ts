@@ -1,13 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './Components/home/home.component';
-import { AppComponent } from './app.component';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './Components/home/home.component';
+import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
 import { RegistrationComponent } from './Components/Users/registration/registration.component';
 import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { UserComponent } from './Components/Users/user.component';
-import { TransactionsComponent } from './components/Transactions/transactions.component';
+import { UserService } from './Components/Users/shared/user.service';
+import { AuthGuard } from './Components/Users/shared/auth.guard';
+import { TransactionsComponent } from './Components/Transactions/transactions.component';
+import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -21,21 +27,12 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserService } from './Components/Users/shared/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatTreeModule} from '@angular/material/tree';
-import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
-import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
-
-
-
+import { MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -46,7 +43,7 @@ import { NewTransactionComponent } from './Components/Transactions/new-transacti
     TransactionsComponent,
     UserComponent,
     VideoSavioComponent,
-    NewTransactionComponent
+    NewTransactionComponent,
   ],
   imports: [
     BrowserModule,
