@@ -8,7 +8,10 @@
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
                     <!-- use a disabled button to provide padding for tree leaf -->
-                    <button mat-icon-button disabled></button>
+                    <button mat-icon-button class="trash-button" #tooltip="matTooltip" matTooltip="Borrar"
+                        [matTooltipPosition]="'below'" (click)="deleteTransaction(node.id)">
+                        <mat-icon class="mat-menu-icon material-icons-round trash-icon">delete</mat-icon>
+                    </button>
                     <div style="width: 70%;">
                         <strong>{{node.concept}}</strong><br>
                         {{node.date | date}}
@@ -23,7 +26,8 @@
                             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                         </mat-icon>
                     </button>
-                    <mat-icon mat-list-icon class="material-icons-round" style="margin-right: 10px;">{{node.icon}}</mat-icon>
+                    <mat-icon mat-list-icon class="material-icons-round" style="margin-right: 10px;">{{node.icon}}
+                    </mat-icon>
                     <span class="category-name" style="width: 60%;">
                         {{node.concept}}
                     </span>
@@ -84,8 +88,8 @@
                         adipiscing elit</p>
                 </div>
                 <div class="col-sm-4">
-                    <mat-progress-spinner *ngFor="let trans of expenses; let i = index"
-                        [ngClass]="'custom-spinner'+i" [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
+                    <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
+                        [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
                     </mat-progress-spinner>
                 </div>
             </div>
@@ -100,8 +104,8 @@
                         adipiscing elit</p>
                 </div>
                 <div class="col-sm-4">
-                    <mat-progress-spinner *ngFor="let trans of incomes; let i = index"
-                        [ngClass]="'custom-spinner'+i" [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
+                    <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
+                        [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
                     </mat-progress-spinner>
                 </div>
             </div>

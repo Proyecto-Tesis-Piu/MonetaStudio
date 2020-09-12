@@ -183,6 +183,10 @@ export class TransactionsComponent implements OnInit {
     this.dataSourceExpenses.data = this.expenses;
     this.dataSourceIncomes.data = this.incomes;
   }
+
+  deleteTransaction(transactionId:String){
+
+  }
 }
 
 

@@ -286,3 +286,11 @@ mat-button-toggle {
     background: #ddd;
     border-radius: 10px;
 }
+
+.tree-node:hover .trash-button .trash-icon{
+    visibility: visible;
+}
+
+.trash-icon{
+    visibility: hidden;
+}
