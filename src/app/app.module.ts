@@ -34,6 +34,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TransactionService } from './Components/Transactions/transactions.service';
 import { MatTreeModule} from '@angular/material/tree';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MatTreeModule} from '@angular/material/tree';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatTreeModule
+    MatTreeModule,
+    MatMenuModule
   ],
   providers: [UserService, AuthGuard, TransactionService],
 

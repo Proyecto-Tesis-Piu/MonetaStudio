@@ -6,11 +6,13 @@
 
             <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl" class="custom-tree">
                 <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node" style="cursor: pointer;"
+                    (click)="editTransaction(node)" matRipple matRippleCentered="false" matRippleDisabled="false"
+                    matRippleUnbounded="false" matRippleRadius="50px" matRippleColor="dimgray">
                     <!-- use a disabled button to provide padding for tree leaf -->
-                    <button mat-icon-button class="trash-button" #tooltip="matTooltip" matTooltip="Borrar"
+                    <button mat-icon-button class="transaction-action-button" #tooltip="matTooltip" matTooltip="Borrar"
                         [matTooltipPosition]="'below'" (click)="deleteTransaction(node.id)">
-                        <mat-icon class="mat-menu-icon material-icons-round trash-icon">delete</mat-icon>
+                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
                     </button>
                     <div style="width: 70%;">
                         <strong>{{node.concept}}</strong><br>
@@ -42,7 +44,20 @@
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
                     <!-- use a disabled button to provide padding for tree leaf -->
-                    <button mat-icon-button disabled></button>
+                    <button mat-icon-button class="transaction-action-button" [matMenuTriggerFor]="menu">
+                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">more_vert
+                        </mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="deleteTransaction(node.id)">
+                            <mat-icon>delete</mat-icon>
+                            <span>Borrar</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>edit</mat-icon>
+                            <span>Editar</span>
+                        </button>
+                    </mat-menu>
                     <div style="width: 70%;">
                         <strong>{{node.concept}}</strong><br>
                         {{node.date | date}}
@@ -89,7 +104,8 @@
                 </div>
                 <div class="col-sm-4">
                     <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
-                        [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
+                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
+                        [value]="trans.percentage">
                     </mat-progress-spinner>
                 </div>
             </div>

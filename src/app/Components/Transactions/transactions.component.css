@@ -256,6 +256,10 @@ mat-button-toggle {
     min-height: unset !important;
 }
 
+::ng-deep .mat-tree-node:hover{
+    background-color: rgb(0 0 0 / 25%);
+}
+
 .category-name *{
     height: 16px;
 }
@@ -287,10 +291,15 @@ mat-button-toggle {
     border-radius: 10px;
 }
 
-.tree-node:hover .trash-button .trash-icon{
+.tree-node:hover .transaction-action-button .transaction-action-icon{
     visibility: visible;
 }
 
-.trash-icon{
+.transaction-action-icon{
     visibility: hidden;
+}
+
+button.mat-menu-item{
+    outline: none;
+    border: 0;
 }
