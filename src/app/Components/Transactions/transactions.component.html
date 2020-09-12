@@ -24,20 +24,12 @@
                         </mat-icon>
                     </button>
                     <mat-icon mat-list-icon class="material-icons-round" style="margin-right: 10px;">{{node.icon}}</mat-icon>
-                    {{node.concept}}
+                    <span class="category-name" style="width: 60%;">
+                        {{node.concept}}
+                    </span>
+                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
                 </mat-tree-node>
             </mat-tree>
-
-            <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
-                <mat-list-item style="color: #000; " class="list-item" *ngFor="let transaction of transactionsARR">
-                    <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
-                        matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
-                    <div mat-line>{{transaction.concept}}</div>
-                    <div mat-line> {{transaction.date | date}} </div>
-                    <div style="float: right;"> {{transaction.amount | currency}} </div>
-                </mat-list-item>
-            </mat-list> -->
-
         </div>
         <div class="positive col-sm-5">
             <h1 style="margin: 0px;">INGRESOS</h1>
@@ -93,7 +85,7 @@
                 </div>
                 <div class="col-sm-4">
                     <mat-progress-spinner *ngFor="let trans of expenses; let i = index"
-                        [ngClass]="'custom-spinner'+i" mode="determinate" [value]="trans.percentage">
+                        [ngClass]="'custom-spinner'+i" [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
                     </mat-progress-spinner>
                 </div>
             </div>
@@ -109,7 +101,7 @@
                 </div>
                 <div class="col-sm-4">
                     <mat-progress-spinner *ngFor="let trans of incomes; let i = index"
-                        [ngClass]="'custom-spinner'+i" mode="determinate" [value]="trans.percentage">
+                        [ngClass]="'custom-spinner'+i" [ngStyle]="{'z-index':i}" mode="determinate" [value]="trans.percentage">
                     </mat-progress-spinner>
                 </div>
             </div>

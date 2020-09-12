@@ -64,10 +64,7 @@ export class TransactionService extends BaseService {
     }
 
     public getTransactions(fromDate: Date, toDate: Date) {
-        var dates;
-        dates.fromDate = fromDate;
-        dates.toDate = toDate;
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.post(this.serviceUrl, dates, { headers: tokenHeader });
+        return this.http.post(this.serviceUrl, { fromDate, toDate }, { headers: tokenHeader });
     }
 }
