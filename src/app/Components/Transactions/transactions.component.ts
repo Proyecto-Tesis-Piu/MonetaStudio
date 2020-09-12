@@ -27,7 +27,7 @@ const transactionTree: Transaction[] = [
     amount: 800,
     isExpense: true,
     id: "123",
-    percentage: 20,
+    percentage: 100,
   },
   {
     concept: "Transporte",
@@ -59,7 +59,7 @@ const transactionTree: Transaction[] = [
     amount: 756,
     isExpense: true,
     id: "123",
-    percentage: 100,
+    percentage: 20,
   },
   {
     concept: "Entretenimiento",
@@ -142,7 +142,7 @@ export class TransactionsComponent implements OnInit {
     const dialogRef = this.dialog.open(NewTransactionComponent);
   }
 
-  getTransactions(fromDate:Date, toDate:Date) {
+  getTransactions(fromDate: Date, toDate: Date) {
     this.service.getTransactions(fromDate, toDate).subscribe(
       (res: Transaction[]) => {
         this.expenses = res.filter(t => t.isExpense).sort(function (a, b) {
@@ -165,7 +165,7 @@ export class TransactionsComponent implements OnInit {
           return 0;
         });
         this.assignDataSources();
-      }, 
+      },
       err => {
         console.log(err);
         //default data for when the service is not on local host
@@ -173,19 +173,23 @@ export class TransactionsComponent implements OnInit {
         this.expenses = transactionTree.filter(t => t.isExpense);
         this.incomes = transactionTree.filter(t => !t.isExpense);
         this.assignDataSources();
-      }, 
+      },
       () => {
         console.log('Complete');
-    });
+      });
   }
 
-  assignDataSources(){
+  assignDataSources() {
     this.dataSourceExpenses.data = this.expenses;
     this.dataSourceIncomes.data = this.incomes;
   }
 
-  deleteTransaction(transactionId:String){
+  deleteTransaction(transactionId: String) {
 
+  }
+
+  editTransaction(trans: TransactionFlatNode){
+    console.log(trans);
   }
 }
 

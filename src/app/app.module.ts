@@ -70,7 +70,8 @@ import { NewTransactionComponent } from './Components/Transactions/new-transacti
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatTreeModule
+    MatTreeModule,
+    MatMenuModule
   ],
   providers: [UserService, AuthGuard, TransactionService],
 
