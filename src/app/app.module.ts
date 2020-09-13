@@ -31,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { TransactionService } from './Components/Transactions/transactions.service';
 import { MatTreeModule} from '@angular/material/tree';
 import { MatMenuModule } from '@angular/material/menu';
@@ -70,7 +70,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatNativeDateModule,
     MatListModule,
     MatTreeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatRippleModule
   ],
   providers: [UserService, AuthGuard, TransactionService],
 
