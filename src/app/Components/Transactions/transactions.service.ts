@@ -52,10 +52,9 @@ export class TransactionService extends BaseService {
         return this.http.put(this.serviceUrl + '/Modify', trans, { headers: tokenHeader });
     }
 
-    public deleteTransaction(trans: Transaction) {
-        var id = trans.id;
+    public deleteTransaction(TransactionID: String, fromDate: Date, toDate: Date) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.delete(this.serviceUrl + '/Delete/${id}', { headers: tokenHeader });
+        return this.http.post(this.serviceUrl + '/Delete', { TransactionID, fromDate, toDate }, { headers: tokenHeader });
     }
 
     public createTransaction(trans: Transaction) {

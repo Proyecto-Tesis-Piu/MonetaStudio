@@ -111,19 +111,19 @@ export class TransactionsComponent implements OnInit {
   expenses: Transaction[];
   incomes: Transaction[];
   public selectedVal: string;
+  fromDate:Date;
+  toDate:Date;
 
   constructor(public dialog: MatDialog,
     private service: TransactionService) {
 
     var date = new Date();
 
-    var firstDay =
-      new Date(date.getFullYear(), date.getMonth(), 1);
+    this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
 
-    var lastDay =
-      new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-    this.getTransactions(firstDay, lastDay);
+    this.getTransactions();
 
     this.selectedVal = 'option1';
   }
@@ -142,33 +142,14 @@ export class TransactionsComponent implements OnInit {
     const dialogRef = this.dialog.open(NewTransactionComponent);
   }
 
-  getTransactions(fromDate: Date, toDate: Date) {
-    this.service.getTransactions(fromDate, toDate).subscribe(
+  getTransactions() {
+    this.service.getTransactions(this.fromDate, this.toDate).subscribe(
       (res: Transaction[]) => {
-        this.expenses = res.filter(t => t.isExpense).sort(function (a, b) {
-          if (a.percentage > b.percentage) {
-            return -1;
-          }
-          if (a.percentage < b.percentage) {
-            return 1;
-          }
-          return 0;
-        });
-
-        this.incomes = res.filter(t => !t.isExpense).sort(function (a, b) {
-          if (a.percentage > b.percentage) {
-            return -1;
-          }
-          if (a.percentage < b.percentage) {
-            return 1;
-          }
-          return 0;
-        });
-        this.assignDataSources();
+        this.handleTransactionsResponse(res);
       },
       err => {
         console.log(err);
-        //default data for when the service is not on local host
+        //default data for when the API is not on local host
         //comment when on production
         this.expenses = transactionTree.filter(t => t.isExpense);
         this.incomes = transactionTree.filter(t => !t.isExpense);
@@ -185,11 +166,59 @@ export class TransactionsComponent implements OnInit {
   }
 
   deleteTransaction(transactionId: String) {
-
+    this.service.deleteTransaction(transactionId, this.fromDate, this.toDate).subscribe(
+      (res: Transaction[]) => {
+        this.handleTransactionsResponse(res);
+      },
+      err => {
+        console.log(err);
+        //default data for when the API is not on local host
+        //comment when on production
+        this.expenses = transactionTree.filter(t => t.isExpense);
+        this.incomes = transactionTree.filter(t => !t.isExpense);
+        this.assignDataSources();
+      },
+      () => {
+        console.log('Complete');
+      });
   }
 
-  editTransaction(trans: TransactionFlatNode){
-    console.log(trans);
+  editTransaction(event, trans: TransactionFlatNode) {
+    console.log(event.target.tagName);
+    switch (event.target.tagName) {
+      case "BUTTON":
+      case "MAT-ICON":
+        //for delete transaction
+        this.deleteTransaction(trans.id);
+        break;
+      default:
+        //for edit transaction
+        const dialogRef = this.dialog.open(NewTransactionComponent);
+        break;
+    }
+  }
+
+  handleTransactionsResponse(arr: Transaction[]) {
+    this.expenses = arr.filter(t => t.isExpense).sort(function (a, b) {
+      if (a.percentage > b.percentage) {
+        return -1;
+      }
+      if (a.percentage < b.percentage) {
+        return 1;
+      }
+      return 0;
+    });
+
+    this.incomes = arr.filter(t => !t.isExpense).sort(function (a, b) {
+      if (a.percentage > b.percentage) {
+        return -1;
+      }
+      if (a.percentage < b.percentage) {
+        return 1;
+      }
+      return 0;
+    });
+    this.assignDataSources();
   }
 }
 
