@@ -4,13 +4,14 @@
         <div class="negative col-sm-5">
             <h1 style="margin: 0px;">GASTOS</h1>
 
-            <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl" class="custom-tree disable-text-select">
+            <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
+                class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                    (click)="editTransaction($event, node)">
-                    <!-- use a disabled button to provide padding for tree leaf -->
+                    (click)="editTransaction($event, node)" matRipple>
                     <button mat-icon-button class="transaction-action-button">
-                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
+                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete
+                        </mat-icon>
                     </button>
                     <div class="transaction-text">
                         <div>
@@ -22,7 +23,7 @@
                 </mat-tree-node>
                 <!-- This is the tree node template for expandable nodes -->
                 <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                    class="tree-node-category">
+                    class="tree-node-category" matRipple>
                     <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
                         <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
                             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
@@ -46,8 +47,7 @@
                 class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                    (click)="editTransaction($event, node)">
-                    <!-- use a disabled button to provide padding for tree leaf -->
+                    (click)="editTransaction($event, node)" matRipple>
                     <button mat-icon-button class="transaction-action-button">
                         <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
                     </button>
@@ -61,7 +61,7 @@
                 </mat-tree-node>
                 <!-- This is the tree node template for expandable nodes -->
                 <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                    class="tree-node-category">
+                    class="tree-node-category" matRipple>
                     <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
                         <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
                             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}

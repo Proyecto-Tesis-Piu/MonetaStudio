@@ -31,11 +31,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatNativeDateModule } from '@angular/material/core';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { TransactionService } from './Components/Transactions/transactions.service';
+import { MatTreeModule} from '@angular/material/tree';
 import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
 import { TransactionService } from './Components/Transactions/transactions.service';
-import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
 
 @NgModule({
   declarations: [
@@ -70,8 +70,7 @@ import { NewTransactionComponent } from './Components/Transactions/new-transacti
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatTreeModule,
-    MatMenuModule
+    MatTreeModule
   ],
   providers: [UserService, AuthGuard, TransactionService],
 
