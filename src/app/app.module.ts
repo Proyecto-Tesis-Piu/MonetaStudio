@@ -31,8 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { TransactionService } from './Components/Transactions/transactions.service';
 import { MatTreeModule} from '@angular/material/tree';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -67,9 +69,11 @@ import { MatTreeModule} from '@angular/material/tree';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatTreeModule
+    MatTreeModule,
+    MatMenuModule,
+    MatRippleModule
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, AuthGuard, TransactionService],
 
   bootstrap: [AppComponent]
 })

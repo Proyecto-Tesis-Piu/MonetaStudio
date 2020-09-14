@@ -4,69 +4,77 @@
         <div class="negative col-sm-5">
             <h1 style="margin: 0px;">GASTOS</h1>
 
-            <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl" class="custom-tree">
+            <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
+                class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
-                    <!-- use a disabled button to provide padding for tree leaf -->
-                    <button mat-icon-button disabled></button>
-                    <div style="width: 70%;">
-                        <strong>{{node.concept}}</strong><br>
-                        {{node.date | date}}
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
+                    (click)="editTransaction($event, node)" matRipple>
+                    <button mat-icon-button class="transaction-action-button">
+                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete
+                        </mat-icon>
+                    </button>
+                    <div class="transaction-text">
+                        <div>
+                            <strong>{{node.concept}}</strong><br>
+                            {{node.date | date}}
+                        </div>
+                        <div class="node-amount"> {{node.amount | currency}} </div>
                     </div>
-                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
                 </mat-tree-node>
                 <!-- This is the tree node template for expandable nodes -->
                 <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                    class="tree-node-category">
-                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" style="height: 24px;">
+                    class="tree-node-category" matRipple>
+                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
                         <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
                             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                         </mat-icon>
                     </button>
-                    <mat-icon mat-list-icon class="material-icons-round" style="margin-right: 10px;">{{node.icon}}</mat-icon>
-                    {{node.concept}}
+
+                    <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
+                    <div class="category-text">
+                        <div class="category-name">
+                            {{node.concept}}
+                        </div>
+                        <div class="node-amount"> {{node.amount | currency}} </div>
+                    </div>
                 </mat-tree-node>
             </mat-tree>
-
-            <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
-                <mat-list-item style="color: #000; " class="list-item" *ngFor="let transaction of transactionsARR">
-                    <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
-                        matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
-                    <div mat-line>{{transaction.concept}}</div>
-                    <div mat-line> {{transaction.date | date}} </div>
-                    <div style="float: right;"> {{transaction.amount | currency}} </div>
-                </mat-list-item>
-            </mat-list> -->
-
         </div>
         <div class="positive col-sm-5">
             <h1 style="margin: 0px;">INGRESOS</h1>
 
-            <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl" class="custom-tree">
+            <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
+                class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node">
-                    <!-- use a disabled button to provide padding for tree leaf -->
-                    <button mat-icon-button disabled></button>
-                    <div style="width: 70%;">
-                        <strong>{{node.concept}}</strong><br>
-                        {{node.date | date}}
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
+                    (click)="editTransaction($event, node)" matRipple>
+                    <button mat-icon-button class="transaction-action-button">
+                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
+                    </button>
+                    <div class="transaction-text">
+                        <div>
+                            <strong>{{node.concept}}</strong><br>
+                            {{node.date | date}}
+                        </div>
+                        <div class="node-amount"> {{node.amount | currency}} </div>
                     </div>
-                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
                 </mat-tree-node>
                 <!-- This is the tree node template for expandable nodes -->
                 <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                    class="tree-node-category">
-                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" style="height: 24px;">
+                    class="tree-node-category" matRipple>
+                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
                         <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
                             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                         </mat-icon>
                     </button>
 
-                    <mat-icon mat-list-icon class="material-icons-round" style="margin-right: 10px;">{{node.icon}}</mat-icon>
-                    <span class="category-name" style="width: 60%;">
-                        {{node.concept}}
-                    </span>
-                    <div style="text-align: right; font-size: 16px;"> {{node.amount | currency}} </div>
+                    <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
+                    <div class="category-text">
+                        <div class="category-name">
+                            {{node.concept}}
+                        </div>
+                        <div class="node-amount"> {{node.amount | currency}} </div>
+                    </div>
                 </mat-tree-node>
             </mat-tree>
 
@@ -87,13 +95,14 @@
         <div class="graph-negative col-sm-5">
             <h1>Lorem ipsum</h1>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-8" style="height: fit-content;">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit</p>
                 </div>
                 <div class="col-sm-4">
-                    <mat-progress-spinner *ngFor="let trans of expenses; let i = index"
-                        [ngClass]="'custom-spinner'+i" mode="determinate" [value]="trans.percentage">
+                    <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
+                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
+                        [value]="trans.percentage" style="height: 1px;">
                     </mat-progress-spinner>
                 </div>
             </div>
@@ -103,13 +112,14 @@
         <div class="graph-positive col-sm-5">
             <h1>Lorem ipsum</h1>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-8" style="height: fit-content;">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit</p>
                 </div>
                 <div class="col-sm-4">
-                    <mat-progress-spinner *ngFor="let trans of incomes; let i = index"
-                        [ngClass]="'custom-spinner'+i" mode="determinate" [value]="trans.percentage">
+                    <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
+                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
+                        [value]="trans.percentage" style="height: 1px;">
                     </mat-progress-spinner>
                 </div>
             </div>

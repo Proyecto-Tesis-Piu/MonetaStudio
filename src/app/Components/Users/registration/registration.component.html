@@ -84,8 +84,8 @@
                 <mat-select [value]="user.sex" formControlName="sex"
                     (selectionChange)="updateForm($event.value, 'sex')">
                     <mat-label>Sexo...</mat-label>
-                    <mat-option value="Male">Masculino</mat-option>
-                    <mat-option value="Female">Femenino</mat-option>
+                    <mat-option value="Male" style="background-color: rgba(255 0 0 10%);">Masculino</mat-option>
+                    <mat-option value="Female" style="background-color: rgba(0 255 0 10%);">Femenino</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
