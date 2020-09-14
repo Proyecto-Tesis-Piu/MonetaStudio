@@ -1,8 +1,8 @@
 ::ng-deep .mat-dialog-container {
-/*.prueba {*/
+    /*.prueba {*/
     border: solid black 2px;
     background-color: white;
-    height: 400px;
+    height: fit-content;
     width: 400px;
     border-radius: 20px;
     text-align: center;
@@ -27,11 +27,11 @@
     position: relative;
     width: 150px;
     margin: 0px auto;
-    background-color:blue;
+    background-color: blue;
 }
 
 #but[disabled] {
-    background-color:dimgray;
+    background-color: dimgray;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -49,16 +49,26 @@
     background-color: blue !important;
 }
 
-::ng-deep mat-label{
+::ng-deep mat-label {
     color: dimgray;
 }
 
 .mat-input-element {
-    color:black;
+    color: black;
 }
 
 .mat-dialog-actions {
     margin-bottom: 12px;
     padding: 0px;
     min-height: unset;
+}
+
+.password-visibility{
+    color: #000;
+    color: black;
+    float: right;
+    margin-left: -25px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
 }
