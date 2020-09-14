@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Savio';
   openSidenav = false;
@@ -15,6 +16,7 @@ export class AppComponent {
   constructor(public dialog: MatDialog){
     this.token = localStorage.getItem('token');
   }
+  
 
   logout(): void {
     localStorage.removeItem('token');
