@@ -6,19 +6,19 @@
 
         <div class="menu-buttons">
                 <button mat-raised-button>
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Noticias
+                    <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Noticias
                 </button> <br><br>
                 <button mat-raised-button>
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Savio
+                    <mat-icon class="material-icons-round lens">monetization_on</mat-icon> Savio
                 </button> <br><br>
                 <button mat-raised-button *ngIf="!token">
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Crear cuenta
+                    <mat-icon class="material-icons-round lens">account_circle</mat-icon> Crear cuenta
                 </button>
                 <button mat-raised-button *ngIf="token">
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Transacciones
+                    <mat-icon class="material-icons-round lens">payment</mat-icon> Transacciones
                 </button> <br><br>
                 <button mat-raised-button [routerLink]="['user','modify']" *ngIf="token">
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Modificar Datos
+                    <mat-icon class="material-icons-round lens">settings</mat-icon> Modificar Datos
                 </button>
                 
             </div>
@@ -26,11 +26,11 @@
             <div class="logout">
                 <br *ngIf="!token"> <br *ngIf="!token">
                 <button mat-raised-button class="button-logout" (click)="openDialog()" *ngIf="!token">
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Iniciar Sesión
+                    <mat-icon class="material-icons-round lens">power_settings_new</mat-icon> Iniciar Sesión
                 </button> 
 
                 <button mat-raised-button class="button-logout" (click)="logout()" *ngIf="token">
-                    <mat-icon class="material-icons-round lens">lens</mat-icon> Cerrar Sesión
+                    <mat-icon class="material-icons-round lens">power_settings_new</mat-icon> Cerrar Sesión
                 </button>
 
         </div>
