@@ -11,7 +11,7 @@
                 <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button
                         (click)="openDialog()">Iniciar Sesión</a>
                 </li>
-                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a [routerLink]="['/user','create']">Crear
+                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a  (click)="newUser()">Crear
                         Cuenta</a></li>
                 <li style="margin-top: 20px; font-size: 20px;" class="line"
                     (click)="savio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a style="color: #007bff;">
