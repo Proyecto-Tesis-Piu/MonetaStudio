@@ -70,7 +70,9 @@ import { TransactionService } from './Components/Transactions/transactions.servi
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatTreeModule
+    MatTreeModule,
+    MatMenuModule,
+    MatRippleModule
   ],
   providers: [UserService, AuthGuard, TransactionService],
 
