@@ -1,0 +1,41 @@
+.category-icon {
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.transaction-text {
+    justify-content: space-between;
+    width: calc(100% - 76px);
+    display: flex;
+}
+
+.transaction-amount {
+    margin: auto 0px;
+}
+
+.row {
+    margin: 20px -15px;
+}
+
+button {
+    outline: none;
+    border: 0;
+    transition: 0.2s
+}
+
+.delete-button{
+    border: red solid 1px;
+    color: red;
+}
+
+.delete-button:active{
+    background-color: red;
+    color: white;
+}
+
+.delete-button:hover{
+    background-color: red;
+    color: white;
+}
