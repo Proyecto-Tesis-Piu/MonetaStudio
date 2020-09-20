@@ -102,7 +102,7 @@
                 <div class="col-sm-4">
                     <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
                         [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.percentage" style="height: 1px;">
+                        [value]="trans.cumulativePercentage" style="height: 1px;">
                     </mat-progress-spinner>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                 <div class="col-sm-4">
                     <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
                         [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.percentage" style="height: 1px;">
+                        [value]="trans.cumulativePercentage" style="height: 1px;">
                     </mat-progress-spinner>
                 </div>
             </div>
@@ -134,24 +134,45 @@
 
         <div class="table col-sm-5">
 
-            <mat-button-toggle-group [value]="selectedVal">
-                <mat-button-toggle value="option1">GASTOS</mat-button-toggle>
-                <mat-button-toggle value="option2">INGRESOS</mat-button-toggle>
+            <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedVal"
+                (change)="onValChange(group.value)">
+                <mat-button-toggle value="expenses">GASTOS</mat-button-toggle>
+                <mat-button-toggle value="incomes">INGRESOS</mat-button-toggle>
             </mat-button-toggle-group>
 
-            <div class="categories row">
-                <div class="col-sm-4">
-                    <P>Vivienda</P>
-                    <P>Transporte</P>
-                    <P>Entretenimiento</P>
-                    <P>Despensa</P>
-                    <P>Salud</P>
-                    <P>Ropa</P>
-                    <p>Ahorro</p>
-                </div>
-                <div class="col-sm-8">
-                    <button mat-button (click)="TransactionDialog()">Transacción</button>
-                </div>
+
+            <div *ngIf="selectedVal == 'expenses'">
+                <mat-list class="categories-list">
+                    <mat-list-item class="list-item" *ngFor="let category of expenses; let i = index">
+                        <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
+                        <div mat-line>{{category.concept}}</div>
+                        <div class="custom-progress-bar-container">
+                            <div class="custom-progress-bar-div" [ngStyle]="{'width': category.relativePercentage+'%' }"
+                                [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
+                                matTooltip="{{category.amount | currency}} - {{category.relativePercentage}}%"
+                                [matTooltipPosition]="'right'"></div>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <div *ngIf="selectedVal == 'incomes'">
+                <mat-list class="categories-list">
+                    <mat-list-item class="list-item" *ngFor="let category of incomes; let i = index">
+                        <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
+                        <div mat-line>{{category.concept}}</div>
+                        <div class="custom-progress-bar-container">
+                            <div class="custom-progress-bar-div" [ngStyle]="{'width': category.relativePercentage+'%' }"
+                                [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
+                                matTooltip="{{category.amount | currency}} - {{category.relativePercentage}}%"
+                                [matTooltipPosition]="'right'"></div>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <div class="col-sm-8">
+                <button mat-button class="create-transaction-button" (click)="TransactionDialog()">Transacción</button>
             </div>
         </div>
     </div>

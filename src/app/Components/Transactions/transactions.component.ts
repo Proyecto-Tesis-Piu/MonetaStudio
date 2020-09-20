@@ -83,7 +83,7 @@ const transactionTree: Transaction[] = [
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css']
+  styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
   private _transformer = (node: Transaction, level: number) => {
@@ -97,6 +97,8 @@ export class TransactionsComponent implements OnInit {
       icon: node.icon,
       level: level,
       userId: node.userId,
+      cumulativePercentage: node.cumulativePercentage,
+      relativePercentage: node.relativePercentage,
       percentage: node.percentage,
       category: node.category
     };
@@ -126,7 +128,7 @@ export class TransactionsComponent implements OnInit {
 
     this.getTransactions();
 
-    this.selectedVal = 'option1';
+    this.selectedVal = 'expenses';
   }
 
   ngOnInit() { }
@@ -212,20 +214,20 @@ export class TransactionsComponent implements OnInit {
 
   handleTransactionsResponse() {
     this.expenses = this.transactions.filter(t => t.isExpense).sort(function (a, b) {
-      if (a.percentage > b.percentage) {
+      if (a.cumulativePercentage > b.cumulativePercentage) {
         return -1;
       }
-      if (a.percentage < b.percentage) {
+      if (a.cumulativePercentage < b.cumulativePercentage) {
         return 1;
       }
       return 0;
     });
 
     this.incomes = this.transactions.filter(t => !t.isExpense).sort(function (a, b) {
-      if (a.percentage > b.percentage) {
+      if (a.cumulativePercentage > b.cumulativePercentage) {
         return -1;
       }
-      if (a.percentage < b.percentage) {
+      if (a.cumulativePercentage < b.cumulativePercentage) {
         return 1;
       }
       return 0;

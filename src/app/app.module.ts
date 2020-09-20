@@ -34,9 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { MatTreeModule} from '@angular/material/tree';
-import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
-import { TransactionService } from './Components/Transactions/transactions.service';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -73,7 +71,6 @@ import { TransactionService } from './Components/Transactions/transactions.servi
     MatNativeDateModule,
     MatListModule,
     MatTreeModule,
-    MatMenuModule,
     MatRippleModule
   ],
   providers: [UserService, AuthGuard, TransactionService],

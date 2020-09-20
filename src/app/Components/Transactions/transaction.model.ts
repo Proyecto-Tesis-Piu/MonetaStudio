@@ -7,7 +7,9 @@ export class Transaction {
     id:string = "";
     icon?:String;
     userId?:String;
+    cumulativePercentage?:number;
     percentage?:number;
+    relativePercentage?:number;
     category?:String; //categoryId for transaction
 }
 
@@ -21,6 +23,8 @@ export class TransactionFlatNode {
     icon?:String;
     level: number;
     userId?:String;
+    cumulativePercentage?:number;
     percentage?:number;
+    relativePercentage?:number;
     category?:String; //categoryId for transaction
   }
