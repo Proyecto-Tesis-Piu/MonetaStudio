@@ -5,6 +5,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { MatDialog } from '@angular/material/dialog';
 import { NewTransactionComponent } from './new-transaction/new-transaction.component';
 import { TransactionService } from './transactions.service'
+import { DeleteTransactionComponentDialog } from './delete-transaction/delete-transaction.component';
 
 const transactionTree: Transaction[] = [
   {
@@ -82,7 +83,7 @@ const transactionTree: Transaction[] = [
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css']
+  styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
   private _transformer = (node: Transaction, level: number) => {
@@ -96,6 +97,8 @@ export class TransactionsComponent implements OnInit {
       icon: node.icon,
       level: level,
       userId: node.userId,
+      cumulativePercentage: node.cumulativePercentage,
+      relativePercentage: node.relativePercentage,
       percentage: node.percentage,
       category: node.category
     };
@@ -125,7 +128,7 @@ export class TransactionsComponent implements OnInit {
 
     this.getTransactions();
 
-    this.selectedVal = 'option1';
+    this.selectedVal = 'expenses';
   }
 
   ngOnInit() { }
@@ -145,14 +148,16 @@ export class TransactionsComponent implements OnInit {
   getTransactions() {
     this.service.getTransactions(this.fromDate, this.toDate).subscribe(
       (res: Transaction[]) => {
-        this.handleTransactionsResponse(res);
+        this.transactions = res;
+        this.handleTransactionsResponse();
       },
       err => {
         console.log(err);
         //default data for when the API is not on local host
         //comment when on production
-        this.expenses = transactionTree.filter(t => t.isExpense);
-        this.incomes = transactionTree.filter(t => !t.isExpense);
+        this.transactions = transactionTree;
+        this.expenses = this.transactions.filter(t => t.isExpense);
+        this.incomes = this.transactions.filter(t => !t.isExpense);
         this.assignDataSources();
       },
       () => {
@@ -165,22 +170,31 @@ export class TransactionsComponent implements OnInit {
     this.dataSourceIncomes.data = this.incomes;
   }
 
-  deleteTransaction(transactionId: String) {
-    this.service.deleteTransaction(transactionId, this.fromDate, this.toDate).subscribe(
-      (res: Transaction[]) => {
-        this.handleTransactionsResponse(res);
-      },
-      err => {
-        console.log(err);
-        //default data for when the API is not on local host
-        //comment when on production
-        this.expenses = transactionTree.filter(t => t.isExpense);
-        this.incomes = transactionTree.filter(t => !t.isExpense);
-        this.assignDataSources();
-      },
-      () => {
-        console.log('Complete');
-      });
+  deleteTransaction(trans: Transaction) {
+    trans.icon = this.transactions.find(t => t.id == trans.category).icon;
+    const dialogRef = this.dialog.open(DeleteTransactionComponentDialog, { data: trans });
+
+    dialogRef.afterClosed().subscribe((result:Boolean) => {
+      console.log('The dialog was closed');
+      if(result){
+        this.service.deleteTransaction(trans.id, this.fromDate, this.toDate).subscribe(
+          (res: Transaction[]) => {
+            this.transactions = res;
+            this.handleTransactionsResponse();
+          },
+          err => {
+            console.log(err);
+            this.transactions = transactionTree;
+            this.expenses = this.transactions.filter(t => t.isExpense);
+            this.incomes = this.transactions.filter(t => !t.isExpense);
+            this.assignDataSources();
+          },
+          () => {
+            console.log('Complete');
+          });
+      }
+    });
+    
   }
 
   editTransaction(event, trans: TransactionFlatNode) {
@@ -189,7 +203,7 @@ export class TransactionsComponent implements OnInit {
       case "BUTTON":
       case "MAT-ICON":
         //for delete transaction
-        this.deleteTransaction(trans.id);
+        this.deleteTransaction(trans);
         break;
       default:
         //for edit transaction
@@ -198,22 +212,22 @@ export class TransactionsComponent implements OnInit {
     }
   }
 
-  handleTransactionsResponse(arr: Transaction[]) {
-    this.expenses = arr.filter(t => t.isExpense).sort(function (a, b) {
-      if (a.percentage > b.percentage) {
+  handleTransactionsResponse() {
+    this.expenses = this.transactions.filter(t => t.isExpense).sort(function (a, b) {
+      if (a.cumulativePercentage > b.cumulativePercentage) {
         return -1;
       }
-      if (a.percentage < b.percentage) {
+      if (a.cumulativePercentage < b.cumulativePercentage) {
         return 1;
       }
       return 0;
     });
 
-    this.incomes = arr.filter(t => !t.isExpense).sort(function (a, b) {
-      if (a.percentage > b.percentage) {
+    this.incomes = this.transactions.filter(t => !t.isExpense).sort(function (a, b) {
+      if (a.cumulativePercentage > b.cumulativePercentage) {
         return -1;
       }
-      if (a.percentage < b.percentage) {
+      if (a.cumulativePercentage < b.cumulativePercentage) {
         return 1;
       }
       return 0;

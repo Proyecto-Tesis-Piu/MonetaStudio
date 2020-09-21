@@ -12,8 +12,10 @@ import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { UserComponent } from './Components/Users/user.component';
 import { UserService } from './Components/Users/shared/user.service';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
+import { TransactionService } from './Components/Transactions/transactions.service';
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
+import { DeleteTransactionComponentDialog } from './Components/Transactions/delete-transaction/delete-transaction.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -32,9 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { TransactionService } from './Components/Transactions/transactions.service';
-import { MatTreeModule} from '@angular/material/tree';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { MatMenuModule } from '@angular/material/menu';
     UserComponent,
     VideoSavioComponent,
     NewTransactionComponent,
+    DeleteTransactionComponentDialog,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +71,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatNativeDateModule,
     MatListModule,
     MatTreeModule,
-    MatMenuModule,
     MatRippleModule
   ],
   providers: [UserService, AuthGuard, TransactionService],

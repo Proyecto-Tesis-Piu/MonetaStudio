@@ -31,6 +31,8 @@ export class LoginDialogComponent implements OnInit {
     });
   }
 
+  hide = true;
+
   ngOnInit(): void {
     if(localStorage.getItem('token'))
       this.router.navigate(['transactions']);
@@ -57,3 +59,5 @@ export class LoginDialogComponent implements OnInit {
     }
   }
 }
+
+

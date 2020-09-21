@@ -16,21 +16,21 @@
         <br><br>
         <mat-form-field>
             <mat-label>Concepto</mat-label>
-            <input matInput formControlName="Concepto" placeholder="Concepto" required>
+            <input matInput formControlName="Concept" placeholder="Concepto" required>
         </mat-form-field>
         <br><br>
         <mat-form-field>
             <mat-label>Monto</mat-label>
-            <input matInput formControlName="Monto" placeholder="Monto" required>
+            <input matInput formControlName="Amount" placeholder="Monto" required>
         </mat-form-field>
         <br><br>
         <mat-form-field appearance="fill">
             <mat-label>Fecha</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput formControlName="Date" [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-            <br><br>
+        </mat-form-field>
+        <br><br>
         <button mat-raised-button color="primary">Registrar</button>
     </form>
 </div>

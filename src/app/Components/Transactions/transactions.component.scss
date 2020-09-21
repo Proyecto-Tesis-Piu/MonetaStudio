@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 @font-face {
     src: url(../../../assets/fonts/Musket.otf);
     font-family: mus;
@@ -122,46 +124,37 @@ mat-progress-spinner {
     font-family: mus !important;
     font-size: 18px;
     height: 40vh;
-}
-
-.table h1 {
-    font-family: mus !important;
-    font-size: 18px;
-    text-align: right;
-    padding: 10px;
-}
-
-.table p {
-    text-align: right;
+    justify-content: flex-start;
 }
 
 mat-button-toggle-group {
-    border-radius: 4px;
-    margin-top: 10px;
-    float: right;
+    border-radius: 8px;
+    margin: 10px 5% 0px;
+    width: 90%;
 }
 
 mat-button-toggle {
     font-size: 15px;
-    background-color: #fff;
-    color: #000000;
+    /*background-color: #fff;
+    color: #000000;*/
     font-family: mus;
+    width: 50%;
 }
 
-.mat-button-toggle-checked {
+/*.mat-button-toggle-checked {
     background-color: #000;
     color: white;
-}
+}*/
 
 .categories {
-    margin-top: 10vh;
+    margin-top: 2vh;
 }
 
-.mat-button {
+.create-transaction-button {
     font-family: mus;
     bottom: 0px;
     float: right;
-    margin-top: 23vh;
+    margin-top: 1vh;
     border: 1px solid black;
     width: 194px;
     background-color: white;
@@ -222,6 +215,7 @@ mat-button-toggle {
 
 ::ng-deep .custom-spinner14 circle {
     stroke: #aaaaaa;
+
 }
 
 /**  List **/
@@ -344,4 +338,78 @@ button.mat-menu-item {
     width: calc(100% - 40px);
     display: flex;
     padding-right: 20px;
+}
+
+.list-item {
+    height: 36px !important;
+    justify-content: flex-start;
+}
+
+.custom-progress-bar-container {
+    width: 380%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 10px 0px 3px;
+}
+
+.custom-progress-bar-div {
+    height: 23px;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.progress-bar-div0{
+    background-color: #ff457C;
+}
+
+.progress-bar-div1 {
+    background-color: #ff7700;
+}
+
+.progress-bar-div2 {
+    background-color: #adfadf;
+}
+
+.progress-bar-div3 {
+    background-color: #ff457C;
+}
+
+.progress-bar-div4 {
+    background-color: #ff7700;
+}
+
+.progress-bar-div5 {
+    background-color: #adfadf;
+}
+
+.custom-progress-bar-div:hover {
+    @include mat-elevation(8);
+}
+
+.categories-list {
+    overflow-y: auto;
+    height: 25vh;
+    margin-top: 5px;
+    padding-top: unset;
+}
+
+::ng-deep .mat-list-text {
+    width: 120% !important;
+    padding-left: unset !important;
+    text-align: left;
+    color: #000000;
+}
+
+::ng-deep .mat-list-item-content {
+    padding: unset !important;
+}
+
+::ng-deep .tooltip-bar {
+    font-size: 12px;
+    background: #555555;
+    color: white;
+    display: block;
+    text-align: center;
 }
