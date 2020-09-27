@@ -8,7 +8,7 @@
                 class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                    (click)="editTransaction($event, node)" matRipple>
+                    (click)="handleTransaction($event, node)" matRipple>
                     <button mat-icon-button class="transaction-action-button">
                         <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete
                         </mat-icon>
@@ -47,7 +47,7 @@
                 class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                    (click)="editTransaction($event, node)" matRipple>
+                    (click)="handleTransaction($event, node)" matRipple>
                     <button mat-icon-button class="transaction-action-button">
                         <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
                     </button>
@@ -147,7 +147,8 @@
                         <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
                         <div mat-line>{{category.concept}}</div>
                         <div class="custom-progress-bar-container">
-                            <div class="custom-progress-bar-div" [ngStyle]="{'width': category.relativePercentage+'%' }"
+                            <div class="custom-progress-bar-div"
+                                [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
                                 [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
                                 matTooltip="{{category.amount | currency}} - {{category.relativePercentage}}%"
                                 [matTooltipPosition]="'right'"></div>
@@ -162,7 +163,8 @@
                         <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
                         <div mat-line>{{category.concept}}</div>
                         <div class="custom-progress-bar-container">
-                            <div class="custom-progress-bar-div" [ngStyle]="{'width': category.relativePercentage+'%' }"
+                            <div class="custom-progress-bar-div"
+                                [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
                                 [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
                                 matTooltip="{{category.amount | currency}} - {{category.relativePercentage}}%"
                                 [matTooltipPosition]="'right'"></div>
@@ -172,7 +174,8 @@
             </div>
 
             <div class="col-sm-8">
-                <button mat-button class="create-transaction-button" (click)="TransactionDialog()">Transacción</button>
+                <button mat-button class="create-transaction-button"
+                    (click)="createTransactionDialog()">Transacción</button>
             </div>
         </div>
     </div>

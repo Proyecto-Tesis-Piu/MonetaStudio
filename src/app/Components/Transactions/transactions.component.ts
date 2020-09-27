@@ -114,8 +114,8 @@ export class TransactionsComponent implements OnInit {
   expenses: Transaction[];
   incomes: Transaction[];
   public selectedVal: string;
-  fromDate:Date;
-  toDate:Date;
+  fromDate: Date;
+  toDate: Date;
 
   constructor(public dialog: MatDialog,
     private service: TransactionService) {
@@ -141,8 +141,29 @@ export class TransactionsComponent implements OnInit {
   dataSourceIncomes = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
   hasChild = (_: number, node: TransactionFlatNode) => node.expandable;
 
-  TransactionDialog(): void {
+  createTransactionDialog(): void {
     const dialogRef = this.dialog.open(NewTransactionComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result)
+        this.service.createTransaction(result, this.fromDate, this.toDate).subscribe(
+          (res: Transaction[]) => {
+            this.transactions = res;
+            this.handleTransactionsResponse();
+          },
+          err => {
+            console.log(err);
+            //default data for when the API is not on local host
+            //comment when on production
+            this.transactions = transactionTree;
+            this.expenses = this.transactions.filter(t => t.isExpense);
+            this.incomes = this.transactions.filter(t => !t.isExpense);
+            this.assignDataSources();
+          },
+          () => {
+            console.log('Complete');
+          });
+    });
   }
 
   getTransactions() {
@@ -174,9 +195,9 @@ export class TransactionsComponent implements OnInit {
     trans.icon = this.transactions.find(t => t.id == trans.category).icon;
     const dialogRef = this.dialog.open(DeleteTransactionComponentDialog, { data: trans });
 
-    dialogRef.afterClosed().subscribe((result:Boolean) => {
+    dialogRef.afterClosed().subscribe((result: Boolean) => {
       console.log('The dialog was closed');
-      if(result){
+      if (result) {
         this.service.deleteTransaction(trans.id, this.fromDate, this.toDate).subscribe(
           (res: Transaction[]) => {
             this.transactions = res;
@@ -194,10 +215,44 @@ export class TransactionsComponent implements OnInit {
           });
       }
     });
-    
+
   }
 
-  editTransaction(event, trans: TransactionFlatNode) {
+  editTransaction(trans: Transaction) {
+    var temp = new Transaction();
+    temp.amount = trans.amount;
+    temp.category = trans.category;
+    temp.concept = trans.concept;
+    temp.date = trans.date;
+    temp.id = trans.id;
+
+    const dialogRef = this.dialog.open(NewTransactionComponent, {
+      data: temp
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result)
+        this.service.modifyTransaction(result, this.fromDate, this.toDate).subscribe(
+          (res: Transaction[]) => {
+            this.transactions = res;
+            this.handleTransactionsResponse();
+          },
+          err => {
+            console.log(err);
+            //default data for when the API is not on local host
+            //comment when on production
+            this.transactions = transactionTree;
+            this.expenses = this.transactions.filter(t => t.isExpense);
+            this.incomes = this.transactions.filter(t => !t.isExpense);
+            this.assignDataSources();
+          },
+          () => {
+            console.log('Complete');
+          });
+    });
+  }
+
+  handleTransaction(event, trans: Transaction) {
     console.log(event.target.tagName);
     switch (event.target.tagName) {
       case "BUTTON":
@@ -207,7 +262,7 @@ export class TransactionsComponent implements OnInit {
         break;
       default:
         //for edit transaction
-        const dialogRef = this.dialog.open(NewTransactionComponent);
+        this.editTransaction(trans);
         break;
     }
   }
