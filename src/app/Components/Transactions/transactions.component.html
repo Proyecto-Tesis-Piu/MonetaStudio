@@ -1,84 +1,84 @@
 <div class="containerbody animate-in">
-    <!--  <div class="show"> Mostrar: Mensual &#x23f7; </div> -->
-    <div class="row">
-        <div class="negative col-sm-5">
-            <h1 style="margin: 0px;">GASTOS</h1>
 
-            <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
-                class="custom-tree disable-text-select">
-                <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                    (click)="editTransaction($event, node)" matRipple>
-                    <button mat-icon-button class="transaction-action-button">
-                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete
-                        </mat-icon>
-                    </button>
-                    <div class="transaction-text">
-                        <div>
-                            <strong>{{node.concept}}</strong><br>
-                            {{node.date | date}}
-                        </div>
-                        <div class="node-amount"> {{node.amount | currency}} </div>
+    <div class="container-transaction">
+
+    <div class="flex-item negative">
+        <h1 style="margin: 0px;">GASTOS</h1>
+
+        <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl" class="custom-tree disable-text-select">
+            <!-- This is the tree node template for leaf nodes -->
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
+                (click)="editTransaction($event, node)" matRipple>
+                <button mat-icon-button class="transaction-action-button">
+                    <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete
+                    </mat-icon>
+                </button>
+                <div class="transaction-text">
+                    <div>
+                        <strong>{{node.concept}}</strong><br>
+                        {{node.date | date}}
                     </div>
-                </mat-tree-node>
-                <!-- This is the tree node template for expandable nodes -->
-                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                    class="tree-node-category" matRipple>
-                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
-                        <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
-                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                        </mat-icon>
-                    </button>
+                    <div class="node-amount"> {{node.amount | currency}} </div>
+                </div>
+            </mat-tree-node>
+            <!-- This is the tree node template for expandable nodes -->
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+                class="tree-node-category" matRipple>
+                <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
+                    <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
+                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                </button>
 
-                    <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
-                    <div class="category-text">
-                        <div class="category-name">
-                            {{node.concept}}
-                        </div>
-                        <div class="node-amount"> {{node.amount | currency}} </div>
+                <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
+                <div class="category-text">
+                    <div class="category-name">
+                        {{node.concept}}
                     </div>
-                </mat-tree-node>
-            </mat-tree>
-        </div>
-        <div class="positive col-sm-5">
-            <h1 style="margin: 0px;">INGRESOS</h1>
+                    <div class="node-amount"> {{node.amount | currency}} </div>
+                </div>
+            </mat-tree-node>
+        </mat-tree>
+    </div>
 
-            <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
-                class="custom-tree disable-text-select">
-                <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                    (click)="editTransaction($event, node)" matRipple>
-                    <button mat-icon-button class="transaction-action-button">
-                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
-                    </button>
-                    <div class="transaction-text">
-                        <div>
-                            <strong>{{node.concept}}</strong><br>
-                            {{node.date | date}}
-                        </div>
-                        <div class="node-amount"> {{node.amount | currency}} </div>
+    <div class="flex-item positive">
+        <h1 style="margin: 0px;">INGRESOS</h1>
+
+        <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl" class="custom-tree disable-text-select">
+            <!-- This is the tree node template for leaf nodes -->
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
+                (click)="editTransaction($event, node)" matRipple>
+                <button mat-icon-button class="transaction-action-button">
+                    <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
+                </button>
+                <div class="transaction-text">
+                    <div>
+                        <strong>{{node.concept}}</strong><br>
+                        {{node.date | date}}
                     </div>
-                </mat-tree-node>
-                <!-- This is the tree node template for expandable nodes -->
-                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                    class="tree-node-category" matRipple>
-                    <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
-                        <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
-                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                        </mat-icon>
-                    </button>
+                    <div class="node-amount"> {{node.amount | currency}} </div>
+                </div>
+            </mat-tree-node>
+            <!-- This is the tree node template for expandable nodes -->
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+                class="tree-node-category" matRipple>
+                <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
+                    <mat-icon class="mat-icon-rtl-mirror material-icons-round" style="vertical-align:initial;">
+                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                </button>
 
-                    <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
-                    <div class="category-text">
-                        <div class="category-name">
-                            {{node.concept}}
-                        </div>
-                        <div class="node-amount"> {{node.amount | currency}} </div>
+                <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
+                <div class="category-text">
+                    <div class="category-name">
+                        {{node.concept}}
                     </div>
-                </mat-tree-node>
-            </mat-tree>
+                    <div class="node-amount"> {{node.amount | currency}} </div>
+                </div>
+            </mat-tree-node>
+        </mat-tree>
 
-            <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
+        <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
                 <mat-list-item class="list-item" *ngFor="let transaction of transactionsARR">
                     <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
                         matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
@@ -88,71 +88,74 @@
                 </mat-list-item>
             </mat-list> -->
 
-        </div>
     </div>
 
-    <div class="row">
-        <div class="graph-negative col-sm-5">
-            <h1>Lorem ipsum</h1>
-            <div class="row">
-                <div class="col-sm-8" style="height: fit-content;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit</p>
-                </div>
-                <div class="col-sm-4">
-                    <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
-                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.percentage" style="height: 1px;">
-                    </mat-progress-spinner>
-                </div>
+    <div class="graph-negative flex-item">
+        <h1>Categorias Gastos </h1>
+        <div class="row">
+            <div class="col-sm-8" style="height: fit-content;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit GASTOS</p>
             </div>
-            <h1 class="calendar">Calendario > 2020 </h1>
-        </div>
-
-        <div class="graph-positive col-sm-5">
-            <h1>Lorem ipsum</h1>
-            <div class="row">
-                <div class="col-sm-8" style="height: fit-content;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit</p>
-                </div>
-                <div class="col-sm-4">
-                    <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
-                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.percentage" style="height: 1px;">
-                    </mat-progress-spinner>
-                </div>
+            <div class="col-sm-4">
+                <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
+                    [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
+                    [value]="trans.percentage" style="height: 1px;">
+                </mat-progress-spinner>
             </div>
-            <h1 class="table-register">Tabla de registro </h1>
         </div>
+        <!--      <h1 class="calendar">Calendario > 2020 </h1> -->
     </div>
 
-    <div class="row">
-        <div class="month col-sm-5">
-            <h1>AGO</h1>
+
+
+
+
+
+
+    <div class="graph-positive flex-item">
+        <h1>Categorias Ingresos</h1>
+        <div class="row">
+            <div class="col-sm-8" style="height: fit-content;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit</p>
+            </div>
+            <div class="col-sm-4">
+                <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
+                    [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
+                    [value]="trans.percentage" style="height: 1px;">
+                </mat-progress-spinner>
+            </div>
         </div>
+       <!--  <h1 class="table-register">Tabla de registro </h1> -->
+    </div>
 
-        <div class="table col-sm-5">
+    <div class="table flex-item">
 
-            <mat-button-toggle-group [value]="selectedVal">
-                <mat-button-toggle value="option1">GASTOS</mat-button-toggle>
-                <mat-button-toggle value="option2">INGRESOS</mat-button-toggle>
-            </mat-button-toggle-group>
+        <mat-button-toggle-group [value]="selectedVal">
+            <mat-button-toggle value="option1">GASTOS</mat-button-toggle>
+            <mat-button-toggle value="option2">INGRESOS</mat-button-toggle>
+        </mat-button-toggle-group>
 
-            <div class="categories row">
-                <div class="col-sm-4">
-                    <P>Vivienda</P>
-                    <P>Transporte</P>
-                    <P>Entretenimiento</P>
-                    <P>Despensa</P>
-                    <P>Salud</P>
-                    <P>Ropa</P>
-                    <p>Ahorro</p>
-                </div>
-                <div class="col-sm-8">
-                    <button mat-button (click)="TransactionDialog()">Transacción</button>
-                </div>
+        <div class="categories row">
+            <div class="col-sm-4">
+                <P>Vivienda</P>
+                <P>Transporte</P>
+                <P>Entretenimiento</P>
+                <P>Despensa</P>
+                <P>Salud</P>
+                <P>Ropa</P>
+                <p>Ahorro</p>
+            </div>
+            <div class="col-sm-8">
+                <button mat-button (click)="TransactionDialog()">Transacción</button>
             </div>
         </div>
     </div>
+
+    <div class="month flex-item">
+        <h1>AGO</h1>
+    </div>
+
+</div>
 </div>
