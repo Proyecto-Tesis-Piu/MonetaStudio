@@ -1,7 +1,9 @@
 <div class="containerbody animate-in">
+
     <!--  <div class="show"> Mostrar: Mensual &#x23f7; </div> -->
-    <div class="row">
-        <div class="negative col-sm-5">
+    <div class="container-transaction">
+
+        <div class="flex-item negative">
             <h1 style="margin: 0px;">GASTOS</h1>
 
             <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
@@ -17,6 +19,7 @@
                         <div>
                             <strong>{{node.concept}}</strong><br>
                             {{node.date | date}}
+
                         </div>
                         <div class="node-amount"> {{node.amount | currency}} </div>
                     </div>
@@ -40,7 +43,8 @@
                 </mat-tree-node>
             </mat-tree>
         </div>
-        <div class="positive col-sm-5">
+
+        <div class="flex-item positive">
             <h1 style="margin: 0px;">INGRESOS</h1>
 
             <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
@@ -89,15 +93,13 @@
             </mat-list> -->
 
         </div>
-    </div>
 
-    <div class="row">
-        <div class="graph-negative col-sm-5">
-            <h1>Lorem ipsum</h1>
+        <div class="graph-negative flex-item">
+            <h1>Categorias Gastos </h1>
             <div class="row">
                 <div class="col-sm-8" style="height: fit-content;">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit</p>
+                        adipiscing elit GASTOS</p>
                 </div>
                 <div class="col-sm-4">
                     <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
@@ -106,11 +108,17 @@
                     </mat-progress-spinner>
                 </div>
             </div>
-            <h1 class="calendar">Calendario > 2020 </h1>
+            <!--      <h1 class="calendar">Calendario > 2020 </h1> -->
         </div>
 
-        <div class="graph-positive col-sm-5">
-            <h1>Lorem ipsum</h1>
+
+
+
+
+
+
+        <div class="graph-positive flex-item">
+            <h1>Categorias Ingresos</h1>
             <div class="row">
                 <div class="col-sm-8" style="height: fit-content;">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
@@ -123,16 +131,10 @@
                     </mat-progress-spinner>
                 </div>
             </div>
-            <h1 class="table-register">Tabla de registro </h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="month col-sm-5">
-            <h1>AGO</h1>
+            <!--  <h1 class="table-register">Tabla de registro </h1> -->
         </div>
 
-        <div class="table col-sm-5">
+        <div class="table flex-item">
 
             <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedVal"
                 (change)="onValChange(group.value)">
@@ -178,5 +180,10 @@
                     (click)="createTransactionDialog()">Transacción</button>
             </div>
         </div>
+
+        <div class="month flex-item">
+            <h1>AGO</h1>
+        </div>
+
     </div>
 </div>

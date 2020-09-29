@@ -34,7 +34,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { MatTreeModule } from '@angular/material/tree';
+import { MatTreeModule} from '@angular/material/tree';
+import { NoticiasComponent } from './Components/new/noticias/noticias.component';
+import { NoticiaComponent } from './Components/new/noticia/noticia.component';
+import { NewsService } from "./Components/new/service/news.service";
 
 @NgModule({
   declarations: [
@@ -47,6 +50,8 @@ import { MatTreeModule } from '@angular/material/tree';
     VideoSavioComponent,
     NewTransactionComponent,
     DeleteTransactionComponentDialog,
+    NoticiasComponent,
+    NoticiaComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +78,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTreeModule,
     MatRippleModule
   ],
-  providers: [UserService, AuthGuard, TransactionService],
+  providers: [UserService, AuthGuard, TransactionService, NewsService],
 
   bootstrap: [AppComponent]
 })
