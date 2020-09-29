@@ -14,6 +14,7 @@ import { UserService } from './Components/Users/shared/user.service';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
+import { TransactionService } from './Components/Transactions/transactions.service';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -32,10 +33,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { TransactionService } from './Components/Transactions/transactions.service';
+
 import { MatTreeModule} from '@angular/material/tree';
-import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
-import { TransactionService } from './Components/Transactions/transactions.service';
+import { NoticiasComponent } from './Components/new/noticias/noticias.component';
+import { NoticiaComponent } from './Components/new/noticia/noticia.component';
+import { NewsService } from "./Components/new/service/news.service";
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { TransactionService } from './Components/Transactions/transactions.servi
     UserComponent,
     VideoSavioComponent,
     NewTransactionComponent,
+    NoticiasComponent,
+    NoticiaComponent
   ],
   imports: [
     BrowserModule,
@@ -71,10 +75,9 @@ import { TransactionService } from './Components/Transactions/transactions.servi
     MatNativeDateModule,
     MatListModule,
     MatTreeModule,
-    MatMenuModule,
     MatRippleModule
   ],
-  providers: [UserService, AuthGuard, TransactionService],
+  providers: [UserService, AuthGuard, TransactionService, NewsService],
 
   bootstrap: [AppComponent]
 })
