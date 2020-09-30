@@ -1,10 +1,9 @@
 <div class="containerbody animate-in">
 
-    <!--  <div class="show"> Mostrar: Mensual &#x23f7; </div> -->
     <div class="container-transaction">
 
-        <div class="flex-item negative">
-            <h1 style="margin: 0px;">GASTOS</h1>
+        <div class="flex-item main-block">
+            <h1>GASTOS</h1>
 
             <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
                 class="custom-tree disable-text-select">
@@ -19,7 +18,6 @@
                         <div>
                             <strong>{{node.concept}}</strong><br>
                             {{node.date | date}}
-
                         </div>
                         <div class="node-amount"> {{node.amount | currency}} </div>
                     </div>
@@ -44,8 +42,8 @@
             </mat-tree>
         </div>
 
-        <div class="flex-item positive">
-            <h1 style="margin: 0px;">INGRESOS</h1>
+        <div class="flex-item main-block">
+            <h1>INGRESOS</h1>
 
             <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
                 class="custom-tree disable-text-select">
@@ -94,47 +92,44 @@
 
         </div>
 
-        <div class="graph-negative flex-item">
+        <div class="flex-item graph">
             <h1>Categorias Gastos </h1>
-            <div class="row">
-                <div class="col-sm-8" style="height: fit-content;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit GASTOS</p>
+            <div class="graph-container">
+                <div class="categories-container disable-text-select">
+                    <div *ngFor="let trans of expenses; let i = index" class="category">
+                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens</mat-icon>
+                        {{trans.concept}} - {{trans.percentage}}%
+                    </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="spinner-container">
                     <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
                         [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.cumulativePercentage" style="height: 1px;">
+                        [value]="trans.cumulativePercentage" style="height: 0px;">
                     </mat-progress-spinner>
                 </div>
             </div>
             <!--      <h1 class="calendar">Calendario > 2020 </h1> -->
         </div>
 
-
-
-
-
-
-
-        <div class="graph-positive flex-item">
+        <div class="flex-item graph">
             <h1>Categorias Ingresos</h1>
-            <div class="row">
-                <div class="col-sm-8" style="height: fit-content;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit</p>
+            <div class="graph-container">
+                <div class="categories-container disable-text-select">
+                    <div *ngFor="let trans of incomes; let i = index" class="category disable-text-select">
+                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens</mat-icon>
+                        {{trans.concept}} - {{trans.percentage}}%
+                    </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="spinner-container">
                     <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
                         [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.cumulativePercentage" style="height: 1px;">
+                        [value]="trans.cumulativePercentage" style="height: 0px;">
                     </mat-progress-spinner>
                 </div>
             </div>
-            <!--  <h1 class="table-register">Tabla de registro </h1> -->
         </div>
 
-        <div class="table flex-item">
+        <div class="flex-item main-block">
 
             <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedVal"
                 (change)="onValChange(group.value)">
@@ -142,47 +137,47 @@
                 <mat-button-toggle value="incomes">INGRESOS</mat-button-toggle>
             </mat-button-toggle-group>
 
+            <div class="bar-graph-container">
+                <div *ngIf="selectedVal == 'expenses'">
+                    <mat-list class="categories-list">
+                        <mat-list-item class="list-item" *ngFor="let category of expenses; let i = index">
+                            <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
+                            <div mat-line>{{category.concept}}</div>
+                            <div class="custom-progress-bar-container">
+                                <div class="custom-progress-bar-div"
+                                    [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
+                                    [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
+                                    matTooltip="{{category.amount | currency}} - {{category.percentage}}%"
+                                    [matTooltipPosition]="'right'"></div>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
 
-            <div *ngIf="selectedVal == 'expenses'">
-                <mat-list class="categories-list">
-                    <mat-list-item class="list-item" *ngFor="let category of expenses; let i = index">
-                        <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
-                        <div mat-line>{{category.concept}}</div>
-                        <div class="custom-progress-bar-container">
-                            <div class="custom-progress-bar-div"
-                                [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
-                                [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
-                                matTooltip="{{category.amount | currency}} - {{category.relativePercentage}}%"
-                                [matTooltipPosition]="'right'"></div>
-                        </div>
-                    </mat-list-item>
-                </mat-list>
+                <div *ngIf="selectedVal == 'incomes'">
+                    <mat-list class="categories-list">
+                        <mat-list-item class="list-item" *ngFor="let category of incomes; let i = index">
+                            <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
+                            <div mat-line>{{category.concept}}</div>
+                            <div class="custom-progress-bar-container">
+                                <div class="custom-progress-bar-div"
+                                    [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
+                                    [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
+                                    matTooltip="{{category.amount | currency}} - {{category.percentage}}%"
+                                    [matTooltipPosition]="'right'"></div>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
             </div>
+            <button mat-button class="create-transaction-button"
+                (click)="createTransactionDialog()">Transacción</button>
 
-            <div *ngIf="selectedVal == 'incomes'">
-                <mat-list class="categories-list">
-                    <mat-list-item class="list-item" *ngFor="let category of incomes; let i = index">
-                        <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
-                        <div mat-line>{{category.concept}}</div>
-                        <div class="custom-progress-bar-container">
-                            <div class="custom-progress-bar-div"
-                                [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
-                                [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
-                                matTooltip="{{category.amount | currency}} - {{category.relativePercentage}}%"
-                                [matTooltipPosition]="'right'"></div>
-                        </div>
-                    </mat-list-item>
-                </mat-list>
-            </div>
-
-            <div class="col-sm-8">
-                <button mat-button class="create-transaction-button"
-                    (click)="createTransactionDialog()">Transacción</button>
-            </div>
         </div>
 
-        <div class="month flex-item">
-            <h1>AGO</h1>
+        <div class="flex-item main-block">
+            <!-- <h1>Calendario > 2020</h1>
+            <h2 class="month-name">AGO</h2> -->
         </div>
 
     </div>
