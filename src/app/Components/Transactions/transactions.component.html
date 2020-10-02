@@ -97,15 +97,25 @@
             <div class="graph-container">
                 <div class="categories-container disable-text-select">
                     <div *ngFor="let trans of expenses; let i = index" class="category">
-                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens</mat-icon>
-                        {{trans.concept}} - {{trans.percentage}}%
+                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens
+                        </mat-icon>
+                        {{trans.concept}}
                     </div>
                 </div>
-                <div class="spinner-container">
-                    <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
-                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.cumulativePercentage" style="height: 0px;">
-                    </mat-progress-spinner>
+                <div class="spinner-container2">
+                    <!-- <mat-progress-spinner *ngFor="let trans of expenses; let i = index" [ngClass]="'custom-spinner'+i"
+                        [diameter]="100" [strokeWidth]="60" mode="determinate"
+                        [value]="trans.cumulativePercentage" style="height: 0px;" matTooltip="{{trans.amount | currency}} - {{trans.percentage}}%"
+                        [matTooltipPosition]="'above'">
+                    </mat-progress-spinner> -->
+                    <canvas mdbChart [chartType]="chartType" [datasets]="expenseDatasets" [labels]="expenseLabels"
+                        [colors]="chartColors" [options]="chartOptions" [legend]="false"
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"
+                        style="height: 85%; width:100%">
+                    </canvas>
+                    <div id="chartjs-tooltip">
+                        <table></table>
+                    </div>
                 </div>
             </div>
             <!--      <h1 class="calendar">Calendario > 2020 </h1> -->
@@ -116,15 +126,21 @@
             <div class="graph-container">
                 <div class="categories-container disable-text-select">
                     <div *ngFor="let trans of incomes; let i = index" class="category disable-text-select">
-                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens</mat-icon>
-                        {{trans.concept}} - {{trans.percentage}}%
+                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens
+                        </mat-icon>
+                        {{trans.concept}}
                     </div>
                 </div>
-                <div class="spinner-container">
-                    <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
+                <div class="spinner-container2">
+                    <canvas mdbChart [chartType]="chartType" [datasets]="incomeDatasets" [labels]="incomeLabels"
+                        [colors]="chartColors" [options]="chartOptions" [legend]="false"
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"
+                        style="height: 85%; width:100%">
+                    </canvas>
+                    <!-- <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
                         [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
                         [value]="trans.cumulativePercentage" style="height: 0px;">
-                    </mat-progress-spinner>
+                    </mat-progress-spinner> -->
                 </div>
             </div>
         </div>
@@ -146,7 +162,7 @@
                             <div class="custom-progress-bar-container">
                                 <div class="custom-progress-bar-div"
                                     [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
-                                    [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
+                                    [ngClass]="'progress-bar-div'+i" matTooltipClass="transaction-tooltip"
                                     matTooltip="{{category.amount | currency}} - {{category.percentage}}%"
                                     [matTooltipPosition]="'right'"></div>
                             </div>

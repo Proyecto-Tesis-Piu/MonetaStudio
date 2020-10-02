@@ -117,6 +117,102 @@ export class TransactionsComponent implements OnInit {
   fromDate: Date;
   toDate: Date;
 
+  //for piechart
+  public expenseDatasets: Array<any>;
+  public expenseLabels: Array<any>;
+  public incomeDatasets: Array<any>;
+  public incomeLabels: Array<any>;
+
+  public chartType: string = 'doughnut';
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
+      borderWidth: 2,
+    }
+  ];
+  public chartOptions: any = {
+    responsive: true,
+    tooltips: {
+      // Disable the on-canvas tooltip
+      enabled: false,
+
+      custom: function (tooltipModel: any) {
+        // Tooltip Element
+        let tooltipEl = document.getElementById('chartjs-tooltip');
+
+        // Create element on first render
+        if (!tooltipEl) {
+          tooltipEl = document.createElement('div');
+          tooltipEl.id = 'chartjs-tooltip';
+          tooltipEl.innerHTML = '<table></table>';
+          document.body.appendChild(tooltipEl);
+        }
+
+        // Hide if no tooltip
+        if (tooltipModel.opacity === 0) {
+          tooltipEl.style.opacity = '0';
+          return;
+        }
+
+        // Set caret Position
+        tooltipEl.classList.remove('above', 'below', 'no-transform');
+        if (tooltipModel.yAlign) {
+          tooltipEl.classList.add(tooltipModel.yAlign);
+        } else {
+          tooltipEl.classList.add('no-transform');
+        }
+
+        function getBody(bodyItem: { lines: any }) {
+          return bodyItem.lines;
+        }
+
+        // Set Text
+        if (tooltipModel.body) {
+          const titleLines = tooltipModel.title || [];
+          const bodyLines = tooltipModel.body.map(getBody);
+
+          let innerHtml = '<thead>';
+
+          titleLines.forEach(function (title: string) {
+            innerHtml += '<tr><th>' + title + '</th></tr>';
+          });
+          innerHtml += '</thead><tbody>';
+
+          bodyLines.forEach(function (body: string, i: string | number) {
+            var text = body[0].split(':');
+            const colors = tooltipModel.labelColors[i];
+            let style = 'background-color:' + colors.backgroundColor;
+            style += '; display: inline-block; width: 10px; height: 10px; margin-right: 10px;';
+            const span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+            innerHtml += '<tr><td>' + span + text[0] + ' - ' + text[1] + '%</td></tr>';
+          });
+          innerHtml += '</tbody>';
+
+          const tableRoot = tooltipEl.querySelector('table');
+          if (tableRoot) {
+            tableRoot.innerHTML = innerHtml;
+          }
+        }
+
+        // `this` will be the overall tooltip
+        var position = this._chart.canvas.getBoundingClientRect();
+
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity = '1';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+        tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+        //tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+        tooltipEl.style.fontSize = '12px';
+        tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+        tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+        tooltipEl.style.pointerEvents = 'none';
+      },
+    },
+  };
+
   constructor(public dialog: MatDialog,
     private service: TransactionService) {
 
@@ -189,6 +285,10 @@ export class TransactionsComponent implements OnInit {
   assignDataSources() {
     this.dataSourceExpenses.data = this.expenses;
     this.dataSourceIncomes.data = this.incomes;
+    this.expenseDatasets = [ { data: this.expenses.map(e => e.percentage) } ];
+    this.expenseLabels = this.expenses.map(e => e.concept);
+    this.incomeDatasets = [ { data: this.incomes.map(e => e.percentage) } ];
+    this.incomeLabels = this.incomes.map(e => e.concept);
   }
 
   deleteTransaction(trans: Transaction) {
@@ -289,6 +389,9 @@ export class TransactionsComponent implements OnInit {
     });
     this.assignDataSources();
   }
+
+  public chartClicked(e: any): void { }
+  public chartHovered(e: any): void { }
 }
 
 

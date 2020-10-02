@@ -5,7 +5,6 @@
     font-family: mus;
 }
 
-
 .month-name {
     font-family: mus !important;
     font-size: 24px;
@@ -59,7 +58,7 @@ mat-button-toggle {
 
 .create-transaction-button {
     font-family: mus;
-    margin: 1vh calc(50% - 194px / 2);
+    margin: 0px calc(50% - 194px / 2);
     border: 1px solid black;
     width: 194px;
     background-color: white;
@@ -72,6 +71,12 @@ mat-button-toggle {
 .spinner-container {
     width: 24%;
     padding: 25px;
+}
+
+.spinner-container2 {
+    display: block;
+    width: 24%;
+    height: 100%;
 }
 
 .categories-container {
@@ -90,7 +95,7 @@ mat-button-toggle {
     width: auto;
 }
 
-.category>mat-icon{
+.category > mat-icon {
     font-size: 9px;
     width: 9px;
     height: 9px;
@@ -102,36 +107,56 @@ mat-button-toggle {
     justify-content: flex-start;
     align-items: flex-start;
     display: flex;
+    height: calc(100% - 32px);
 }
 
 ::ng-deep .custom-spinner0 circle,
 .category-ball0 {
     stroke: #000000;
     color: #000000;
+    z-index: 0;
 }
 
 ::ng-deep .custom-spinner1 circle,
 .category-ball1 {
     stroke: #222222;
     color: #222222;
+    z-index: 1;
 }
 
 ::ng-deep .custom-spinner2 circle,
 .category-ball2 {
     stroke: #444444;
     color: #444444;
+    z-index: 2;
 }
 
 ::ng-deep .custom-spinner3 circle,
 .category-ball3 {
     stroke: #777777;
     color: #777777;
+    z-index: 3;
 }
 
 ::ng-deep .custom-spinner4 circle,
 .category-ball4 {
     stroke: #aaaaaa;
     color: #aaaaaa;
+    z-index: 4;
+}
+
+::ng-deep .custom-spinner5 circle,
+.category-ball5 {
+    stroke: #cccccc;
+    color: #cccccc;
+    z-index: 5;
+}
+
+::ng-deep .custom-spinner6 circle,
+.category-ball6 {
+    stroke: #ffffff;
+    color: #ffffff;
+    z-index: 6;
 }
 
 /**  List **/
@@ -356,9 +381,27 @@ mat-button-toggle {
 }
 
 .bar-graph-container {
-    height: 67%;
+    height: calc(67% - 9px);
+    margin-bottom: 9px;
 }
 
 .bar-graph-container > div {
-    height: calc(100% - 9px);
+    height: 100%;
+}
+
+#chartjs-tooltip {
+    opacity: 1;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 3px;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+    pointer-events: none;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+::ng-deep .transaction-tooltip{
+    font-size: 12px;
 }
