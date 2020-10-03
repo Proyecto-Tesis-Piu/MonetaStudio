@@ -6,6 +6,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewTransactionComponent } from './new-transaction/new-transaction.component';
 import { TransactionService } from './transactions.service'
 import { DeleteTransactionComponentDialog } from './delete-transaction/delete-transaction.component';
+import { IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyRangeDateSelection, IMyDate } from 'angular-mydatepicker';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { CalendarDate } from './calendarDate.model';
 
 const transactionTree: Transaction[] = [
   {
@@ -113,6 +116,9 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
   expenses: Transaction[];
   incomes: Transaction[];
+  expenseDates: IMyMarkedDates;
+  incomeDates: IMyMarkedDates;
+  expenseIncomeDates: IMyMarkedDates;
   public selectedVal: string;
   fromDate: Date;
   toDate: Date;
@@ -213,8 +219,25 @@ export class TransactionsComponent implements OnInit {
     },
   };
 
+  //for datePicker
+  myDpOptions: IAngularMyDpOptions = {
+    inline: true,
+    dateRange: true,
+    dateFormat: 'dd.mm.yyyy',
+    sunHighlight: false,
+    dayLabels: { su: 'Dom', mo: 'Lun', tu: 'Mar', we: 'Mie', th: 'Jue', fr: 'Vie', sa: 'Sab' },
+    monthLabels: { 1: 'Ene', 2: 'Feb', 3: 'Mar', 4: 'Abr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Ago', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dic' },
+    // other options are here...
+  };
+
+  myDateInit: boolean = true;
+  model: IMyDateModel = null;
+
+  snackBarRef: MatSnackBarRef<SimpleSnackBar>;
+
   constructor(public dialog: MatDialog,
-    private service: TransactionService) {
+    private service: TransactionService,
+    private _snackBar: MatSnackBar) {
 
     var date = new Date();
 
@@ -223,11 +246,39 @@ export class TransactionsComponent implements OnInit {
     this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
     this.getTransactions();
+    this.getCalendarDates();
 
     this.selectedVal = 'expenses';
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.myDateInit) {
+      // Initialize to specific date range with IMyDate object. 
+
+      this.model = {
+        isRange: true,
+        singleDate: null,
+        dateRange: {
+          beginDate: {
+            year: this.fromDate.getFullYear(), month: this.fromDate.getMonth() + 1, day: this.fromDate.getDate()
+          },
+          endDate: {
+            year: this.toDate.getFullYear(), month: this.toDate.getMonth() + 1, day: this.toDate.getDate()
+          }
+        }
+      };
+    }
+    else {
+      this.model = {
+        isRange: true,
+        singleDate: null,
+        dateRange: {
+          beginJsDate: this.fromDate,
+          endJsDate: this.toDate
+        }
+      };
+    }
+  }
 
   public onValChange(val: string) {
     this.selectedVal = val;
@@ -266,6 +317,12 @@ export class TransactionsComponent implements OnInit {
     this.service.getTransactions(this.fromDate, this.toDate).subscribe(
       (res: Transaction[]) => {
         this.transactions = res;
+        if (this.transactions.length > 0) {
+          if (this.snackBarRef)
+            this.snackBarRef.dismiss();
+        } else {
+          this.snackBarRef = this._snackBar.open("No hay transacciones para el rango de fechas seleccionado.", 'Cerrar', { duration: 10000, panelClass: ['snackbar'] });
+        }
         this.handleTransactionsResponse();
       },
       err => {
@@ -285,9 +342,9 @@ export class TransactionsComponent implements OnInit {
   assignDataSources() {
     this.dataSourceExpenses.data = this.expenses;
     this.dataSourceIncomes.data = this.incomes;
-    this.expenseDatasets = [ { data: this.expenses.map(e => e.percentage) } ];
+    this.expenseDatasets = [{ data: this.expenses.map(e => e.percentage) }];
     this.expenseLabels = this.expenses.map(e => e.concept);
-    this.incomeDatasets = [ { data: this.incomes.map(e => e.percentage) } ];
+    this.incomeDatasets = [{ data: this.incomes.map(e => e.percentage) }];
     this.incomeLabels = this.incomes.map(e => e.concept);
   }
 
@@ -365,6 +422,7 @@ export class TransactionsComponent implements OnInit {
         this.editTransaction(trans);
         break;
     }
+    this.getCalendarDates();
   }
 
   handleTransactionsResponse() {
@@ -388,6 +446,63 @@ export class TransactionsComponent implements OnInit {
       return 0;
     });
     this.assignDataSources();
+  }
+
+  onRangeDateSelection(event: IMyRangeDateSelection): void {
+    if (event.isBegin) {
+      this.fromDate = event.jsDate;
+    } else {
+      this.toDate = event.jsDate;
+      this.getTransactions();
+    }
+
+    // console.log('onRangeDateSelection(): event: ', event);
+    // console.log('begin', this.fromDate);
+    // console.log('end', this.toDate);
+  }
+
+  getCalendarDates() {
+    let copyOfOptions: IAngularMyDpOptions = this.getCopyOfOptions();
+    this.service.getCalendarDates().subscribe(
+      (res: CalendarDate[]) => {
+        this.expenseDates = { color: "red", dates: res.filter(item => item.hasExpense && !item.hasIncome)
+          .map(
+            date => {
+              var dateValue = new Date(date.date);
+              var dateModel = {day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
+              return dateModel;
+            })};
+
+        this.incomeDates = { color: "green", dates: res.filter(item => !item.hasExpense && item.hasIncome)
+          .map(
+            date => {
+              var dateValue = new Date(date.date);
+              var dateModel = {day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
+              return dateModel;
+            })};
+
+        this.expenseIncomeDates = { color: "black", dates: res.filter(item => item.hasExpense && item.hasIncome)
+          .map(
+            date => {
+              var dateValue = new Date(date.date);
+              var dateModel = {day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
+              return dateModel;
+            })};
+        
+        //this.myDpOptions.markDates = [this.expenseDates, this.incomeDates, this.expenseIncomeDates];
+        copyOfOptions.markDates = [this.expenseDates, this.incomeDates, this.expenseIncomeDates];
+        this.myDpOptions = copyOfOptions;
+      },
+      err => {
+
+      },
+      () => {
+        console.log('Complete');
+      });
+  }
+
+  getCopyOfOptions(): IAngularMyDpOptions {
+    return JSON.parse(JSON.stringify(this.myDpOptions));
   }
 
   public chartClicked(e: any): void { }

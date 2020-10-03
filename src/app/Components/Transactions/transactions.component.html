@@ -110,8 +110,7 @@
                     </mat-progress-spinner> -->
                     <canvas mdbChart [chartType]="chartType" [datasets]="expenseDatasets" [labels]="expenseLabels"
                         [colors]="chartColors" [options]="chartOptions" [legend]="false"
-                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"
-                        style="height: 85%; width:100%">
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
                     <div id="chartjs-tooltip">
                         <table></table>
@@ -134,8 +133,7 @@
                 <div class="spinner-container2">
                     <canvas mdbChart [chartType]="chartType" [datasets]="incomeDatasets" [labels]="incomeLabels"
                         [colors]="chartColors" [options]="chartOptions" [legend]="false"
-                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"
-                        style="height: 85%; width:100%">
+                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
                     <!-- <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
                         [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
@@ -192,8 +190,15 @@
         </div>
 
         <div class="flex-item main-block">
-            <!-- <h1>Calendario > 2020</h1>
-            <h2 class="month-name">AGO</h2> -->
+            <div class="input-box-container">
+                <input type="hidden" angular-mydatepicker name="mydate" [(ngModel)]="model" [(options)]="myDpOptions"
+                    #dp="angular-mydatepicker" (rangeDateSelection)="onRangeDateSelection($event)" />
+            </div>
+            <div class="legends">
+                <div class="legend"><span class="myDpMarkDate legend-mark" style="border-top: 8px solid red;"></span>Gasto</div>
+                <div class="legend"><span class="myDpMarkDate legend-mark" style="border-top: 8px solid green;"></span>Ingreso</div>
+                <div class="legend"><span class="myDpMarkDate legend-mark" style="border-top: 8px solid black;"></span>Gasto e Ingreso</div>
+            </div>
         </div>
 
     </div>
