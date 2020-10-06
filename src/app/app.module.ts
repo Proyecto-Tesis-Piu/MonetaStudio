@@ -35,9 +35,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 
 import { MatTreeModule} from '@angular/material/tree';
-import { NoticiasComponent } from './Components/new/noticias/noticias.component';
-import { NoticiaComponent } from './Components/new/noticia/noticia.component';
 import { NewsService } from "./Components/new/service/news.service";
+import { NewsComponent } from "./Components/new/News/news.component";
+import { NewComponent } from "./Components/new/New/new.component";
 
 @NgModule({
   declarations: [
@@ -49,8 +49,8 @@ import { NewsService } from "./Components/new/service/news.service";
     UserComponent,
     VideoSavioComponent,
     NewTransactionComponent,
-    NoticiasComponent,
-    NoticiaComponent
+    NewComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

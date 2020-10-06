@@ -5,7 +5,7 @@
 
 
         <div class="menu-buttons">
-            <button mat-raised-button (click)="openSidenav = false;">
+            <button mat-raised-button [routerLink]="['news']" (click)="openSidenav = false;">
                 <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Noticias
             </button> <br><br>
             <button mat-raised-button [routerLink]="['home']" (click)="openSidenav = false;">

@@ -12,10 +12,11 @@ export class NewComponent implements OnInit {
   noticia: any = {};
 
   constructor(private activated: ActivatedRoute,
-    private _heroe: NewsService) {
+    private _service: NewsService) {
 
     this.activated.params.subscribe(params => {
-      this.noticia =  this._heroe.getNoticias(params['id']);
+      this.noticia =  this._service.getNew(params['i']);
+      console.log(this._service.getNew(params['i']))
     })
 
   }

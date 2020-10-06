@@ -11,12 +11,12 @@
                     <li style=" font-size: 20px;" *ngIf="token"><a style="padding-bottom: 6px; background-color: red;"
                             mat-raised-button (click)="logout()">Cerrar Sesión</a></li>
                     <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token"><a
-                        [routerLink]="['user','modify']">Modificar Datos</a></li>
+                            [routerLink]="['user','modify']">Modificar Datos</a></li>
                     <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button
                             (click)="openDialog()">Iniciar Sesión</a>
                     </li>
-                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a  (click)="newUser()">Crear
-                        Cuenta</a></li>
+                    <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a (click)="newUser()">Crear
+                            Cuenta</a></li>
                     <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
                         <a style="color: #007bff;" [routerLink]="['/transactions']">
                             Transacciones </a></li>
@@ -24,9 +24,8 @@
                         (click)="savio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
                             style="color: #007bff;">
                             Savio </a></li>
-                    <li style="margin-top: 20px; font-size: 20px;" class="line"
-                        (click)="news.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
-                            style="color: #007bff;">Noticias</a></li>
+                    <li style="margin-top: 20px; font-size: 20px;" class="line"><a style="color: #007bff;" [routerLink]="['/news']">Noticias</a>
+                    </li>
                 </div>
             </ul>
             <div id="grad1"></div>
@@ -138,8 +137,7 @@
             </div>
         </div>
 
-
-        <!-- Moticias -->
+<!--
 
         <div #news class="news">
 
@@ -216,7 +214,6 @@
         </div>
 
 
-        <!-- Moticias 2-->
         <div id="news2" class="news2">
 
             <h1 style="padding-top: 20px;" class="slider-title2">Noticias</h1>
@@ -304,6 +301,10 @@
                 </div>
             </div>
         </div>
+    -->
+
+
+
     </div>
 
 </div>

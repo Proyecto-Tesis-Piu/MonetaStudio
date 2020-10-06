@@ -5,6 +5,8 @@ import { RegistrationComponent } from './Components/Users/registration/registrat
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { UserComponent } from './Components/Users/user.component';
+import { NewsComponent } from './Components/new/News/news.component';
+import { NewComponent } from './Components/new/New/new.component';
 
 const routes: Routes = [
   {path:'home', component: HomeComponent },
@@ -12,6 +14,8 @@ const routes: Routes = [
     {path:'modify', component: RegistrationComponent },
     {path:'create', component: RegistrationComponent },
   ]},
+  {path: 'news', component: NewsComponent},
+  {path: 'news/new/:i', component: NewComponent},
   {
     path:'transactions', component: TransactionsComponent, canActivate: [AuthGuard]
   },
