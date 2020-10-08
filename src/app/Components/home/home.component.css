@@ -155,16 +155,6 @@ div li .custom-button {
     margin-left: 5vw;
 }
 
-::ng-deep .tooltip-icon {
-    position: relative;
-    font-size: 15px;
-    min-width: 120px;
-    background: #555555;
-    color: white;
-    display: block;
-    text-align: center;
-}
-
 /********************************Fin Rubros***********************************************/
 
 /*******************************Savio Message*****************/

@@ -1,130 +1,38 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 
 @font-face {
     src: url(../../../assets/fonts/Musket.otf);
     font-family: mus;
 }
 
-mat-progress-spinner {
-    position: static;
-}
-
-.show {
-    text-align: right;
-    margin-right: 4vw;
-    margin-bottom: 2vh;
-    font-family: mus !important;
-}
-
-.containerbody {
-    height: fit-content;
-    padding-left: 15vw;
-    padding-right: 15vw;
-    margin-top: -3vh;
-}
-
-.negative {
-    margin-left: 4vw;
-    background-color: #04ECD6;
-    max-width: 80vw;
-    border-radius: 25px;
-    font-family: mus !important;
-    font-size: 18px;
-    height: 34vh;
-}
-
-.negative h1 {
-    font-family: mus !important;
-    font-size: 18px;
-    text-align: left;
-    padding: 10px;
-}
-
-.graph-negative {
-    background-color: #fff;
-    max-width: 80vw;
-    border-radius: 25px;
-    font-family: mus !important;
-    height: 20vh;
-    margin-left: 4vw;
-}
-
-.graph-negative h1 {
-    font-family: mus !important;
-    font-size: 18px;
-    text-align: left;
-    margin: 0px;
-}
-
-.calendar {
-    position: absolute;
-    bottom: 0;
-}
-
-.month {
-    background-color: #04ECD6;
-    max-width: 80vw;
-    border-radius: 25px;
-    font-family: mus !important;
-    font-size: 18px;
-    height: 40vh;
-    margin-left: 4vw;
-}
-
-.month h1 {
+.month-name {
     font-family: mus !important;
     font-size: 24px;
     text-align: center;
     margin-top: 1vh;
+    padding: 0px auto !important;
 }
 
-.positive {
-    margin-left: 4vw;
-    background-color: #04ECD6;
-    max-width: 80vw;
-    border-radius: 25px;
+.main-block h1 {
     font-family: mus !important;
     font-size: 18px;
-    height: 34vh;
+    padding-bottom: 10px;
+    margin: 0px;
 }
 
-.positive h1 {
-    font-family: mus !important;
-    font-size: 18px;
-    text-align: left;
-    padding: 10px;
-}
-
-.graph-positive {
+.graph {
     background-color: #fff;
     max-width: 80vw;
-    border-radius: 25px;
     font-family: mus !important;
     height: 20vh;
     margin-left: 4vw;
 }
 
-.graph-positive h1 {
+.graph h1 {
     font-family: mus !important;
     font-size: 18px;
     text-align: left;
     margin: 0px;
-}
-
-.table-register {
-    position: absolute;
-    bottom: 0;
-}
-
-.table {
-    margin-left: 4vw;
-    background-color: #04ECD6;
-    max-width: 80vw;
-    border-radius: 25px;
-    font-family: mus !important;
-    font-size: 18px;
-    height: 40vh;
-    justify-content: flex-start;
 }
 
 mat-button-toggle-group {
@@ -135,8 +43,6 @@ mat-button-toggle-group {
 
 mat-button-toggle {
     font-size: 15px;
-    /*background-color: #fff;
-    color: #000000;*/
     font-family: mus;
     width: 50%;
 }
@@ -152,9 +58,7 @@ mat-button-toggle {
 
 .create-transaction-button {
     font-family: mus;
-    bottom: 0px;
-    float: right;
-    margin-top: 1vh;
+    margin: 0px calc(50% - 194px / 2);
     border: 1px solid black;
     width: 194px;
     background-color: white;
@@ -164,71 +68,112 @@ mat-button-toggle {
 
 /*********************SPIN*********************************/
 
-::ng-deep .custom-spinner0 circle {
+.spinner-container {
+    width: 24%;
+    padding: 25px;
+}
+
+.spinner-container2 {
+    display: flex;
+    width: 18rem;
+    height: 36rem;
+    padding-bottom: 1rem;
+}
+
+.categories-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    padding: 10px 10px 0px 10px;
+    margin: 0px;
+    width: 75%;
+    height: 100%;
+}
+
+.category {
+    margin: 5px;
+    height: 20px;
+    width: auto;
+}
+
+.category > mat-icon {
+    font-size: 9px;
+    width: 9px;
+    height: 9px;
+}
+
+.graph-container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    height: calc(100% - 32px);
+    padding-bottom: 10px;
+}
+
+::ng-deep .custom-spinner0 circle,
+.category-ball0 {
     stroke: #000000;
+    color: #000000;
+    z-index: 0;
 }
 
-::ng-deep .custom-spinner1 circle {
+::ng-deep .custom-spinner1 circle,
+.category-ball1 {
     stroke: #222222;
+    color: #222222;
+    z-index: 1;
 }
 
-::ng-deep .custom-spinner2 circle {
+::ng-deep .custom-spinner2 circle,
+.category-ball2 {
     stroke: #444444;
+    color: #444444;
+    z-index: 2;
 }
 
-::ng-deep .custom-spinner3 circle {
+::ng-deep .custom-spinner3 circle,
+.category-ball3 {
     stroke: #777777;
+    color: #777777;
+    z-index: 3;
 }
 
-::ng-deep .custom-spinner4 circle {
+::ng-deep .custom-spinner4 circle,
+.category-ball4 {
     stroke: #aaaaaa;
+    color: #aaaaaa;
+    z-index: 4;
 }
 
-/* .custom-spinner{
-    top:60%;
-    left:50%;
-    position: absolute;
-    margin-left: -11.5vw;
-    margin-top: -28vh;
-} */
-
-#Spinn {
-    margin-left: 22vw;
-    margin-top: -8vh;
+::ng-deep .custom-spinner5 circle,
+.category-ball5 {
+    stroke: #cccccc;
+    color: #cccccc;
+    z-index: 5;
 }
 
-::ng-deep .custom-spinner10 circle {
-    stroke: #000000;
-}
-
-::ng-deep .custom-spinner11 circle {
-    stroke: #222222;
-}
-
-::ng-deep .custom-spinner12 circle {
-    stroke: #444444;
-}
-
-::ng-deep .custom-spinner13 circle {
-    stroke: #777777;
-}
-
-::ng-deep .custom-spinner14 circle {
-    stroke: #aaaaaa;
-
+::ng-deep .custom-spinner6 circle,
+.category-ball6 {
+    stroke: #ffffff;
+    color: #ffffff;
+    z-index: 6;
 }
 
 /**  List **/
 
 ::ng-deep .custom-tree {
     overflow-y: auto;
-    height: 25vh;
+    max-height: calc(36vh - 42px - 9%);
     padding-top: 0px;
     background-color: rgb(255 255 255 / 25%);
     border-radius: 10px;
 }
 
-::ng-deep .mat-icon-button:hover, .mat-icon-button:active, .mat-icon-button:focus {
+::ng-deep .mat-icon-button:hover,
+.mat-icon-button:active,
+.mat-icon-button:focus {
     outline: none;
     border: 0;
 }
@@ -314,11 +259,6 @@ mat-button-toggle {
     visibility: hidden;
 }
 
-button.mat-menu-item {
-    outline: none;
-    border: 0;
-}
-
 .disable-text-select * {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -357,11 +297,11 @@ button.mat-menu-item {
 .custom-progress-bar-div {
     height: 23px;
     border-radius: 5px;
-    transition: .5s;
+    transition: 0.5s;
 }
 
-.progress-bar-div0{
-    background-color: #ff457C;
+.progress-bar-div0 {
+    background-color: #ff457c;
 }
 
 .progress-bar-div1 {
@@ -373,7 +313,7 @@ button.mat-menu-item {
 }
 
 .progress-bar-div3 {
-    background-color: #ff457C;
+    background-color: #ff457c;
 }
 
 .progress-bar-div4 {
@@ -390,8 +330,8 @@ button.mat-menu-item {
 
 .categories-list {
     overflow-y: auto;
-    height: 25vh;
-    margin-top: 5px;
+    height: 100%;
+    margin-top: 9px;
     padding-top: unset;
 }
 
@@ -406,10 +346,87 @@ button.mat-menu-item {
     padding: unset !important;
 }
 
+/* Flex box*/
+.flex-item {
+    width: 45%;
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+.main-block {
+    background-color: #04ecd6;
+    border-radius: 25px;
+    height: 36vh;
+    max-width: 80vw;
+    justify-content: flex-start;
+    padding: 1%;
+}
+
+.containerbody {
+    margin-top: -4vh;
+    width: 99.9vw;
+}
+
+.container-transaction {
+    display: flex;
+    flex-flow: row wrap;
+    width: 77vw;
+    margin: 0px auto;
+}
+
 ::ng-deep .tooltip-bar {
     font-size: 12px;
     background: #555555;
     color: white;
     display: block;
     text-align: center;
+}
+
+.bar-graph-container {
+    height: calc(67% - 9px);
+    margin-bottom: 9px;
+}
+
+.bar-graph-container > div {
+    height: 100%;
+}
+
+#chartjs-tooltip {
+    opacity: 1;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 3px;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+    pointer-events: none;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+::ng-deep .transaction-tooltip {
+    font-size: 12px;
+}
+
+::ng-deep .snackbar {
+    background: #222222;
+    color: #ffffff;
+}
+
+.legends {
+    display: flex;
+    padding-top: 5px;
+}
+
+.legend {
+    width: fit-content;
+    margin-left: 10px;
+    background-color: white;
+    padding-right: 7px;
+}
+
+.legend-mark {
+    top: 7px;
+    left: unset;
+    position: relative;
 }

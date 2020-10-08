@@ -109,3 +109,13 @@
 .button-logout{
     filter: none;
 }
+
+::ng-deep .tooltip-icon {
+    position: relative;
+    font-size: 15px;
+    min-width: 90px;
+    background: #555555;
+    color: white;
+    display: block;
+    text-align: center;
+}

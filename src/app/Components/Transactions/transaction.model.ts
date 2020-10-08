@@ -4,7 +4,7 @@ export class Transaction {
     amount: number = 0;
     isExpense?: boolean;
     childrenTransactions?:Transaction[];
-    id:string = "";
+    id?:string;
     icon?:String;
     userId?:String;
     cumulativePercentage?:number;
@@ -15,11 +15,11 @@ export class Transaction {
 
 export class TransactionFlatNode {
     expandable: boolean;
-    concept: string;
+    concept: string = "";
     date?: Date;
-    amount: number;
+    amount: number = 0;
     isExpense?: boolean;
-    id:string;
+    id?:string;
     icon?:String;
     level: number;
     userId?:String;
