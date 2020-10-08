@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,9 +13,13 @@ import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { UserComponent } from './Components/Users/user.component';
 import { UserService } from './Components/Users/shared/user.service';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
+import { TransactionService } from './Components/Transactions/transactions.service';
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
-import { TransactionService } from './Components/Transactions/transactions.service';
+import { DeleteTransactionComponentDialog } from './Components/Transactions/delete-transaction/delete-transaction.component';
+import { NewsService } from "./Components/new/service/news.service";
+import { NewsComponent } from "./Components/new/News/news.component";
+import { NewComponent } from "./Components/new/New/new.component";
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -30,14 +35,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-
-import { MatTreeModule} from '@angular/material/tree';
-import { NewsService } from "./Components/new/service/news.service";
-import { NewsComponent } from "./Components/new/News/news.component";
-import { NewComponent } from "./Components/new/New/new.component";
+import { MatTreeModule } from '@angular/material/tree';
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { NewComponent } from "./Components/new/New/new.component";
     VideoSavioComponent,
     NewTransactionComponent,
     NewComponent,
-    NewsComponent
+    NewsComponent,
+    DeleteTransactionComponentDialog,
   ],
   imports: [
     BrowserModule,
@@ -75,10 +78,14 @@ import { NewComponent } from "./Components/new/New/new.component";
     MatNativeDateModule,
     MatListModule,
     MatTreeModule,
-    MatRippleModule
+    MatRippleModule,
+    ChartsModule,
+    WavesModule,
+    AngularMyDatePickerModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

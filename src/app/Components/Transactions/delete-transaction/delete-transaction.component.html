@@ -1,0 +1,20 @@
+<h2>¿Estás seguro de borrar la siguiente transacción?</h2>
+<div mat-dialog-content>
+
+    <div class="row">
+        <mat-icon mat-list-icon class="material-icons-round category-icon">{{data.icon}}</mat-icon>
+        <div class="transaction-text">
+            <div>
+                <strong>{{data.concept}}</strong><br>{{data.date | date}}
+            </div>
+            <div class="transaction-amount">
+                {{data.amount | currency}}
+            </div>
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button color="basic" (click)="onCancelClick()">Cancelar</button>
+    <button mat-stroked-button class="delete-button" [mat-dialog-close]="true" cdkFocusInitial>Borrar</button>
+</div>

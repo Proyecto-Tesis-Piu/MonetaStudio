@@ -22,7 +22,7 @@ export class TransactionService extends BaseService {
 
     public getCategories() {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.get(this.serviceUrl + '/GetCategories', { headers: tokenHeader });
+        return this.http.get(this.serviceUrl + '/Categories', { headers: tokenHeader });
     }
 
     public modifyCategory(trans: Transaction) {
@@ -47,9 +47,9 @@ export class TransactionService extends BaseService {
         return this.http.post(this.serviceUrl + '/CreateCategory', trans, { headers: tokenHeader });
     }
 
-    public modifyTransaction(trans: Transaction) {
+    public modifyTransaction(transaction: Transaction, fromDate: Date, toDate: Date) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.put(this.serviceUrl + '/Modify', trans, { headers: tokenHeader });
+        return this.http.post(this.serviceUrl + '/Update', {fromDate, toDate, transaction}, { headers: tokenHeader });
     }
 
     public deleteTransaction(TransactionID: String, fromDate: Date, toDate: Date) {
@@ -57,13 +57,18 @@ export class TransactionService extends BaseService {
         return this.http.post(this.serviceUrl + '/Delete', { TransactionID, fromDate, toDate }, { headers: tokenHeader });
     }
 
-    public createTransaction(trans: Transaction) {
+    public createTransaction(transaction: Transaction, fromDate: Date, toDate: Date) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.post(this.serviceUrl + '/Create', trans, { headers: tokenHeader });
+        return this.http.post(this.serviceUrl + '/Create', {fromDate, toDate, transaction}, { headers: tokenHeader });
     }
 
     public getTransactions(fromDate: Date, toDate: Date) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
         return this.http.post(this.serviceUrl, { fromDate, toDate }, { headers: tokenHeader });
+    }
+
+    public getCalendarDates(){
+        var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+        return this.http.get(this.serviceUrl + '/Calendar', { headers: tokenHeader });
     }
 }

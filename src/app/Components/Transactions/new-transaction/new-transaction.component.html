@@ -1,36 +1,57 @@
 <div mat-dialog-content>
-    <form [formGroup]="" autocomplete="off">
+    <form [formGroup]="formModel" autocomplete="off">
         <mat-form-field appearance="fill">
             <mat-label>Categoria</mat-label>
-            <mat-select disableRipple>
-                <mat-option value="Vivienda">Vivienda</mat-option>
-                <mat-option value="Transporte">Transporte</mat-option>
-                <mat-option value="Entretenimiento">Entretenimiento</mat-option>
-                <mat-option value="Despensa">Despensa</mat-option>
-                <mat-option value="Salud">Salud</mat-option>
-                <mat-option value="Ropa">Ropa y Accesorios</mat-option>
-                <mat-option value="Ahorro">Ahorro</mat-option>
-                <mat-option value="Educación">Educación</mat-option>
+            <mat-select required formControlName="category"
+                (selectionChange)="updateForm($event.value, 'category');">
+                <!-- <mat-option value="64C9C9EA-BA17-4AC2-BFE9-0D626C9A889F">Vivienda</mat-option>
+                <mat-option value="739188AA-16CD-419A-AB06-8B88FC3E7AE0">Transporte</mat-option>
+                <mat-option value="FA770A9D-60D3-4218-8FAB-BCAA5BD985CD">Entretenimiento</mat-option>
+                <mat-option value="B1999F14-8DA9-4795-90E7-11F3B2426348">Despensa</mat-option>
+                <mat-option value="BBFA4942-1559-471F-BC85-28DBEEAFDC1F">Salud</mat-option>
+                <mat-option value="7892EC17-01BA-409F-B5C5-03B1A0801D9C">Ropa y Accesorios</mat-option>
+                <mat-option value="086DC8B6-E16C-4E43-AFCE-EE1DB3D662FA">Ahorro</mat-option>
+                <mat-option value="9BE8652F-9C2A-49A3-9BC1-10AD3CDE8E3D">Educación</mat-option>
+                <mat-option value="0F71FC36-F26A-449E-8594-ED39333D3125">Salario</mat-option>
+                <mat-option value="25B1E9CD-B38E-48D4-8EA6-EE81E46662CC">Depósito</mat-option> -->
+                <mat-option *ngFor="let category of categories" [ngClass]="category.isExpense ? 'expense' : 'income'" [value]="category.id">
+                    {{category.concept}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
         <br><br>
         <mat-form-field>
             <mat-label>Concepto</mat-label>
-            <input matInput formControlName="Concepto" placeholder="Concepto" required>
+            <input matInput placeholder="Concepto" formControlName="concept"
+                (keyup)="updateForm($event.srcElement.value, 'concept')" required>
+            <button mat-button *ngIf="transaction.concept" matSuffix mat-icon-button aria-label="Clear"
+                (click)="transaction.concept=''">
+                <mat-icon>close</mat-icon>
+            </button>
         </mat-form-field>
         <br><br>
         <mat-form-field>
             <mat-label>Monto</mat-label>
-            <input matInput formControlName="Monto" placeholder="Monto" required>
+            <span matPrefix>$ &nbsp;</span>
+            <input matInput placeholder="Monto" formControlName="amount"
+            (keyup)="updateForm($event.srcElement.value, 'amount')" required>
+            <button mat-button *ngIf="transaction.amount!==0" matSuffix mat-icon-button aria-label="Clear"
+                (click)="transaction.amount=0">
+                <mat-icon>close</mat-icon>
+            </button>
         </mat-form-field>
         <br><br>
         <mat-form-field appearance="fill">
             <mat-label>Fecha</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" formControlName="transDate"
+                [formControl]="date" (dateChange)="updateForm($event.value, 'date')" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-            <br><br>
-        <button mat-raised-button color="primary">Registrar</button>
+        </mat-form-field>
     </form>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-stroked-button color="basic" (click)="onCancelClick()">Cancelar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="transaction" [disabled]="formModel.invalid" cdkFocusInitial>Guardar</button>
 </div>
