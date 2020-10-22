@@ -8,7 +8,8 @@ import { TransactionService } from './transactions.service'
 import { DeleteTransactionComponentDialog } from './delete-transaction/delete-transaction.component';
 import { IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyRangeDateSelection, IMyDate } from 'angular-mydatepicker';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
-import { CalendarDate } from './calendarDate.model';
+import { CalendarDate, GeneralData } from './calendarDate.model';
+import { CategoriesComponent } from './categories/categories.component';
 
 const transactionTree: Transaction[] = [
   {
@@ -113,7 +114,6 @@ export class TransactionsComponent implements OnInit {
   treeFlattener = new MatTreeFlattener(
     this._transformer, node => node.level, node => node.expandable, node => node.childrenTransactions);
 
-  transactions: Transaction[];
   expenses: Transaction[];
   incomes: Transaction[];
   expenseDates: IMyMarkedDates;
@@ -230,6 +230,8 @@ export class TransactionsComponent implements OnInit {
     // other options are here...
   };
 
+  generalData: GeneralData;
+
   myDateInit: boolean = true;
   model: IMyDateModel = null;
 
@@ -244,6 +246,8 @@ export class TransactionsComponent implements OnInit {
     this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
 
     this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    this.generalData = new GeneralData();
 
     this.getTransactions();
     this.getCalendarDates();
@@ -294,17 +298,17 @@ export class TransactionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result)
         this.service.createTransaction(result, this.fromDate, this.toDate).subscribe(
-          (res: Transaction[]) => {
-            this.transactions = res;
+          (res: GeneralData) => {
+            this.generalData = res;
             this.handleTransactionsResponse();
           },
           err => {
             console.log(err);
             //default data for when the API is not on local host
             //comment when on production
-            this.transactions = transactionTree;
-            this.expenses = this.transactions.filter(t => t.isExpense);
-            this.incomes = this.transactions.filter(t => !t.isExpense);
+            this.generalData.transactions = transactionTree;
+            this.expenses = this.generalData.transactions.filter(t => t.isExpense);
+            this.incomes = this.generalData.transactions.filter(t => !t.isExpense);
             this.assignDataSources();
           },
           () => {
@@ -313,11 +317,15 @@ export class TransactionsComponent implements OnInit {
     });
   }
 
+  createCategoriesDialog(): void {
+    const dialogRef = this.dialog.open(CategoriesComponent);
+  }
+
   getTransactions() {
     this.service.getTransactions(this.fromDate, this.toDate).subscribe(
-      (res: Transaction[]) => {
-        this.transactions = res;
-        if (this.transactions.length > 0) {
+      (res: GeneralData) => {
+        this.generalData = res;
+        if (this.generalData.transactions.length > 0) {
           if (this.snackBarRef)
             this.snackBarRef.dismiss();
         } else {
@@ -329,13 +337,13 @@ export class TransactionsComponent implements OnInit {
         console.log(err);
         //default data for when the API is not on local host
         //comment when on production
-        this.transactions = transactionTree;
-        this.expenses = this.transactions.filter(t => t.isExpense);
-        this.incomes = this.transactions.filter(t => !t.isExpense);
+        this.generalData.transactions = transactionTree;
+        this.expenses = this.generalData.transactions.filter(t => t.isExpense);
+        this.incomes = this.generalData.transactions.filter(t => !t.isExpense);
         this.assignDataSources();
       },
       () => {
-        console.log('Complete');
+        console.log('Complete GetTransactions');
       });
   }
 
@@ -349,22 +357,22 @@ export class TransactionsComponent implements OnInit {
   }
 
   deleteTransaction(trans: Transaction) {
-    trans.icon = this.transactions.find(t => t.id == trans.category).icon;
+    trans.icon = this.generalData.transactions.find(t => t.id == trans.category).icon;
     const dialogRef = this.dialog.open(DeleteTransactionComponentDialog, { data: trans });
 
     dialogRef.afterClosed().subscribe((result: Boolean) => {
       console.log('The dialog was closed');
       if (result) {
         this.service.deleteTransaction(trans.id, this.fromDate, this.toDate).subscribe(
-          (res: Transaction[]) => {
-            this.transactions = res;
+          (res: GeneralData) => {
+            this.generalData = res;
             this.handleTransactionsResponse();
           },
           err => {
             console.log(err);
-            this.transactions = transactionTree;
-            this.expenses = this.transactions.filter(t => t.isExpense);
-            this.incomes = this.transactions.filter(t => !t.isExpense);
+            this.generalData.transactions = transactionTree;
+            this.expenses = this.generalData.transactions.filter(t => t.isExpense);
+            this.incomes = this.generalData.transactions.filter(t => !t.isExpense);
             this.assignDataSources();
           },
           () => {
@@ -390,17 +398,17 @@ export class TransactionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result)
         this.service.modifyTransaction(result, this.fromDate, this.toDate).subscribe(
-          (res: Transaction[]) => {
-            this.transactions = res;
+          (res: GeneralData) => {
+            this.generalData = res
             this.handleTransactionsResponse();
           },
           err => {
             console.log(err);
             //default data for when the API is not on local host
             //comment when on production
-            this.transactions = transactionTree;
-            this.expenses = this.transactions.filter(t => t.isExpense);
-            this.incomes = this.transactions.filter(t => !t.isExpense);
+            this.generalData.transactions = transactionTree;
+            this.expenses = this.generalData.transactions.filter(t => t.isExpense);
+            this.incomes = this.generalData.transactions.filter(t => !t.isExpense);
             this.assignDataSources();
           },
           () => {
@@ -426,7 +434,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   handleTransactionsResponse() {
-    this.expenses = this.transactions.filter(t => t.isExpense).sort(function (a, b) {
+    this.expenses = this.generalData.transactions.filter(t => t.isExpense).sort(function (a, b) {
       if (a.cumulativePercentage > b.cumulativePercentage) {
         return -1;
       }
@@ -436,7 +444,7 @@ export class TransactionsComponent implements OnInit {
       return 0;
     });
 
-    this.incomes = this.transactions.filter(t => !t.isExpense).sort(function (a, b) {
+    this.incomes = this.generalData.transactions.filter(t => !t.isExpense).sort(function (a, b) {
       if (a.cumulativePercentage > b.cumulativePercentage) {
         return -1;
       }
