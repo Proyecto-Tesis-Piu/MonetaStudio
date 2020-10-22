@@ -1,0 +1,67 @@
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: rgba(255 0 0 / 100%);
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: rgba(226 86 86 / 100%);
+}
+
+::ng-deep .mat-slide-toggle-thumb {
+    background-color: rgba(0 160 0 / 100%);
+}
+
+::ng-deep .mat-slide-toggle-bar {
+    background-color: rgba(86 160 86 / 100%);
+}
+
+::ng-deep .mat-icon-button:hover,
+.mat-icon-button:active,
+.mat-icon-button:focus {
+    outline: none;
+    border: 0;
+}
+
+::ng-deep .mat-fab:hover,
+.mat-fab:active,
+.mat-fab:focus {
+    outline: none;
+    border: 0;
+}
+
+.toggle {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.top {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.middle {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.icon-button {
+    width: 60px;
+    height: 60px;
+    margin: 5px 10px;
+}
+
+::ng-deep .icon-button .mat-button-wrapper {
+    padding: 10px 0;
+}

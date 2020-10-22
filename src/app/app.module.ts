@@ -21,6 +21,8 @@ import { NewsService } from "./Components/new/service/news.service";
 import { NewsComponent } from "./Components/new/News/news.component";
 import { NewComponent } from "./Components/new/New/new.component";
 import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
+import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
+import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -41,6 +43,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,9 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     NewComponent,
     NewsComponent,
     DeleteTransactionComponentDialog,
-    TreeChecklistExample
+    TreeChecklistExample,
+    CategoriesComponent,
+    IconSelectionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +89,9 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     MatRippleModule,
     ChartsModule,
     WavesModule,
-    AngularMyDatePickerModule
+    AngularMyDatePickerModule,
+    MatTabsModule,
+    MatSlideToggleModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 
