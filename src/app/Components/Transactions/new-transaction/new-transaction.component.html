@@ -4,16 +4,6 @@
             <mat-label>Categoria</mat-label>
             <mat-select required formControlName="category"
                 (selectionChange)="updateForm($event.value, 'category');">
-                <!-- <mat-option value="64C9C9EA-BA17-4AC2-BFE9-0D626C9A889F">Vivienda</mat-option>
-                <mat-option value="739188AA-16CD-419A-AB06-8B88FC3E7AE0">Transporte</mat-option>
-                <mat-option value="FA770A9D-60D3-4218-8FAB-BCAA5BD985CD">Entretenimiento</mat-option>
-                <mat-option value="B1999F14-8DA9-4795-90E7-11F3B2426348">Despensa</mat-option>
-                <mat-option value="BBFA4942-1559-471F-BC85-28DBEEAFDC1F">Salud</mat-option>
-                <mat-option value="7892EC17-01BA-409F-B5C5-03B1A0801D9C">Ropa y Accesorios</mat-option>
-                <mat-option value="086DC8B6-E16C-4E43-AFCE-EE1DB3D662FA">Ahorro</mat-option>
-                <mat-option value="9BE8652F-9C2A-49A3-9BC1-10AD3CDE8E3D">Educación</mat-option>
-                <mat-option value="0F71FC36-F26A-449E-8594-ED39333D3125">Salario</mat-option>
-                <mat-option value="25B1E9CD-B38E-48D4-8EA6-EE81E46662CC">Depósito</mat-option> -->
                 <mat-option *ngFor="let category of categories" [ngClass]="category.isExpense ? 'expense' : 'income'" [value]="category.id">
                     {{category.concept}}
                 </mat-option>

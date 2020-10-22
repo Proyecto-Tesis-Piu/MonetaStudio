@@ -259,13 +259,13 @@ mat-card-footer {
     display: inline-block;
 }
 
-.icon i {
+/* .icon i {
     color: black;
     font-size: 80px;
     display: block;
     text-align: center;
     cursor: pointer;
-}
+} */
 
 mat-icon {
     font-size: 80px;

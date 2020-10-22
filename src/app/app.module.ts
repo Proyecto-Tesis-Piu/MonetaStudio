@@ -20,6 +20,8 @@ import { DeleteTransactionComponentDialog } from './Components/Transactions/dele
 import { NoticiasComponent } from './Components/new/noticias/noticias.component';
 import { NoticiaComponent } from './Components/new/noticia/noticia.component';
 import { NewsService } from "./Components/new/service/news.service";
+import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
+import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -38,8 +40,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { MatTreeModule} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     NewTransactionComponent,
     DeleteTransactionComponentDialog,
     NoticiasComponent,
-    NoticiaComponent
+    NoticiaComponent,
+    CategoriesComponent,
+    IconSelectionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +87,9 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     MatRippleModule,
     ChartsModule,
     WavesModule,
-    AngularMyDatePickerModule
+    AngularMyDatePickerModule,
+    MatTabsModule,
+    MatSlideToggleModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 
