@@ -20,6 +20,7 @@ import { DeleteTransactionComponentDialog } from './Components/Transactions/dele
 import { NewsService } from "./Components/new/service/news.service";
 import { NewsComponent } from "./Components/new/News/news.component";
 import { NewComponent } from "./Components/new/New/new.component";
+import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -54,6 +55,7 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     NewComponent,
     NewsComponent,
     DeleteTransactionComponentDialog,
+    TreeChecklistExample
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,14 @@
     font-family: mus;
 }
 
+.body-component {
+    background-color: white;
+    color: black;
+    overflow-x: hidden !important;
+    margin-top: -57px;
+    height: 100%;
+}
+
 /********************************Nav Bar***************************************************/
 
 .navbar {
@@ -11,13 +19,12 @@
     padding: unset;
 }
 
-.tutorial-link{
-    text-align: center; 
+.tutorial-link {
+    text-align: center;
     cursor: pointer;
-    
 }
 
-.tutorial-link:hover{
+.tutorial-link:hover {
     text-decoration: underline;
 }
 
@@ -35,7 +42,6 @@ ul {
     font-family: mus;
     width: 100%;
     margin-bottom: unset;
-    margin-right: 90px;
 }
 
 li {
@@ -67,7 +73,6 @@ div li .custom-button {
     background: #007bff;
     transition: width .3s;
     color: #007bff;
-    margin-top: 3px;
     margin-top: 10px;
 }
 
@@ -78,7 +83,7 @@ div li .custom-button {
     margin-top: 10px;
 }
 
-.line-tutorial{
+.line-tutorial {
     cursor: pointer;
     margin-top: 20px;
     text-align: right;
@@ -92,10 +97,8 @@ div li .custom-button {
     background: #007bff;
     transition: width .3s;
     color: #007bff;
-    margin-top: 3px;
     margin-top: 10px;
     cursor: pointer;
-
 }
 
 .line-tutorial:hover::after {
@@ -105,7 +108,6 @@ div li .custom-button {
     margin-top: 10px;
     cursor: pointer;
 }
-
 
 .mat-raised-button {
     background-color: #007bff;
@@ -127,11 +129,6 @@ div li .custom-button {
     color: red;
 }
 
-.image-savio-intro{
-    height: 60vh;
-    width: 40vw;
-}
-
 /********************************Rubros****************************************************/
 
 .rubros {
@@ -141,130 +138,138 @@ div li .custom-button {
     font-family: mus;
 }
 
-.rubros p {
-    text-align: left;
-    font-size: 40px;
-    margin-left: 10vw;
-    margin-top: 20vh;
-    line-height: 5vh;
-}
-
 .icon {
     width: 120px;
     display: inline-block;
     margin-left: 5vw;
 }
 
-/********************************Fin Rubros***********************************************/
-
-/*******************************Savio Message*****************/
-
-.savio-message {
-    width: 100vw;
-    height: 100vh;
-    background-color: #04ECD6;
-    font-family: mus;
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
 }
 
-.image-savio-message {
-    height: 100vh;
+.flex-item {
+    width: 50%;
+    height: fit-content;
+}
+
+.text-finance {
+    font-size: 40px;
+    margin-left: 3vw;
+}
+
+.square {
+    position: relative;
+    width: 600px;
+    height: 660px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 15vw;
     width: 100%;
+    height: 100%;
+    border: 2px solid #007bff;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: animate 4s linear infinite;
 }
 
-.savio-message p {
-    text-align: right;
-    font-size: 40px;
-    margin-right: 10vw;
-    margin-top: 20vh;
-    line-height: 5vh;
-}
-
-/***************************** News *******************************/
-
-.news {
-    width: 100vw;
-    height: 90vh;
-    background-color: #fff;
-    font-family: mus;
-}
-
-.next {
+.square span:nth-child(2) {
     position: absolute;
-    top: 50%;
-    right: 5%;
-    font-size: 2rem;
-    color: gray;
-    cursor: pointer;
+    top: 0;
+    left: 15vw;
+    width: 100%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: animate2 6s linear infinite;
 }
 
-.prev {
+.square span:nth-child(3) {
     position: absolute;
-    top: 50%;
-    left: 5%;
-    font-size: 2rem;
-    color: gray;
-    cursor: pointer;
+    top: 0;
+    left: 15vw;
+    width: 100%;
+    height: 100%;
+    border: 2px solid green;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: animate 10s linear infinite;
 }
 
-.post-wrapper {
-    width: 84%;
-    height: 50vh;
-    margin: 0px auto;
-    overflow: hidden;
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-.post-slider {
+@keyframes animate2 {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.content {
     position: relative;
-    margin-bottom: 1%;
-    top: 6%;
-}
-
-.slider-title {
-    text-align: left;
-    color: #04ECD6;
-    font-size: 40px;
-    margin-left: 10vw;
-    font-family: mus;
-    margin-top: 10vh;
-}
-
-.slider-subtitle {
-    text-align: left;
     color: #000;
-    font-size: 2vh;
-    margin-bottom: 2vh;
-    font-size: 32px;
-    margin-left: 10vw;
+    font-family: mus;
+    text-align: center;
+    transition: 0.5s;
+    z-index: 1000;
+    left: 15vw;
+}
+
+.content text {
+    font-size: 40px;
     font-family: mus;
 }
 
-.post {
-    height: 250px;
-    width: 300px;
-    margin: 0px 10px;
-    display: inline-block;
+text::before {
+    content: '';
+    animation: animate-text infinite 10s;
 }
 
-.card-footer {
-    text-align: right;
+@keyframes animate-text {
+    0% {
+        content: 'Crea';
+    }
+    25% {
+        content: 'Registra';
+    }
+    50% {
+        content: 'Aprende';
+    }
+    75% {
+        content: 'Organiza';
+    }
+    90% {
+        content: 'Ahorra';
+    }
+    100% {
+        content: 'Crea';
+    }
 }
 
-mat-card-footer {
-    text-align: right;
-}
-
-.icon {
-    width: 120px;
-    position: relative;
-    display: inline-block;
-}
-
-.icon i {
-    color: black;
-    font-size: 80px;
-    display: block;
-    text-align: center;
-    cursor: pointer;
+.icons {
+    width: 100%;
+    height: fit-content;
+    margin-top: 8vh;
+    align-items: center;
+    padding-left: 5vw;
 }
 
 mat-icon {
@@ -278,154 +283,37 @@ mat-icon {
     position: relative;
 }
 
-.icon span {
-    position: relative;
-    width: 120px;
-    background: black;
-    color: white;
-    padding: 5px 0;
-    text-align: center;
-    border-radius: 8px;
-    display: block;
-    margin: 10px auto;
-    opacity: 0;
-    transition: 0.6s opacity;
-}
 
-.icon span:before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: -5px;
-    background: black;
-    left: 60px;
-    transform: translateX(-50%) rotate(45deg);
-}
+/**********************Fin Rubros**********************/
 
-.icon:hover>span {
-    opacity: 1;
-}
+/*********************Savio Message*****************/
 
-.wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    height: 500px;
-}
-
-.card img {
-    height: 30vh;
-}
-
-.card-body {
-    height: 14vh;
-}
-
-.card-body p {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 1vh;
-}
-
-.card-title {
-    font-family: mus;
-}
-
-/***************************** News 2 *******************************/
-
-.news2 {
+.savio-message {
     width: 100vw;
     height: 100vh;
-    background-color: #04ECD6;
     font-family: mus;
+    background-image: radial-gradient(circle at bottom left, rgb(42, 13, 128) 0%, rgb(42, 13, 128) 4%,rgb(51, 19, 137) 4%, rgb(51, 19, 137) 8%,rgb(59, 25, 147) 8%, rgb(59, 25, 147) 12%,rgb(68, 31, 156) 12%, rgb(68, 31, 156) 16%,rgb(77, 36, 165) 16%, rgb(77, 36, 165) 20%,rgb(86, 42, 174) 20%, rgb(86, 42, 174) 24%,rgb(94, 48, 184) 24%, rgb(94, 48, 184) 28%,rgb(103, 54, 193) 28%, rgb(103, 54, 193) 100%);
 }
 
-.container {
+.image-savio-message {
+    height: 100vh;
     width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
 }
 
-.container .card2 {
-    width: 500px;
-    height: 340px;
-    border-radius: 8px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    margin: 20px;
-    text-align: center;
-    transition: all 0.25s;
-}
-
-.container .card2:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.container .card2 img {
-    width: 500px;
-    height: 20vh;
-}
-
-.card-body2 {
-    background-color: #fff;
-    font-family: mus;
-    height: 14vh;
-}
-
-.card-title2 {
-    font-family: mus;
-    color: #000;
+.savio-text {
     text-align: left;
-    margin-left: 10px;
-    font-size: 20px;
-}
-
-.card-text2 {
     font-family: mus;
-    color: #000;
-    font-size: 14px;
-}
-
-.card-footer2 {
-    background-color: #f7f7f7;
-    text-align: right;
-    color: #6c757d
-}
-
-.card2 p {
-    font-family: mus;
-    color: #000;
-    font-size: 14px;
-}
-
-.card-body2 p {
-    text-align: left;
-    font-size: 14px;
-    margin-top: 1vh;
-    padding-left: 5px;
-}
-
-.slider-title2 {
-    text-align: left;
+    font-size: 38px;
+    width: 48vw;
+    line-height: 1.5em;
     color: #fff;
-    font-size: 40px;
-    margin-left: 10vw;
-    font-family: mus;
-    margin-top: 10vh;
 }
 
-.slider-subtitle2 {
-    text-align: left;
-    color: #000;
-    font-size: 2vh;
-    margin-bottom: 2vh;
-    font-size: 32px;
+.tutorial-link {
+    color: #fff;
+    margin-top: 7vh;
+    width: 48vw;
     margin-left: 10vw;
-    font-family: mus;
 }
 
-.text-muted2 {
-    margin-right: 1vw;
-}
+/*********************Fin Savio Message*****************/
