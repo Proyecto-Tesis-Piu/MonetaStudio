@@ -42,3 +42,23 @@ img {
     height: auto;
     width: 800px;
 }
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+mat-icon {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.disable-text-select * {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

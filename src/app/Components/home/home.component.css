@@ -133,7 +133,7 @@ div li .custom-button {
 
 .rubros {
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     background-color: #fff;
     font-family: mus;
 }
@@ -141,7 +141,6 @@ div li .custom-button {
 .icon {
     width: 120px;
     display: inline-block;
-    margin-left: 5vw;
 }
 
 .flex-container {
@@ -158,12 +157,13 @@ div li .custom-button {
 .text-finance {
     font-size: 40px;
     margin-left: 3vw;
+    line-height: 1.5em;
 }
 
 .square {
     position: relative;
-    width: 600px;
-    height: 660px;
+    width: 500px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -267,9 +267,10 @@ text::before {
 .icons {
     width: 100%;
     height: fit-content;
-    margin-top: 8vh;
-    align-items: center;
-    padding-left: 5vw;
+    margin-top: 12vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
 }
 
 mat-icon {

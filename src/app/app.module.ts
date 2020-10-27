@@ -45,6 +45,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     DeleteTransactionComponentDialog,
     TreeChecklistExample,
     CategoriesComponent,
-    IconSelectionDialogComponent
+    IconSelectionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +92,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     WavesModule,
     AngularMyDatePickerModule,
     MatTabsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ClipboardModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 
