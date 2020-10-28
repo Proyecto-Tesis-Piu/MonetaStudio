@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService, Noticia } from "../service/news.service";
 
 @Component({
-  selector: 'app-noticias',
-  templateUrl: './noticias.component.html',
-  styleUrls: ['./noticias.component.css']
+  selector: 'app-news',
+  templateUrl: './news.component.html',
+  styleUrls: ['./news.component.css']
 })
-export class NoticiasComponent implements OnInit {
+export class NewsComponent implements OnInit {
 
   noticias:Noticia[] = [];
 

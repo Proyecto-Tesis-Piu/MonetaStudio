@@ -1,0 +1,64 @@
+@font-face {
+    src: url(../../../../assets/fonts/Musket.otf);
+    font-family: mus;
+}
+
+.animate-in {
+    -webkit-animation: fadeIn .5s ease-in;
+    animation: fadeIn .5s ease-in;
+}
+
+h1 {
+    font-family: mus;
+    font-size: 54px;
+    line-height: 60px;
+}
+
+.box {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.text {
+    margin-top: 1vh;
+    text-align: left;
+    font-size: 18px;
+    text-decoration: none;
+    line-height: 1.75rem;
+}
+
+.container {
+    width: 100vw;
+    background-color: #f9f7f1;
+    margin-bottom: 5vw;
+}
+
+img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-height: 50vh;
+    max-width: 70vw;
+    height: auto;
+    width: 800px;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+mat-icon {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.disable-text-select * {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

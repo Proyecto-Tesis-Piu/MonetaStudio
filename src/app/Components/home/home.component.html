@@ -1,309 +1,143 @@
 <!-- Body -->
 
-<div class="animate-in">
+<div class="animate-in body-component">
+
+    <!-- Navbar -->
+
+    <div class="navbar">
+        <ul>
+            <div>
+                <li style=" font-size: 20px;" *ngIf="token"><a style="padding-bottom: 6px; background-color: red;"
+                        mat-raised-button (click)="logout()">Cerrar Sesión</a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token"><a
+                        [routerLink]="['user','modify']">Modificar Datos</a></li>
+                <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button
+                        (click)="openDialog()">Iniciar Sesión</a>
+                </li>
+                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a (click)="newUser()">Crear
+                        Cuenta</a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
+                    <a style="color: #007bff;" [routerLink]="['/transactions']">
+                        Transacciones </a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line"
+                    (click)="savio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a style="color: #007bff;">
+                        Savio </a></li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line"><a style="color: #007bff;"
+                        [routerLink]="['/news']">Noticias</a>
+                </li>
+            </div>
+        </ul>
+        <div id="grad1"></div>
+    </div>
 
     <!-- Rubros -->
 
-    <div style="background-color: white; color:black; overflow-x: hidden; margin-top:-57px; height:100%;">
-        <div class="navbar">
-            <ul>
-                <div>
-                    <li style=" font-size: 20px;" *ngIf="token"><a style="padding-bottom: 6px; background-color: red;"
-                            mat-raised-button (click)="logout()">Cerrar Sesión</a></li>
-                    <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token"><a
-                        [routerLink]="['user','modify']">Modificar Datos</a></li>
-                    <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button
-                            (click)="openDialog()">Iniciar Sesión</a>
-                    </li>
-                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a  (click)="newUser()">Crear
-                        Cuenta</a></li>
-                    <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
-                        <a style="color: #007bff;" [routerLink]="['/transactions']">
-                            Transacciones </a></li>
-                    <li style="margin-top: 20px; font-size: 20px;" class="line"
-                        (click)="savio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
-                            style="color: #007bff;">
-                            Savio </a></li>
-                    <li style="margin-top: 20px; font-size: 20px;" class="line"
-                        (click)="news.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
-                            style="color: #007bff;">Noticias</a></li>
-                </div>
-            </ul>
-            <div id="grad1"></div>
-        </div>
-        <div class="rubros">
+    <section class="rubros">
 
-            <div class="row">
-                <div class="col-md-7">
-                    <p> Finanzas como nunca las imaginaste <br> Crea <br> Registra <br> Aprende <br> Ahorra</p>
-
-                </div>
-                <div class="col-md-5">
-                    <img class="image-savio-intro" src="../../../assets/img/home/imagen-intro.png">
-                </div>
-
+        <div class="flex-container">
+            <div class="flex-item">
+                <div class="text-finance">Finanzas personales como nunca las imaginaste </div>
             </div>
-
-            <div style="padding-top: 100px; left: 50%; transform: translate(3%)" class="row">
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="home icon" matTooltip="Vivienda"
-                        [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">home
-                    </mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="car icon" matTooltip="Transporte"
-                        [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
-                        directions_car
-                    </mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="TV icon"
-                        matTooltip="Entretenimiento" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon"
-                        class="material-icons-round">live_tv
-                    </mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="shopping cart icon"
-                        matTooltip="Despensa" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon"
-                        class="material-icons-round">local_grocery_store</mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="health icon" matTooltip="Salud"
-                        [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
-                        local_hospital</mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="watch icon"
-                        matTooltip="Ropa y Accesorios" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon"
-                        class="material-icons-round">watch
-                    </mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="money icon" matTooltip="Ahorro"
-                        [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
-                        account_balance_wallet
-                    </mat-icon>
-                </div>
-
-                <div class="icon">
-                    <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="school icon" matTooltip="Educación"
-                        [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
-                        school
-                    </mat-icon>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Mensaje Acerca de savio -->
-
-        <div #savio class="savio-message">
-            <div class="row">
-                <div class="col-md-5">
-                    <img class="image-savio-message" src="../../../assets/img/home/imagen-savio.png">
-                </div>
-                <div class="col-md-7">
-                    <p style="text-align: left;">¿Sabes en que gastas? <br> ¿Cuanto gastas en cada compra que realizas?
-                        <br>
-                        ¿Conoces cuanto destinas a tu ahorro de
-                        lo que ganas?
-
-                        <br> <br> Savio es una plataforma que ayuda a las personas a mejorar sus finanzas personales,
-                        por
-                        medio de la inclusión y educación financiera por medio de artículos, noticias y un gestor de
-                        transacciones.
-
-                        <br>
-
-
-
-                    </p>
-
-                    <p style="text-align: right; margin-top: 8vh; color:white;">
-                        <a class="tutorial-link" (click)="openDialog2()">Aprender a usar Savio</a>
-                    </p>
-
-
-
-                    <!--   <button mat-button (click)="openDialog2()" >Tutorial</button> -->
-
-
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Moticias -->
-
-        <div #news class="news">
-
-            <h1 class="slider-title">Noticias</h1>
-            <h2 class="slider-subtitle">Mantente al tanto de lo último en inclusión financiera en México</h2>
-
-            <div class="post-slider">
-                <i class="fas fa-chevron-left prev"></i>
-                <i class="fas fa-chevron-right next"></i>
-
-                <div class="post-wrapper">
-                    <div class="post">
-                        <div class="card">
-                            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">TÍTULO NOTICIA 1</h5>
-                                <p class="card-text">Breve descripción de noticia.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Publicado el 00/00/0000</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="card">
-                            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">TÍTULO NOTICIA 2</h5>
-                                <p class="card-text">Breve descripción de noticia.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Publicado el 00/00/0000</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="card">
-                            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">TÍTULO NOTICIA 3</h5>
-                                <p class="card-text">Breve descripción de noticia.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Publicado el 00/00/0000</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="card">
-                            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">TÍTULO NOTICIA 4</h5>
-                                <p class="card-text">Breve descripción de noticia.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Publicado el 00/00/0000</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="card">
-                            <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">TÍTULO NOTICIA 5</h5>
-                                <p class="card-text">Breve descripción de noticia.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Publicado el 00/00/0000</small>
-                            </div>
-                        </div>
+            <div class="flex-item">
+                <div class="square">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <text></text>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <!-- Moticias 2-->
-        <div id="news2" class="news2">
-
-            <h1 style="padding-top: 20px;" class="slider-title2">Noticias</h1>
-            <h2 class="slider-subtitle2">Mantente al tanto de lo último en inclusión financiera en México</h2>
-
-            <div style="margin-top: 2%;" class="container">
-                <div class="card2">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body2">
-                        <h5 class="card-title2">TÍTULO NOTICIA 1</h5>
-                        <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia
-                            sagittis
-                            diam id mollis.</p>
-                    </div>
-                    <div class="card-footer2">
-                        <small class="text-muted2">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
-
-                <div class="card2">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body2">
-                        <h5 class="card-title2">TÍTULO NOTICIA 2</h5>
-                        <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia
-                            sagittis
-                            diam id mollis.</p>
-                    </div>
-                    <div class="card-footer2">
-                        <small class="text-muted2">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
-
-                <div class="card2">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body2">
-                        <h5 class="card-title2">TÍTULO NOTICIA 3</h5>
-                        <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia
-                            sagittis
-                            diam id mollis.</p>
-                    </div>
-                    <div class="card-footer2">
-                        <small class="text-muted2">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
+        <div class="icons">
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="home icon" matTooltip="Vivienda"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
+                    home
+                </mat-icon>
             </div>
 
-            <div class="container">
-                <div class="card2">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body2">
-                        <h5 class="card-title2">TÍTULO NOTICIA 4</h5>
-                        <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia
-                            sagittis
-                            diam id mollis.</p>
-                    </div>
-                    <div class="card-footer2">
-                        <small class="text-muted2">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="car icon" matTooltip="Transporte"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
+                    directions_car
+                </mat-icon>
+            </div>
 
-                <div class="card2">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body2">
-                        <h5 class="card-title2">TÍTULO NOTICIA 5</h5>
-                        <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia
-                            sagittis
-                            diam id mollis.</p>
-                    </div>
-                    <div class="card-footer2">
-                        <small class="text-muted2">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="TV icon" matTooltip="Entretenimiento"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">live_tv
+                </mat-icon>
+            </div>
 
-                <div class="card2">
-                    <img class="card-img-top" src="../../../assets/img/Fondo_gris.png" alt="Card image cap">
-                    <div class="card-body2">
-                        <h5 class="card-title2">TÍTULO NOTICIA 6</h5>
-                        <p class="card-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia
-                            sagittis
-                            diam id mollis.</p>
-                    </div>
-                    <div class="card-footer2">
-                        <small class="text-muted2">Publicado el 00/00/0000</small>
-                    </div>
-                </div>
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="shopping cart icon"
+                    matTooltip="Despensa" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon"
+                    class="material-icons-round">local_grocery_store</mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="health icon" matTooltip="Salud"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
+                    local_hospital</mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="watch icon"
+                    matTooltip="Ropa y Accesorios" [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon"
+                    class="material-icons-round">watch
+                </mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="money icon" matTooltip="Ahorro"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
+                    account_balance_wallet
+                </mat-icon>
+            </div>
+
+            <div class="icon">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="school icon" matTooltip="Educación"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
+                    school
+                </mat-icon>
             </div>
         </div>
-    </div>
+    </section>
 
+
+    <!-- Mensaje Acerca de savio -->
+
+    <section #savio class="savio-message">
+
+        <div class="flex-container">
+
+            <div class="flex-item">
+                <img class="image-savio-message" src="../../../assets/img/home/imagen-savio.png">
+            </div>
+
+            <div class="flex-item savio-text">
+
+                <p>
+
+                    <!--   ¿Sabes en que gastas? <br> ¿Cuanto gastas en cada compra que realizas? <br>
+
+                    ¿Conoces cuanto destinas a tu ahorro de
+                    lo que ganas?  <br> <br>
+                    -->
+
+                    Savio es una plataforma que ayuda a las personas a mejorar sus finanzas personales,
+                    a través de la inclusión y educación financiera por medio de artículos, noticias y un gestor de
+                    transacciones.
+
+                </p>
+
+                <p class="tutorial-link">
+                    <a (click)="openDialog2()">Aprender a usar Savio</a>
+                </p>
+
+            </div>
+        </div>
+    </section>
 </div>

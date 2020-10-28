@@ -1,0 +1,73 @@
+<div class="container animate-in">
+
+    <div class="box">
+        <h1>{{noticia.nombre}}</h1>
+        <h3 style="text-align: right;">Fecha de publicación: {{noticia.aparicion}}</h3>
+        <h3 style="text-align: right; margin-top: -20px;">Autor: {{noticia.casa}}</h3>
+        <h3 style="text-align: left;">Compartir:
+            <button mat-stroked-button (click)="openCustomSnackBar()" [cdkCopyToClipboard]="web" class="disable-text-select">
+                <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="car icon" matTooltip="Copiar"
+                    [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
+                    content_copy
+                </mat-icon>
+            </button>
+
+        </h3>
+
+
+        <hr>
+
+        <img src="{{noticia.cover}}" alt="Card image cap">
+        <div class="text"> {{noticia.bio}}
+
+            Integer porta laoreet enim, et ultrices nunc mattis non. Morbi pellentesque magna sit amet eros fringilla,
+            id
+            imperdiet lacus accumsan. Ut quis lorem eros. Ut enim sem, ultricies eget congue a, vulputate ac nulla.
+            Praesent
+            ipsum nulla, faucibus vel purus at, facilisis aliquet mauris. Integer molestie pulvinar metus aliquet
+            vulputate.
+            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc nulla dui,
+            viverra quis feugiat at, interdum ac ligula. Vestibulum pulvinar aliquet interdum. Maecenas a sapien mi.
+            Nulla
+            est felis, cursus sed ultricies in, fringilla vel nulla. Phasellus aliquet lacus id leo bibendum, id
+            convallis
+            orci faucibus. Morbi sed nisl cursus, efficitur ipsum id, fringilla diam. <br> <br>
+
+            Praesent luctus nulla justo, vel mollis dui consequat et. Mauris tristique, mauris ut elementum lacinia,
+            ligula
+            sem posuere orci, ut dignissim quam ante ac quam. Nam ut suscipit sem. Integer ut est risus. Pellentesque
+            habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi laoreet nunc
+            malesuada,
+            aliquet diam sed, rhoncus nulla. Proin euismod purus justo, ut venenatis massa dictum nec. Integer vehicula
+            mattis accumsan. Suspendisse eget pulvinar dui, fringilla maximus ipsum. Aliquam risus leo, bibendum sit
+            amet
+            rutrum ut, viverra vel dolor. Pellentesque accumsan luctus neque quis mollis. Cras laoreet nibh vitae
+            blandit
+            faucibus. Nunc lacus risus, sagittis vel gravida in, maximus sed massa. In hac habitasse platea dictumst.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+
+            Praesent luctus nulla justo, vel mollis dui consequat et. Mauris tristique, mauris ut elementum lacinia,
+            ligula
+            sem posuere orci, ut dignissim quam ante ac quam. Nam ut suscipit sem. Integer ut est risus. Pellentesque
+            habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi laoreet nunc
+            malesuada,
+            aliquet diam sed, rhoncus nulla. Proin euismod purus justo, ut venenatis massa dictum nec. Integer vehicula
+            mattis accumsan. Suspendisse eget pulvinar dui, fringilla maximus ipsum. Aliquam risus leo, bibendum sit
+            amet
+            rutrum ut, viverra vel dolor. Pellentesque accumsan luctus neque quis mollis. Cras laoreet nibh vitae
+            blandit
+            faucibus. Nunc lacus risus, sagittis vel gravida in, maximus sed massa. In hac habitasse platea dictumst.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</div>

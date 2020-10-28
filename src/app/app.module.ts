@@ -17,9 +17,10 @@ import { TransactionService } from './Components/Transactions/transactions.servi
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
 import { DeleteTransactionComponentDialog } from './Components/Transactions/delete-transaction/delete-transaction.component';
-import { NoticiasComponent } from './Components/new/noticias/noticias.component';
-import { NoticiaComponent } from './Components/new/noticia/noticia.component';
 import { NewsService } from "./Components/new/service/news.service";
+import { NewsComponent } from "./Components/new/News/news.component";
+import { NewComponent } from "./Components/new/New/new.component";
+//import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 
@@ -44,6 +45,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -55,11 +57,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     UserComponent,
     VideoSavioComponent,
     NewTransactionComponent,
+    NewComponent,
+    NewsComponent,
     DeleteTransactionComponentDialog,
-    NoticiasComponent,
-    NoticiaComponent,
+    //TreeChecklistExample,
     CategoriesComponent,
-    IconSelectionDialogComponent
+    IconSelectionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     WavesModule,
     AngularMyDatePickerModule,
     MatTabsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ClipboardModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 
