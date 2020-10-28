@@ -20,7 +20,7 @@ import { DeleteTransactionComponentDialog } from './Components/Transactions/dele
 import { NewsService } from "./Components/new/service/news.service";
 import { NewsComponent } from "./Components/new/News/news.component";
 import { NewComponent } from "./Components/new/New/new.component";
-import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
+//import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 
@@ -60,7 +60,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     NewComponent,
     NewsComponent,
     DeleteTransactionComponentDialog,
-    TreeChecklistExample,
+    //TreeChecklistExample,
     CategoriesComponent,
     IconSelectionDialogComponent,
   ],
