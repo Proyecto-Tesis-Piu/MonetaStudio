@@ -97,7 +97,7 @@ export class NewTransactionComponent implements OnInit {
     } else {
       this.transaction[property] = value;
     }
-    console.log(this.transaction);
+    //console.log(this.transaction);
   }
 
   onCancelClick(): void {

@@ -65,3 +65,16 @@
 ::ng-deep .icon-button .mat-button-wrapper {
     padding: 10px 0;
 }
+
+.category-select {
+    margin: 10px 0px;
+    width: 100%;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    min-height: 24vh;
+}
+
+.add-form {
+    margin-top: 8%;
+}

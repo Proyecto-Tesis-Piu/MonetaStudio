@@ -1,12 +1,12 @@
 <mat-tab-group>
     <mat-tab label="Agregar">
-        <form [formGroup]="formModel" autocomplete="off">
-            <div class="top">
+        <form autocomplete="off">
+            <div class="top add-form">
                 <div>
                     <mat-form-field>
                         <mat-label>Nombre</mat-label>
-                        <input matInput placeholder="Nombre" formControlName="concept"
-                            (keyup)="updateForm($event.srcElement.value, 'concept')" required>
+                        <input matInput placeholder="Nombre" [value]="addedCategory.concept"
+                            (keyup)="updateForm($event.srcElement.value, 'concept', 'add')" required>
                         <button mat-button *ngIf="addedCategory.concept" matSuffix mat-icon-button aria-label="Clear"
                             (click)="addedCategory.concept=''">
                             <mat-icon>close</mat-icon>
@@ -15,23 +15,92 @@
                 </div>
                 <div class="toggle">
                     Ingreso
-                    <mat-slide-toggle style="margin: 0px 9px;" formControlName="isExpense"></mat-slide-toggle>
+                    <mat-slide-toggle style="margin: 0px 9px;" (change)="updateForm($event.checked, 'isExpense', 'add')"
+                        [checked]="addedCategory.isExpense"></mat-slide-toggle>
                     Gasto
                 </div>
-                <button mat-raised-button color="primary">Agregar</button>
+                <button mat-raised-button color="primary" [disabled]="addedCategory.concept === ''"
+                    (click)="addCategory_onClick();">Agregar</button>
             </div>
-            <div class="middle">
+            <div class="middle add-form">
                 Icono seleccionado:
                 <!-- <button mat-icon-button class="icon-button" (click)="openIconSelectionDialog($event)">
                     <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
                 </button> -->
-                <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event)">
+                <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'add')">
                     <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
                 </button>
             </div>
-            
         </form>
     </mat-tab>
-    <mat-tab label="Editar"> Content 2 </mat-tab>
-    <mat-tab label="Eliminar"> Content 3 </mat-tab>
+    <mat-tab label="Editar">
+
+        <mat-form-field appearance="fill" class="category-select">
+            <mat-label>Selecciona una categoría</mat-label>
+            <mat-select required (selectionChange)="onSelectChanged($event.value, 'edit');">
+                <mat-option>Categoría</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{category.concept}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="top">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" [value]="editCategory.concept"
+                        (keyup)="updateForm($event.srcElement.value, 'concept', 'edit')" [disabled]="!editCategory.id"
+                        required>
+                    <button mat-button *ngIf="editCategory.concept" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="editCategory.concept=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div class="toggle">
+                Ingreso
+                <mat-slide-toggle style="margin: 0px 9px;" (change)="updateForm($event.checked, 'isExpense', 'edit')"
+                    [disabled]="!editCategory.id" [checked]="editCategory.isExpense">
+                </mat-slide-toggle>
+                Gasto
+            </div>
+            <button mat-raised-button color="primary" [disabled]="!dirty"
+                (click)="editCategory_onClick();">Editar</button>
+        </div>
+        <div class="middle">
+            Icono seleccionado:
+            <!-- <button mat-icon-button class="icon-button" (click)="openIconSelectionDialog($event)">
+                <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
+            </button> -->
+            <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'edit')"
+                [disabled]="!editCategory.id">
+                <mat-icon class="icon">{{editCategory.icon}}</mat-icon>
+            </button>
+        </div>
+
+    </mat-tab>
+    <mat-tab label="Eliminar">
+        <mat-form-field appearance="fill" class="category-select">
+            <mat-label>Selecciona una categoría</mat-label>
+            <mat-select required (selectionChange)="onSelectChanged($event.value, 'delete');">
+                <mat-option>Categoría</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{category.concept}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="category-select" *ngIf="categoryHasTransactions">
+            <mat-label>Selecciona una categoría de reemplazo</mat-label>
+            <mat-select required (selectionChange)="onSelectChanged($event.value, 'replace');">
+                <mat-option>Categoría</mat-option>
+                <mat-option *ngFor="let category of replacementCategories" [value]="category.id">
+                    {{category.concept}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="!deletedCategory" (click)="deleteCategory_onClick();">Eliminar</button>
+    </mat-tab>
 </mat-tab-group>
