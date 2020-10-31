@@ -296,7 +296,7 @@ export class TransactionsComponent implements OnInit {
     const dialogRef = this.dialog.open(NewTransactionComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
+      if (result) {
         this.service.createTransaction(result, this.fromDate, this.toDate).subscribe(
           (res: GeneralData) => {
             this.generalData = res;
@@ -313,12 +313,19 @@ export class TransactionsComponent implements OnInit {
           },
           () => {
             console.log('Complete');
+            this.getCalendarDates();
           });
+      }
     });
   }
 
   createCategoriesDialog(): void {
     const dialogRef = this.dialog.open(CategoriesComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getTransactions();
+      this.getCalendarDates();
+    });
   }
 
   getTransactions() {
@@ -396,7 +403,7 @@ export class TransactionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
+      if (result) {
         this.service.modifyTransaction(result, this.fromDate, this.toDate).subscribe(
           (res: GeneralData) => {
             this.generalData = res
@@ -413,7 +420,9 @@ export class TransactionsComponent implements OnInit {
           },
           () => {
             console.log('Complete');
+            this.getCalendarDates();
           });
+      }
     });
   }
 
@@ -473,30 +482,36 @@ export class TransactionsComponent implements OnInit {
     let copyOfOptions: IAngularMyDpOptions = this.getCopyOfOptions();
     this.service.getCalendarDates().subscribe(
       (res: CalendarDate[]) => {
-        this.expenseDates = { color: "red", dates: res.filter(item => item.hasExpense && !item.hasIncome)
-          .map(
-            date => {
-              var dateValue = new Date(date.date);
-              var dateModel = {day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
-              return dateModel;
-            })};
+        this.expenseDates = {
+          color: "red", dates: res.filter(item => item.hasExpense && !item.hasIncome)
+            .map(
+              date => {
+                var dateValue = new Date(date.date);
+                var dateModel = { day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
+                return dateModel;
+              })
+        };
 
-        this.incomeDates = { color: "green", dates: res.filter(item => !item.hasExpense && item.hasIncome)
-          .map(
-            date => {
-              var dateValue = new Date(date.date);
-              var dateModel = {day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
-              return dateModel;
-            })};
+        this.incomeDates = {
+          color: "green", dates: res.filter(item => !item.hasExpense && item.hasIncome)
+            .map(
+              date => {
+                var dateValue = new Date(date.date);
+                var dateModel = { day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
+                return dateModel;
+              })
+        };
 
-        this.expenseIncomeDates = { color: "black", dates: res.filter(item => item.hasExpense && item.hasIncome)
-          .map(
-            date => {
-              var dateValue = new Date(date.date);
-              var dateModel = {day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
-              return dateModel;
-            })};
-        
+        this.expenseIncomeDates = {
+          color: "black", dates: res.filter(item => item.hasExpense && item.hasIncome)
+            .map(
+              date => {
+                var dateValue = new Date(date.date);
+                var dateModel = { day: dateValue.getDate(), month: dateValue.getMonth() + 1, year: dateValue.getFullYear() } as IMyDate;
+                return dateModel;
+              })
+        };
+
         //this.myDpOptions.markDates = [this.expenseDates, this.incomeDates, this.expenseIncomeDates];
         copyOfOptions.markDates = [this.expenseDates, this.incomeDates, this.expenseIncomeDates];
         this.myDpOptions = copyOfOptions;
