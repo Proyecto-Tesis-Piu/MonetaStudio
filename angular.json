@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Savio": {
+    "MonetaStudio": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Savio",
+            "outputPath": "dist/MonetaStudio",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -74,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Savio:build"
+            "browserTarget": "MonetaStudio:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Savio:build:production"
+              "browserTarget": "MonetaStudio:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Savio:build"
+            "browserTarget": "MonetaStudio:build"
           }
         },
         "test": {
@@ -123,18 +123,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Savio:serve"
+            "devServerTarget": "MonetaStudio:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Savio:serve:production"
+              "devServerTarget": "MonetaStudio:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Savio",
+  "defaultProject": "MonetaStudio",
   "cli": {
     "analytics": "fa461669-7009-4da9-ab83-1f7f75b26157"
   },

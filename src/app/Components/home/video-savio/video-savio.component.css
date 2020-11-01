@@ -1,8 +1,0 @@
-iframe {
-    width: 1200px;
-    height: 600px;
-}
-
-::ng-deep .mat-dialog-container {
-    border-radius: 20px;
-}
