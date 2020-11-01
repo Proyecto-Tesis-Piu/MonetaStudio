@@ -23,7 +23,6 @@ export class NewsService {
           aparicion: "1939-05-01",
           casa:"DC",
           cover: "../../../assets/img/imagen_b.jpg"
-
         },
         {
           nombre: "Daredevil",
@@ -32,7 +31,6 @@ export class NewsService {
           aparicion: "1964-01-01",
           casa: "Marvel",
           cover: "../../../assets/img/imagen_c.jpg"
-
         },
         {
           nombre: "Hulk",
@@ -41,7 +39,6 @@ export class NewsService {
           aparicion: "1962-05-01",
           casa:"Marvel",
           cover: "../../../assets/img/imagen_d.jpg"
-
         },
         {
           nombre: "Linterna Verde",
@@ -50,7 +47,6 @@ export class NewsService {
           aparicion: "1940-06-01",
           casa: "DC",
           cover: "../../../assets/img/imagen_x.jpg"
-
         },
         {
           nombre: "Spider-Man",
@@ -59,7 +55,6 @@ export class NewsService {
           aparicion: "1962-08-01",
           casa: "Marvel",
           cover: "../../../assets/img/imagen_y.png"
-
         },
         {
           nombre: "Wolverine das d asd a sd a sd a sd asdasdasdasd as d as d asda sdasdaasdasdasdasd as d as d asda sdasda",
@@ -68,7 +63,6 @@ export class NewsService {
           aparicion: "1974-11-01",
           casa: "Marvel",
           cover: "../../../assets/img/imagen_z.jpg"
-
         }
       ];
 

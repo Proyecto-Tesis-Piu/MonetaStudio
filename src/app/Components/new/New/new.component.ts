@@ -34,7 +34,7 @@ export class NewComponent implements OnInit {
     this.href = this.router.url;
     console.log(this.router.url);
     this.web =  this.href;
-    //this.web = "www.savio.com" + this.href;
+    //this.web = "www.moneta.studio" + this.href;
 
   }
 

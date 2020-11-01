@@ -7,7 +7,7 @@ import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
-import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
+import { VideoTutorialComponent } from './Components/home/video-tutorial/video-tutorial.component';
 import { RegistrationComponent } from './Components/Users/registration/registration.component';
 import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { UserComponent } from './Components/Users/user.component';
@@ -55,7 +55,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     RegistrationComponent,
     TransactionsComponent,
     UserComponent,
-    VideoSavioComponent,
+    VideoTutorialComponent,
     NewTransactionComponent,
     NewComponent,
     NewsComponent,

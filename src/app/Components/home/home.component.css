@@ -287,21 +287,21 @@ mat-icon {
 
 /**********************Fin Rubros**********************/
 
-/*********************Savio Message*****************/
+/*********************MonetaStudio Message*****************/
 
-.savio-message {
+.MonetaStudio-message {
     width: 100vw;
     height: 100vh;
     font-family: mus;
     background-image: radial-gradient(circle at bottom left, rgb(42, 13, 128) 0%, rgb(42, 13, 128) 4%,rgb(51, 19, 137) 4%, rgb(51, 19, 137) 8%,rgb(59, 25, 147) 8%, rgb(59, 25, 147) 12%,rgb(68, 31, 156) 12%, rgb(68, 31, 156) 16%,rgb(77, 36, 165) 16%, rgb(77, 36, 165) 20%,rgb(86, 42, 174) 20%, rgb(86, 42, 174) 24%,rgb(94, 48, 184) 24%, rgb(94, 48, 184) 28%,rgb(103, 54, 193) 28%, rgb(103, 54, 193) 100%);
 }
 
-.image-savio-message {
+.image-MonetaStudio-message {
     height: 100vh;
     width: 100%;
 }
 
-.savio-text {
+.MonetaStudio-text {
     text-align: left;
     font-family: mus;
     font-size: 38px;
@@ -317,4 +317,4 @@ mat-icon {
     margin-left: 10vw;
 }
 
-/*********************Fin Savio Message*****************/
+/*********************Fin MonetaStudio Message*****************/
