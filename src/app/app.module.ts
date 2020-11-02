@@ -40,6 +40,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { AboutusComponent } from './Components/aboutus/aboutus.component';
+import { ContactusComponent } from './Components/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     NewComponent,
     NewsComponent,
     DeleteTransactionComponentDialog,
+    AboutusComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,

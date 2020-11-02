@@ -429,3 +429,28 @@ mat-icon {
 .text-muted2 {
     margin-right: 1vw;
 }
+
+/*********************** Footer **********************/
+
+.logosav{
+    height: 15vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+}
+
+#footlist{
+    margin-top: 8vh;
+}
+
+a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+a:hover, a:focus {
+    background-size: 100% 2px;
+}
