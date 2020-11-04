@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../Users/login/login.component';
 import { VideoTutorialComponent } from '../home/video-tutorial/video-tutorial.component';
 import { RegistrationComponent } from '../Users/registration/registration.component';
+import {ContactusComponent} from '../contactus/contactus.component';
 
 @Component({
   selector: 'app-home',
@@ -34,5 +35,9 @@ export class HomeComponent implements OnInit {
 
   newUser(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
+  }
+
+  contactUsDialog(): void{
+    const dialogRef = this.dialog.open(ContactusComponent, {});
   }
 }

@@ -145,8 +145,8 @@ div li .custom-button {
 
 .flex-container {
     display: flex;
-    flex-flow: row wrap;
-    align-items: baseline;
+    flex-direction: row;
+    align-items: center;
 }
 
 .flex-item {
@@ -317,4 +317,42 @@ mat-icon {
     margin-left: 10vw;
 }
 
+.slider-subtitle2 {
+    text-align: left;
+    color: #000;
+    font-size: 2vh;
+    margin-bottom: 2vh;
+    font-size: 32px;
+    margin-left: 10vw;
+    font-family: mus;
+}
+
+.text-muted2 {
+    margin-right: 1vw;
+}
+
+/*********************** Footer **********************/
+
+.logosav{
+    height: 15vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+}
+
+#footlist{
+    margin-top: 8vh;
+}
+
+.footer a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.footer a:hover, a:focus {
+    background-size: 100% 2px;
+}
 /*********************Fin MonetaStudio Message*****************/
