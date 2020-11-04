@@ -10,7 +10,8 @@ export class NewsService {
     private noticia:Noticia[] = [
         {
           nombre: "Aquaman",
-          bio: "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.",
+          bio: `El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la 
+                vida marina, la cual puede convocar a grandes distancias.`,
           img: "assets/img/aquaman.png",
           aparicion: "1941-11-01",
           casa:"DC",
