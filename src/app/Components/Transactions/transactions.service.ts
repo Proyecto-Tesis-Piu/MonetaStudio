@@ -25,21 +25,22 @@ export class TransactionService extends BaseService {
         return this.http.get(this.serviceUrl + '/Categories', { headers: tokenHeader });
     }
 
-    public modifyCategory(trans: Transaction) {
+    public updateCategory(trans: Transaction) {
         if (trans.userId) {
             var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-            return this.http.put(this.serviceUrl + '/ModifyCategory', trans, { headers: tokenHeader });
+            return this.http.post(this.serviceUrl + '/UpdateCategory', trans, { headers: tokenHeader });
         }
         return null;
     }
 
-    public deleteCategory(trans: Transaction) {
-        if (trans.userId) {
-            var id = trans.id;
-            var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-            return this.http.delete(this.serviceUrl + '/DeleteCategory/${id}', { headers: tokenHeader });
-        }
-        return null;
+    public categoryHasTransactions(categoryId: String) {
+        var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+        return this.http.get(this.serviceUrl + '/Category/HasTransactions/' + categoryId, { headers: tokenHeader });
+    }
+
+    public deleteCategory(deletedCategory: String, newCategory: String) {
+        var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+        return this.http.post(this.serviceUrl + '/DeleteCategory', {deletedCategory, newCategory}, { headers: tokenHeader });
     }
 
     public createCategory(trans: Transaction) {
@@ -49,7 +50,7 @@ export class TransactionService extends BaseService {
 
     public modifyTransaction(transaction: Transaction, fromDate: Date, toDate: Date) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.post(this.serviceUrl + '/Update', {fromDate, toDate, transaction}, { headers: tokenHeader });
+        return this.http.post(this.serviceUrl + '/Update', { fromDate, toDate, transaction }, { headers: tokenHeader });
     }
 
     public deleteTransaction(TransactionID: String, fromDate: Date, toDate: Date) {
@@ -59,7 +60,7 @@ export class TransactionService extends BaseService {
 
     public createTransaction(transaction: Transaction, fromDate: Date, toDate: Date) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-        return this.http.post(this.serviceUrl + '/Create', {fromDate, toDate, transaction}, { headers: tokenHeader });
+        return this.http.post(this.serviceUrl + '/Create', { fromDate, toDate, transaction }, { headers: tokenHeader });
     }
 
     public getTransactions(fromDate: Date, toDate: Date) {
@@ -67,7 +68,7 @@ export class TransactionService extends BaseService {
         return this.http.post(this.serviceUrl, { fromDate, toDate }, { headers: tokenHeader });
     }
 
-    public getCalendarDates(){
+    public getCalendarDates() {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
         return this.http.get(this.serviceUrl + '/Calendar', { headers: tokenHeader });
     }

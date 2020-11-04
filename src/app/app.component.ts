@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class AppComponent {
-  title = 'Savio';
+  title = 'Moneta Studio';
   openSidenav = false;
   token:any;
 

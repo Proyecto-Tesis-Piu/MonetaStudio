@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../Users/login/login.component';
-import { VideoSavioComponent } from '../home/video-savio/video-savio.component';
+import { VideoTutorialComponent } from '../home/video-tutorial/video-tutorial.component';
 import { RegistrationComponent } from '../Users/registration/registration.component';
 import {ContactusComponent} from '../contactus/contactus.component';
 
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog2(): void {
-    const dialogRef = this.dialog.open(VideoSavioComponent, {});
+    const dialogRef = this.dialog.open(VideoTutorialComponent, {});
   }
 
   newUser(): void {

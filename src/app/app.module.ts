@@ -7,7 +7,7 @@ import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
-import { VideoSavioComponent } from './Components/home/video-savio/video-savio.component';
+import { VideoTutorialComponent } from './Components/home/video-tutorial/video-tutorial.component';
 import { RegistrationComponent } from './Components/Users/registration/registration.component';
 import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { UserComponent } from './Components/Users/user.component';
@@ -20,6 +20,9 @@ import { DeleteTransactionComponentDialog } from './Components/Transactions/dele
 import { NewsService } from "./Components/new/service/news.service";
 import { NewsComponent } from "./Components/new/News/news.component";
 import { NewComponent } from "./Components/new/New/new.component";
+//import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
+import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
+import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -40,6 +43,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
 
@@ -51,11 +57,14 @@ import { ContactusComponent } from './Components/contactus/contactus.component';
     RegistrationComponent,
     TransactionsComponent,
     UserComponent,
-    VideoSavioComponent,
+    VideoTutorialComponent,
     NewTransactionComponent,
     NewComponent,
     NewsComponent,
     DeleteTransactionComponentDialog,
+    //TreeChecklistExample,
+    CategoriesComponent,
+    IconSelectionDialogComponent,
     AboutusComponent,
     ContactusComponent,
   ],
@@ -85,7 +94,10 @@ import { ContactusComponent } from './Components/contactus/contactus.component';
     MatRippleModule,
     ChartsModule,
     WavesModule,
-    AngularMyDatePickerModule
+    AngularMyDatePickerModule,
+    MatTabsModule,
+    MatSlideToggleModule,
+    ClipboardModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 
