@@ -14,7 +14,7 @@ export class NewsService {
           img: "assets/img/aquaman.png",
           aparicion: "1941-11-01",
           casa:"DC",
-          cover: "../../../assets/img/imagen_a.jpg"
+          cover: "../../../assets/img/news/imagen_a.jpg"
         },
         {
           nombre: "Batman",
@@ -22,7 +22,7 @@ export class NewsService {
           img: "assets/img/batman.png",
           aparicion: "1939-05-01",
           casa:"DC",
-          cover: "../../../assets/img/imagen_b.jpg"
+          cover: "../../../assets/img/news/imagen_b.jpg"
         },
         {
           nombre: "Daredevil",
@@ -30,7 +30,7 @@ export class NewsService {
           img: "assets/img/daredevil.png",
           aparicion: "1964-01-01",
           casa: "Marvel",
-          cover: "../../../assets/img/imagen_c.jpg"
+          cover: "../../../assets/img/news/imagen_c.jpg"
         },
         {
           nombre: "Hulk",
@@ -38,7 +38,7 @@ export class NewsService {
           img: "assets/img/hulk.png",
           aparicion: "1962-05-01",
           casa:"Marvel",
-          cover: "../../../assets/img/imagen_d.jpg"
+          cover: "../../../assets/img/news/imagen_d.jpg"
         },
         {
           nombre: "Linterna Verde",
@@ -46,7 +46,7 @@ export class NewsService {
           img: "assets/img/linterna-verde.png",
           aparicion: "1940-06-01",
           casa: "DC",
-          cover: "../../../assets/img/imagen_x.jpg"
+          cover: "../../../assets/img/news/imagen_x.jpg"
         },
         {
           nombre: "Spider-Man",
@@ -54,7 +54,7 @@ export class NewsService {
           img: "assets/img/spiderman.png",
           aparicion: "1962-08-01",
           casa: "Marvel",
-          cover: "../../../assets/img/imagen_y.png"
+          cover: "../../../assets/img/news/imagen_y.png"
         },
         {
           nombre: "Wolverine das d asd a sd a sd a sd asdasdasdasd as d as d asda sdasdaasdasdasdasd as d as d asda sdasda",
@@ -62,7 +62,7 @@ export class NewsService {
           img: "assets/img/wolverine.png",
           aparicion: "1974-11-01",
           casa: "Marvel",
-          cover: "../../../assets/img/imagen_z.jpg"
+          cover: "../../../assets/img/news/imagen_z.jpg"
         }
       ];
 

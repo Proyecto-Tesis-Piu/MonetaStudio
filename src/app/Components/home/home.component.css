@@ -145,8 +145,8 @@ div li .custom-button {
 
 .flex-container {
     display: flex;
-    flex-flow: row wrap;
-    align-items: baseline;
+    flex-direction: row;
+    align-items: center;
 }
 
 .flex-item {
@@ -343,7 +343,7 @@ mat-icon {
     margin-top: 8vh;
 }
 
-a {
+.footer a {
     text-decoration: none;
     background-image: linear-gradient(currentColor, currentColor);
     background-position: 0% 100%;
@@ -352,7 +352,7 @@ a {
     transition: background-size .3s;
 }
 
-a:hover, a:focus {
+.footer a:hover, a:focus {
     background-size: 100% 2px;
 }
 /*********************Fin MonetaStudio Message*****************/
