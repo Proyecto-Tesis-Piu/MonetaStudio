@@ -20,7 +20,8 @@
                     <a style="color: #007bff;" [routerLink]="['/transactions']">
                         Transacciones </a></li>
                 <li style="margin-top: 20px; font-size: 20px;" class="line"
-                    (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a style="color: #007bff;">
+                    (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
+                        style="color: #007bff;">
                         MonetaStudio </a></li>
                 <li style="margin-top: 20px; font-size: 20px;" class="line"><a style="color: #007bff;"
                         [routerLink]="['/news']">Noticias</a>
@@ -140,4 +141,31 @@
             </div>
         </div>
     </section>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-sm-3">
+                <img class="logosav" src="../../../assets/img/logo.png" alt="">
+            </div>
+            <div class="col-sm-3" id="footlist">
+                <span><b>COMPAÑIA</b></span><br><br>
+                <a><span>Inicio</span></a><br><br>
+                <a><span>Comisiones</span></a><br><br>
+                <a><span>Blog</span></a><br><br>
+                <a href="aboutus"><span>Únete al equipo</span></a>
+            </div>
+            <div class="col-sm-3" id="footlist">
+                <span><b>PRODUCTOS</b></span><br><br>
+                <a *ngIf="token" (click)="contactUsDialog()"><span>Contact Us</span></a><br><br>
+                <a><span>Savio Alpha</span></a>
+            </div>
+            <div class="col-sm-3" id="footlist">
+                <span><b>REDES SOCIALES</b></span><br><br>
+                <a href=""><span class="material-icons">facebook</span></a>
+                <a href=""><span class="material-icons">camera_enhance</span></a>
+                <a href=""><span class="material-icons">play_arrow</span></a>
+            </div>
+        </div>
+    </div>
+
 </div>

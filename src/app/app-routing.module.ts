@@ -7,6 +7,7 @@ import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { UserComponent } from './Components/Users/user.component';
 import { NewsComponent } from './Components/new/News/news.component';
 import { NewComponent } from './Components/new/New/new.component';
+import { AboutusComponent } from './Components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {path:'home', component: HomeComponent },
@@ -16,6 +17,9 @@ const routes: Routes = [
   ]},
   {path: 'news', component: NewsComponent},
   {path: 'news/new/:i', component: NewComponent},
+
+  {path: 'aboutus', component: AboutusComponent},
+
   {
     path:'transactions', component: TransactionsComponent, canActivate: [AuthGuard]
   },

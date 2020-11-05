@@ -46,6 +46,8 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { AboutusComponent } from './Components/aboutus/aboutus.component';
+import { ContactusComponent } from './Components/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     //TreeChecklistExample,
     CategoriesComponent,
     IconSelectionDialogComponent,
+    AboutusComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,
