@@ -7,7 +7,8 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export abstract class BaseService {
-  baseUrl:string = "http://localhost:49755/api/";
+  //baseUrl:string = "http://localhost:49755/api/"; //local (add to proxyconfig.json)
+  baseUrl:string = "https://monetaapi.azurewebsites.net/api/"; //production
 
   protected handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

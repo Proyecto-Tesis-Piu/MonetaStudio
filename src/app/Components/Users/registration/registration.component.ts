@@ -65,8 +65,7 @@ export class RegistrationComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private _adapter: DateAdapter<any>) {
     
-    this.http.get('http://localhost:49755/api/Country')
-      .subscribe((countries: Country[]) => {
+    this.service.getCountries().subscribe((countries: Country[]) => {
         this.countryArray = countries;
       });
 
@@ -94,8 +93,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   fillStates(countryCode: string) {
-    this.http.get('http://localhost:49755/api/Country/' + countryCode + '/States')
-      .subscribe((states: State[]) => {
+    this.service.getStates(countryCode).subscribe((states: State[]) => {
         this.stateArray = states;
       });
   }

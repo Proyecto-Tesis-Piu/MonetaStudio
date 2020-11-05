@@ -76,6 +76,14 @@ export class UserService extends BaseService {
     return this.http.post(this.serviceUrl + '/Login', temp);
   }
 
+  public getCountries(){
+    return this.http.get(this.serviceUrl + '/Country');
+  }
+
+  public getStates(country: String) {
+    return this.http.get(this.serviceUrl + '/Country/' + country + '/States');
+  }
+
   public getUserProfile(){
     var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')});
     return this.http.get(this.serviceUrl + 'Profile', {headers : tokenHeader});
