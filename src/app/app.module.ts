@@ -23,6 +23,8 @@ import { NewComponent } from "./Components/new/New/new.component";
 //import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
+import { AboutusComponent } from './Components/aboutus/aboutus.component';
+import { ContactusComponent } from './Components/contactus/contactus.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -46,8 +48,7 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { AboutusComponent } from './Components/aboutus/aboutus.component';
-import { ContactusComponent } from './Components/contactus/contactus.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { ContactusComponent } from './Components/contactus/contactus.component';
     AngularMyDatePickerModule,
     MatTabsModule,
     MatSlideToggleModule,
-    ClipboardModule
+    ClipboardModule,
+    MatChipsModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
 

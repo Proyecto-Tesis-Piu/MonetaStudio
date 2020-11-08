@@ -4,8 +4,8 @@
         <img class="card-img-top" src="{{item.cover}}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{item.nombre}}</h5>
-            <p class="card-text">{{item.bio}}</p>
-            <p class="card-text"><small class="text-muted" >{{item.aparicion}}</small></p>
+            <p id="info" class="card-text">{{item.resumen}}</p>
+            <p class="card-text"><small class="text-muted" >{{item.fecha}}</small></p>
             <button [routerLink]="['/news/new',i]" type="button" style="background-color: cornflowerblue; color: white;"
                 class="btn btn primary btn-block">Ver
                 más</button>
