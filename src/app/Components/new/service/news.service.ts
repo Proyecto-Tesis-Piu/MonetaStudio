@@ -7,86 +7,43 @@ import { Injectable } from "@angular/core";
 
 export class NewsService {
 
-    private noticia:Noticia[] = [
-        {
-          nombre: "Aquaman",
-          bio: `El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la 
-                vida marina, la cual puede convocar a grandes distancias.`,
-          img: "assets/img/aquaman.png",
-          aparicion: "1941-11-01",
-          casa:"DC",
-          cover: "../../../assets/img/news/imagen_a.jpg"
-        },
-        {
-          nombre: "Batman",
-          bio: "Los rasgos principales de Batman se resumen en «destreza física, habilidades deductivas y obsesión». La mayor parte de las características básicas de los cómics han variado por las diferentes interpretaciones que le han dado al personaje.",
-          img: "assets/img/batman.png",
-          aparicion: "1939-05-01",
-          casa:"DC",
-          cover: "../../../assets/img/news/imagen_b.jpg"
-        },
-        {
-          nombre: "Daredevil",
-          bio: "Al haber perdido la vista, los cuatro sentidos restantes de Daredevil fueron aumentados por la radiación a niveles superhumanos, en el accidente que tuvo cuando era niño. A pesar de su ceguera, puede \"ver\" a través de un \"sexto sentido\" que le sirve como un radar similar al de los murciélagos.",
-          img: "assets/img/daredevil.png",
-          aparicion: "1964-01-01",
-          casa: "Marvel",
-          cover: "../../../assets/img/news/imagen_c.jpg"
-        },
-        {
-          nombre: "Hulk",
-          bio: "Su principal poder es su capacidad de aumentar su fuerza hasta niveles prácticamente ilimitados a la vez que aumenta su furia. Dependiendo de qué personalidad de Hulk esté al mando en ese momento (el Hulk Banner es el más débil, pero lo compensa con su inteligencia).",
-          img: "assets/img/hulk.png",
-          aparicion: "1962-05-01",
-          casa:"Marvel",
-          cover: "../../../assets/img/news/imagen_d.jpg"
-        },
-        {
-          nombre: "Linterna Verde",
-          bio: "Poseedor del anillo de poder que posee la capacidad de crear manifestaciones de luz sólida mediante la utilización del pensamiento. Es alimentado por la Llama Verde (revisada por escritores posteriores como un poder místico llamado Starheart), una llama mágica contenida en dentro de un orbe (el orbe era en realidad un meteorito verde de metal que cayó a la Tierra, el cual encontró un fabricante de lámparas llamado Chang)",
-          img: "assets/img/linterna-verde.png",
-          aparicion: "1940-06-01",
-          casa: "DC",
-          cover: "../../../assets/img/news/imagen_x.jpg"
-        },
-        {
-          nombre: "Spider-Man",
-          bio: "Tras ser mordido por una araña radiactiva, obtuvo los siguientes poderes sobrehumanos, una gran fuerza, agilidad, poder trepar por paredes. La fuerza de Spider-Man le permite levantar 10 toneladas o más. Gracias a esta gran fuerza Spider-Man puede realizar saltos íncreibles. Un \"sentido arácnido\", que le permite saber si un peligro se cierne sobre él, antes de que suceda. En ocasiones este puede llevar a Spider-Man al origen del peligro.",
-          img: "assets/img/spiderman.png",
-          aparicion: "1962-08-01",
-          casa: "Marvel",
-          cover: "../../../assets/img/news/imagen_y.png"
-        },
-        {
-          nombre: "Wolverine das d asd a sd a sd a sd asdasdasdasd as d as d asda sdasdaasdasdasdasd as d as d asda sdasda",
-          bio: "En el universo ficticio de Marvel, Wolverine posee poderes regenerativos que pueden curar cualquier herida, por mortal que ésta sea, además ese mismo poder hace que sea inmune a cualquier enfermedad existente en la Tierra y algunas extraterrestres . Posee también una fuerza sobrehumana, que si bien no se compara con la de otros superhéroes como Hulk, sí sobrepasa la de cualquier humano.",
-          img: "assets/img/wolverine.png",
-          aparicion: "1974-11-01",
-          casa: "Marvel",
-          cover: "../../../assets/img/news/imagen_z.jpg"
-        }
-      ];
-
-    constructor() { 
-    }
-  
-    getNews(){
-        return this.noticia;
+  private noticia: Noticia[] = [
+    {
+      nombre: "Educación Financiera",
+      resumen: "Existe varias definiciones de educación financiera: La OCDE lo define como un proceso mediante el cual los individuos adquieren una mejor comprensión de los conceptos",
+      bio: "Existe varias definiciones de educación financiera: <br> <br> La OCDE lo define como un proceso mediante el cual los individuos adquieren una mejor comprensión de los conceptos y productos financieros y desarrollan las habilidades necesarias para tomar decisiones informadas, evaluar riesgos y oportunidades financieras, y mejorar su bienestar.<br> <br> Por otro lado la Comisión de Educación Financiera de Estados Unidos Financial Literacy and Education Commision lo define como  proveer la información y los conocimientos, así como ayudar a desarrollar las habilidades necesarias para evaluar las opciones y tomar las mejores decisiones financieras<br><br> La unión europea no solo define a la educación financiera como el proceso por el cual los consumidores e inversores aumentan la comprensión de productos financieros por medio de la información, aprendizaje y objetivos, desarrollando habilidades y la confianza de ser conscientes de los riesgos y oportunidades financieros por lo tanto, tomar decisiones informadas y saber dónde buscar ayuda para mejorar su bienestar y protección financiera sino que también resalta el hecho de tratar de empoderar a las personas, abordar la exclusión social y promover consumo responsable.<br> <br>En Moneta pensamos que la educación financiera es la comprensión de los productos financieros, así como la habilidad de tomar la mejor decisión a la hora de adquirir un producto financiero. ¿Y tú qué tanto sabes de educación financiera?<br>",
+      img: "assets/img/aquaman.png",
+      fecha: "11 de noviembre del 2020",
+      autor: "Moneta Studio",
+      cover: "../../../assets/img/news/1-EducacionFinanciera.jpg",
+      tags: ["Educacion", "Finanzas", "Productos Financieros"],
+      biblio: ["OCDE. (2005). Improving Financial Literacy: Analysis of Issues and Policies. France : Organization for Economic Co-operation and Development (OECD).", "Financial Literacy and Education Commission. (2011). Promoting Financial Success in the United States: National Strategy for Financial Literacy, https://files.eric.ed.gov/fulltext/ED524620.pdf", "European Union. (2016). Financial Education for all. Visits and Publications, Second Edition, 68. 2020, De EESC Base de datos."]
     }
 
-    getNew(idx: string){
-        return this.noticia[idx]
-    }
-  
+  ];
+
+  constructor() {
   }
 
-  export interface Noticia{
-      nombre: string;
-      bio: string;
-      img: string;
-      aparicion: string;
-      casa: string;
-      cover: string;
-  } 
+  getNews() {
+    return this.noticia;
+  }
 
-  
+  getNew(idx: string) {
+    return this.noticia[idx]
+  }
+
+}
+
+export interface Noticia {
+  resumen: string;
+  nombre: string;
+  bio: string;
+  img: string;
+  fecha: string;
+  autor: string;
+  cover: string;
+  tags: string[];
+  biblio: string[];
+}
+
