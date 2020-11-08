@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { StorageMap } from '@ngx-pwa/local-storage';
+import { Subscription } from 'rxjs';
 import { LoginDialogComponent } from '../../Users/login/login.component';
 
 @Component({
@@ -7,23 +9,31 @@ import { LoginDialogComponent } from '../../Users/login/login.component';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
-  token:any;
+  token:String;
+  tokenSubscription:Subscription;
   showFiller = false;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    protected storageMap: StorageMap) { }
   
-  ngOnInit(): void {
-    this.token = localStorage.getItem('token');
+  ngOnInit() {
+    this.tokenSubscription = this.storageMap.watch('token', {type: 'string'})
+      .subscribe((result) => {
+        this.token = result;
+      });
   }
 
-  logout(): void {
-    localStorage.removeItem('token');
-    window.location.reload();
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
   }
 
-  openDialog(): void {
+  logout() {
+    this.storageMap.delete('token').subscribe(() => {});
+  }
+
+  openDialog() {
     const dialogRef = this.dialog.open(LoginDialogComponent, {});
   }
 }

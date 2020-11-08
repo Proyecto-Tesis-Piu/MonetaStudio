@@ -26,6 +26,7 @@
     "@fortawesome/fontawesome-free": "^5.15.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@ngx-pwa/local-storage": "^10.1.0",
     "angular-bootstrap-md": "^10.0.0",
     "angular-mydatepicker": "^0.10.2",
     "animate.css": "^4.1.1",
