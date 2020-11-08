@@ -1,28 +1,6 @@
 {
     "routes": [
         {
-            "route": "/home",
-            "serve": "/index.html",
-            "statusCode": 200
-        },
-        {
-            "route": "/news",
-            "serve": "/news"
-        },
-        {
-            "route": "/aboutus",
-            "serve": "/aboutus"
-        },
-        {
-            "route": "/transactions",
-            "serve": "/app/Components/Transactions/transactions.component.html",
-            "statusCode": 200
-        },
-        {
-            "route": "/news/new/*",
-            "serve": "/news/new"
-        },
-        {
             "route": "/*",
             "serve": "/index.html",
             "statusCode": 200
