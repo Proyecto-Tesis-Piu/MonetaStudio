@@ -1,12 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { User } from '../shared/user.model';
-import { MatInputModule } from '@angular/material/input';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { StorageMap } from '@ngx-pwa/local-storage'
 
 @Component({
   selector: 'app-dialog-login',
@@ -14,16 +11,13 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
   styleUrls: ['./login.component.css']
 })
 export class LoginDialogComponent implements OnInit {
-  //response:any;
   loginForm:FormGroup;
-  //currentUser: User;
-  //private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
     public formBuilder: FormBuilder, 
     public service: UserService,
-    private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    protected storageMap: StorageMap
     ) { 
     this.loginForm = new FormGroup({
       userEmail: new FormControl(''),
@@ -33,17 +27,14 @@ export class LoginDialogComponent implements OnInit {
 
   hide = true;
 
-  ngOnInit(): void {
-    if(localStorage.getItem('token'))
-      this.router.navigate(['transactions']);
-  }
+  ngOnInit() { }
 
   submit_onClick(){
     if(this.loginForm.valid){
       this.service.login(this.loginForm.value.userEmail, this.loginForm.value.password)
         .subscribe(
           (res: any) => {
-            localStorage.setItem('token', res.token);
+            this.storageMap.set('token', res.token).subscribe(() => {});
           }, 
           err => {
             if(err.status == 400){
@@ -54,7 +45,6 @@ export class LoginDialogComponent implements OnInit {
           () => {
             console.log('Complete');
             this.dialogRef.close();
-            window.location.reload();
         });
     }
   }

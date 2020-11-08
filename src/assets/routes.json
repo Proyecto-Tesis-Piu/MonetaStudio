@@ -1,0 +1,28 @@
+{
+    "routes": [
+        {
+            "route": "/home",
+            "serve": "/home"
+        },
+        {
+            "route": "/news",
+            "serve": "/news"
+        },
+        {
+            "route": "/aboutus",
+            "serve": "/aboutus"
+        },
+        {
+            "route": "/transactions",
+            "serve": "/transactions"
+        },
+        {
+            "route": "/news/new/*",
+            "serve": "/news/new"
+        },
+        {
+            "route": "/*",
+            "serve": "/home"
+        }
+    ]
+}

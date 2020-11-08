@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../Users/login/login.component';
 import { VideoTutorialComponent } from '../home/video-tutorial/video-tutorial.component';
 import { RegistrationComponent } from '../Users/registration/registration.component';
-import {ContactusComponent} from '../contactus/contactus.component';
+import { ContactusComponent } from '../contactus/contactus.component';
+import { StorageMap } from '@ngx-pwa/local-storage'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +14,21 @@ import {ContactusComponent} from '../contactus/contactus.component';
 })
 export class HomeComponent implements OnInit {
 
-  token:any;
+  token:String;
+  tokenSubscription:Subscription;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    protected storageMap: StorageMap) {
+      this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
+        this.token = data;
+        //console.log("navbar token update: " + data);
+      });
+     }
 
-  ngOnInit(): void {
-    this.token = localStorage.getItem('token');
-  }
+  ngOnInit() { }
 
   logout(): void {
-    localStorage.removeItem('token');
-    window.location.reload();
+    this.storageMap.delete('token').subscribe(() => {});
   }
 
   openDialog(): void {

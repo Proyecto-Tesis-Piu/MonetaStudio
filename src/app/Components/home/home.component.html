@@ -7,24 +7,29 @@
     <div class="navbar">
         <ul>
             <div>
-                <li style=" font-size: 20px;" *ngIf="token"><a style="padding-bottom: 6px; background-color: red;"
-                        mat-raised-button (click)="logout()">Cerrar Sesión</a></li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token"><a
-                        [routerLink]="['user','modify']">Modificar Datos</a></li>
-                <li style="color: #fff" *ngIf="!token"><a style="padding-bottom: 6px;" mat-raised-button
-                        (click)="openDialog()">Iniciar Sesión</a>
+                <li style=" font-size: 20px;" *ngIf="token">
+                    <a style="padding-bottom: 6px; background-color: red;" mat-raised-button (click)="logout()">Cerrar Sesión</a>
                 </li>
-                <li style="margin-top: 20px; font-size: 20px;" *ngIf="!token"><a (click)="newUser()">Crear
-                        Cuenta</a></li>
+                <li style="color: #fff" *ngIf="!token">
+                    <a style="padding-bottom: 6px;" mat-raised-button (click)="openDialog()">Iniciar Sesión</a>
+                </li>
+
                 <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
-                    <a style="color: #007bff;" [routerLink]="['/transactions']">
-                        Transacciones </a></li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line"
-                    (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })"><a
-                        style="color: #007bff;">
-                        MonetaStudio </a></li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line"><a style="color: #007bff;"
-                        [routerLink]="['/news']">Noticias</a>
+                    <a (click)="newUser()" style="color: #007bff;">Modificar Datos</a>
+                </li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="!token">
+                    <a (click)="newUser()" style="color: #007bff;">Crear Cuenta</a>
+                </li>
+
+                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
+                    <a style="color: #007bff;" [routerLink]="['/transactions']">Transacciones</a>
+                </li>
+
+                <li style="margin-top: 20px; font-size: 20px;" class="line" (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })">
+                    <a style="color: #007bff;"> MonetaStudio </a>
+                </li>
+                <li style="margin-top: 20px; font-size: 20px;" class="line">
+                    <a style="color: #007bff;" [routerLink]="['/news']">Noticias</a>
                 </li>
             </div>
         </ul>
