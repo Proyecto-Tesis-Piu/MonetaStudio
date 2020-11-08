@@ -2,7 +2,8 @@
     "routes": [
         {
             "route": "/home",
-            "serve": "/home"
+            "serve": "/index.html",
+            "statusCode": 200
         },
         {
             "route": "/news",
@@ -22,7 +23,8 @@
         },
         {
             "route": "/*",
-            "serve": "/home"
+            "serve": "/index.html",
+            "statusCode": 200
         }
     ]
 }
