@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,13 +8,21 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
 
-  constructor(private router:Router){}
+  token:String;
+
+  constructor(private router:Router,
+    protected storageMap : StorageMap){
+      this.storageMap.watch('token', {type: 'string'})
+      .subscribe((result) => {
+        this.token = result;
+        //console.log("guard token update: " + result);
+      });
+    }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> | boolean {
-    var token = localStorage.getItem('token')
-    if(token){
+    if(this.token){
       return true;
     }
     return this.router.navigate(["home"]);
@@ -29,7 +38,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return localStorage.getItem('token') ? false : true;
+      return this.token ? false : true;
   }
   canLoad(
     route: Route,

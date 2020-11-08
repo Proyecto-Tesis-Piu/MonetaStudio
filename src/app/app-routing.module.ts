@@ -11,10 +11,10 @@ import { AboutusComponent } from './Components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {path:'home', component: HomeComponent },
-  {path:'user', component: UserComponent, children: [
+  /*{path:'user', component: UserComponent, children: [
     {path:'modify', component: RegistrationComponent },
     {path:'create', component: RegistrationComponent },
-  ]},
+  ]},*/
   {path: 'news', component: NewsComponent},
   {path: 'news/new/:i', component: NewComponent},
 

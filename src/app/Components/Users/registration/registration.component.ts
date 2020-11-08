@@ -13,6 +13,7 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPT
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 const moment = _rollupMoment || _moment;
 
@@ -63,25 +64,29 @@ export class RegistrationComponent implements OnInit {
               public service: UserService, 
               private router: Router,
               private _snackBar: MatSnackBar,
-              private _adapter: DateAdapter<any>) {
+              private _adapter: DateAdapter<any>,
+              protected storageMap: StorageMap) {
     
-    this.http.get('http://localhost:49755/api/Country')
-      .subscribe((countries: Country[]) => {
+    this.service.getCountries().subscribe((countries: Country[]) => {
         this.countryArray = countries;
       });
-
-    if(localStorage.getItem('token')){
-      this.service.getUserProfile().subscribe(
-        (res:User) => {
-          this.user = res
-        },
-        err => {
-          console.log(err);
+    
+    this.storageMap.watch('token', {type: 'string'})
+      .subscribe((result) => {
+        //console.log("registration token update: " + result);
+        if(result){
+          this.service.getUserProfile(result).subscribe(
+            (res:User) => {
+              this.user = res
+            },
+            err => {
+              console.log(err);
+            }
+          )
+        }else{
+          this.user = new User();
         }
-      )
-    }else{
-      this.user = new User();
-    }
+      });
   }
 
   ngOnInit(): void {
@@ -94,8 +99,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   fillStates(countryCode: string) {
-    this.http.get('http://localhost:49755/api/Country/' + countryCode + '/States')
-      .subscribe((states: State[]) => {
+    this.service.getStates(countryCode).subscribe((states: State[]) => {
         this.stateArray = states;
       });
   }

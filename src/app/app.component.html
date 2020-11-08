@@ -11,13 +11,13 @@
             <button mat-raised-button [routerLink]="['home']" (click)="openSidenav = false;">
                 <mat-icon class="material-icons-round lens">monetization_on</mat-icon> Moneta Studio
             </button> <br><br>
-            <button mat-raised-button [routerLink]="['user','create']" (click)="openSidenav = false;" *ngIf="!token">
+            <button mat-raised-button (click)="openSidenav = false; openDialog2();" *ngIf="!token">
                 <mat-icon class="material-icons-round lens">account_circle</mat-icon> Crear cuenta
             </button>
             <button mat-raised-button [routerLink]="['transactions']" (click)="openSidenav = false;" *ngIf="token">
                 <mat-icon class="material-icons-round lens">payment</mat-icon> Transacciones
             </button> <br><br>
-            <button mat-raised-button [routerLink]="['user','modify']" (click)="openSidenav = false;" *ngIf="token">
+            <button mat-raised-button (click)="openSidenav = false; openDialog2();" *ngIf="token">
                 <mat-icon class="material-icons-round lens">settings</mat-icon> Modificar Datos
             </button>
 
@@ -25,7 +25,7 @@
 
         <div class="logout">
             <br *ngIf="!token"> <br *ngIf="!token">
-            <button mat-raised-button class="button-logout" (click)="openSidenav = false;" (click)="openDialog()"
+            <button mat-raised-button class="button-logout" (click)="openSidenav = false; openDialog();"
                 *ngIf="!token">
                 <mat-icon class="material-icons-round lens">power_settings_new</mat-icon> Iniciar Sesión
             </button>

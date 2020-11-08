@@ -1,6 +1,6 @@
 {
     "/api":{
-        "target": "http://localhost:49755/api/",
+        "target": "https://monetaapi.azurewebsites.net/api/",
         "secure": false,
         "changeOrigin": true
     }
