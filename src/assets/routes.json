@@ -15,7 +15,8 @@
         },
         {
             "route": "/transactions",
-            "serve": "/transactions"
+            "serve": "/app/Components/Transactions/transactions.component.html",
+            "statusCode": 200
         },
         {
             "route": "/news/new/*",
