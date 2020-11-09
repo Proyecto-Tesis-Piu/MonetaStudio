@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NewsService } from "../service/news.service";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { style } from '@angular/animations';
-import { duration } from 'moment';
 
 
 @Component({
@@ -12,34 +10,41 @@ import { duration } from 'moment';
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.css']
 })
-export class NewComponent implements OnInit {
+export class NewComponent implements OnInit, AfterViewInit {
   public href: string = "";
   public web: string = "";
   public message: string = "copiada en el portapapeles";
 
   noticia: any = {};
 
+  //@ViewChild("test", { static: true }) test: ElementRef;
+
+
   constructor(private activated: ActivatedRoute,
-    private _service: NewsService, 
-    private router: Router, private _snackBar: MatSnackBar) {
+    private _service: NewsService,
+    private router: Router,
+    private _snackBar: MatSnackBar) {
 
     this.activated.params.subscribe(params => {
       this.noticia = this._service.getNew(params['i']);
-      console.log(this._service.getNew(params['i']))
     })
-
   }
+
+  ngAfterViewInit(): void {
+    document.getElementById("newsBody").innerHTML = this.noticia.bio;
+    //document.getElementById("tags").innerHTML = this.noticia.tags;
+    //document.getElementById("biblio").innerHTML = this.noticia.biblio;
+  }
+
 
   ngOnInit(): void {
     this.href = this.router.url;
-    console.log(this.router.url);
-    this.web =  this.href;
-    //this.web = "www.moneta.studio" + this.href;
-
+    this.web = "www.moneta.studio" + this.href;
+    
   }
 
-  openCustomSnackBar(){
-    this._snackBar.open("Copiado a portapapeles", "Cerrar", {duration: 2000});
+  openCustomSnackBar() {
+    this._snackBar.open("Copiado a portapapeles", "Cerrar", { duration: 2000 });
   }
 
 }
