@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component'
-import { RegistrationComponent } from './Components/Users/registration/registration.component'
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
-import { UserComponent } from './Components/Users/user.component';
 import { NewsComponent } from './Components/new/News/news.component';
 import { NewComponent } from './Components/new/New/new.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';

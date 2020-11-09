@@ -14,6 +14,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { StorageMap } from '@ngx-pwa/local-storage';
+import { MatDialogRef } from '@angular/material/dialog';
 
 const moment = _rollupMoment || _moment;
 
@@ -39,7 +40,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css'],
+  styleUrls: ['./registration.component.scss'],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
     {
@@ -60,7 +61,8 @@ export class RegistrationComponent implements OnInit {
   ErrorMessage:any;
   date = new FormControl(moment());
 
-  constructor(private http: HttpClient, 
+  constructor(public dialogRef: MatDialogRef<RegistrationComponent>,
+              private http: HttpClient, 
               public service: UserService, 
               private router: Router,
               private _snackBar: MatSnackBar,
@@ -128,5 +130,6 @@ export class RegistrationComponent implements OnInit {
       },
       err => console.log(err)
     );
+    this.dialogRef.close();
   }
 }

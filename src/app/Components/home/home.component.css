@@ -19,15 +19,6 @@
     padding: unset;
 }
 
-.tutorial-link {
-    text-align: center;
-    cursor: pointer;
-}
-
-.tutorial-link:hover {
-    text-decoration: underline;
-}
-
 #grad1 {
     height: 50px;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
@@ -94,9 +85,9 @@ div li .custom-button {
     display: block;
     width: 0;
     height: 2px;
-    background: #007bff;
+    background: white;
     transition: width .3s;
-    color: #007bff;
+    color:white;
     margin-top: 10px;
     cursor: pointer;
 }
@@ -104,7 +95,7 @@ div li .custom-button {
 .line-tutorial:hover::after {
     width: 100%;
     transition: width .3s;
-    color: #007bff;
+    color: white;
     margin-top: 10px;
     cursor: pointer;
 }
@@ -302,7 +293,9 @@ mat-icon {
 }
 
 .MonetaStudio-text {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     font-family: mus;
     font-size: 38px;
     width: 48vw;
@@ -314,7 +307,8 @@ mat-icon {
     color: #fff;
     margin-top: 7vh;
     width: 48vw;
-    margin-left: 10vw;
+    text-align: center;
+    cursor: pointer;
 }
 
 .slider-subtitle2 {
@@ -335,12 +329,6 @@ mat-icon {
 
 .logosav{
     height: 15vh;
-    margin-top: 3vh;
-    margin-left: 3vw;
-}
-
-#footlist{
-    margin-top: 8vh;
 }
 
 .footer a {
@@ -350,9 +338,31 @@ mat-icon {
     background-repeat: no-repeat;
     background-size: 0% 2px;
     transition: background-size .3s;
+    width: fit-content;
+    margin-top: 10px;
 }
 
 .footer a:hover, a:focus {
     background-size: 100% 2px;
+}
+
+.footer {
+    height: 270px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer-list {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
+
+.footer-list2 {
+    margin-top: 10px;
+    display: flex;
+    flex-flow: row;
 }
 /*********************Fin MonetaStudio Message*****************/

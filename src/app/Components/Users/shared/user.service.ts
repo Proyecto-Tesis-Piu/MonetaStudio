@@ -26,9 +26,9 @@ export class UserService extends BaseService {
   formModel = this.fb.group({
     //validators van aqui
     firstName: ['', Validators.required],
-    lastName: [''],
+    lastName: ['', Validators.required],
     birthDate: [''],
-    sex: ['Male'],
+    sex: [''],
     job: [''],
     civilStateString: [''],
     email: ['', [Validators.required, Validators.email] ],
@@ -37,7 +37,8 @@ export class UserService extends BaseService {
       passwordConfirm: ['', Validators.required],
     }, {validator : this.comparePasswords }),
     countryCode: [''],
-    stateCode: ['']
+    stateCode: [''],
+    acceptTerms: [false, Validators.requiredTrue]
   });
 
   comparePasswords(fb:FormGroup){

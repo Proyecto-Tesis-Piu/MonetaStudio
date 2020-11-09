@@ -10,6 +10,8 @@ import { IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyRangeDateSelectio
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { CalendarDate, GeneralData } from './calendarDate.model';
 import { CategoriesComponent } from './categories/categories.component';
+import { Subscription } from 'rxjs';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 const transactionTree: Transaction[] = [
   {
@@ -237,10 +239,17 @@ export class TransactionsComponent implements OnInit {
 
   snackBarRef: MatSnackBarRef<SimpleSnackBar>;
 
+  token:String;
+  tokenSubscription:Subscription;
+
   constructor(public dialog: MatDialog,
     private service: TransactionService,
-    private _snackBar: MatSnackBar) {
-
+    private _snackBar: MatSnackBar,
+    protected storageMap : StorageMap) {
+      this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
+        this.token = data;
+        //console.log("sidebar token update: " + data);
+      });
     var date = new Date();
 
     this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -297,7 +306,7 @@ export class TransactionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.service.createTransaction(result, this.fromDate, this.toDate).subscribe(
+        this.service.createTransaction(result, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
             this.generalData = res;
             this.handleTransactionsResponse();
@@ -329,7 +338,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   getTransactions() {
-    this.service.getTransactions(this.fromDate, this.toDate).subscribe(
+    this.service.getTransactions(this.fromDate, this.toDate, this.token).subscribe(
       (res: GeneralData) => {
         this.generalData = res;
         if (this.generalData.transactions.length > 0) {
@@ -370,7 +379,7 @@ export class TransactionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: Boolean) => {
       console.log('The dialog was closed');
       if (result) {
-        this.service.deleteTransaction(trans.id, this.fromDate, this.toDate).subscribe(
+        this.service.deleteTransaction(trans.id, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
             this.generalData = res;
             this.handleTransactionsResponse();
@@ -404,7 +413,7 @@ export class TransactionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.service.modifyTransaction(result, this.fromDate, this.toDate).subscribe(
+        this.service.modifyTransaction(result, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
             this.generalData = res
             this.handleTransactionsResponse();
@@ -480,7 +489,7 @@ export class TransactionsComponent implements OnInit {
 
   getCalendarDates() {
     let copyOfOptions: IAngularMyDpOptions = this.getCopyOfOptions();
-    this.service.getCalendarDates().subscribe(
+    this.service.getCalendarDates(this.token).subscribe(
       (res: CalendarDate[]) => {
         this.expenseDates = {
           color: "red", dates: res.filter(item => item.hasExpense && !item.hasIncome)
