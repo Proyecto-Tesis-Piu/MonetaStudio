@@ -12,11 +12,6 @@ export class AuthGuard implements CanActivate//, CanActivateChild, CanDeactivate
 
   constructor(private router: Router,
       protected storageMap : StorageMap){
-    this.storageMap.watch('token', {type: 'string'})
-    .subscribe((result) => {
-      this.token = result;
-      //console.log("guard token update: " + result);
-    });
   }
 
   canActivate(
