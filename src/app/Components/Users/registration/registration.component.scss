@@ -1,0 +1,147 @@
+@font-face {
+    src: url(../../../../assets/fonts/Musket.otf);
+    font-family: mus;
+}
+
+::ng-deep .mat-dialog-container {
+    padding: unset;
+}
+
+.containerbody {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.registration-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: mus;
+    background-color: #04ecd6;
+    color: black;
+    font-size: 40px;
+    width: 20vw;
+}
+
+.registration-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reg-icon {
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: #04ecd6;
+    border-radius: 50%;
+    margin-left: -55px;
+    padding-left: 10px;
+}
+
+label {
+    color: black;
+    font-size: 20px;
+    margin-left: 5%;
+    align-self: flex-start;
+}
+
+.form-field {
+    width: 90%;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /* change color of label */
+    color: black !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    /* change color of underline */
+    background-color: black !important;
+    width: 200px;
+}
+
+::ng-deep .mat-form-field-ripple {
+    /* change color of underline when focused */
+    background-color: blue !important;
+    width: 200px;
+}
+
+::ng-deep .mat-form-field-infix {
+    border-top-width: 0px;
+}
+
+.input-style {
+    color: black;
+}
+
+::ng-deep .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-select-arrow {
+    color: black;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+    color: black;
+}
+
+::ng-deep .no-border *:focus:active:hover {
+    outline: none !important;
+    border: 0;
+}
+
+::ng-deep .no-border * {
+    outline: none !important;
+    border: 0;
+}
+
+::ng-deep .mat-icon-button:hover,
+.mat-icon-button:active,
+.mat-icon-button:focus {
+    outline: none;
+    border: 0;
+}
+
+.new-user {
+    background-color: #6a20e1 !important;
+    align-self: flex-end;
+}
+
+.fields {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+}
+
+.fields label {
+    font-family: mus;
+}
+
+.two-fields {
+    display: flex;
+    flex-direction: row;
+    width: calc(90% + 8px);
+}
+
+.two-fields>* {
+    margin: 0px 2px;
+}
+
+.pwd-fields .form-field {
+    margin-left: 5%
+}
+
+::ng-deep .mat-checkbox-frame {
+    border-color: rgba(0,0,0,.7);
+}
+
+.reg-checkbox {
+    align-self: flex-start;
+    margin-left: 5%;
+}

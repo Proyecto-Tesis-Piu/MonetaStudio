@@ -43,7 +43,7 @@ export class LoginDialogComponent implements OnInit {
             console.log(err)
           }, 
           () => {
-            console.log('Complete');
+            //console.log('Complete');
             this.dialogRef.close();
         });
     }

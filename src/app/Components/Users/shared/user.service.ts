@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Directive, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user.model';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from '../../../Services/base.service'
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,19 +26,31 @@ export class UserService extends BaseService {
   formModel = this.fb.group({
     //validators van aqui
     firstName: ['', Validators.required],
-    lastName: [''],
+    lastName: ['', Validators.required],
     birthDate: [''],
-    sex: ['Male'],
+    sex: [''],
     job: [''],
     civilStateString: [''],
     email: ['', [Validators.required, Validators.email] ],
     passwords: this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8), this.validatePassword]],
       passwordConfirm: ['', Validators.required],
     }, {validator : this.comparePasswords }),
     countryCode: [''],
-    stateCode: ['']
+    stateCode: [''],
+    acceptTerms: [false, Validators.requiredTrue]
   });
+
+  validatePassword(control: AbstractControl) : {[key: string]: any} | null {
+    if (control.value) {
+      let expresion = ".*[0-9].*";
+      let result = (control.value as string).match(expresion);
+      if(result && result.length > 0){
+        return null; // return null if validation is passed.
+      }
+      return { 'passwordInvalid': true }; // return object if the validation is not passed.
+    }
+  }
 
   comparePasswords(fb:FormGroup){
     let confirmPwdCtl = fb.get('passwordConfirm');

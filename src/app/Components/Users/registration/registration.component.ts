@@ -14,6 +14,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { StorageMap } from '@ngx-pwa/local-storage';
+import { MatDialogRef } from '@angular/material/dialog';
 
 const moment = _rollupMoment || _moment;
 
@@ -39,7 +40,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css'],
+  styleUrls: ['./registration.component.scss'],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
     {
@@ -60,7 +61,8 @@ export class RegistrationComponent implements OnInit {
   ErrorMessage:any;
   date = new FormControl(moment());
 
-  constructor(private http: HttpClient, 
+  constructor(public dialogRef: MatDialogRef<RegistrationComponent>,
+              private http: HttpClient, 
               public service: UserService, 
               private router: Router,
               private _snackBar: MatSnackBar,
@@ -108,9 +110,17 @@ export class RegistrationComponent implements OnInit {
     this.service.register().subscribe(
       (res:any) => {
         if(res.succeeded){
-          //TODO: login
           this._snackBar.open('Registro exitoso', 'Cerrar');
-          this.router.navigate(['transactions']);
+          this.service.login(this.user.email, this.user.password).subscribe((res: any) => {
+            this.storageMap.set('token', res.token).subscribe(() => {});
+          }, 
+          err => {
+            if(err.status == 400){
+              this._snackBar.open(err.error.reasonPhrase, 'Cerrar');
+            }
+            console.log(err)
+          });
+          //this.router.navigate(['transactions']);
         }else{
           res.errors.forEach(element => {
             switch(element.code) {
@@ -119,14 +129,16 @@ export class RegistrationComponent implements OnInit {
                 break;
               default:
                 this.ErrorMessage += 'Registration failed';
-                console.log(element.description);
+                //console.log(element.description);
                 break;
             }
+            console.log(element);
           });
           this._snackBar.open(this.ErrorMessage, 'Cerrar');
         }
       },
       err => console.log(err)
     );
+    this.dialogRef.close();
   }
 }

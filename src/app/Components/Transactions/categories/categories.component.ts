@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { StorageMap } from '@ngx-pwa/local-storage';
+import { Subscription } from 'rxjs';
 import { IconSelectionDialogComponent } from '../icon-selection-dialog/icon-selection-dialog.component';
 import { Transaction } from '../transaction.model';
 import { TransactionService } from '../transactions.service';
@@ -10,7 +12,7 @@ import { TransactionService } from '../transactions.service';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
 
   categories: Transaction[];
   replacementCategories: Transaction[];
@@ -20,11 +22,19 @@ export class CategoriesComponent implements OnInit {
   deletedCategory: String;
   replacementCategory: String;
   categoryHasTransactions: boolean;
+  tokenSubscription: Subscription;
+  token: String;
 
   constructor(public dialogRef: MatDialogRef<CategoriesComponent>,
     private service: TransactionService,
     public dialog: MatDialog,
-    public _snackBar: MatSnackBar) {
+    public _snackBar: MatSnackBar,
+    protected storageMap : StorageMap){
+      
+    this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
+      this.token = data;
+      //console.log("sidebar token update: " + data);
+    });
 
     this.addedCategory = new Transaction();
     this.addedCategory.isExpense = true;
@@ -34,7 +44,7 @@ export class CategoriesComponent implements OnInit {
     this.editCategory = new Transaction();
     this.replacementCategory = null;
 
-    this.service.getCategories().subscribe((res: Transaction[]) => {
+    this.service.getCategories(this.token).subscribe((res: Transaction[]) => {
       this.categories = res.filter(category => category.userId).sort(function (a, b) {
         if (a.isExpense && !b.isExpense) {
           return -1;
@@ -71,7 +81,7 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
   }
 
@@ -103,19 +113,19 @@ export class CategoriesComponent implements OnInit {
           this.editCategory.userId = temp.userId;
         }
         this.dirty = false;
-        console.log(this.editCategory);
+        //console.log(this.editCategory);
         break;
       case "delete":
         if (categoryId) {
           this.deletedCategory = categoryId;
-          this.service.categoryHasTransactions(this.deletedCategory).subscribe((res: boolean) => {
+          this.service.categoryHasTransactions(this.deletedCategory, this.token).subscribe((res: boolean) => {
             this.categoryHasTransactions = res;
           },
             err => {
               console.log(err);
             },
             () => {
-              console.log('Complete');
+              //console.log('Complete');
             });
         }
         break;
@@ -128,7 +138,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   addCategory_onClick() {
-    this.service.createCategory(this.addedCategory).subscribe((res: Transaction[]) => {
+    this.service.createCategory(this.addedCategory, this.token).subscribe((res: Transaction[]) => {
       this.categories = res.filter(category => category.userId).sort(function (a, b) {
         if (a.isExpense && !b.isExpense) {
           return -1;
@@ -150,13 +160,13 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
       this.dialogRef.close();
   }
 
   editCategory_onClick() {
-    this.service.updateCategory(this.editCategory).subscribe((res: Transaction[]) => {
+    this.service.updateCategory(this.editCategory, this.token).subscribe((res: Transaction[]) => {
       this.categories = res.filter(category => category.userId).sort(function (a, b) {
         if (a.isExpense && !b.isExpense) {
           return -1;
@@ -178,13 +188,13 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
       this.dialogRef.close();
   }
 
   deleteCategory_onClick() {
-    this.service.deleteCategory(this.deletedCategory, this.replacementCategory).subscribe((res: Transaction[]) => {
+    this.service.deleteCategory(this.deletedCategory, this.replacementCategory, this.token).subscribe((res: Transaction[]) => {
       this.categories = res.filter(category => category.userId).sort(function (a, b) {
         if (a.isExpense && !b.isExpense) {
           return -1;
@@ -206,7 +216,7 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
       this.dialogRef.close();
   }
@@ -231,5 +241,9 @@ export class CategoriesComponent implements OnInit {
       }
       //console.log(this.addedCategory);
     });
+  }
+
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
   }
 }
