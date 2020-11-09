@@ -22,7 +22,12 @@ export class AuthGuard implements CanActivate//, CanActivateChild, CanDeactivate
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> | boolean {
-    //this.token = localStorage.getItem('token');
+    
+      //this.token = localStorage.getItem('token');
+    this.storageMap.watch('token', {type: 'string'})
+    .subscribe((result) => {
+      this.token = result;
+    });
     if (this.token) {
       return true;
     }
