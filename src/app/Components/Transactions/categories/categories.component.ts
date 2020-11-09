@@ -12,7 +12,7 @@ import { TransactionService } from '../transactions.service';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
 
   categories: Transaction[];
   replacementCategories: Transaction[];
@@ -241,5 +241,9 @@ export class CategoriesComponent implements OnInit {
       }
       //console.log(this.addedCategory);
     });
+  }
+
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
   }
 }

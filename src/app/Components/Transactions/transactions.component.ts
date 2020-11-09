@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Transaction, TransactionFlatNode } from "./transaction.model";
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
@@ -91,7 +91,7 @@ const transactionTree: Transaction[] = [
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent implements OnInit, OnDestroy {
   private _transformer = (node: Transaction, level: number) => {
     return {
       expandable: !!node.childrenTransactions && node.childrenTransactions.length > 0,
@@ -539,6 +539,10 @@ export class TransactionsComponent implements OnInit {
 
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
+
+  ngOnDestroy () {
+    this.tokenSubscription.unsubscribe();
+  }
 }
 
 

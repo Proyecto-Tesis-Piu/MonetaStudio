@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
@@ -11,7 +11,7 @@ import { RegistrationComponent } from './Components/Users/registration/registrat
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnDestroy{
   title = 'Moneta Studio';
   openSidenav = false;
   token:String;

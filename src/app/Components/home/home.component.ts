@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../Users/login/login.component';
 import { VideoTutorialComponent } from '../home/video-tutorial/video-tutorial.component';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   token:String;
   tokenSubscription:Subscription;
@@ -45,5 +45,9 @@ export class HomeComponent implements OnInit {
 
   contactUsDialog(): void{
     const dialogRef = this.dialog.open(ContactusComponent, {});
+  }
+  
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
   }
 }

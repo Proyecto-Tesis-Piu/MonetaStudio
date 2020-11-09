@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -39,7 +39,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class NewTransactionComponent implements OnInit {
+export class NewTransactionComponent implements OnInit, OnDestroy {
   transaction: TransactionFlatNode;
   date = new FormControl(moment());
   formModel: FormGroup;
@@ -53,11 +53,12 @@ export class NewTransactionComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: TransactionFlatNode,
     private fb: FormBuilder,
     private service: TransactionService,
-    protected storageMap : StorageMap) {
-      this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
-        this.token = data;
-        //console.log("sidebar token update: " + data);
-      });
+    protected storageMap: StorageMap) {
+
+    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
+      this.token = data;
+      //console.log("sidebar token update: " + data);
+    });
 
     this.service.getCategories(this.token).subscribe((res: Transaction[]) => {
       this.categories = res.sort(function (a, b) {
@@ -98,8 +99,7 @@ export class NewTransactionComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() { }
 
   updateForm(value: any, property: string) {
     if (property === "amount") {
@@ -110,8 +110,11 @@ export class NewTransactionComponent implements OnInit {
     //console.log(this.transaction);
   }
 
-  onCancelClick(): void {
+  onCancelClick() {
     this.dialogRef.close();
   }
 
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
+  }
 }
