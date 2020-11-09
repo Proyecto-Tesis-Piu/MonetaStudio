@@ -71,7 +71,6 @@ export class RegistrationComponent implements OnInit {
     
     this.storageMap.watch('token', {type: 'string'})
       .subscribe((result) => {
-        //console.log("registration token update: " + result);
         if(result){
           this.service.getUserProfile(result).subscribe(
             (res:User) => {
@@ -89,7 +88,7 @@ export class RegistrationComponent implements OnInit {
                 //validators van aqui
                 firstName: [this.user.firstName, Validators.required],
                 lastName: [this.user.lastName, Validators.required],
-                birthDate: [this.user.birthDate],
+                birthDate: [''],
                 sex: [this.user.sex],
                 job: [this.user.job],
                 civilStateString: [this.user.civilStateString],
@@ -107,6 +106,23 @@ export class RegistrationComponent implements OnInit {
           )
         }else{
           this.user = new User();
+          this.formModel = this.fb.group({
+            //validators van aqui
+            firstName: [this.user.firstName, Validators.required],
+            lastName: [this.user.lastName, Validators.required],
+            birthDate: [''],
+            sex: [this.user.sex],
+            job: [this.user.job],
+            civilStateString: [this.user.civilStateString],
+            email: [this.user.email, [Validators.required, Validators.email] ],
+            passwords: this.fb.group({
+              password: [this.user.password, [Validators.required, Validators.minLength(8), this.validatePassword]],
+              passwordConfirm: ['', Validators.required],
+            }, {validator : this.comparePasswords }),
+            countryCode: [this.user.countryCode],
+            stateCode: [this.user.stateCode],
+            acceptTerms: [false, Validators.requiredTrue]
+          });
         }
       });
   }
