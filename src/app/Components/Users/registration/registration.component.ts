@@ -79,6 +79,7 @@ export class RegistrationComponent implements OnInit {
         if(result){
           this.service.getUserProfile(result).subscribe(
             (res:User) => {
+              console.log(res);
               this.user = res
             },
             err => {

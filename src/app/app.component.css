@@ -119,3 +119,12 @@
     display: block;
     text-align: center;
 }
+
+
+::ng-deep .mat-dialog-container {
+    background-color: white !important;
+    height: fit-content !important;
+    width: fit-content !important;
+    padding: unset !important;
+    border-radius: 20px !important;
+}

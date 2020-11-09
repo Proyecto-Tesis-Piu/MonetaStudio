@@ -3,11 +3,7 @@
     font-family: mus;
 }
 
-::ng-deep .mat-dialog-container {
-    padding: unset;
-}
-
-.containerbody {
+.registration-container {
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -60,13 +56,13 @@ label {
 ::ng-deep .mat-form-field-underline {
     /* change color of underline */
     background-color: black !important;
-    width: 200px;
+    /*width: 200px;*/
 }
 
 ::ng-deep .mat-form-field-ripple {
     /* change color of underline when focused */
     background-color: blue !important;
-    width: 200px;
+    /*width: 200px;*/
 }
 
 ::ng-deep .mat-form-field-infix {
