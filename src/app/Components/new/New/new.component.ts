@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NewsService } from "../service/news.service";
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -24,8 +23,7 @@ export class NewComponent implements OnInit, AfterViewInit {
   constructor(private activated: ActivatedRoute,
     private _service: NewsService,
     private router: Router,
-    private _snackBar: MatSnackBar,
-    @Inject(DOCUMENT) document) {
+    private _snackBar: MatSnackBar) {
 
     this.activated.params.subscribe(params => {
       this.noticia = this._service.getNew(params['i']);
