@@ -81,7 +81,7 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
   }
 
@@ -113,7 +113,7 @@ export class CategoriesComponent implements OnInit {
           this.editCategory.userId = temp.userId;
         }
         this.dirty = false;
-        console.log(this.editCategory);
+        //console.log(this.editCategory);
         break;
       case "delete":
         if (categoryId) {
@@ -125,7 +125,7 @@ export class CategoriesComponent implements OnInit {
               console.log(err);
             },
             () => {
-              console.log('Complete');
+              //console.log('Complete');
             });
         }
         break;
@@ -160,7 +160,7 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
       this.dialogRef.close();
   }
@@ -188,7 +188,7 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
       this.dialogRef.close();
   }
@@ -216,7 +216,7 @@ export class CategoriesComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
       this.dialogRef.close();
   }

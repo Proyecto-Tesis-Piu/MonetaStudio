@@ -321,7 +321,7 @@ export class TransactionsComponent implements OnInit {
             this.assignDataSources();
           },
           () => {
-            console.log('Complete');
+            //console.log('Complete');
             this.getCalendarDates();
           });
       }
@@ -359,7 +359,7 @@ export class TransactionsComponent implements OnInit {
         this.assignDataSources();
       },
       () => {
-        console.log('Complete GetTransactions');
+        //console.log('Complete GetTransactions');
       });
   }
 
@@ -377,7 +377,7 @@ export class TransactionsComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteTransactionComponentDialog, { data: trans });
 
     dialogRef.afterClosed().subscribe((result: Boolean) => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       if (result) {
         this.service.deleteTransaction(trans.id, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
@@ -392,7 +392,7 @@ export class TransactionsComponent implements OnInit {
             this.assignDataSources();
           },
           () => {
-            console.log('Complete');
+            //console.log('Complete');
           });
       }
     });
@@ -428,7 +428,7 @@ export class TransactionsComponent implements OnInit {
             this.assignDataSources();
           },
           () => {
-            console.log('Complete');
+            //console.log('Complete');
             this.getCalendarDates();
           });
       }
@@ -436,7 +436,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   handleTransaction(event, trans: Transaction) {
-    console.log(event.target.tagName);
+    //console.log(event.target.tagName);
     switch (event.target.tagName) {
       case "BUTTON":
       case "MAT-ICON":
@@ -529,7 +529,7 @@ export class TransactionsComponent implements OnInit {
 
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
   }
 

@@ -3,8 +3,10 @@ import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, Ng
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
+import { Subscription } from 'rxjs';
 import { Transaction, TransactionFlatNode } from '../transaction.model';
 import { TransactionService } from '../transactions.service';
 
@@ -43,13 +45,21 @@ export class NewTransactionComponent implements OnInit {
   formModel: FormGroup;
   categories: Transaction[];
 
+  tokenSubscription: Subscription;
+  token: String;
+
 
   constructor(public dialogRef: MatDialogRef<NewTransactionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TransactionFlatNode,
     private fb: FormBuilder,
-    private service: TransactionService) {
+    private service: TransactionService,
+    protected storageMap : StorageMap) {
+      this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
+        this.token = data;
+        //console.log("sidebar token update: " + data);
+      });
 
-    service.getCategories().subscribe((res: Transaction[]) => {
+    this.service.getCategories(this.token).subscribe((res: Transaction[]) => {
       this.categories = res.sort(function (a, b) {
         if (a.isExpense && !b.isExpense) {
           return -1;
@@ -70,7 +80,7 @@ export class NewTransactionComponent implements OnInit {
         console.log(err);
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
 
     if (data) {

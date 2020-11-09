@@ -121,7 +121,7 @@ export class RegistrationComponent implements OnInit {
                 break;
               default:
                 this.ErrorMessage += 'Registration failed';
-                console.log(element.description);
+                //console.log(element.description);
                 break;
             }
           });
