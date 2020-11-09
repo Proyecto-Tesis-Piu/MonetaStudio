@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from '../shared/user.model';
 import { Country } from '../../Shared/Countries/countries.model';
 import { State } from '../../Shared/Countries/states.model';
 import { UserService } from '../shared/user.service';
-import { Router } from '@angular/router';
 
-import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
@@ -62,12 +60,10 @@ export class RegistrationComponent implements OnInit {
   date = new FormControl(moment());
 
   constructor(public dialogRef: MatDialogRef<RegistrationComponent>,
-              private http: HttpClient, 
               public service: UserService, 
-              private router: Router,
               private _snackBar: MatSnackBar,
-              private _adapter: DateAdapter<any>,
-              protected storageMap: StorageMap) {
+              protected storageMap: StorageMap,
+              private fb: FormBuilder) {
     
     this.service.getCountries().subscribe((countries: Country[]) => {
         this.countryArray = countries;
@@ -80,10 +76,33 @@ export class RegistrationComponent implements OnInit {
           this.service.getUserProfile(result).subscribe(
             (res:User) => {
               console.log(res);
-              this.user = res
+              this.user = res;
+              this.fillStates(this.user.countryCode);
+              console.log(this.stateArray);
             },
             err => {
+              this.user = new User();
               console.log(err);
+            },
+            () => {
+              this.formModel = this.fb.group({
+                //validators van aqui
+                firstName: [this.user.firstName, Validators.required],
+                lastName: [this.user.lastName, Validators.required],
+                birthDate: [this.user.birthDate],
+                sex: [this.user.sex],
+                job: [this.user.job],
+                civilStateString: [this.user.civilStateString],
+                email: [this.user.email, [Validators.required, Validators.email] ],
+                passwords: this.fb.group({
+                  password: [this.user.password, [Validators.required, Validators.minLength(8), this.validatePassword]],
+                  passwordConfirm: ['', Validators.required],
+                }, {validator : this.comparePasswords }),
+                countryCode: [this.user.countryCode],
+                stateCode: [this.user.stateCode],
+                acceptTerms: [false, Validators.requiredTrue]
+              });
+              
             }
           )
         }else{
@@ -107,8 +126,30 @@ export class RegistrationComponent implements OnInit {
       });
   }
 
+  validatePassword(control: AbstractControl) : {[key: string]: any} | null {
+    if (control.value) {
+      let expresion = ".*[0-9].*";
+      let result = (control.value as string).match(expresion);
+      if(result && result.length > 0){
+        return null; // return null if validation is passed.
+      }
+      return { 'passwordInvalid': true }; // return object if the validation is not passed.
+    }
+  }
+
+  comparePasswords(fb:FormGroup){
+    let confirmPwdCtl = fb.get('passwordConfirm');
+    if(confirmPwdCtl.errors == null || 'passwordMismatch' in confirmPwdCtl.errors){
+      if(fb.get('password').value != confirmPwdCtl.value){
+        confirmPwdCtl.setErrors({passwordMismatch: true});
+      }else{
+        confirmPwdCtl.setErrors(null);
+      }
+    }
+  }
+
   guardar() {
-    this.service.register().subscribe(
+    this.service.register(this.user).subscribe(
       (res:any) => {
         if(res.succeeded){
           this._snackBar.open('Registro exitoso', 'Cerrar');
