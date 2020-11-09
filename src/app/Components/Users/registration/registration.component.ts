@@ -110,9 +110,17 @@ export class RegistrationComponent implements OnInit {
     this.service.register().subscribe(
       (res:any) => {
         if(res.succeeded){
-          //TODO: login
           this._snackBar.open('Registro exitoso', 'Cerrar');
-          this.router.navigate(['transactions']);
+          this.service.login(this.user.email, this.user.password).subscribe((res: any) => {
+            this.storageMap.set('token', res.token).subscribe(() => {});
+          }, 
+          err => {
+            if(err.status == 400){
+              this._snackBar.open(err.error.reasonPhrase, 'Cerrar');
+            }
+            console.log(err)
+          });
+          //this.router.navigate(['transactions']);
         }else{
           res.errors.forEach(element => {
             switch(element.code) {
@@ -124,6 +132,7 @@ export class RegistrationComponent implements OnInit {
                 //console.log(element.description);
                 break;
             }
+            console.log(element);
           });
           this._snackBar.open(this.ErrorMessage, 'Cerrar');
         }

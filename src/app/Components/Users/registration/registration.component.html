@@ -145,9 +145,13 @@
                         *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').hasError('minlength')">
                         Debe contener mínimo 8 caracteres alfanuméricos.
                     </mat-error>
+                    <mat-error
+                        *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').errors?.passwordInvalid">
+                        Debe contener mínimo 1 caracter numérico.
+                    </mat-error>
                 </mat-form-field>
 
-                <label>Confirmación de contraseña</label>
+                <label style="margin-top: 7px;">Confirmación de contraseña</label>
                 <mat-form-field class="form-field">
                     <input matInput type="password" formControlName="passwordConfirm" class="input-style">
                     <mat-error
