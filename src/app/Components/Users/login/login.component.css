@@ -1,10 +1,6 @@
-::ng-deep .mat-dialog-container {
+.login-container {
     /*.prueba {*/
-    border: solid black 2px;
-    background-color: white;
-    height: fit-content;
     width: 400px;
-    border-radius: 20px;
     text-align: center;
 }
 
