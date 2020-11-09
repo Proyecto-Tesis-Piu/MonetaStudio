@@ -5,7 +5,7 @@
             chevron_right
         </mat-icon>
     </div>
-    <form [formGroup]="service.formModel" autocomplete="off" (submit)="guardar()">
+    <form *ngIf="formModel" [formGroup]="formModel" autocomplete="off" (submit)="guardar()">
         <div class="fields">
             <label>Nombre(s)</label>
             <mat-form-field class="form-field">
@@ -16,7 +16,7 @@
                     <mat-icon>close</mat-icon>
                 </button>
                 <mat-error
-                    *ngIf="service.formModel.get('firstName').touched && service.formModel.get('firstName').hasError('required')">
+                    *ngIf="formModel.get('firstName').touched && formModel.get('firstName').hasError('required')">
                     Este campo es requerido
                 </mat-error>
             </mat-form-field>
@@ -30,7 +30,7 @@
                     <mat-icon>close</mat-icon>
                 </button>
                 <mat-error
-                    *ngIf="service.formModel.get('lastName').touched && service.formModel.get('lastName').hasError('required')">
+                    *ngIf="formModel.get('lastName').touched && formModel.get('lastName').hasError('required')">
                     Este campo es requerido
                 </mat-error>
             </mat-form-field>
@@ -57,7 +57,7 @@
                         <mat-option *ngFor="let state of stateArray" [value]="state.stateCode">
                             {{state.name}}
                         </mat-option>
-                        <mat-option *ngIf="user.stateName && stateArray.length > 0" [value]="user.stateCode">
+                        <mat-option *ngIf="user.stateName" [value]="user.stateCode">
                             {{user.stateName}}
                         </mat-option>
                     </mat-select>
@@ -118,11 +118,11 @@
                     <mat-icon>close</mat-icon>
                 </button>
                 <mat-error
-                    *ngIf="service.formModel.get('email').touched && service.formModel.get('email').hasError('required')">
+                    *ngIf="formModel.get('email').touched && formModel.get('email').hasError('required')">
                     Este campo es requerido.
                 </mat-error>
                 <mat-error
-                    *ngIf="service.formModel.get('email').touched && service.formModel.get('email').hasError('email')">
+                    *ngIf="formModel.get('email').touched && formModel.get('email').hasError('email')">
                     Direccion inválida de correo.
                 </mat-error>
             </mat-form-field>
@@ -138,15 +138,15 @@
                         <mat-icon>close</mat-icon>
                     </button>
                     <mat-error
-                        *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').hasError('required')">
+                        *ngIf="formModel.get('passwords.password').touched && formModel.get('passwords.password').hasError('required')">
                         Este campo es requerido.
                     </mat-error>
                     <mat-error
-                        *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').hasError('minlength')">
+                        *ngIf="formModel.get('passwords.password').touched && formModel.get('passwords.password').hasError('minlength')">
                         Debe contener mínimo 8 caracteres alfanuméricos.
                     </mat-error>
                     <mat-error
-                        *ngIf="service.formModel.get('passwords.password').touched && service.formModel.get('passwords.password').errors?.passwordInvalid">
+                        *ngIf="formModel.get('passwords.password').touched && formModel.get('passwords.password').errors?.passwordInvalid">
                         Debe contener mínimo 1 caracter numérico.
                     </mat-error>
                 </mat-form-field>
@@ -155,11 +155,11 @@
                 <mat-form-field class="form-field">
                     <input matInput type="password" formControlName="passwordConfirm" class="input-style">
                     <mat-error
-                        *ngIf="service.formModel.get('passwords.passwordConfirm').touched && service.formModel.get('passwords.passwordConfirm').hasError('required')">
+                        *ngIf="formModel.get('passwords.passwordConfirm').touched && formModel.get('passwords.passwordConfirm').hasError('required')">
                         Este campo es requerido.
                     </mat-error>
                     <mat-error
-                        *ngIf="service.formModel.get('passwords.passwordConfirm').touched && service.formModel.get('passwords.passwordConfirm').hasError('passwordMismatch')">
+                        *ngIf="formModel.get('passwords.passwordConfirm').touched && formModel.get('passwords.passwordConfirm').hasError('passwordMismatch')">
                         Las contraseñas no coinciden
                     </mat-error>
                 </mat-form-field>
@@ -168,7 +168,7 @@
             <mat-checkbox formControlName="acceptTerms" class="input-style reg-checkbox">Acepto Términos de uso y
                 Condiciones del Servicio</mat-checkbox>
 
-            <button mat-flat-button class="new-user" type="submit" [disabled]="!service.formModel.valid">
+            <button mat-flat-button class="new-user" type="submit" [disabled]="!formModel.valid">
                 Crear cuenta</button>
 
         </div>
