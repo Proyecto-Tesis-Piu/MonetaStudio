@@ -7,31 +7,31 @@
     <div class="navbar">
         <ul>
             <div>
-                <li style=" font-size: 20px;" *ngIf="token">
-                    <a style="padding-bottom: 6px; background-color: red;" mat-raised-button (click)="logout()">Cerrar
+                <li style="font-size: 20px;" *ngIf="token" (click)="logout()">
+                    <a style="padding-bottom: 6px; background-color: red; color: #fff" mat-raised-button>Cerrar
                         Sesión</a>
                 </li>
-                <li style="color: #fff" *ngIf="!token">
-                    <a style="padding-bottom: 6px;" mat-raised-button (click)="openDialog()">Iniciar Sesión</a>
+                <li style="font-size: 20px; color: #fff" *ngIf="!token" (click)="openDialog()">
+                    <a style="padding-bottom: 6px; color: #fff" mat-raised-button>Iniciar Sesión</a>
                 </li>
 
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
-                    <a (click)="newUser()" style="color: #007bff;">Modificar Datos</a>
+                <li class="line no-border" *ngIf="token" (click)="newUser()">
+                    <a style="color: black;">Modificar Datos</a>
                 </li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="!token">
-                    <a (click)="newUser()" style="color: #007bff;">Crear Cuenta</a>
-                </li>
-
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
-                    <a style="color: #007bff;" [routerLink]="['/transactions']">Transacciones</a>
+                <li class="line no-border" *ngIf="!token" (click)="newUser()">
+                    <a style="color: black;">Crear Cuenta</a>
                 </li>
 
-                <li style="margin-top: 20px; font-size: 20px;" class="line"
+                <li class="line no-border" *ngIf="token" [routerLink]="['/transactions']">
+                    <a style="color: black;">Transacciones</a>
+                </li>
+
+                <li class="line no-border"
                     (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })">
-                    <a style="color: #007bff;"> MonetaStudio </a>
+                    <a style="color: black;"> MonetaStudio </a>
                 </li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line">
-                    <a style="color: #007bff;" [routerLink]="['/news']">Noticias</a>
+                <li class="line no-border" [routerLink]="['/news']">
+                    <a style="color: black;">Noticias</a>
                 </li>
             </div>
         </ul>

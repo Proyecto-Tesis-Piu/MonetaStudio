@@ -13,6 +13,17 @@
 
 /********************************Nav Bar***************************************************/
 
+.no-border {
+    outline: none;
+    border: 0;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.no-border:hover *{
+    color:  #007bff !important;
+}
+
 .navbar {
     z-index: 2;
     position: relative;
