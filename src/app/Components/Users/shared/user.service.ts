@@ -101,6 +101,3 @@ export class UserService extends BaseService {
     return this.http.get(this.serviceUrl + 'Profile', {headers : tokenHeader});
   }
 }
-
-
-  
