@@ -78,3 +78,77 @@
 .add-form {
     margin-top: 8%;
 }
+
+.category-container * {
+    color: black;
+}
+
+::ng-deep .mat-tab-label-content{
+    color: black;
+}
+
+::ng-deep .mat-tab-label {
+    background-color:  #04ecd6 !important;
+}
+
+::ng-deep .mat-tab-label-active {
+    background-color: #06bba9 !important;
+}
+
+::ng-deep .mat-ink-bar {
+    background-color: blue !important;
+}
+
+::ng-deep .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-select-arrow {
+    color: black;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+    color: black;
+}
+
+::ng-deep .no-border *:focus:active:hover {
+    outline: none !important;
+    border: 0;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /* change color of label */
+    color: black !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    /* change color of underline */
+    background-color: black !important;
+    /*width: 200px;*/
+}
+
+::ng-deep .mat-form-field-ripple {
+    /* change color of underline when focused */
+    background-color: blue !important;
+    /*width: 200px;*/
+}
+
+.form-container {
+    padding: 10px;
+}
+
+.categories-button {
+    background-color: #6a20e1;
+}
+
+.categories-button[disabled] {
+    background-color: dimgray;
+}
+
+::ng-deep .categories-button>span {
+    color: white;
+}
+
+::ng-deep .categories-button[disabled]>span {
+    color: black;
+}

@@ -5,3 +5,83 @@
 .income {
     background-color: rgba(0 255 0 / 10%);
 }
+
+.new-transaction-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.new-transaction-container * {
+    color: black;
+}
+
+.new-transaction-container {
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+}
+
+.new-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.trans-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+::ng-deep .mat-ink-bar {
+    background-color: blue !important;
+}
+
+::ng-deep .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-select-arrow {
+    color: black;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+    color: black;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /* change color of label */
+    color: black !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    /* change color of underline */
+    background-color: black !important;
+    /*width: 200px;*/
+}
+
+::ng-deep .mat-form-field-ripple {
+    /* change color of underline when focused */
+    background-color: blue !important;
+    /*width: 200px;*/
+}
+
+::ng-deep .no-border:focus:active:hover {
+    outline: none !important;
+    border: 0px black solid;
+}
+
+.new-save-button {
+    background-color: #6a20e1;
+}
+
+.new-save-button[disabled] {
+    background-color: dimgray;
+}
+
+::ng-deep .new-save-button>span {
+    color: white;
+}
+
+::ng-deep .new-save-button[disabled]>span {
+    color: black;
+}

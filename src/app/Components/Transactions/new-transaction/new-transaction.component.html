@@ -1,47 +1,48 @@
-<div mat-dialog-content>
+<div class="new-transaction-container">
     <form [formGroup]="formModel" autocomplete="off">
-        <mat-form-field appearance="fill">
-            <mat-label>Categoria</mat-label>
-            <mat-select required formControlName="category"
-                (selectionChange)="updateForm($event.value, 'category');">
-                <mat-option *ngFor="let category of categories" [ngClass]="category.isExpense ? 'expense' : 'income'" [value]="category.id">
-                    {{category.concept}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br><br>
-        <mat-form-field>
-            <mat-label>Concepto</mat-label>
-            <input matInput placeholder="Concepto" formControlName="concept"
-                (keyup)="updateForm($event.srcElement.value, 'concept')" required>
-            <button mat-button *ngIf="transaction.concept" matSuffix mat-icon-button aria-label="Clear"
-                (click)="transaction.concept=''">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-        <br><br>
-        <mat-form-field>
-            <mat-label>Monto</mat-label>
-            <span matPrefix>$ &nbsp;</span>
-            <input matInput placeholder="Monto" formControlName="amount"
-            (keyup)="updateForm($event.srcElement.value, 'amount')" required>
-            <button mat-button *ngIf="transaction.amount!==0" matSuffix mat-icon-button aria-label="Clear"
-                (click)="transaction.amount=0">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-        <br><br>
-        <mat-form-field appearance="fill">
-            <mat-label>Fecha</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="transDate"
-                [formControl]="date" (dateChange)="updateForm($event.value, 'date')" required>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <div class="new-form-container">
+            <mat-form-field class="trans-field">
+                <mat-label>Categoria</mat-label>
+                <mat-select required formControlName="category"
+                    (selectionChange)="updateForm($event.value, 'category');">
+                    <mat-option *ngFor="let category of categories"
+                        [ngClass]="category.isExpense ? 'expense' : 'income'" [value]="category.id">
+                        {{category.concept}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="trans-field">
+                <mat-label>Concepto</mat-label>
+                <input matInput placeholder="Concepto" formControlName="concept"
+                    (keyup)="updateForm($event.srcElement.value, 'concept')" required [value]="transaction.concept">
+                <button mat-button *ngIf="transaction.concept" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="transaction.concept=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field class="trans-field">
+                <mat-label>Monto</mat-label>
+                <span matPrefix>$ &nbsp;</span>
+                <input matInput placeholder="Monto" formControlName="amount"
+                    (keyup)="updateForm($event.srcElement.value, 'amount')" required>
+                <button mat-button *ngIf="transaction.amount!==0" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="transaction.amount=0">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field class="trans-field">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="transDate" [formControl]="date"
+                    (dateChange)="updateForm($event.value, 'date')" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
     </form>
-</div>
 
-<div mat-dialog-actions>
-    <button mat-stroked-button color="basic" (click)="onCancelClick()">Cancelar</button>
-    <button mat-stroked-button color="primary" [mat-dialog-close]="transaction" [disabled]="formModel.invalid">Guardar</button>
+    <div class="new-transaction-buttons-container">
+        <button mat-stroked-button style="border: 1px black solid;" class="no-border" (click)="onCancelClick()">Cancelar</button>
+        <button mat-raised-button class="no-border new-save-button" [mat-dialog-close]="transaction"
+            [disabled]="formModel.invalid">Guardar</button>
+    </div>
 </div>
