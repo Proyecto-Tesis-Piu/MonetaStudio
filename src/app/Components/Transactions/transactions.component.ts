@@ -239,17 +239,14 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   snackBarRef: MatSnackBarRef<SimpleSnackBar>;
 
-  token:String;
-  tokenSubscription:Subscription;
+  token: String;
+  tokenSubscription: Subscription;
 
   constructor(public dialog: MatDialog,
     private service: TransactionService,
     private _snackBar: MatSnackBar,
-    protected storageMap : StorageMap) {
-      this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
-        this.token = data;
-        //console.log("sidebar token update: " + data);
-      });
+    protected storageMap: StorageMap) {
+    
     var date = new Date();
 
     this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -258,10 +255,16 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
     this.generalData = new GeneralData();
 
-    this.getTransactions();
-    this.getCalendarDates();
-
     this.selectedVal = 'expenses';
+
+    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
+      this.token = data;
+      if (this.token) {
+        this.getTransactions();
+        this.getCalendarDates();
+      }
+      //console.log("sidebar token update: " + data);
+    });
   }
 
   ngOnInit() {
@@ -540,7 +543,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
 
-  ngOnDestroy () {
+  ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
   }
 }

@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.storageMap.delete('token').subscribe(() => {});
+    localStorage.removeItem('token');
   }
 
   openDialog(): void {

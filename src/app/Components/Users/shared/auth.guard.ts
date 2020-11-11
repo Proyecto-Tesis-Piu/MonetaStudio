@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { StorageMap } from '@ngx-pwa/local-storage';
-import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +9,18 @@ export class AuthGuard implements CanActivate//, CanActivateChild, CanDeactivate
 
   token: String;
 
-  constructor(private router: Router,
-    protected storageMap: StorageMap) {
-    this.storageMap.watch('token', { type: 'string' })
-      .subscribe((result) => {
-        this.token = result;
-      });
+  constructor(private router: Router) {
+    // this.storageMap.watch('token', { type: 'string' })
+    //   .subscribe((result) => {
+    //     this.token = result;
+    //   });
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean> | boolean {
+    state: RouterStateSnapshot): any | Promise<boolean> | boolean {
 
-    //this.token = localStorage.getItem('token');
+    this.token = localStorage.getItem('token');
     if (this.token) {
       return true;
     }
