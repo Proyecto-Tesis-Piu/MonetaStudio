@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate//, CanActivateChild, CanDeactivate
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): any | Promise<boolean> | boolean {
+    state: RouterStateSnapshot): Promise<boolean> | boolean {
 
     this.token = localStorage.getItem('token');
     if (this.token) {
