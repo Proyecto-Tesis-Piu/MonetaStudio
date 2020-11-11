@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginDialogComponent } from '../Users/login/login.component';
+//import { LoginDialogComponent } from '../Users/login/login.component';
 import { VideoTutorialComponent } from '../home/video-tutorial/video-tutorial.component';
-import { RegistrationComponent } from '../Users/registration/registration.component';
+//import { RegistrationComponent } from '../Users/registration/registration.component';
 import { ContactusComponent } from '../contactus/contactus.component';
 import { StorageMap } from '@ngx-pwa/local-storage'
 import { Subscription } from 'rxjs';
@@ -27,22 +27,22 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() { }
 
-  logout(): void {
+/*   logout(): void {
     this.storageMap.delete('token').subscribe(() => {});
     localStorage.removeItem('token');
-  }
+  } */
 
-  openDialog(): void {
+/*   openDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {});
-  }
+  } */
 
   openDialog2(): void {
     const dialogRef = this.dialog.open(VideoTutorialComponent, {});
   }
 
-  newUser(): void {
+/*   newUser(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
-  }
+  } */
 
   contactUsDialog(): void{
     const dialogRef = this.dialog.open(ContactusComponent, {});

@@ -19,14 +19,14 @@
     margin-left: 5.5vw;
 }
 
-#but {
+.login-button {
     position: relative;
     width: 150px;
     margin: 0px auto;
-    background-color: blue;
+    background-color: #6a20e1;
 }
 
-#but[disabled] {
+.login-button[disabled] {
     background-color: dimgray;
 }
 

@@ -25,6 +25,7 @@ import { CategoriesComponent } from './Components/Transactions/categories/catego
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
+import { NavbarComponent } from './Components/home/navbar/navbar.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -69,6 +70,7 @@ import { MatChipsModule } from '@angular/material/chips';
     IconSelectionDialogComponent,
     AboutusComponent,
     ContactusComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
