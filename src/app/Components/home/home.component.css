@@ -31,7 +31,7 @@
     height: 2px;
     background: white;
     transition: width .3s;
-    color:white;
+    color: white;
     margin-top: 10px;
     cursor: pointer;
 }
@@ -211,7 +211,6 @@ mat-icon {
     position: relative;
 }
 
-
 /**********************Fin Rubros**********************/
 
 /*********************MonetaStudio Message*****************/
@@ -220,7 +219,7 @@ mat-icon {
     width: 100vw;
     height: 100vh;
     font-family: mus;
-    background-image: radial-gradient(circle at bottom left, rgb(42, 13, 128) 0%, rgb(42, 13, 128) 4%,rgb(51, 19, 137) 4%, rgb(51, 19, 137) 8%,rgb(59, 25, 147) 8%, rgb(59, 25, 147) 12%,rgb(68, 31, 156) 12%, rgb(68, 31, 156) 16%,rgb(77, 36, 165) 16%, rgb(77, 36, 165) 20%,rgb(86, 42, 174) 20%, rgb(86, 42, 174) 24%,rgb(94, 48, 184) 24%, rgb(94, 48, 184) 28%,rgb(103, 54, 193) 28%, rgb(103, 54, 193) 100%);
+    background-image: radial-gradient(circle at bottom left, rgb(42, 13, 128) 0%, rgb(42, 13, 128) 4%, rgb(51, 19, 137) 4%, rgb(51, 19, 137) 8%, rgb(59, 25, 147) 8%, rgb(59, 25, 147) 12%, rgb(68, 31, 156) 12%, rgb(68, 31, 156) 16%, rgb(77, 36, 165) 16%, rgb(77, 36, 165) 20%, rgb(86, 42, 174) 20%, rgb(86, 42, 174) 24%, rgb(94, 48, 184) 24%, rgb(94, 48, 184) 28%, rgb(103, 54, 193) 28%, rgb(103, 54, 193) 100%);
 }
 
 .image-MonetaStudio-message {
@@ -247,6 +246,8 @@ mat-icon {
     cursor: pointer;
 }
 
+/*********************Fin MonetaStudio Message*****************/
+
 /* .slider-subtitle2 {
     text-align: left;
     color: #000;
@@ -263,7 +264,7 @@ mat-icon {
 
 /*********************** Footer **********************/
 
-.logosav{
+.logosav {
     height: 15vh;
 }
 
@@ -301,4 +302,3 @@ mat-icon {
     display: flex;
     flex-flow: row;
 }
-/*********************Fin MonetaStudio Message*****************/

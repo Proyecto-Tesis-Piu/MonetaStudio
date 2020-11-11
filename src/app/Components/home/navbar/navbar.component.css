@@ -21,8 +21,7 @@
 }
 
 .navbar-container a {
-    margin: 15px;
-    margin-top: 20px;
+    margin: 0px 15px;
     font-size: 20px;
 }
 
@@ -62,8 +61,8 @@
     width: 100%;
 }
 
-.line:hover{
-    color:  #007bff !important;
+.line:hover {
+    color: #007bff !important;
 }
 
 .line {
