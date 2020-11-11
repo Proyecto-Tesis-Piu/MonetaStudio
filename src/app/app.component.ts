@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginDialogComponent } from './Components/Users/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
@@ -11,7 +11,7 @@ import { RegistrationComponent } from './Components/Users/registration/registrat
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnDestroy{
+export class AppComponent{
   title = 'Moneta Studio';
   openSidenav = false;
   token:String;
@@ -28,6 +28,8 @@ export class AppComponent implements OnDestroy{
 
   logout(): void {
     this.storageMap.delete('token').subscribe(() => {});
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 
   openDialog(): void {
@@ -36,9 +38,5 @@ export class AppComponent implements OnDestroy{
 
   openDialog2(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
-  }
-
-  ngOnDestroy() {
-    this.tokenSubscription.unsubscribe();
   }
 }

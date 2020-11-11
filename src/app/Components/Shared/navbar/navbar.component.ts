@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.storageMap.delete('token').subscribe(() => {});
+    localStorage.removeItem('token');
   }
 
   openDialog() {

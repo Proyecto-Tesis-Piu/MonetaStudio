@@ -65,6 +65,12 @@ label {
     /*width: 200px;*/
 }
 
+::ng-deep .mat-form-field-ripple::before {
+    /* change color of underline when focused */
+    background-color: black !important;
+    /*width: 200px;*/
+}
+
 ::ng-deep .mat-form-field-infix {
     border-top-width: 0px;
 }
@@ -140,4 +146,20 @@ label {
 .reg-checkbox {
     align-self: flex-start;
     margin-left: 5%;
+}
+
+.disable-text-select * {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.disable-text-select {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

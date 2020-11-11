@@ -225,7 +225,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     //console.log(event);
     const dialogRef = this.dialog.open(IconSelectionDialogComponent, {
       position: { top: event.pageY + "px", left: event.pageX + "px" },
-      maxWidth: 500,
+      maxWidth: 470,
       height: (event.view.innerHeight - event.pageY) + "px",
     });
 

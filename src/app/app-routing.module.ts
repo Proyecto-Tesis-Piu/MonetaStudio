@@ -19,14 +19,15 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
 
   {
-    path:'transactions', component: TransactionsComponent, canActivate: [AuthGuard]
+    path:'transactions', component: TransactionsComponent, 
+    canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
   providers: [AuthGuard]
 })
