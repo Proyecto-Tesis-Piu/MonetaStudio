@@ -11,8 +11,8 @@
 
 .navbar-container {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     height: 100px;
     font-family: mus;
     width: 100%;
@@ -20,9 +20,15 @@
     background-color: white;
 }
 
-.navbar-container a {
+.navbar-menu a {
     margin: 0px 15px;
     font-size: 20px;
+}
+
+.navbar-menu {
+    display: flex;
+    flex-direction: row-reverse;
+    width: fit-content;
 }
 
 .navbar-button {

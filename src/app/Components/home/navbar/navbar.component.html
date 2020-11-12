@@ -1,20 +1,25 @@
 <div class="navbar">
     <div class="navbar-container">
-        <a style="background-color: red;" class="no-border navbar-button navbar-logout-button" *ngIf="token" (click)="logout()">Cerrar
-            Sesión</a>
-
-        <a class="no-border navbar-button navbar-login-button" *ngIf="!token" (click)="openDialog()">Iniciar Sesión</a>
-
-        <a style="color: black;" class="line no-border" *ngIf="token" (click)="newUser()">Modificar Datos</a>
-
-        <a style="color: black;" class="line no-border" *ngIf="!token" (click)="newUser()">Crear Cuenta</a>
-
-        <a style="color: black;" class="line no-border" *ngIf="token"
-            [routerLink]="['/transactions']">Transacciones</a>
-
         <a style="color: black;" class="line no-border"
             (click)="scrollToElement('MonetaStudio')"> MonetaStudio </a>
-        <a style="color: black;" class="line no-border" [routerLink]="['/news']">Noticias</a>
+        <div class="navbar-menu">
+            <a style="background-color: red;" class="no-border navbar-button navbar-logout-button" *ngIf="token"
+                (click)="logout()">Cerrar
+                Sesión</a>
+
+            <a class="no-border navbar-button navbar-login-button" *ngIf="!token" (click)="openDialog()">Iniciar
+                Sesión</a>
+
+            <a style="color: black;" class="line no-border" *ngIf="token" (click)="newUser()">Modificar Datos</a>
+
+            <a style="color: black;" class="line no-border" *ngIf="!token" (click)="newUser()">Crear Cuenta</a>
+
+            <a style="color: black;" class="line no-border" *ngIf="token"
+                [routerLink]="['/transactions']">Transacciones</a>
+
+            <a style="color: black;" class="line no-border" [routerLink]="['/news']">Noticias</a>
+        </div>
+        
     </div>
     <div id="grad1"></div>
 </div>
