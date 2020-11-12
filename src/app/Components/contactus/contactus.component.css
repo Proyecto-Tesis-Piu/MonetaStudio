@@ -1,7 +1,20 @@
+.feedback-container {
+    width: fit-content;
+    height: fit-content;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
 .texta{
     resize: both;
     height: 150px;
     width: 400px;
+    background-color: #dddddd;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 50px;
 }
 
 ::-webkit-scrollbar {
@@ -31,4 +44,45 @@
 ::-webkit-scrollbar-track-piece {
     background: #ddd;
     border-radius: 10px;
+}
+
+.mat-input-element {
+    color: black;
+}
+
+::ng-deep mat-label {
+    color: black;
+}
+
+.black-text {
+    color: black;
+}
+
+::ng-deep .mat-form-field-underline {
+    /* change color of underline */
+    background-color: dimgrey !important;
+}
+
+::ng-deep .textaf .mat-form-field-underline {
+    /* change color of underline */
+    background-color: white !important;
+}
+
+::ng-deep .textaf .mat-form-field-ripple {
+    /* change color of underline when focused */
+    background-color: white !important;
+}
+
+.feedback-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.cancel-button {
+    border: 1px solid black;
+}
+
+.no-margin {
+    margin: 0px;
 }

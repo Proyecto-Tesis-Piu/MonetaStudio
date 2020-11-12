@@ -1,19 +1,18 @@
-<h1 mat-dialog-title>Ayúdanos a mejorar</h1>
-<div mat-dialog-content><h3>¿Cómo podemos mejorar?</h3></div>
-<mat-form-field appearance="fill">
+<div class="feedback-container">
+  <h1 class="black-text">Ayúdanos a mejorar</h1>
+  <h3 class="black-text no-margin">¿Cómo podemos mejorar?</h3>
+  <mat-form-field>
     <mat-label>Deja tu opinión</mat-label>
     <input matInput>
   </mat-form-field>
-<div mat-dialog-content><h3>Detalles</h3></div>
-<mat-form-field appearance="fill">
-    <mat-label>Incluye toda la información posible...</mat-label>
+  <h3 class="black-text no-margin">Detalles</h3>
+  <mat-form-field class="textaf">
+    <mat-label style="padding-left: 10px; padding-top: 10px;">Incluye toda la información posible...</mat-label>
     <textarea class="texta" matInput></textarea>
   </mat-form-field>
-<div mat-dialog-content>Envianos tus comentarios si tienes ideas<br> para ayudarnos a 
-    mejorar nuestra aplicación.
-</div> <br>
-<div mat-dialog-actions>
-  <a mat-button mat-dialog-close>Cancelar</a>
-  <button mat-raised-button color="primary">Enviar</button>
+  Envianos tus comentarios si tienes ideas<br> para ayudarnos a mejorar nuestra aplicación.
+  <div class="feedback-buttons" style="margin-top: 15px;">
+    <a mat-stroked-button mat-dialog-close class="cancel-button">Cancelar</a>
+    <button mat-raised-button color="primary">Enviar</button>
+  </div>
 </div>
-
