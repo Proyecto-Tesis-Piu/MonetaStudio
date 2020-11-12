@@ -4,39 +4,7 @@
 
     <!-- Navbar -->
 
-    <div class="navbar">
-        <ul>
-            <div>
-                <li style="font-size: 20px;" *ngIf="token" (click)="logout()">
-                    <a style="padding-bottom: 6px; background-color: red; color: #fff" mat-raised-button>Cerrar
-                        Sesión</a>
-                </li>
-                <li style="font-size: 20px; color: #fff" *ngIf="!token" (click)="openDialog()">
-                    <a style="padding-bottom: 6px; color: #fff" mat-raised-button>Iniciar Sesión</a>
-                </li>
-
-                <li class="line no-border" *ngIf="token" (click)="newUser()">
-                    <a style="color: black;">Modificar Datos</a>
-                </li>
-                <li class="line no-border" *ngIf="!token" (click)="newUser()">
-                    <a style="color: black;">Crear Cuenta</a>
-                </li>
-
-                <li class="line no-border" *ngIf="token" [routerLink]="['/transactions']">
-                    <a style="color: black;">Transacciones</a>
-                </li>
-
-                <li class="line no-border"
-                    (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })">
-                    <a style="color: black;"> MonetaStudio </a>
-                </li>
-                <li class="line no-border" [routerLink]="['/news']">
-                    <a style="color: black;">Noticias</a>
-                </li>
-            </div>
-        </ul>
-        <div id="grad1"></div>
-    </div>
+    <app-navbar></app-navbar>
 
     <!-- Rubros -->
 
@@ -58,7 +26,7 @@
             </div>
         </div>
 
-        <div class="icons">
+        <div class="icons disable-text-select">
             <div class="icon">
                 <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="home icon" matTooltip="Vivienda"
                     [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
@@ -117,7 +85,7 @@
 
     <!-- Mensaje Acerca de MonetaStudio -->
 
-    <section #MonetaStudio class="MonetaStudio-message">
+    <section id="MonetaStudio" class="MonetaStudio-message">
 
         <div class="flex-container">
 

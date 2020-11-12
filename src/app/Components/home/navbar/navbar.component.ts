@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
 import { LoginDialogComponent } from '../../Users/login/login.component';
+import { RegistrationComponent } from '../../Users/registration/registration.component';
 
 @Component({
   selector: 'app-navbar',
@@ -36,5 +37,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   openDialog() {
     const dialogRef = this.dialog.open(LoginDialogComponent, {});
+  }
+
+  newUser(): void {
+    const dialogRef = this.dialog.open(RegistrationComponent, {});
+  }
+
+  scrollToElement(selector){
+    const element = document.getElementById(selector)
+    element ? element.scrollIntoView({behavior: "smooth", block: "center"}): null;
   }
 }

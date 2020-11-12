@@ -113,6 +113,10 @@ label {
     align-self: flex-end;
 }
 
+.new-user[disabled] {
+    background-color: dimgray !important;
+}
+
 .fields {
     width: 700px;
     display: flex;
