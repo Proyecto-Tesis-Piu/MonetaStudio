@@ -4,37 +4,7 @@
 
     <!-- Navbar -->
 
-    <div class="navbar">
-        <ul>
-            <div>
-                <li style=" font-size: 20px;" *ngIf="token">
-                    <a style="padding-bottom: 6px; background-color: red;" mat-raised-button (click)="logout()">Cerrar Sesión</a>
-                </li>
-                <li style="color: #fff" *ngIf="!token">
-                    <a style="padding-bottom: 6px;" mat-raised-button (click)="openDialog()">Iniciar Sesión</a>
-                </li>
-
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
-                    <a (click)="newUser()" style="color: #007bff;">Modificar Datos</a>
-                </li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="!token">
-                    <a (click)="newUser()" style="color: #007bff;">Crear Cuenta</a>
-                </li>
-
-                <li style="margin-top: 20px; font-size: 20px;" class="line" *ngIf="token">
-                    <a style="color: #007bff;" [routerLink]="['/transactions']">Transacciones</a>
-                </li>
-
-                <li style="margin-top: 20px; font-size: 20px;" class="line" (click)="MonetaStudio.scrollIntoView({ behavior: 'smooth', block: 'center' })">
-                    <a style="color: #007bff;"> MonetaStudio </a>
-                </li>
-                <li style="margin-top: 20px; font-size: 20px;" class="line">
-                    <a style="color: #007bff;" [routerLink]="['/news']">Noticias</a>
-                </li>
-            </div>
-        </ul>
-        <div id="grad1"></div>
-    </div>
+    <app-navbar></app-navbar>
 
     <!-- Rubros -->
 
@@ -56,7 +26,7 @@
             </div>
         </div>
 
-        <div class="icons">
+        <div class="icons disable-text-select">
             <div class="icon">
                 <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="home icon" matTooltip="Vivienda"
                     [matTooltipPosition]="'below'" matTooltipClass="tooltip-icon" class="material-icons-round">
@@ -115,7 +85,7 @@
 
     <!-- Mensaje Acerca de MonetaStudio -->
 
-    <section #MonetaStudio class="MonetaStudio-message">
+    <section id="MonetaStudio" class="MonetaStudio-message">
 
         <div class="flex-container">
 
@@ -139,8 +109,8 @@
 
                 </p>
 
-                <p class="tutorial-link">
-                    <a (click)="openDialog2()">Aprender a usar MonetaStudio</a>
+                <p style="align-self: flex-end; width: fit-content;">
+                    <a class="tutorial-link line-tutorial" (click)="openDialog2()">Aprender a usar MonetaStudio</a>
                 </p>
 
             </div>
@@ -148,24 +118,24 @@
     </section>
 
     <div class="footer">
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="logosav" src="../../../assets/img/logo.png" alt="">
-            </div>
-            <div class="col-sm-3" id="footlist">
-                <span><b>COMPAÑIA</b></span><br><br>
-                <a><span>Inicio</span></a><br><br>
-                <a><span>Comisiones</span></a><br><br>
-                <a><span>Blog</span></a><br><br>
-                <a href="aboutus"><span>Únete al equipo</span></a>
-            </div>
-            <div class="col-sm-3" id="footlist">
-                <span><b>PRODUCTOS</b></span><br><br>
-                <a *ngIf="token" (click)="contactUsDialog()"><span>Contact Us</span></a><br><br>
-                <a><span>Savio Alpha</span></a>
-            </div>
-            <div class="col-sm-3" id="footlist">
-                <span><b>REDES SOCIALES</b></span><br><br>
+        <div>
+            <img class="logosav" src="../../../assets/img/Fondo_gris.png" alt="">
+        </div>
+        <div class="footer-list">
+            <b>COMPAÑIA</b>
+            <a>Inicio</a>
+            <a>Comisiones</a>
+            <a>Blog</a>
+            <a href="aboutus">Únete al equipo</a>
+        </div>
+        <div class="footer-list">
+            <b>PRODUCTOS</b>
+            <a>Savio Alpha</a>
+            <a *ngIf="token" (click)="contactUsDialog()">Contact Us</a>
+        </div>
+        <div class="footer-list">
+            <span><b>REDES SOCIALES</b></span>
+            <div class="footer-list2">
                 <a href=""><span class="material-icons">facebook</span></a>
                 <a href=""><span class="material-icons">camera_enhance</span></a>
                 <a href=""><span class="material-icons">play_arrow</span></a>

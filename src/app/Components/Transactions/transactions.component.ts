@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Transaction, TransactionFlatNode } from "./transaction.model";
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
@@ -10,6 +10,8 @@ import { IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyRangeDateSelectio
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { CalendarDate, GeneralData } from './calendarDate.model';
 import { CategoriesComponent } from './categories/categories.component';
+import { Subscription } from 'rxjs';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 const transactionTree: Transaction[] = [
   {
@@ -89,7 +91,7 @@ const transactionTree: Transaction[] = [
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent implements OnInit, OnDestroy {
   private _transformer = (node: Transaction, level: number) => {
     return {
       expandable: !!node.childrenTransactions && node.childrenTransactions.length > 0,
@@ -237,10 +239,14 @@ export class TransactionsComponent implements OnInit {
 
   snackBarRef: MatSnackBarRef<SimpleSnackBar>;
 
+  token: String;
+  tokenSubscription: Subscription;
+
   constructor(public dialog: MatDialog,
     private service: TransactionService,
-    private _snackBar: MatSnackBar) {
-
+    private _snackBar: MatSnackBar,
+    protected storageMap: StorageMap) {
+    
     var date = new Date();
 
     this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -249,10 +255,16 @@ export class TransactionsComponent implements OnInit {
 
     this.generalData = new GeneralData();
 
-    this.getTransactions();
-    this.getCalendarDates();
-
     this.selectedVal = 'expenses';
+
+    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
+      this.token = data;
+      if (this.token) {
+        this.getTransactions();
+        this.getCalendarDates();
+      }
+      //console.log("sidebar token update: " + data);
+    });
   }
 
   ngOnInit() {
@@ -297,7 +309,7 @@ export class TransactionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.service.createTransaction(result, this.fromDate, this.toDate).subscribe(
+        this.service.createTransaction(result, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
             this.generalData = res;
             this.handleTransactionsResponse();
@@ -312,7 +324,7 @@ export class TransactionsComponent implements OnInit {
             this.assignDataSources();
           },
           () => {
-            console.log('Complete');
+            //console.log('Complete');
             this.getCalendarDates();
           });
       }
@@ -329,7 +341,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   getTransactions() {
-    this.service.getTransactions(this.fromDate, this.toDate).subscribe(
+    this.service.getTransactions(this.fromDate, this.toDate, this.token).subscribe(
       (res: GeneralData) => {
         this.generalData = res;
         if (this.generalData.transactions.length > 0) {
@@ -350,7 +362,7 @@ export class TransactionsComponent implements OnInit {
         this.assignDataSources();
       },
       () => {
-        console.log('Complete GetTransactions');
+        //console.log('Complete GetTransactions');
       });
   }
 
@@ -368,9 +380,9 @@ export class TransactionsComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteTransactionComponentDialog, { data: trans });
 
     dialogRef.afterClosed().subscribe((result: Boolean) => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       if (result) {
-        this.service.deleteTransaction(trans.id, this.fromDate, this.toDate).subscribe(
+        this.service.deleteTransaction(trans.id, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
             this.generalData = res;
             this.handleTransactionsResponse();
@@ -383,7 +395,7 @@ export class TransactionsComponent implements OnInit {
             this.assignDataSources();
           },
           () => {
-            console.log('Complete');
+            //console.log('Complete');
           });
       }
     });
@@ -404,7 +416,7 @@ export class TransactionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.service.modifyTransaction(result, this.fromDate, this.toDate).subscribe(
+        this.service.modifyTransaction(result, this.fromDate, this.toDate, this.token).subscribe(
           (res: GeneralData) => {
             this.generalData = res
             this.handleTransactionsResponse();
@@ -419,7 +431,7 @@ export class TransactionsComponent implements OnInit {
             this.assignDataSources();
           },
           () => {
-            console.log('Complete');
+            //console.log('Complete');
             this.getCalendarDates();
           });
       }
@@ -427,7 +439,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   handleTransaction(event, trans: Transaction) {
-    console.log(event.target.tagName);
+    //console.log(event.target.tagName);
     switch (event.target.tagName) {
       case "BUTTON":
       case "MAT-ICON":
@@ -480,7 +492,7 @@ export class TransactionsComponent implements OnInit {
 
   getCalendarDates() {
     let copyOfOptions: IAngularMyDpOptions = this.getCopyOfOptions();
-    this.service.getCalendarDates().subscribe(
+    this.service.getCalendarDates(this.token).subscribe(
       (res: CalendarDate[]) => {
         this.expenseDates = {
           color: "red", dates: res.filter(item => item.hasExpense && !item.hasIncome)
@@ -520,7 +532,7 @@ export class TransactionsComponent implements OnInit {
 
       },
       () => {
-        console.log('Complete');
+        //console.log('Complete');
       });
   }
 
@@ -530,6 +542,10 @@ export class TransactionsComponent implements OnInit {
 
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
+
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
+  }
 }
 
 

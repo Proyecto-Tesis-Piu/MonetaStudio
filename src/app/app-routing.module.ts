@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component'
-import { RegistrationComponent } from './Components/Users/registration/registration.component'
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
-import { UserComponent } from './Components/Users/user.component';
 import { NewsComponent } from './Components/new/News/news.component';
 import { NewComponent } from './Components/new/New/new.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
@@ -21,14 +19,15 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
 
   {
-    path:'transactions', component: TransactionsComponent, canActivate: [AuthGuard]
+    path:'transactions', component: TransactionsComponent, 
+    canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

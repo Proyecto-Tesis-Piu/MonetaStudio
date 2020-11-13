@@ -37,5 +37,18 @@ button {
 
 .delete-button:hover{
     background-color: red;
+}
+
+::ng-deep .delete-button:hover>span{
     color: white;
+}
+
+.delete-trans-container * {
+    color: black;
+}
+
+.delete-trans-container {
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
 }

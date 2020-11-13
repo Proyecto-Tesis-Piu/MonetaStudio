@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from '../shared/user.model';
 import { Country } from '../../Shared/Countries/countries.model';
 import { State } from '../../Shared/Countries/states.model';
 import { UserService } from '../shared/user.service';
-import { Router } from '@angular/router';
 
-import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { StorageMap } from '@ngx-pwa/local-storage';
+import { MatDialogRef } from '@angular/material/dialog';
 
 const moment = _rollupMoment || _moment;
 
@@ -39,7 +38,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css'],
+  styleUrls: ['./registration.component.scss'],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
     {
@@ -60,12 +59,11 @@ export class RegistrationComponent implements OnInit {
   ErrorMessage:any;
   date = new FormControl(moment());
 
-  constructor(private http: HttpClient, 
+  constructor(public dialogRef: MatDialogRef<RegistrationComponent>,
               public service: UserService, 
-              private router: Router,
               private _snackBar: MatSnackBar,
-              private _adapter: DateAdapter<any>,
-              protected storageMap: StorageMap) {
+              protected storageMap: StorageMap,
+              private fb: FormBuilder) {
     
     this.service.getCountries().subscribe((countries: Country[]) => {
         this.countryArray = countries;
@@ -73,18 +71,58 @@ export class RegistrationComponent implements OnInit {
     
     this.storageMap.watch('token', {type: 'string'})
       .subscribe((result) => {
-        //console.log("registration token update: " + result);
         if(result){
           this.service.getUserProfile(result).subscribe(
             (res:User) => {
-              this.user = res
+              console.log(res);
+              this.user = res;
+              this.fillStates(this.user.countryCode);
+              console.log(this.stateArray);
             },
             err => {
+              this.user = new User();
               console.log(err);
+            },
+            () => {
+              this.formModel = this.fb.group({
+                //validators van aqui
+                firstName: [this.user.firstName, Validators.required],
+                lastName: [this.user.lastName, Validators.required],
+                birthDate: [''],
+                sex: [this.user.sex],
+                job: [this.user.job],
+                civilStateString: [this.user.civilStateString],
+                email: [this.user.email, [Validators.required, Validators.email] ],
+                passwords: this.fb.group({
+                  password: [this.user.password, [Validators.required, Validators.minLength(8), this.validatePassword]],
+                  passwordConfirm: ['', Validators.required],
+                }, {validator : this.comparePasswords }),
+                countryCode: [this.user.countryCode],
+                stateCode: [this.user.stateCode],
+                acceptTerms: [false, Validators.requiredTrue]
+              });
+              
             }
           )
         }else{
           this.user = new User();
+          this.formModel = this.fb.group({
+            //validators van aqui
+            firstName: [this.user.firstName, Validators.required],
+            lastName: [this.user.lastName, Validators.required],
+            birthDate: [''],
+            sex: [this.user.sex],
+            job: [this.user.job],
+            civilStateString: [this.user.civilStateString],
+            email: [this.user.email, [Validators.required, Validators.email] ],
+            passwords: this.fb.group({
+              password: [this.user.password, [Validators.required, Validators.minLength(8), this.validatePassword]],
+              passwordConfirm: ['', Validators.required],
+            }, {validator : this.comparePasswords }),
+            countryCode: [this.user.countryCode],
+            stateCode: [this.user.stateCode],
+            acceptTerms: [false, Validators.requiredTrue]
+          });
         }
       });
   }
@@ -104,13 +142,43 @@ export class RegistrationComponent implements OnInit {
       });
   }
 
+  validatePassword(control: AbstractControl) : {[key: string]: any} | null {
+    if (control.value) {
+      let expresion = ".*[0-9].*";
+      let result = (control.value as string).match(expresion);
+      if(result && result.length > 0){
+        return null; // return null if validation is passed.
+      }
+      return { 'passwordInvalid': true }; // return object if the validation is not passed.
+    }
+  }
+
+  comparePasswords(fb:FormGroup){
+    let confirmPwdCtl = fb.get('passwordConfirm');
+    if(confirmPwdCtl.errors == null || 'passwordMismatch' in confirmPwdCtl.errors){
+      if(fb.get('password').value != confirmPwdCtl.value){
+        confirmPwdCtl.setErrors({passwordMismatch: true});
+      }else{
+        confirmPwdCtl.setErrors(null);
+      }
+    }
+  }
+
   guardar() {
-    this.service.register().subscribe(
+    this.service.register(this.user).subscribe(
       (res:any) => {
         if(res.succeeded){
-          //TODO: login
           this._snackBar.open('Registro exitoso', 'Cerrar');
-          this.router.navigate(['transactions']);
+          this.service.login(this.user.email, this.user.password).subscribe((res: any) => {
+            this.storageMap.set('token', res.token).subscribe(() => {});
+          }, 
+          err => {
+            if(err.status == 400){
+              this._snackBar.open(err.error.reasonPhrase, 'Cerrar');
+            }
+            console.log(err)
+          });
+          //this.router.navigate(['transactions']);
         }else{
           res.errors.forEach(element => {
             switch(element.code) {
@@ -119,14 +187,16 @@ export class RegistrationComponent implements OnInit {
                 break;
               default:
                 this.ErrorMessage += 'Registration failed';
-                console.log(element.description);
+                //console.log(element.description);
                 break;
             }
+            console.log(element);
           });
           this._snackBar.open(this.ErrorMessage, 'Cerrar');
         }
       },
       err => console.log(err)
     );
+    this.dialogRef.close();
   }
 }

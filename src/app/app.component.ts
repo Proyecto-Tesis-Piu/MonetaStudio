@@ -11,7 +11,7 @@ import { RegistrationComponent } from './Components/Users/registration/registrat
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent{
   title = 'Moneta Studio';
   openSidenav = false;
   token: String;
@@ -26,7 +26,9 @@ export class AppComponent {
   }
 
   logout(): void {
-    this.storageMap.delete('token').subscribe(() => { });
+    this.storageMap.delete('token').subscribe(() => {});
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 
   openDialog(): void {
@@ -36,9 +38,12 @@ export class AppComponent {
   openDialog2(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
+<<<<<<< HEAD
 
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
   }
 
+=======
+>>>>>>> 833f30f916c601ab8bf611709dfae3770890628d
 }

@@ -35,6 +35,7 @@ export class LoginDialogComponent implements OnInit {
         .subscribe(
           (res: any) => {
             this.storageMap.set('token', res.token).subscribe(() => {});
+            localStorage.setItem('token', res.token);
           }, 
           err => {
             if(err.status == 400){
@@ -43,7 +44,7 @@ export class LoginDialogComponent implements OnInit {
             console.log(err)
           }, 
           () => {
-            console.log('Complete');
+            //console.log('Complete');
             this.dialogRef.close();
         });
     }

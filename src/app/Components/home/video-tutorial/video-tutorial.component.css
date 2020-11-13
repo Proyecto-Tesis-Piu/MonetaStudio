@@ -3,6 +3,6 @@ iframe {
     height: 600px;
 }
 
-::ng-deep .mat-dialog-container {
-    border-radius: 20px;
+.video-container {
+    padding: 20px;
 }

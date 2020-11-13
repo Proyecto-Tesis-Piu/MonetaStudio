@@ -5,13 +5,12 @@
     border: 0;
 }
 
-::ng-deep .mat-dialog-content {
-    height: 100%;
+.icon-selection-content {
+    padding: 15px;
 }
 
 .icon-list {
-    height: calc(100% - 37px);
-    overflow-x: hidden;
+    height: 30vh;
     overflow-y: auto;
     display: flex;
     flex-flow: row wrap;
@@ -24,6 +23,7 @@
 .icon {
     font-size: 40px;
     width: 40px;
+    color: black;
 }
 
 .icon-button {

@@ -51,6 +51,7 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
@@ -104,6 +105,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTabsModule,
     MatSlideToggleModule,
     ClipboardModule,
+    MatCheckboxModule,
     MatChipsModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
