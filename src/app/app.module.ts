@@ -25,6 +25,9 @@ import { CategoriesComponent } from './Components/Transactions/categories/catego
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
+import { NavbarComponent } from "./Components/home/navbar/navbar.component";
+import { SidebarComponent } from './Components/Shared/sidebar/sidebar.component';
+
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -68,6 +71,8 @@ import { MatChipsModule } from '@angular/material/chips';
     IconSelectionDialogComponent,
     AboutusComponent,
     ContactusComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +107,6 @@ import { MatChipsModule } from '@angular/material/chips';
     MatChipsModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
-
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

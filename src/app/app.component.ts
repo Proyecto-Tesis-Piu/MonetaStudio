@@ -14,20 +14,19 @@ import { RegistrationComponent } from './Components/Users/registration/registrat
 export class AppComponent {
   title = 'Moneta Studio';
   openSidenav = false;
-  token:String;
-  tokenSubscription:Subscription;
+  token: String;
+  tokenSubscription: Subscription;
+
 
   constructor(public dialog: MatDialog,
-    protected storageMap : StorageMap){
-    this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
+    protected storageMap: StorageMap) {
+    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
       this.token = data;
-      //console.log("sidebar token update: " + data);
     });
   }
-  
 
   logout(): void {
-    this.storageMap.delete('token').subscribe(() => {});
+    this.storageMap.delete('token').subscribe(() => { });
   }
 
   openDialog(): void {
@@ -41,4 +40,5 @@ export class AppComponent {
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
   }
+
 }
