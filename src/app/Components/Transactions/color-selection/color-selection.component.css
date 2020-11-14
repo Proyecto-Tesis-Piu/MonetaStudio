@@ -1,0 +1,32 @@
+::ng-deep .mat-icon-button:hover,
+.mat-icon-button:active,
+.mat-icon-button:focus {
+    outline: none;
+    border: 0;
+}
+
+.icon-selection-content {
+    padding: 15px;
+}
+
+.icon-list {
+    height: 30vh;
+    overflow-y: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 13px;
+    padding: unset;
+}
+
+.icon {
+    font-size: 40px;
+    width: 40px;
+}
+
+.icon-button {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+}

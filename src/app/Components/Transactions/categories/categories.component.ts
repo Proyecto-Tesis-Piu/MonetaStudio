@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { IconSelectionDialogComponent } from '../icon-selection-dialog/icon-selection-dialog.component';
 import { Transaction } from '../transaction.model';
 import { TransactionService } from '../transactions.service';
+import { ColorSelectionComponent } from '../color-selection/color-selection.component';
+
 
 @Component({
   selector: 'app-categories',
@@ -39,6 +41,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     this.addedCategory = new Transaction();
     this.addedCategory.isExpense = true;
     this.addedCategory.icon = "home";
+    this.addedCategory.color = "#b0bec5";
+
 
     this.dirty = false;
     this.editCategory = new Transaction();
@@ -237,6 +241,28 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         else {
           this.addedCategory.icon = result;
+        }
+      }
+      //console.log(this.addedCategory);
+    });
+  }
+
+  openColorSelectionDialog(event, mode: string) {
+    //console.log(event);
+    const dialogRef = this.dialog.open(ColorSelectionComponent, {
+      position: { top: event.pageY + "px", left: event.pageX + "px" },
+      maxWidth: 470,
+      height: (event.view.innerHeight - event.pageY) + "px",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (mode === "edit" && this.editCategory.color !== result) {
+          this.editCategory.color = result;
+          this.dirty = true;
+        }
+        else {
+          this.addedCategory.color = result;
         }
       }
       //console.log(this.addedCategory);
