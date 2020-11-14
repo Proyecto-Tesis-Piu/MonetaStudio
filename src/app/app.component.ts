@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
-import { LoginDialogComponent } from './Components/Users/login/login.component';
-import { MatDialog } from '@angular/material/dialog';
-import { StorageMap } from '@ngx-pwa/local-storage';
-import { Subscription } from 'rxjs';
-import { RegistrationComponent } from './Components/Users/registration/registration.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent{
   title = 'Moneta Studio';
+<<<<<<< HEAD
   openSidenav = false;
   token: String;
   tokenSubscription: Subscription;
@@ -38,4 +33,9 @@ export class AppComponent{
   openDialog2(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
+=======
+
+  constructor() { }
+
+>>>>>>> abf854106cd465fc729f56133cb86e21bb7eefa6
 }
