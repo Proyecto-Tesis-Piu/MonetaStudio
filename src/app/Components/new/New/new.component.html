@@ -1,35 +1,20 @@
 <div class="container animate-in">
-
     <div class="box">
         <h1>{{noticia.nombre}}</h1>
-
         <div class="description">
             <h2>Autor: {{noticia.autor}}</h2>
             <h3>{{noticia.fecha}}</h3>
         </div>
-
-
-
-
         <hr>
-
         <img src="{{noticia.cover}}" alt="Card image cap"> <br>
-
-
         <div class="tag">
             <h3>Palabras claves: </h3>
-
             <mat-chip-list *ngFor="let tags of noticia.tags" aria-label="Fish selection">
-                <mat-chip>{{tags}}</mat-chip>
+                <mat-chip class="chips">{{tags}}</mat-chip>
             </mat-chip-list>
         </div>
-
-
         <div id="newsBody"></div>
-
-
         <h3 style="margin-top: 80px; text-align: right;">Compartir:
-
             <button mat-stroked-button (click)="openCustomSnackBar()" [cdkCopyToClipboard]="web"
                 class="disable-text-select">
                 <mat-icon #tooltip="matTooltip" aria-hidden="false" aria-label="car icon" matTooltip="Copiar"
@@ -37,25 +22,9 @@
                     content_copy
                 </mat-icon>
             </button>
-
         </h3>
-
         <hr>
-
-
-        <h3 style="font-weight: bold;">Bibliografía:</h3> 
-
-
+        <h3 style="font-weight: bold;">Bibliografía:</h3>
         <div *ngFor="let biblio of noticia.biblio"> {{biblio}} <br><br> </div>
-
-
-
     </div>
-
-
-
-
-
-
-
 </div>

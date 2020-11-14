@@ -23,6 +23,7 @@ import { NewComponent } from "./Components/new/New/new.component";
 //import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
+import { ColorSelectionComponent } from './Components/Transactions/color-selection/color-selection.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
 import { NavbarComponent } from "./Components/home/navbar/navbar.component";
@@ -72,7 +73,8 @@ import { MatChipsModule } from '@angular/material/chips';
     AboutusComponent,
     ContactusComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    ColorSelectionComponent
   ],
   imports: [
     BrowserModule,

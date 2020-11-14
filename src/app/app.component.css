@@ -3,87 +3,15 @@
     font-family: mus;
 }
 
-.example-container {
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.mat-drawer-container {
-    background-color: white;
-    color: black;
-}
-
-.example-sidenav-content {
-    height: 100%;
-    z-index: 0;
-    position: relative;
-}
-
-.example-sidenav {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    background-color: #fff;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    color:black;
-}
-
-.menu-button {
-    display: flex;
-    justify-content: center;
-    position: sticky;
-    top: 2%;
-    left: 2%;
-    cursor: pointer;
-    z-index: 1;
-    outline: none;
-    border: 0;
-    background-color: #007bff;
-    color: #fff;
-}
-
-.mat-menu-icon {
-    padding: 0px;
-    line-height: unset;
-    font-size: 40px;
-    height: unset;
-    width: unset;
-    left: unset;
-    cursor: pointer;
-}
-
-.example-button-row .mat-button-base {
+/* .example-button-row .mat-button-base {
     margin: 8px 8px 8px 0;
-}
+} */
 
 .material-icons-round{
     color: #fff;
 }
 
-.close{
-    margin-top: 5vh;
-    float: right;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-
-.menu-buttons{
-    align-items: center;
-    margin-top: 20vh;
-}
-
-.menu-element{
-    width: 100%;
-    position: relative;
-    top: 15px;
-    filter: invert(100%);
-}
-
-.mat-raised-button{
+/* .mat-raised-button{
     background-color: #000;
     color: #fff;
     margin-left: 40px;
@@ -91,24 +19,7 @@
     font-size: 20px;
     font-family: mus;
     filter: invert(100%);
-
-}
-
-.lens{
-    color: #fff;
-    margin-bottom: 5px;
-    margin-right: 5px;
-}
-
-.logout{
-    margin-top: 30vh;
-    margin-right: 10px;
-    filter: none;
-}
-
-.button-logout{
-    filter: none;
-}
+} */
 
 ::ng-deep .tooltip-icon {
     position: relative;
@@ -119,7 +30,6 @@
     display: block;
     text-align: center;
 }
-
 
 ::ng-deep .mat-dialog-container {
     background-color: white !important;
