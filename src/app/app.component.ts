@@ -38,12 +38,4 @@ export class AppComponent{
   openDialog2(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
-<<<<<<< HEAD
-
-  ngOnDestroy() {
-    this.tokenSubscription.unsubscribe();
-  }
-
-=======
->>>>>>> 833f30f916c601ab8bf611709dfae3770890628d
 }
