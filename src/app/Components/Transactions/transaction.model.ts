@@ -11,6 +11,7 @@ export class Transaction {
     percentage?:number;
     relativePercentage?:number;
     category?:String; //categoryId for transaction
+    color?:String;
 }
 
 export class TransactionFlatNode {
@@ -27,4 +28,5 @@ export class TransactionFlatNode {
     percentage?:number;
     relativePercentage?:number;
     category?:String; //categoryId for transaction
+    color?:String;
   }

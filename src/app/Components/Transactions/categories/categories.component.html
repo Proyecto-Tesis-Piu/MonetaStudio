@@ -29,9 +29,13 @@
                     <!-- <button mat-icon-button class="icon-button" (click)="openIconSelectionDialog($event)">
                     <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
                 </button> -->
-                    <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'add')">
+                    <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'add')"  [ngStyle]="{'background-color': addedCategory.color}" >
                         <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
                     </button>
+                    Color seleccionado:
+                    <button mat-fab class="icon-button" (click)="openColorSelectionDialog($event, 'add')"  [ngStyle]="{'background-color': addedCategory.color}">
+                    </button>
+
                 </div>
             </form>
         </div>
