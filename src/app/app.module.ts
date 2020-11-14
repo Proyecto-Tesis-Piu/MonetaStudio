@@ -26,6 +26,7 @@ import { IconSelectionDialogComponent } from './Components/Transactions/icon-sel
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
 import { NavbarComponent } from './Components/home/navbar/navbar.component';
+import { SidebarComponent } from './Components/Shared/Sidebar/sidebar/sidebar.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -70,7 +71,8 @@ import { MatChipsModule } from '@angular/material/chips';
     IconSelectionDialogComponent,
     AboutusComponent,
     ContactusComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

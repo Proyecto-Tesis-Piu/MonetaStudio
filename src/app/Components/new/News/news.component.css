@@ -44,6 +44,10 @@
     margin-top: 2%;
 }
 
+.card>div {
+    color: #000000;
+}
+
 .card-img-top {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
