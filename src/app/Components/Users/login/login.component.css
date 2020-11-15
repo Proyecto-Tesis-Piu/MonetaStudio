@@ -68,3 +68,13 @@
     z-index: 2;
     cursor: pointer;
 }
+
+::ng-deep .no-border:focus:active:hover {
+    outline: none !important;
+    border: 0 !important;
+}
+
+.no-border {
+    outline: none;
+    border: 0;
+}

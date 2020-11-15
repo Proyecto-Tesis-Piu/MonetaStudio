@@ -11,7 +11,7 @@
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
                     (click)="handleTransaction($event, node)" matRipple>
                     <button mat-icon-button class="transaction-action-button">
-                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete
+                        <mat-icon class="trash-icon material-icons-round transaction-action-icon">delete
                         </mat-icon>
                     </button>
                     <div class="transaction-text">
@@ -51,7 +51,7 @@
                 <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
                     (click)="handleTransaction($event, node)" matRipple>
                     <button mat-icon-button class="transaction-action-button">
-                        <mat-icon class="mat-menu-icon material-icons-round transaction-action-icon">delete</mat-icon>
+                        <mat-icon class="trash-icon material-icons-round transaction-action-icon">delete</mat-icon>
                     </button>
                     <div class="transaction-text">
                         <div>
@@ -97,7 +97,7 @@
             <div class="graph-container">
                 <div class="categories-container disable-text-select">
                     <div *ngFor="let trans of expenses; let i = index" class="category">
-                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens
+                        <mat-icon mat-list-icon class="material-icons-round" [ngStyle]="{'color': trans.color}">lens
                         </mat-icon>
                         {{trans.concept}}
                     </div>
@@ -119,7 +119,7 @@
             <div class="graph-container">
                 <div class="categories-container disable-text-select">
                     <div *ngFor="let trans of incomes; let i = index" class="category disable-text-select">
-                        <mat-icon mat-list-icon class="material-icons-round" [ngClass]="'category-ball'+i">lens
+                        <mat-icon mat-list-icon class="material-icons-round" [ngStyle]="{'color': trans.color}">lens
                         </mat-icon>
                         {{trans.concept}}
                     </div>

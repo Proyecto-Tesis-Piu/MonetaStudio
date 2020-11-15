@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidebar-container" autosize hasBackdrop="'true'">
+    <mat-sidenav [(opened)]="openSidenav" class="sidebar" mode="over">
+
+        <div class="sidebar-buttons">
+            <mat-icon class="material-icons-round close" (click)="openSidenav = false;">close</mat-icon>
+            <div style="display: flex; flex-direction: column;">
+                <button mat-flat-button [routerLink]="['home']" (click)="openSidenav = false;"
+                    class="no-border sidebar-button" [disabled]="router.url === '/home'">
+                    <mat-icon class="material-icons-round lens">monetization_on</mat-icon> Moneta Studio
+                </button>
+                <button mat-flat-button [routerLink]="['news']" (click)="openSidenav = false;"
+                    class="no-border sidebar-button" [disabled]="router.url === '/news'">
+                    <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Noticias
+                </button>
+                <button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="!token"
+                    class="no-border sidebar-button">
+                    <mat-icon class="material-icons-round lens">account_circle</mat-icon> Crear cuenta
+                </button>
+                <button mat-flat-button [routerLink]="['transactions']" (click)="openSidenav = false;" *ngIf="token"
+                    class="no-border sidebar-button" [disabled]="router.url === '/transactions'">
+                    <mat-icon class="material-icons-round lens">payment</mat-icon> Transacciones
+                </button>
+                <button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="token"
+                    class="no-border sidebar-button">
+                    <mat-icon class="material-icons-round lens">settings</mat-icon> Modificar Datos
+                </button>
+            </div>
+            <div class="sidebar-logout-section">
+                <button mat-raised-button class="button-logout no-border" (click)="openSidenav = false; openDialog();"
+                    *ngIf="!token">
+                    <mat-icon class="material-icons-round lens">power_settings_new</mat-icon> Iniciar Sesión
+                </button>
+                <button mat-raised-button class="button-logout no-border" (click)="openSidenav = false;" (click)="logout()"
+                    *ngIf="token">
+                    <mat-icon class="material-icons-round lens">power_settings_new</mat-icon> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+
+        
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-fab aria-label="Menu button" class="menu-button" #tooltip="matTooltip" matTooltip="Menu"
+            [matTooltipPosition]="'right'" matTooltipClass="tooltip-icon" (click)="menuButtonClick()">
+            <mat-icon class="menu-icon material-icons-round">menu</mat-icon>
+        </button>
+        <router-outlet>
+            <!-- <app-navbar></app-navbar> -->
+        </router-outlet>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

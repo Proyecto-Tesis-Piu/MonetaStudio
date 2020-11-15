@@ -5,6 +5,16 @@
     font-family: mus;
 }
 
+.trash-icon {
+    padding: 0px;
+    left: unset;
+    cursor: pointer;
+}
+
+.flex-item > h1 {
+    color: black;
+}
+
 .month-name {
     font-family: mus !important;
     font-size: 24px;
@@ -101,6 +111,7 @@ mat-button-toggle {
     margin: 5px;
     height: 20px;
     width: auto;
+    color: black !important;
 }
 
 .category > mat-icon {
@@ -119,54 +130,54 @@ mat-button-toggle {
     padding-bottom: 10px;
 }
 
-::ng-deep .custom-spinner0 circle,
+/*::ng-deep .custom-spinner0 circle,
 .category-ball0 {
     stroke: #000000;
-    color: #000000;
+    color: #000000 !important;
     z-index: 0;
 }
 
 ::ng-deep .custom-spinner1 circle,
 .category-ball1 {
     stroke: #222222;
-    color: #222222;
+    color: #222222 !important;
     z-index: 1;
 }
 
 ::ng-deep .custom-spinner2 circle,
 .category-ball2 {
     stroke: #444444;
-    color: #444444;
+    color: #444444 !important;
     z-index: 2;
 }
 
 ::ng-deep .custom-spinner3 circle,
 .category-ball3 {
     stroke: #777777;
-    color: #777777;
+    color: #777777 !important;
     z-index: 3;
 }
 
 ::ng-deep .custom-spinner4 circle,
 .category-ball4 {
     stroke: #aaaaaa;
-    color: #aaaaaa;
+    color: #aaaaaa !important;
     z-index: 4;
 }
 
 ::ng-deep .custom-spinner5 circle,
 .category-ball5 {
     stroke: #cccccc;
-    color: #cccccc;
+    color: #cccccc !important;
     z-index: 5;
 }
 
 ::ng-deep .custom-spinner6 circle,
 .category-ball6 {
     stroke: #ffffff;
-    color: #ffffff;
+    color: #ffffff !important;
     z-index: 6;
-}
+}*/
 
 /**  List **/
 
@@ -201,7 +212,7 @@ mat-button-toggle {
 
 ::ng-deep .tree-node {
     min-height: unset !important;
-    cursor: url('../../../assets/img/pencil2x.png') 3 31, auto;
+    cursor: url("../../../assets/img/pencil2x.png") 3 31, auto;
 }
 
 ::ng-deep .mat-tree-node:hover {
@@ -433,6 +444,7 @@ mat-button-toggle {
     margin-left: 10px;
     /*background-color: white;*/
     padding-right: 7px;
+    color: black;
 }
 
 .legend-mark {
@@ -478,7 +490,7 @@ mat-button-toggle {
     background-color: red;
 }
 
-.bar-container{
+.bar-container {
     height: 100%;
     width: 40%;
     display: flex;
@@ -486,4 +498,5 @@ mat-button-toggle {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
+    color: black;
 }

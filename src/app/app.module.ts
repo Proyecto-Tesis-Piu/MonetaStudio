@@ -23,9 +23,11 @@ import { NewComponent } from "./Components/new/New/new.component";
 //import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
+import { ColorSelectionComponent } from './Components/Transactions/color-selection/color-selection.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
-import { NavbarComponent } from './Components/home/navbar/navbar.component';
+import { NavbarComponent } from "./Components/home/navbar/navbar.component";
+import { SidebarComponent } from './Components/Shared/Sidebar/sidebar.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -70,7 +72,9 @@ import { MatChipsModule } from '@angular/material/chips';
     IconSelectionDialogComponent,
     AboutusComponent,
     ContactusComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidebarComponent,
+    ColorSelectionComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +110,6 @@ import { MatChipsModule } from '@angular/material/chips';
     MatChipsModule
   ],
   providers: [UserService, AuthGuard, TransactionService, NewsService],
-
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

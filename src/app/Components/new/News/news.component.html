@@ -2,7 +2,7 @@
 
     <div class="card" *ngFor="let item of noticias; let i = index">
         <img class="card-img-top" src="{{item.cover}}" alt="Card image cap">
-        <div class="card-body">
+        <div class="card-body"><!--no quitar clase card-body (heredada)-->
             <h5 class="card-title">{{item.nombre}}</h5>
             <p id="info" class="card-text">{{item.resumen}}</p>
             <p class="card-text"><small class="text-muted" >{{item.fecha}}</small></p>
