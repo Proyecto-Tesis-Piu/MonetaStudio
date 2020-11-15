@@ -27,12 +27,10 @@ button {
 
 .delete-button{
     border: red solid 1px;
-    color: red;
 }
 
-.delete-button:active{
-    background-color: red;
-    color: white;
+::ng-deep.delete-button>span{
+    color: red;
 }
 
 .delete-button:hover{
@@ -41,6 +39,11 @@ button {
 
 ::ng-deep .delete-button:hover>span{
     color: white;
+}
+
+.cancel-button{
+    border: black solid 1px;
+    margin-right: 20px;
 }
 
 .delete-trans-container * {

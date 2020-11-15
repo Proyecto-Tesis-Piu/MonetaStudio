@@ -115,6 +115,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
           this.editCategory.concept = temp.concept;
           this.editCategory.isExpense = temp.isExpense;
           this.editCategory.userId = temp.userId;
+          this.editCategory.color = temp.color;
         }
         this.dirty = false;
         //console.log(this.editCategory);

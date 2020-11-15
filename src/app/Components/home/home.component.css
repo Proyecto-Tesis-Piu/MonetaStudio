@@ -219,7 +219,7 @@ mat-icon {
     width: 100vw;
     height: 100vh;
     font-family: mus;
-    background-image: radial-gradient(circle at bottom left, rgb(42, 13, 128) 0%, rgb(42, 13, 128) 4%, rgb(51, 19, 137) 4%, rgb(51, 19, 137) 8%, rgb(59, 25, 147) 8%, rgb(59, 25, 147) 12%, rgb(68, 31, 156) 12%, rgb(68, 31, 156) 16%, rgb(77, 36, 165) 16%, rgb(77, 36, 165) 20%, rgb(86, 42, 174) 20%, rgb(86, 42, 174) 24%, rgb(94, 48, 184) 24%, rgb(94, 48, 184) 28%, rgb(103, 54, 193) 28%, rgb(103, 54, 193) 100%);
+    background-image: radial-gradient(circle at bottom right, rgb(4, 128, 235) 0%, rgb(4, 128, 235) 4%,rgb(4, 108, 199) 4%, rgb(4, 108, 199) 8%,rgb(5, 89, 163) 8%, rgb(5, 89, 163) 12%,rgb(5, 69, 127) 12%, rgb(5, 69, 127) 16%,rgb(5, 49, 91) 16%, rgb(5, 49, 91) 20%,rgb(6, 30, 55) 20%, rgb(6, 30, 55) 24%,transparent 24%, transparent 100%),radial-gradient(circle at bottom left, rgb(4, 128, 235) 0%, rgb(4, 128, 235) 4%,rgb(4, 108, 199) 4%, rgb(4, 108, 199) 8%,rgb(5, 89, 163) 8%, rgb(5, 89, 163) 12%,rgb(5, 69, 127) 12%, rgb(5, 69, 127) 16%,rgb(5, 49, 91) 16%, rgb(5, 49, 91) 20%,rgb(6, 30, 55) 20%, rgb(6, 30, 55) 24%,rgb(6, 10, 19) 24%, rgb(6, 10, 19) 100%);
 }
 
 .image-MonetaStudio-message {

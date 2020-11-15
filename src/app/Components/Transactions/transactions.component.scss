@@ -7,10 +7,6 @@
 
 .trash-icon {
     padding: 0px;
-    line-height: unset;
-    font-size: 40px;
-    height: unset;
-    width: unset;
     left: unset;
     cursor: pointer;
 }
@@ -79,12 +75,20 @@ mat-button-toggle {
 }
 
 .create-transaction-button {
-    font-family: mus;
-    border: 1px solid black;
     width: 194px;
-    background-color: white;
-    color: black;
+    background-color: #6a20e1;
+    color: white;
     letter-spacing: 2px;
+}
+
+::ng-deep .no-border:focus:active:hover {
+    outline: none !important;
+    border: 0 !important;
+}
+
+.no-border {
+    outline: none;
+    border: 0;
 }
 
 /*********************SPIN*********************************/
@@ -134,7 +138,7 @@ mat-button-toggle {
     padding-bottom: 10px;
 }
 
-::ng-deep .custom-spinner0 circle,
+/*::ng-deep .custom-spinner0 circle,
 .category-ball0 {
     stroke: #000000;
     color: #000000 !important;
@@ -181,7 +185,7 @@ mat-button-toggle {
     stroke: #ffffff;
     color: #ffffff !important;
     z-index: 6;
-}
+}*/
 
 /**  List **/
 

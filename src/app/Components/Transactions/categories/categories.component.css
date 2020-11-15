@@ -150,5 +150,5 @@
 }
 
 ::ng-deep .categories-button[disabled]>span {
-    color: black;
+    color: rgba(255,255,255,.3);
 }
