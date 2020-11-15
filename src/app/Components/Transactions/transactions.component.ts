@@ -106,7 +106,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       cumulativePercentage: node.cumulativePercentage,
       relativePercentage: node.relativePercentage,
       percentage: node.percentage,
-      category: node.category
+      category: node.category,
+      color: node.color,
     };
   }
 

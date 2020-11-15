@@ -1,3 +1,5 @@
+@import "~@angular/material/theming";
+
 ::ng-deep .mat-icon-button:hover,
 .mat-icon-button:active,
 .mat-icon-button:focus {
@@ -29,4 +31,5 @@
     width: 60px;
     height: 60px;
     margin-left: 10px;
+    @include mat-elevation(8);
 }

@@ -7,10 +7,6 @@
 
 .trash-icon {
     padding: 0px;
-    line-height: unset;
-    font-size: 40px;
-    height: unset;
-    width: unset;
     left: unset;
     cursor: pointer;
 }
@@ -134,7 +130,7 @@ mat-button-toggle {
     padding-bottom: 10px;
 }
 
-::ng-deep .custom-spinner0 circle,
+/*::ng-deep .custom-spinner0 circle,
 .category-ball0 {
     stroke: #000000;
     color: #000000 !important;
@@ -181,7 +177,7 @@ mat-button-toggle {
     stroke: #ffffff;
     color: #ffffff !important;
     z-index: 6;
-}
+}*/
 
 /**  List **/
 

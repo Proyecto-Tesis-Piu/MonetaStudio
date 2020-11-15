@@ -29,11 +29,13 @@
                     <!-- <button mat-icon-button class="icon-button" (click)="openIconSelectionDialog($event)">
                     <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
                 </button> -->
-                    <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'add')"  [ngStyle]="{'background-color': addedCategory.color}" >
+                    <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'add')"
+                        [ngStyle]="{'background-color': addedCategory.color}">
                         <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
                     </button>
                     Color seleccionado:
-                    <button mat-fab class="icon-button" (click)="openColorSelectionDialog($event, 'add')"  [ngStyle]="{'background-color': addedCategory.color}">
+                    <button mat-fab class="icon-button" (click)="openColorSelectionDialog($event, 'add')"
+                        [ngStyle]="{'background-color': addedCategory.color}">
                     </button>
 
                 </div>
@@ -45,7 +47,7 @@
             <mat-form-field class="category-select">
                 <mat-label>Selecciona una categoría</mat-label>
                 <mat-select required (selectionChange)="onSelectChanged($event.value, 'edit');">
-                    <mat-option>Categoría</mat-option>
+                    <mat-option>Selecciona una Categoría...</mat-option>
                     <mat-option *ngFor="let category of categories" [value]="category.id">
                         {{category.concept}}
                     </mat-option>
@@ -82,8 +84,12 @@
                 <mat-icon class="icon">{{addedCategory.icon}}</mat-icon>
             </button> -->
                 <button mat-fab class="icon-button" (click)="openIconSelectionDialog($event, 'edit')"
-                    [disabled]="!editCategory.id">
+                    [disabled]="!editCategory.id" [ngStyle]="{'background-color': editCategory.color}">
                     <mat-icon class="icon">{{editCategory.icon}}</mat-icon>
+                </button>
+                Color seleccionado:
+                <button mat-fab class="icon-button" (click)="openColorSelectionDialog($event, 'edit')"
+                    [disabled]="!editCategory.id" [ngStyle]="{'background-color': editCategory.color}">
                 </button>
             </div>
         </div>
@@ -93,7 +99,7 @@
             <mat-form-field class="category-select">
                 <mat-label>Selecciona una categoría</mat-label>
                 <mat-select required (selectionChange)="onSelectChanged($event.value, 'delete');">
-                    <mat-option>Categoría</mat-option>
+                    <mat-option>Selecciona una Categoría...</mat-option>
                     <mat-option *ngFor="let category of categories" [value]="category.id">
                         {{category.concept}}
                     </mat-option>
