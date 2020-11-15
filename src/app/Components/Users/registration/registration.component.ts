@@ -98,8 +98,7 @@ export class RegistrationComponent implements OnInit {
                   passwordConfirm: ['', Validators.required],
                 }, {validator : this.comparePasswords }),
                 countryCode: [this.user.countryCode],
-                stateCode: [this.user.stateCode],
-                acceptTerms: [false, Validators.requiredTrue]
+                stateCode: [this.user.stateCode]
               });
               
             }
@@ -120,8 +119,7 @@ export class RegistrationComponent implements OnInit {
               passwordConfirm: ['', Validators.required],
             }, {validator : this.comparePasswords }),
             countryCode: [this.user.countryCode],
-            stateCode: [this.user.stateCode],
-            acceptTerms: [false, Validators.requiredTrue]
+            stateCode: [this.user.stateCode]
           });
         }
       });

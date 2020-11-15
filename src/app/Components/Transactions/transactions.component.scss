@@ -75,12 +75,20 @@ mat-button-toggle {
 }
 
 .create-transaction-button {
-    font-family: mus;
-    border: 1px solid black;
     width: 194px;
-    background-color: white;
-    color: black;
+    background-color: #6a20e1;
+    color: white;
     letter-spacing: 2px;
+}
+
+::ng-deep .no-border:focus:active:hover {
+    outline: none !important;
+    border: 0 !important;
+}
+
+.no-border {
+    outline: none;
+    border: 0;
 }
 
 /*********************SPIN*********************************/
