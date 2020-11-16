@@ -28,6 +28,7 @@ import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
 import { NavbarComponent } from "./Components/home/navbar/navbar.component";
 import { SidebarComponent } from './Components/Shared/Sidebar/sidebar.component';
+import { LegalComponent } from './Components/Users/legal/legal.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -54,6 +55,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +76,8 @@ import { MatChipsModule } from '@angular/material/chips';
     ContactusComponent,
     NavbarComponent,
     SidebarComponent,
-    ColorSelectionComponent
+    ColorSelectionComponent,
+    LegalComponent,
   ],
   imports: [
     BrowserModule,

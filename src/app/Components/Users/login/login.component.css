@@ -23,7 +23,7 @@
     position: relative;
     width: 150px;
     margin: 0px auto;
-    background-color: #6a20e1;
+    background-color: #6a20e1; /*morado*/
 }
 
 .login-button[disabled] {

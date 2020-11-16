@@ -4,6 +4,7 @@ import { User } from './user.model';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from '../../../Services/base.service'
+import { Feedback } from '../../contactus/feedback.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -47,5 +48,10 @@ export class UserService extends BaseService {
   public getUserProfile(token: string){
     var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + token});
     return this.http.get(this.serviceUrl + 'Profile', {headers : tokenHeader});
+  }
+
+  public submitFeedback(feedback: Feedback, token: string){
+    var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + token});
+    return this.http.post(this.serviceUrl + '/Feedback', feedback, { headers: tokenHeader });
   }
 }

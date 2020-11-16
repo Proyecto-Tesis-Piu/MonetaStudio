@@ -143,13 +143,15 @@ label {
     margin-left: 5%
 }
 
-::ng-deep .mat-checkbox-frame {
-    border-color: rgba(0,0,0,.7);
+.reg-terms {
+    align-self: flex-start;
+    font-family: unset !important;
+    font-size: 14px;
 }
 
-.reg-checkbox {
-    align-self: flex-start;
-    margin-left: 5%;
+.termsLink {
+    color: blue !important;
+    text-decoration: underline !important;
 }
 
 .disable-text-select * {
