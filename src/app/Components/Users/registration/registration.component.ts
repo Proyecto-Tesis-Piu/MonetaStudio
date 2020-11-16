@@ -12,7 +12,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LegalComponent } from '../legal/legal.component';
 
 const moment = _rollupMoment || _moment;
 
@@ -63,7 +64,8 @@ export class RegistrationComponent implements OnInit {
               public service: UserService, 
               private _snackBar: MatSnackBar,
               protected storageMap: StorageMap,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private dialog: MatDialog) {
     
     this.service.getCountries().subscribe((countries: Country[]) => {
         this.countryArray = countries;
@@ -197,4 +199,9 @@ export class RegistrationComponent implements OnInit {
     );
     this.dialogRef.close();
   }
+
+  termsOnClick(){
+    const dialogRef = this.dialog.open(LegalComponent);
+  }
+
 }
