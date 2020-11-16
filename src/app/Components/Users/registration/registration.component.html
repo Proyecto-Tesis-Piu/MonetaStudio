@@ -165,7 +165,7 @@
                 </mat-form-field>
             </div>
 
-            <label class="reg-terms">Al hacer click en Crear cuenta, aceptas nuestros <a class="termsLink">Términos y Condiciones del Servicio.</a></label>
+            <label class="reg-terms">Al hacer click en Crear cuenta, aceptas nuestros <a (click)="termsOnClick();" class="termsLink">Términos y Condiciones del Servicio.</a></label>
 
             <button mat-flat-button class="new-user" type="submit" [disabled]="!formModel.valid">
                 Crear cuenta</button>
