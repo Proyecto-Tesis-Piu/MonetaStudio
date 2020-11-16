@@ -5,13 +5,13 @@ export class Transaction {
     isExpense?: boolean;
     childrenTransactions?:Transaction[];
     id?:string;
-    icon?:String;
-    userId?:String;
+    icon?:string;
+    userId?:string;
     cumulativePercentage?:number;
     percentage?:number;
     relativePercentage?:number;
-    category?:String; //categoryId for transaction
-    color?:String;
+    category?:string; //categoryId for transaction
+    color?:string;
 }
 
 export class TransactionFlatNode {
@@ -21,12 +21,12 @@ export class TransactionFlatNode {
     amount: number = 0;
     isExpense?: boolean;
     id?:string;
-    icon?:String;
+    icon?:string;
     level: number;
-    userId?:String;
+    userId?:string;
     cumulativePercentage?:number;
     percentage?:number;
     relativePercentage?:number;
-    category?:String; //categoryId for transaction
-    color?:String;
+    category?:string; //categoryId for transaction
+    color?:string;
   }

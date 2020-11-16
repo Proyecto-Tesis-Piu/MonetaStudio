@@ -327,7 +327,7 @@ mat-button-toggle {
     transition: 0.5s;
 }
 
-.progress-bar-div0 {
+/*.progress-bar-div0 {
     background-color: #ff457c;
 }
 
@@ -349,7 +349,7 @@ mat-button-toggle {
 
 .progress-bar-div5 {
     background-color: #adfadf;
-}
+}*/
 
 .custom-progress-bar-div:hover {
     @include mat-elevation(8);
@@ -506,5 +506,15 @@ mat-button-toggle {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
+    color: black;
+}
+
+.main-block-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main-block-header > h1 {
     color: black;
 }
