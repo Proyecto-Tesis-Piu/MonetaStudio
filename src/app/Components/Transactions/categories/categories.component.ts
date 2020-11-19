@@ -31,9 +31,9 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     private service: TransactionService,
     public dialog: MatDialog,
     public _snackBar: MatSnackBar,
-    protected storageMap : StorageMap){
-      
-    this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
+    protected storageMap: StorageMap) {
+
+    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
       this.token = data;
       //console.log("sidebar token update: " + data);
     });
@@ -159,7 +159,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this._snackBar.open("Categoría agregada", "Cerrar");
+      this._snackBar.open("Categoría agregada", "Cerrar", { duration: 5000 });
     },
       err => {
         console.log(err);
@@ -167,7 +167,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       () => {
         //console.log('Complete');
       });
-      this.dialogRef.close();
+    this.dialogRef.close();
   }
 
   editCategory_onClick() {
@@ -187,7 +187,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this._snackBar.open("Categoría guardada", "Cerrar");
+      this._snackBar.open("Categoría guardada", "Cerrar", { duration: 5000 });
     },
       err => {
         console.log(err);
@@ -195,7 +195,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       () => {
         //console.log('Complete');
       });
-      this.dialogRef.close();
+    this.dialogRef.close();
   }
 
   deleteCategory_onClick() {
@@ -215,7 +215,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this._snackBar.open("Categoría eliminada", "Cerrar");
+      this._snackBar.open("Categoría eliminada", "Cerrar", { duration: 5000 });
     },
       err => {
         console.log(err);
@@ -223,7 +223,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       () => {
         //console.log('Complete');
       });
-      this.dialogRef.close();
+    this.dialogRef.close();
   }
 
   openIconSelectionDialog(event, mode: string) {
