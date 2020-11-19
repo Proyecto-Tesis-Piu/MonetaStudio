@@ -196,7 +196,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             let style = 'background-color:' + colors.backgroundColor;
             style += '; display: inline-block; width: 10px; height: 10px; margin-right: 10px;';
             const span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-            innerHtml += '<tr><td>' + span + text[0] + ' - ' + text[1] + '%</td></tr>';
+            innerHtml += '<tr><td>' + span + text[0] + ': ' + text[1] + '%</td></tr>';
           });
           innerHtml += '</tbody>';
 
@@ -377,14 +377,14 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.expenseChartColors = [{
       backgroundColor: this.expenses.map(e => e.color),
       hoverBackgroundColor: this.expenses.map(e => this.getHoverColor(e.color)),
-      borderWidth: 2
+      borderWidth: 0
     }];
     this.incomeDatasets = [{ data: this.incomes.map(e => e.percentage) }];
     this.incomeLabels = this.incomes.map(e => e.concept);
     this.incomeChartColors = [{
       backgroundColor: this.incomes.map(e => e.color),
       hoverBackgroundColor: this.incomes.map(e => this.getHoverColor(e.color)),
-      borderWidth: 2
+      borderWidth: 0
     }];
   }
 
@@ -408,6 +408,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             this.assignDataSources();
           },
           () => {
+            this.getCalendarDates();
             //console.log('Complete');
           });
       }

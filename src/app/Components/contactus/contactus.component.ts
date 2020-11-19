@@ -39,10 +39,10 @@ export class ContactusComponent {
     this.service.submitFeedback(this.feedback, this.token).subscribe(
       res => {
         //console.log(res);
-        this.snack.open('Gracias por tus comentarios, los tomaremos en cuenta.', 'Cerrar');
+        this.snack.open('Gracias por tus comentarios, los tomaremos en cuenta.', 'Cerrar', { duration: 5000 });
       },
       err => {
-        this.snack.open('Se presentó un error al subir tus comentarios. Intentalo de nuevo', 'Cerrar');
+        this.snack.open('Se presentó un error al subir tus comentarios. Intentalo de nuevo', 'Cerrar', { duration: 5000 });
         console.log(err);
       },
       () => { });
