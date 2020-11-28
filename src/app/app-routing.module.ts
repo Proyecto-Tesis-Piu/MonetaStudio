@@ -6,15 +6,15 @@ import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { NewsComponent } from './Components/new/News/news.component';
 import { NewComponent } from './Components/new/New/new.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
-import { ConfirmMailComponent } from "./Components/confirm-mail/confirm-mail.component";
+import { ConfirmMailComponent } from "./Components/Users/confirm-mail/confirm-mail.component";
 import { UserComponent } from './Components/Users/user.component';
 
 const routes: Routes = [
   {path:'home', component: HomeComponent },
-  {path:'user', component: UserComponent, children: [
-    {path:'ConfirmMail/:t', component: ConfirmMailComponent },
+  //{path:'user', component: UserComponent, children: [
+    {path:'user/ConfirmMail/:t', component: ConfirmMailComponent },
     //{path:'create', component: RegistrationComponent },
-  ]},
+  //]},
 
   //{path: 'User/ConfirmMail/:t', component: ConfirmMailComponent},
   {path: 'news', component: NewsComponent},
