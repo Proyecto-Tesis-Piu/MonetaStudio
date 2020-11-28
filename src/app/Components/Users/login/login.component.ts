@@ -39,7 +39,7 @@ export class LoginDialogComponent implements OnInit {
           }, 
           err => {
             if(err.status == 400){
-              this._snackBar.open(err.error.reasonPhrase, 'Cerrar');
+              this._snackBar.open(err.error.reasonPhrase, 'Cerrar', { duration: 5000 });
             }
             console.log(err)
           }, 

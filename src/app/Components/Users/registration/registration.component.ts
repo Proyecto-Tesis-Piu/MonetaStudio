@@ -168,13 +168,14 @@ export class RegistrationComponent implements OnInit {
     this.service.register(this.user).subscribe(
       (res:any) => {
         if(res.succeeded){
-          this._snackBar.open('Registro exitoso', 'Cerrar');
+          this._snackBar.open('Registro exitoso', 'Cerrar', { duration: 5000 });
           this.service.login(this.user.email, this.user.password).subscribe((res: any) => {
             this.storageMap.set('token', res.token).subscribe(() => {});
+            localStorage.setItem('token', res.token);
           }, 
           err => {
             if(err.status == 400){
-              this._snackBar.open(err.error.reasonPhrase, 'Cerrar');
+              this._snackBar.open(err.error.reasonPhrase, 'Cerrar', { duration: 5000 });
             }
             console.log(err)
           });
@@ -192,7 +193,7 @@ export class RegistrationComponent implements OnInit {
             }
             console.log(element);
           });
-          this._snackBar.open(this.ErrorMessage, 'Cerrar');
+          this._snackBar.open(this.ErrorMessage, 'Cerrar', { duration: 5000 });
         }
       },
       err => console.log(err)

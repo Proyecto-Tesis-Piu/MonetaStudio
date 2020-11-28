@@ -3,7 +3,10 @@
     <div class="container-transaction">
 
         <div class="flex-item main-block">
-            <h1>GASTOS</h1>
+            <div class="main-block-header">
+                <h1>GASTOS</h1>
+                <h1>{{generalData.expenseTotal | currency}}</h1>
+            </div>
 
             <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
                 class="custom-tree disable-text-select">
@@ -43,8 +46,10 @@
         </div>
 
         <div class="flex-item main-block">
-            <h1>INGRESOS</h1>
-
+            <div class="main-block-header">
+                <h1>INGRESOS</h1>
+                <h1>{{generalData.incomeTotal | currency}}</h1>
+            </div>
             <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
                 class="custom-tree disable-text-select">
                 <!-- This is the tree node template for leaf nodes -->
@@ -104,7 +109,7 @@
                 </div>
                 <div class="spinner-container2">
                     <canvas mdbChart [chartType]="chartType" [datasets]="expenseDatasets" [labels]="expenseLabels"
-                        [colors]="chartColors" [options]="chartOptions" [legend]="false"
+                        [colors]="expenseChartColors" [options]="chartOptions" [legend]="false"
                         (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
                     <div id="chartjs-tooltip">
@@ -126,7 +131,7 @@
                 </div>
                 <div class="spinner-container2">
                     <canvas mdbChart [chartType]="chartType" [datasets]="incomeDatasets" [labels]="incomeLabels"
-                        [colors]="chartColors" [options]="chartOptions" [legend]="false"
+                        [colors]="incomeChartColors" [options]="chartOptions" [legend]="false"
                         (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
                     <!-- <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
@@ -152,9 +157,8 @@
                             <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
                             <div mat-line>{{category.concept}}</div>
                             <div class="custom-progress-bar-container">
-                                <div class="custom-progress-bar-div"
-                                    [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
-                                    [ngClass]="'progress-bar-div'+i" matTooltipClass="transaction-tooltip"
+                                <div class="custom-progress-bar-div" [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%', 
+                                    'background-color': category.color }" matTooltipClass="transaction-tooltip"
                                     matTooltip="{{category.amount | currency}} - {{category.percentage}}%"
                                     [matTooltipPosition]="'right'"></div>
                             </div>
@@ -168,9 +172,8 @@
                             <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
                             <div mat-line>{{category.concept}}</div>
                             <div class="custom-progress-bar-container">
-                                <div class="custom-progress-bar-div"
-                                    [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%' }"
-                                    [ngClass]="'progress-bar-div'+i" matTooltipClass="tooltip-bar"
+                                <div class="custom-progress-bar-div" [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%', 
+                                    'background-color': category.color }" matTooltipClass="tooltip-bar"
                                     matTooltip="{{category.amount | currency}} - {{category.percentage}}%"
                                     [matTooltipPosition]="'right'"></div>
                             </div>

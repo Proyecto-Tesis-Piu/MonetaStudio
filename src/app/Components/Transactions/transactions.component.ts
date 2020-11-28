@@ -129,17 +129,19 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   //for piechart
   public expenseDatasets: Array<any>;
   public expenseLabels: Array<any>;
+  public expenseChartColors: Array<any>;
   public incomeDatasets: Array<any>;
   public incomeLabels: Array<any>;
+  public incomeChartColors: Array<any>;
 
   public chartType: string = 'doughnut';
-  public chartColors: Array<any> = [
+  /* public chartColors: Array<any> = [
     {
       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774'],
       borderWidth: 2,
     }
-  ];
+  ]; */
   public chartOptions: any = {
     responsive: true,
     tooltips: {
@@ -194,7 +196,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             let style = 'background-color:' + colors.backgroundColor;
             style += '; display: inline-block; width: 10px; height: 10px; margin-right: 10px;';
             const span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-            innerHtml += '<tr><td>' + span + text[0] + ' - ' + text[1] + '%</td></tr>';
+            innerHtml += '<tr><td>' + span + text[0] + ': ' + text[1] + '%</td></tr>';
           });
           innerHtml += '</tbody>';
 
@@ -247,7 +249,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     private service: TransactionService,
     private _snackBar: MatSnackBar,
     protected storageMap: StorageMap) {
-    
+
     var date = new Date();
 
     this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -372,8 +374,18 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.dataSourceIncomes.data = this.incomes;
     this.expenseDatasets = [{ data: this.expenses.map(e => e.percentage) }];
     this.expenseLabels = this.expenses.map(e => e.concept);
+    this.expenseChartColors = [{
+      backgroundColor: this.expenses.map(e => e.color),
+      hoverBackgroundColor: this.expenses.map(e => this.getHoverColor(e.color)),
+      borderWidth: 0
+    }];
     this.incomeDatasets = [{ data: this.incomes.map(e => e.percentage) }];
     this.incomeLabels = this.incomes.map(e => e.concept);
+    this.incomeChartColors = [{
+      backgroundColor: this.incomes.map(e => e.color),
+      hoverBackgroundColor: this.incomes.map(e => this.getHoverColor(e.color)),
+      borderWidth: 0
+    }];
   }
 
   deleteTransaction(trans: Transaction) {
@@ -396,6 +408,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             this.assignDataSources();
           },
           () => {
+            this.getCalendarDates();
             //console.log('Complete');
           });
       }
@@ -546,6 +559,60 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
+  }
+
+  getHoverColor(color: string) {
+    switch (color) {
+      case '#fbd4c4':
+        return '#e5c2b5';
+      case '#808080':
+        return '#a3a3a3';
+      case '#3e6158':
+        return '#4E7A6E';
+      case '#3f7a89':
+        return '#498fa0';
+      case '#96c582':
+        return '#7AC45A';
+      case '#b7d5c4':
+        return '#a0d3b6';
+      case '#bcd6e7':
+        return '#a5cce5';
+      case '#7c90c1':
+        return '#8ca3d8';
+      case '#9d8594':
+        return '#b599ab';
+      case '#dad0d8':
+        return '#d8bad2';
+      case '#4b4fce':
+        return '#5459e5';
+      case '#4e0a77':
+        return '#6d0fa8';
+      case '#a367b5':
+        return '#9c53b2';
+      case '#ee3e6d':
+        return '#ff4c7f';
+      case '#d63d62':
+        return '#ed446e';
+      case '#c6a670':
+        return '#c49c5c';
+      case '#f46600':
+        return '#ff710c';
+      case '#cf0500':
+        return '#e80300';
+      case '#efabbd':
+        return '#ed95ac';
+      case '#8e0622':
+        return '#a5082a';
+      case '#f0b89a':
+        return '#efa783';
+      case '#f0ca68':
+        return '#efc251';
+      case '#62382f':
+        return '#7a453a';
+      case '#c97545':
+        return '#e0814e';
+    }
+
   }
 }
 
