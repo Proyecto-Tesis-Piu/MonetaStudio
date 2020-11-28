@@ -1,0 +1,27 @@
+.container{
+    background-color: #6a20e1; 
+    border-radius: 25px;
+    width: 700px;
+    height: 500px;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card{
+    background-color: #fff;
+     width: 700px; 
+     position: fixed; 
+     top: 60%;
+      left: 50%; 
+      transform: translate(-50%, -50%);
+}
+
+h2{
+    margin-left: 10%; 
+    margin-bottom: 5%;
+}
+
+p{
+    margin-left: 10%;
+}

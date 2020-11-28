@@ -48,4 +48,10 @@ export class UserService extends BaseService {
     var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + token});
     return this.http.get(this.serviceUrl + 'Profile', {headers : tokenHeader});
   }
+
+  public confirmEmail(token: String){
+    var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + token});
+    return this.http.get(this.serviceUrl + '/ConfirmEmail', {headers : tokenHeader});
+  }
+
 }

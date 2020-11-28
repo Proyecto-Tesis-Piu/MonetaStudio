@@ -54,6 +54,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { ConfirmMailComponent } from './Components/confirm-mail/confirm-mail.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { MatChipsModule } from '@angular/material/chips';
     SidebarComponent,
     ColorSelectionComponent,
     LegalComponent,
+    ConfirmMailComponent,
   ],
   imports: [
     BrowserModule,
