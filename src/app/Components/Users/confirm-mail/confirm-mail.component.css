@@ -1,27 +1,55 @@
-.container{
-    background-color: #6a20e1; 
+@font-face {
+    src: url(../../../../assets/fonts/Musket.otf);
+    font-family: Musket;
+}
+
+.container {
+    background-color: #6a20e1;
     border-radius: 25px;
     width: 700px;
     height: 500px;
     position: fixed;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.card{
+.card {
     background-color: #fff;
-     width: 700px; 
-     position: fixed; 
-     top: 60%;
-      left: 50%; 
-      transform: translate(-50%, -50%);
+    width: 700px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-h2{
-    margin-left: 10%; 
-    margin-bottom: 5%;
-}
-
-p{
+h2 {
     margin-left: 10%;
+    margin-bottom: 5%;
+    font-family: mus;
+    color: #000;
+    font-size: 18px;
+}
+
+p {
+    margin-left: 10%;
+}
+
+a {
+    margin: 0 auto 3% auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    border: 1px solid #6a20e1;
+    color: #6a20e1;
+    padding: 1%;
+    background-color: #ffffff;
+    width: 50%;
+    transition: .3s
+}
+
+a:hover{
+    color: #ffffff;
+    background-color: #6a20e1;
+    cursor: pointer;
 }

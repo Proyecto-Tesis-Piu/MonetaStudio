@@ -55,7 +55,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { ForgotPasswordComponent } from './Components/Users/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +80,7 @@ import { MatChipsModule } from '@angular/material/chips';
     ColorSelectionComponent,
     LegalComponent,
     ConfirmMailComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
