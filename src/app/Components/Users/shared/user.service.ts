@@ -52,7 +52,7 @@ export class UserService extends BaseService {
 
   public confirmEmail(token: String){
     var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + token});
-    return this.http.get(this.serviceUrl + '/ConfirmEmail', {headers : tokenHeader});
+    return this.http.get(this.serviceUrl + '/ConfirmEmail', { headers: tokenHeader });
   }
 
   public resetPassword(newPassword: String, token: String) {
