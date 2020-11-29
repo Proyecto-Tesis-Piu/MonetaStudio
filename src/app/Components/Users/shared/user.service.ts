@@ -55,6 +55,12 @@ export class UserService extends BaseService {
     return this.http.get(this.serviceUrl + '/ConfirmEmail', { headers: tokenHeader });
   }
 
+  public forgotPassword (email: string) {
+    var temp: User = new User();
+    temp.email = email;
+    return this.http.post(this.serviceUrl + '/ForgotPassword', temp);
+  }
+
   public resetPassword(newPassword: String, token: String) {
     var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
     return this.http.post(this.serviceUrl + '/ResetPassword', newPassword, { headers: tokenHeader });

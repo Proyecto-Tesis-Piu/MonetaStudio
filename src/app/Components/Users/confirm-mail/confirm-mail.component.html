@@ -4,7 +4,7 @@
         <h2 *ngIf="success"> Correo confirmado</h2>
         <h2 *ngIf="!success"> Hubo un error al verificar tu cuenta, por favor intentalo de nuevo.</h2>
 
-        <a [routerLink]="['/home']">Volver a enviar correo </a>
+        <a *ngIf="!success" [routerLink]="['/home']">Volver a enviar correo </a>
         <a [routerLink]="['/home']">Volver a home </a>
 
     </div>
