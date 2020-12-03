@@ -1,10 +1,10 @@
 <div class="container">
     <div class="card">
 
-        <h2 *ngIf="success"> Correo confirmado</h2>
-        <h2 *ngIf="!success"> Hubo un error al verificar tu cuenta, por favor intentalo de nuevo.</h2>
+        <h2 *ngIf="success"> Correo confirmado con éxito</h2>
+        <h3 *ngIf="!success"> Hubo un error al verificar tu cuenta, por favor inténtalo de nuevo.</h3>
 
-        <a *ngIf="!success" [routerLink]="['/home']">Volver a enviar correo </a>
+        <!--a *ngIf="!success" [routerLink]="['/home']">Volver a enviar correo de confirmación</a-->
         <a [routerLink]="['/home']">Volver a home </a>
 
     </div>

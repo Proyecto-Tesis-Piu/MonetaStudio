@@ -111,7 +111,7 @@ export class RegistrationComponent implements OnInit {
             //validators van aqui
             firstName: [this.user.firstName, Validators.required],
             lastName: [this.user.lastName, Validators.required],
-            birthDate: [''],
+            birthDate: [this.user.birthDate, Validators.required],
             sex: [this.user.sex],
             job: [this.user.job],
             civilStateString: [this.user.civilStateString],
