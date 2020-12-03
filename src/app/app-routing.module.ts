@@ -6,18 +6,23 @@ import { AuthGuard } from './Components/Users/shared/auth.guard';
 import { NewsComponent } from './Components/new/News/news.component';
 import { NewComponent } from './Components/new/New/new.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
+import { ConfirmMailComponent } from "./Components/Users/confirm-mail/confirm-mail.component";
+import { UserComponent } from './Components/Users/user.component';
+import { ForgotPasswordComponent } from "./Components/Users/forgot-password/forgot-password.component";
 
 const routes: Routes = [
   {path:'home', component: HomeComponent },
-  /*{path:'user', component: UserComponent, children: [
-    {path:'modify', component: RegistrationComponent },
-    {path:'create', component: RegistrationComponent },
-  ]},*/
+  //{path:'user', component: UserComponent, children: [
+    {path:'user/ConfirmMail/:t', component: ConfirmMailComponent },
+    //{path:'user/ResetPassword/:r', component: ResetPasswordComponent },
+    //{path:'create', component: RegistrationComponent },
+  //]},
+
+  //{path: 'User/ConfirmMail/:t', component: ConfirmMailComponent},
   {path: 'news', component: NewsComponent},
   {path: 'news/new/:i', component: NewComponent},
-
   {path: 'aboutus', component: AboutusComponent},
-
+  {path: 'ForgotPassword', component: ForgotPasswordComponent},
   {
     path:'transactions', component: TransactionsComponent, 
     canActivate: [AuthGuard], runGuardsAndResolvers: 'always'

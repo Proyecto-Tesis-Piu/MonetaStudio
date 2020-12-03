@@ -2,28 +2,32 @@
     /*.prueba {*/
     width: 400px;
     text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 20px 20%;
+}
+
+.login-container>* {
+    margin: 7px;
+}
+
+.login-form {
+    width: 100%;
 }
 
 .logo {
     margin-top: 2vh;
     height: 100px;
-    width: auto;
-}
-
-.eti {
-    margin-top: 1vh;
-    text-align: center;
-}
-
-.inp {
-    margin-left: 5.5vw;
+    width: 123px;
 }
 
 .login-button {
     position: relative;
     width: 150px;
     margin: 0px auto;
-    background-color: #6a20e1; /*morado*/
+    background-color: #6a20e1;
+    /*morado*/
 }
 
 .login-button[disabled] {
@@ -59,14 +63,17 @@
     min-height: unset;
 }
 
-.password-visibility{
+.password-visibility {
     color: #000;
-    color: black;
     float: right;
     margin-left: -25px;
     position: relative;
     z-index: 2;
     cursor: pointer;
+}
+
+::ng-deep .mat-label {
+    color: #fff;
 }
 
 ::ng-deep .no-border:focus:active:hover {
@@ -77,4 +84,10 @@
 .no-border {
     outline: none;
     border: 0;
+}
+
+.login-fields-container {
+    display: flex;
+    flex-flow: column nowrap;
+    /*padding: 20px 20%;*/
 }
