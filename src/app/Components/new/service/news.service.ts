@@ -19,7 +19,7 @@ export class NewsService {
       tags: ["Educacion", "Finanzas", "Productos Financieros"],
       biblio: ["OCDE. (2005). Improving Financial Literacy: Analysis of Issues and Policies. France : Organization for Economic Co-operation and Development (OECD).", "Financial Literacy and Education Commission. (2011). Promoting Financial Success in the United States: National Strategy for Financial Literacy, https://files.eric.ed.gov/fulltext/ED524620.pdf", "European Union. (2016). Financial Education for all. Visits and Publications, Second Edition, 68. 2020, De EESC Base de datos."]
     },
-    {
+    /*{
       nombre: "Productos Financieros",
       resumen: "Existe varias definiciones de educación financiera: La OCDE lo define como un proceso mediante el cual los individuos adquieren una mejor comprensión de los conceptos",
       bio: " <b> ¿Qué es un producto financiero?</b><br> Un producto financiero es aquel instrumento que una persona puede adquirir con la finalidad de ahorrar o invertir.<br><br> <b>¿Quien otorga un producto financiero?</b> <br>La mayor parte de los productos financieros son emitidos por bancos, instituciones financieras, corredores de bolsa, proveedores de seguros, agencias de tarjetas de crédito y entidades patrocinadas por el gobierno.<br><br><b>¿Qué riesgos tiene?</b><br> El nivel de riesgo que se obtiene al adquirir un producto financiero depende del producto y del perfil de la persona.<br><br> <b>¿Cuantos tipos de productos financieros hay?</b><br><br> Existen 3 tipos de productos financieros:<br><br> &nbsp;&nbsp;&nbsp;&nbsp; &bull; Productos financieros de inversión: Fondos de inversión, acciones, bonos, productos estructurados, opciones, warrants, futuros, planes de pensiones. <br><br> &nbsp;&nbsp;&nbsp;&nbsp; &bull; Productos financieros de ahorro: Cuentas bancarias, depósitos bancarios, planes de pensiones. <br><br> &nbsp;&nbsp;&nbsp;&nbsp; &bull; Productos financieros de financiación: hipotecas, créditos, préstamos o tarjetas de crédito. <br><br>",
@@ -29,7 +29,7 @@ export class NewsService {
       cover: "../../../assets/img/news/2-ProductosFinancieros",
       tags: ["Educacion", "Finanzas", "Productos Financieros"],
       biblio: ["Juanma Caurin. (2018). Productos financieros. 16 de noviembre del 2020, de economiasimple Sitio web: https://www.economiasimple.net/productos-financieros", "David Méndez. (2019). Producto financiero. 16 de noviembre del 2020, de numdea Sitio web: https://numdea.com/producto-financiero.html"]
-    }
+    }*/
 
   ];
 
