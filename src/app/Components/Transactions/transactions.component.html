@@ -151,25 +151,35 @@
             </mat-button-toggle-group>
 
             <div class="bar-graph-container">
-                <div *ngIf="selectedVal == 'expenses'">
-                    <mat-list class="categories-list">
+                <!-- -->
+                <!--mat-list class="categories-list">
                         <mat-list-item class="list-item" *ngFor="let category of expenses; let i = index">
-                            <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
+                            <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon>
                             <div mat-line>{{category.concept}}</div>
                             <div class="custom-progress-bar-container">
                                 <div class="custom-progress-bar-div" [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%', 
                                     'background-color': category.color }" matTooltipClass="transaction-tooltip"
                                     matTooltip="{{category.amount | currency}} - {{category.percentage}}%"
                                     [matTooltipPosition]="'right'"></div>
+
+                                
+
                             </div>
                         </mat-list-item>
-                    </mat-list>
-                </div>
+                    </mat-list-->
 
-                <div *ngIf="selectedVal == 'incomes'">
-                    <mat-list class="categories-list">
+                <canvas *ngIf="selectedVal == 'expenses'" mdbChart chartType="horizontalBar"
+                    style="height: 100%; width: 100%; max-height: 100%; max-width: 100%;"
+                    [datasets]="expenseDatasetsAmount" [labels]="expenseLabels" [colors]="expenseChartColors"
+                    [options]="chartOptionsHorizontalBar" [legend]="false" (chartClick)="chartClicked($event)"
+                    (chartHover)="chartHovered($event)">
+                </canvas>
+
+
+
+                <!--<mat-list class="categories-list">
                         <mat-list-item class="list-item" *ngFor="let category of incomes; let i = index">
-                            <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon> -->
+                            <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon>
                             <div mat-line>{{category.concept}}</div>
                             <div class="custom-progress-bar-container">
                                 <div class="custom-progress-bar-div" [ngStyle]="{'width': (category.relativePercentage < 1 ? 1 : category.relativePercentage) + '%', 
@@ -178,8 +188,14 @@
                                     [matTooltipPosition]="'right'"></div>
                             </div>
                         </mat-list-item>
-                    </mat-list>
-                </div>
+                    </mat-list-->
+
+                <canvas *ngIf="selectedVal == 'incomes'" mdbChart chartType="horizontalBar"
+                    style="height: 100%; width: 100%; max-height: 100%; max-width: 100%;"
+                    [datasets]="incomeDatasetsAmount" [labels]="incomeLabels" [colors]="incomeChartColors2"
+                    [options]="chartOptionsHorizontalBar" [legend]="false" (chartClick)="chartClicked($event)"
+                    (chartHover)="chartHovered($event)">
+                </canvas>
             </div>
 
             <div class="button-container">
@@ -208,24 +224,48 @@
             </div>
             <mat-divider [vertical]="true" style="height: 90%; border-right-width: 2px; border-right-color: white;">
             </mat-divider>
-            <div class="calendar-item general-graph">
-                <div class="bar-container">
-                    <div class="bar positive custom-progress-bar-div"
-                        [ngStyle]="{'height': (generalData.incomePercentage < 1 ? 1 : generalData.incomePercentage) + '%' }"
-                        matTooltipClass="tooltip-bar"
-                        matTooltip="{{generalData.incomeTotal | currency}} - {{generalData.incomePercentage}}%"
-                        [matTooltipPosition]="'above'"></div>
-                    Ingresos
-                </div>
-                <div class="bar-container">
-                    <div class="bar negative custom-progress-bar-div"
-                        [ngStyle]="{'height': (generalData.expensePercentage < 1 ? 1 : generalData.expensePercentage) + '%' }"
-                        matTooltipClass="tooltip-bar"
-                        matTooltip="{{generalData.expenseTotal | currency}} - {{generalData.expensePercentage}}%"
-                        [matTooltipPosition]="'above'"></div>
-                    Gastos
+            <div class="calendar-item general-graph-container">
+
+                <mat-button-toggle-group #group1="matButtonToggleGroup" [value]="selectedGraph"
+                    (change)="onGraphChange(group1.value)">
+                    <mat-button-toggle value="general">GENERAL</mat-button-toggle>
+                    <mat-button-toggle value="detail">DETALLE</mat-button-toggle>
+                </mat-button-toggle-group>
+
+                <div style="height: 80%; display: block;">
+                    <canvas *ngIf="selectedGraph === 'general'" mdbChart chartType="bar"
+                        style="height: 100%; width: 100%; max-height: 100%; max-width: 100%;"
+                        [datasets]="generalGraphDataSet" [labels]="generalLabels" [colors]="detailChartColors"
+                        [options]="chartOptionsHorizontalBar" [legend]="false" (chartClick)="chartClicked($event)"
+                        (chartHover)="chartHovered($event)">
+                    </canvas>
+                    <canvas *ngIf="selectedGraph === 'detail'" mdbChart chartType="bar"
+                        style="height: 100%; width: 100%; max-height: 100%; max-width: 100%;"
+                        [datasets]="detailDatasets" [labels]="generalLabels" [colors]="detailChartColors"
+                        [options]="chartOptionsStackedBar" [legend]="false" (chartClick)="chartClicked($event)"
+                        (chartHover)="chartHovered($event)">
+                    </canvas>
                 </div>
 
+                <!--div class="general-graph">
+                    <div class="bar-container">
+                        <div class="bar positive custom-progress-bar-div"
+                            [ngStyle]="{'height': (generalData.incomePercentage < 1 ? 1 : generalData.incomePercentage) + '%' }"
+                            matTooltipClass="tooltip-bar"
+                            matTooltip="{{generalData.incomeTotal | currency}} - {{generalData.incomePercentage}}%"
+                            [matTooltipPosition]="'above'"></div>
+                        Ingresos
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar negative custom-progress-bar-div"
+                            [ngStyle]="{'height': (generalData.expensePercentage < 1 ? 1 : generalData.expensePercentage) + '%' }"
+                            matTooltipClass="tooltip-bar"
+                            matTooltip="{{generalData.expenseTotal | currency}} - {{generalData.expensePercentage}}%"
+                            [matTooltipPosition]="'above'"></div>
+                        Gastos
+                    </div>
+
+                </div-->
             </div>
         </div>
 

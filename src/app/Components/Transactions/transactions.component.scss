@@ -414,6 +414,7 @@ mat-button-toggle {
 .bar-graph-container {
     height: calc(67% - 9px);
     margin-bottom: 9px;
+    display: block;
 }
 
 .bar-graph-container > div {
@@ -470,7 +471,7 @@ mat-button-toggle {
 }
 
 .calendar-item {
-    min-width: 36%;
+    min-width: 26%;
     width: fit-content;
 }
 
@@ -517,4 +518,10 @@ mat-button-toggle {
 
 .main-block-header > h1 {
     color: black;
+}
+
+.general-graph-container {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
 }
