@@ -7,11 +7,11 @@ import { NewTransactionComponent } from './new-transaction/new-transaction.compo
 import { TransactionService } from './transactions.service'
 import { DeleteTransactionComponentDialog } from './delete-transaction/delete-transaction.component';
 import { IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyRangeDateSelection, IMyDate } from 'angular-mydatepicker';
-import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { CalendarDate, GeneralData } from './calendarDate.model';
 import { CategoriesComponent } from './categories/categories.component';
 import { Subscription } from 'rxjs';
 import { StorageMap } from '@ngx-pwa/local-storage';
+import { SnackBarService } from '../Shared/Snackbar/snack-bar.service';
 
 const transactionTree: Transaction[] = [
   {
@@ -134,7 +134,6 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   public incomeLabels: Array<any>;
   public incomeChartColors: Array<any>;
 
-  public chartType: string = 'doughnut';
   /* public chartColors: Array<any> = [
     {
       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
@@ -240,14 +239,13 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   myDateInit: boolean = true;
   model: IMyDateModel = null;
 
-  snackBarRef: MatSnackBarRef<SimpleSnackBar>;
 
   token: String;
   tokenSubscription: Subscription;
 
   constructor(public dialog: MatDialog,
     private service: TransactionService,
-    private _snackBar: MatSnackBar,
+    private _snackBar: SnackBarService,
     protected storageMap: StorageMap) {
 
     var date = new Date();
@@ -348,10 +346,10 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       (res: GeneralData) => {
         this.generalData = res;
         if (this.generalData.transactions.length > 0) {
-          if (this.snackBarRef)
-            this.snackBarRef.dismiss();
+          if (this._snackBar.getMessage() === "No hay transacciones para el rango de fechas seleccionado.")
+            this._snackBar.dismiss();
         } else {
-          this.snackBarRef = this._snackBar.open("No hay transacciones para el rango de fechas seleccionado.", 'Cerrar', { duration: 10000, panelClass: ['snackbar'] });
+          this._snackBar.show("No hay transacciones para el rango de fechas seleccionado.", 'Cerrar', { duration: 10000 });
         }
         this.handleTransactionsResponse();
       },

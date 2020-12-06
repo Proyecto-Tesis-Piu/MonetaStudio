@@ -108,7 +108,7 @@
                     </div>
                 </div>
                 <div class="spinner-container2">
-                    <canvas mdbChart [chartType]="chartType" [datasets]="expenseDatasets" [labels]="expenseLabels"
+                    <canvas mdbChart chartType="doughnut" style="max-width: 100%; max-height: 100%;" [datasets]="expenseDatasets" [labels]="expenseLabels"
                         [colors]="expenseChartColors" [options]="chartOptions" [legend]="false"
                         (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 <div class="spinner-container2">
-                    <canvas mdbChart [chartType]="chartType" [datasets]="incomeDatasets" [labels]="incomeLabels"
+                    <canvas mdbChart chartType="doughnut" style="max-width: 100%; max-height: 100%;" [datasets]="incomeDatasets" [labels]="incomeLabels"
                         [colors]="incomeChartColors" [options]="chartOptions" [legend]="false"
                         (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
