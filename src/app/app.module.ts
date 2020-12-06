@@ -17,9 +17,9 @@ import { TransactionService } from './Components/Transactions/transactions.servi
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
 import { DeleteTransactionComponentDialog } from './Components/Transactions/delete-transaction/delete-transaction.component';
-import { NewsService } from "./Components/new/service/news.service";
-import { NewsComponent } from "./Components/new/News/news.component";
-import { NewComponent } from "./Components/new/New/new.component";
+import { ArticlesService } from "./Components/article/service/articles.service";
+import { ArticlesComponent } from "./Components/article/articles/articles.component";
+import { ArticleComponent } from "./Components/article/article/article.component";
 //import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
@@ -69,8 +69,8 @@ import { MatChipsModule } from '@angular/material/chips';
     UserComponent,
     VideoTutorialComponent,
     NewTransactionComponent,
-    NewComponent,
-    NewsComponent,
+    ArticleComponent,
+    ArticlesComponent,
     DeleteTransactionComponentDialog,
     //TreeChecklistExample,
     CategoriesComponent,
@@ -117,7 +117,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCheckboxModule,
     MatChipsModule
   ],
-  providers: [UserService, AuthGuard, TransactionService, NewsService, SnackBarService],
+  providers: [UserService, AuthGuard, TransactionService, ArticlesService, SnackBarService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

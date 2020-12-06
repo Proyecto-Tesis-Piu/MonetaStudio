@@ -8,8 +8,8 @@
                     class="no-border sidebar-button" [disabled]="router.url === '/home'">
                     <mat-icon class="material-icons-round lens">monetization_on</mat-icon> Moneta Studio
                 </button>
-                <button mat-flat-button [routerLink]="['news']" (click)="openSidenav = false;"
-                    class="no-border sidebar-button" [disabled]="router.url === '/news'">
+                <button mat-flat-button [routerLink]="['articles']" (click)="openSidenav = false;"
+                    class="no-border sidebar-button" [disabled]="router.url === '/articles'">
                     <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Noticias
                 </button>
                 <button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="!token"
