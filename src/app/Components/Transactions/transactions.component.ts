@@ -123,6 +123,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   incomeDates: IMyMarkedDates;
   expenseIncomeDates: IMyMarkedDates;
   public selectedVal: string;
+  public selectedGraph: string;
   fromDate: Date;
   toDate: Date;
 
@@ -133,8 +134,25 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   public incomeDatasets: Array<any>;
   public incomeLabels: Array<any>;
   public incomeChartColors: Array<any>;
+  public incomeChartColors2: Array<any>;
+  
+  //public chartType: string = 'doughnut';
 
-  public chartType: string = 'doughnut';
+  //for Horizontal Bar chart
+
+  public expenseDatasetsAmount: Array<any>;
+  public incomeDatasetsAmount: Array<any>;
+
+  //for General Graph
+  public generalLabels: Array<any>;
+  public generalChartColors: Array<any>;
+  public generalGraphDataSet: Array<any>;
+
+  //for Detail Graph
+  public detailDatasets: Array<any>;
+  public detailChartColors: Array<any>;
+
+
   /* public chartColors: Array<any> = [
     {
       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
@@ -224,6 +242,188 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     },
   };
 
+  public chartOptionsHorizontalBar: any = {
+    responsive: true,
+    tooltips: {
+      // Disable the on-canvas tooltip
+      enabled: false,
+
+      custom: function (tooltipModel: any) {
+        // Tooltip Element
+        let tooltipEl = document.getElementById('chartjs-tooltip');
+
+        // Create element on first render
+        if (!tooltipEl) {
+          tooltipEl = document.createElement('div');
+          tooltipEl.id = 'chartjs-tooltip';
+          tooltipEl.innerHTML = '<table></table>';
+          document.body.appendChild(tooltipEl);
+        }
+
+        // Hide if no tooltip
+        if (tooltipModel.opacity === 0) {
+          tooltipEl.style.opacity = '0';
+          return;
+        }
+
+        // Set caret Position
+        tooltipEl.classList.remove('above', 'below', 'no-transform');
+        if (tooltipModel.yAlign) {
+          tooltipEl.classList.add(tooltipModel.yAlign);
+        } else {
+          tooltipEl.classList.add('no-transform');
+        }
+
+        function getBody(bodyItem: { lines: any }) {
+          return bodyItem.lines;
+        }
+
+        // Set Text
+        if (tooltipModel.body) {
+          const titleLines = tooltipModel.title || [];
+          const bodyLines = tooltipModel.body.map(getBody);
+
+          let innerHtml = '<thead>';
+
+          titleLines.forEach(function (title: string) {
+            innerHtml += '<tr><th>' + title + '</th></tr>';
+          });
+          innerHtml += '</thead><tbody>';
+
+          bodyLines.forEach(function (body: string, i: string | number) {
+            var text = body[0].split(':');
+            const colors = tooltipModel.labelColors[i];
+            let style = 'background-color:' + colors.backgroundColor;
+            style += '; display: inline-block; width: 10px; height: 10px; margin-right: 10px;';
+            innerHtml += '<tr><td>$ ' + text[0] + '</td></tr>';
+          });
+          innerHtml += '</tbody>';
+
+          const tableRoot = tooltipEl.querySelector('table');
+          if (tableRoot) {
+            tableRoot.innerHTML = innerHtml;
+          }
+        }
+
+        // `this` will be the overall tooltip
+        var position = this._chart.canvas.getBoundingClientRect();
+
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity = '1';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+        tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+        //tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+        tooltipEl.style.fontSize = '12px';
+        tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+        tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+        tooltipEl.style.pointerEvents = 'none';
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+
+  };
+
+  public chartOptionsStackedBar: any = {
+    responsive: true,
+    tooltips: {
+      // Disable the on-canvas tooltip
+      enabled: false,
+
+      custom: function (tooltipModel: any) {
+        // Tooltip Element
+        let tooltipEl = document.getElementById('chartjs-tooltip');
+
+        // Create element on first render
+        if (!tooltipEl) {
+          tooltipEl = document.createElement('div');
+          tooltipEl.id = 'chartjs-tooltip';
+          tooltipEl.innerHTML = '<table></table>';
+          document.body.appendChild(tooltipEl);
+        }
+
+        // Hide if no tooltip
+        if (tooltipModel.opacity === 0) {
+          tooltipEl.style.opacity = '0';
+          return;
+        }
+
+        // Set caret Position
+        tooltipEl.classList.remove('above', 'below', 'no-transform');
+        if (tooltipModel.yAlign) {
+          tooltipEl.classList.add(tooltipModel.yAlign);
+        } else {
+          tooltipEl.classList.add('no-transform');
+        }
+
+        function getBody(bodyItem: { lines: any }) {
+          return bodyItem.lines;
+        }
+
+        // Set Text
+        if (tooltipModel.body) {
+          const titleLines = tooltipModel.title || [];
+          const bodyLines = tooltipModel.body.map(getBody);
+
+          let innerHtml = '<thead>';
+
+          titleLines.forEach(function (title: string) {
+            innerHtml += '<tr><th>' + title + '</th></tr>';
+          });
+          innerHtml += '</thead><tbody>';
+
+          bodyLines.forEach(function (body: string, i: string | number) {
+            var text = body[0].split(':');
+            const colors = tooltipModel.labelColors[i];
+            let style = 'background-color:' + colors.backgroundColor;
+            style += '; display: inline-block; width: 10px; height: 10px; margin-right: 10px;';
+            innerHtml += '<tr><td>' + text[0] + ': $' + text[1].trim() + '</td></tr>';
+          });
+          innerHtml += '</tbody>';
+
+          const tableRoot = tooltipEl.querySelector('table');
+          if (tableRoot) {
+            tableRoot.innerHTML = innerHtml;
+          }
+        }
+
+        // `this` will be the overall tooltip
+        var position = this._chart.canvas.getBoundingClientRect();
+
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity = '1';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+        tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+        //tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+        tooltipEl.style.fontSize = '12px';
+        tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+        tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+        tooltipEl.style.pointerEvents = 'none';
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        stacked: true
+      }],
+      xAxes: [{
+        stacked: true
+      }],
+    }
+
+  };
+
   //for datePicker
   myDpOptions: IAngularMyDpOptions = {
     inline: true,
@@ -252,13 +452,18 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
     var date = new Date();
 
-    this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    //this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
 
-    this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    //this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    this.fromDate = new Date(2020, 10, 1);
+
+    this.toDate = new Date(2020, 10, 30);
 
     this.generalData = new GeneralData();
 
     this.selectedVal = 'expenses';
+    this.selectedGraph = 'general';
 
     this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
       this.token = data;
@@ -301,6 +506,10 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   public onValChange(val: string) {
     this.selectedVal = val;
+  }
+
+  public onGraphChange(val: string) {
+    this.selectedGraph = val;
   }
 
   dataSourceExpenses = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
@@ -373,19 +582,64 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.dataSourceExpenses.data = this.expenses;
     this.dataSourceIncomes.data = this.incomes;
     this.expenseDatasets = [{ data: this.expenses.map(e => e.percentage) }];
-    this.expenseLabels = this.expenses.map(e => e.concept);
+    this.expenseDatasetsAmount = [{ data: this.expenses.map(e => e.amount) }];
+    this.expenseLabels = this.expenses.map(e => e.concept + ": " + e.percentage + "%");
     this.expenseChartColors = [{
       backgroundColor: this.expenses.map(e => e.color),
       hoverBackgroundColor: this.expenses.map(e => this.getHoverColor(e.color)),
       borderWidth: 0
     }];
     this.incomeDatasets = [{ data: this.incomes.map(e => e.percentage) }];
+    this.incomeDatasetsAmount = [{ data: this.incomes.map(e => e.amount) }];
     this.incomeLabels = this.incomes.map(e => e.concept);
     this.incomeChartColors = [{
       backgroundColor: this.incomes.map(e => e.color),
       hoverBackgroundColor: this.incomes.map(e => this.getHoverColor(e.color)),
       borderWidth: 0
     }];
+
+    this.incomeChartColors2 = [{
+      backgroundColor: this.incomes.map(e => this.hexToRgbA(e.color)),
+      hoverBackgroundColor: this.incomes.map(e => this.getHoverColor(e.color)),
+      borderWidth: 0
+    }];
+
+    this.generalGraphDataSet = [{ data: [this.generalData.incomeTotal, this.generalData.expenseTotal] }];
+    this.generalLabels = ["Ingresos: " + this.generalData.incomePercentage + "%", "Gastos: " + this.generalData.expensePercentage + "%"];
+    
+    if(this.generalData.transactions.length > 0){
+      this.detailDatasets = this.generalData.transactions.map(category => {
+        var dataset;
+        if (category.isExpense) {
+          dataset = { data: [0, category.amount], label: category.concept };
+        } else {
+          dataset = { data: [category.amount, 0], label: category.concept };
+        }
+        console.log(dataset);
+        return dataset;
+
+      });
+    }else{
+      this.detailDatasets = [];
+    }
+    this.detailChartColors = this.generalData.transactions.map(c => {
+      return {
+        backgroundColor: ['rgba(124,252,0,.5)', 'rgba(255,0,0,.5)'],
+        borderColor: ['rgba(124,252,0,1)', 'rgba(255,0,0,1)'],
+        borderWidth: 2
+      };
+    });
+    this.generalChartColors = this.detailChartColors[0];
+  }
+
+  hexToRgbA(hex) {
+    var c;
+    c = hex.substring(1).split('');
+    if (c.length == 3) {
+      c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+    }
+    c = '0x' + c.join('');
+    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',.7)';
   }
 
   deleteTransaction(trans: Transaction) {
