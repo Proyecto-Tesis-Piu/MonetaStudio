@@ -27,6 +27,7 @@ export class SidebarComponent {
 
   logout(): void {
     this.storageMap.delete('token').subscribe(() => {});
+    this.storageMap.delete('emailConfirmed').subscribe(() => { });
     localStorage.removeItem('token');
     window.location.reload();
   }

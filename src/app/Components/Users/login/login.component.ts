@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { UserService } from '../shared/user.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage'
+import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
+import { RegistrationComponent } from '../registration/registration.component';
 
 @Component({
   selector: 'app-dialog-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginDialogComponent implements OnInit {
-  loginForm:FormGroup;
+  loginForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
-    public formBuilder: FormBuilder, 
+    public formBuilder: FormBuilder,
     public service: UserService,
-    private _snackBar: MatSnackBar,
-    protected storageMap: StorageMap
-    ) { 
+    private _snackBar: SnackBarService,
+    protected storageMap: StorageMap,
+    public dialog: MatDialog
+  ) {
     this.loginForm = new FormGroup({
       userEmail: new FormControl(''),
       password: new FormControl('')
@@ -29,25 +31,34 @@ export class LoginDialogComponent implements OnInit {
 
   ngOnInit() { }
 
-  submit_onClick(){
-    if(this.loginForm.valid){
+  submit_onClick() {
+    if (this.loginForm.valid) {
       this.service.login(this.loginForm.value.userEmail, this.loginForm.value.password)
         .subscribe(
           (res: any) => {
-            this.storageMap.set('token', res.token).subscribe(() => {});
+            this.storageMap.set('token', res.token).subscribe(() => { });
+            this.storageMap.set('emailConfirmed', res.emailConfirmed).subscribe(() => { });
             localStorage.setItem('token', res.token);
-          }, 
+
+            if (!res.emailConfirmed) {
+              this._snackBar.show("Por favor, confirma tu correo.", 'Cerrar');
+            }
+          },
           err => {
-            if(err.status == 400){
-              this._snackBar.open(err.error.reasonPhrase, 'Cerrar', { duration: 5000 });
+            if (err.status == 400) {
+              this._snackBar.show(err.error.reasonPhrase, 'Cerrar');
             }
             console.log(err)
-          }, 
+          },
           () => {
             //console.log('Complete');
             this.dialogRef.close();
-        });
+          });
     }
+  }
+  
+  newUser(): void {
+    const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
 }
 

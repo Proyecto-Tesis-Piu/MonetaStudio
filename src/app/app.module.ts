@@ -30,6 +30,8 @@ import { NavbarComponent } from "./Components/home/navbar/navbar.component";
 import { SidebarComponent } from './Components/Shared/Sidebar/sidebar.component';
 import { LegalComponent } from './Components/Users/legal/legal.component';
 import { ConfirmMailComponent } from './Components/Users/confirm-mail/confirm-mail.component';
+import { ForgotPasswordComponent } from './Components/Users/forgot-password/forgot-password.component';
+import { SnackBarService } from './Components/Shared/Snackbar/snack-bar.service';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -55,7 +57,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { ForgotPasswordComponent } from './Components/Users/forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -115,7 +117,7 @@ import { ForgotPasswordComponent } from './Components/Users/forgot-password/forg
     MatCheckboxModule,
     MatChipsModule
   ],
-  providers: [UserService, AuthGuard, TransactionService, NewsService],
+  providers: [UserService, AuthGuard, TransactionService, NewsService, SnackBarService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

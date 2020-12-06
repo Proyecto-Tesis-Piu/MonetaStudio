@@ -8,21 +8,28 @@ import { RegistrationComponent } from '../../Users/registration/registration.com
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  token:String;
-  tokenSubscription:Subscription;
+  token: String;
+  emailConfirmed: boolean;
+  tokenSubscription: Subscription;
+  emailConfirmedSubscription: Subscription;
   showFiller = false;
 
   constructor(public dialog: MatDialog,
     protected storageMap: StorageMap) { }
-  
+
   ngOnInit() {
-    this.tokenSubscription = this.storageMap.watch('token', {type: 'string'})
+    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' })
       .subscribe((result) => {
         this.token = result;
+      });
+
+    this.emailConfirmedSubscription = this.storageMap.watch('emailConfirmed', { type: 'boolean' })
+      .subscribe((result) => {
+        this.emailConfirmed = result;
       });
   }
 
@@ -31,7 +38,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.storageMap.delete('token').subscribe(() => {});
+    this.storageMap.delete('token').subscribe(() => { });
+    this.storageMap.delete('emailConfirmed').subscribe(() => { });
     localStorage.removeItem('token');
   }
 
@@ -43,8 +51,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
 
-  scrollToElement(selector){
+  scrollToElement(selector) {
     const element = document.getElementById(selector)
-    element ? element.scrollIntoView({behavior: "smooth", block: "center"}): null;
+    element ? element.scrollIntoView({ behavior: "smooth", block: "center" }) : null;
   }
 }

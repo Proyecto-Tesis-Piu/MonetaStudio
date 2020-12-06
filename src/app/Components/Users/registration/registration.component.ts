@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from '../shared/user.model';
@@ -14,6 +13,7 @@ import { default as _rollupMoment } from 'moment';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LegalComponent } from '../legal/legal.component';
+import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -62,7 +62,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<RegistrationComponent>,
               public service: UserService, 
-              private _snackBar: MatSnackBar,
+              private _snackBar: SnackBarService,
               protected storageMap: StorageMap,
               private fb: FormBuilder,
               private dialog: MatDialog) {
@@ -90,7 +90,7 @@ export class RegistrationComponent implements OnInit {
                 //validators van aqui
                 firstName: [this.user.firstName, Validators.required],
                 lastName: [this.user.lastName, Validators.required],
-                birthDate: [''],
+                birthDate: [this.user.birthDate, Validators.required],
                 sex: [this.user.sex],
                 job: [this.user.job],
                 civilStateString: [this.user.civilStateString],
@@ -111,7 +111,7 @@ export class RegistrationComponent implements OnInit {
             //validators van aqui
             firstName: [this.user.firstName, Validators.required],
             lastName: [this.user.lastName, Validators.required],
-            birthDate: [this.user.birthDate, Validators.required],
+            birthDate: ['', Validators.required],
             sex: [this.user.sex],
             job: [this.user.job],
             civilStateString: [this.user.civilStateString],
@@ -168,17 +168,20 @@ export class RegistrationComponent implements OnInit {
     this.service.register(this.user).subscribe(
       (res:any) => {
         if(res.succeeded){
-          this._snackBar.open('Registro exitoso', 'Cerrar', { duration: 5000 });
-          this.service.login(this.user.email, this.user.password).subscribe((res: any) => {
-            this.storageMap.set('token', res.token).subscribe(() => {});
-            localStorage.setItem('token', res.token);
-          }, 
-          err => {
-            if(err.status == 400){
-              this._snackBar.open(err.error.reasonPhrase, 'Cerrar', { duration: 5000 });
-            }
-            console.log(err)
-          });
+          this._snackBar.show('Registro exitoso', 'Cerrar');
+          this.service.login(this.user.email, this.user.password)
+          .subscribe(
+            (res: any) => {
+              this.storageMap.set('token', res.token).subscribe(() => {});
+              this.storageMap.set('emailConfirmed', res.emailConfirmed).subscribe(() => {});
+              localStorage.setItem('token', res.token);
+            }, 
+            err => {
+              if(err.status == 400){
+                this._snackBar.show(err.error.reasonPhrase, 'Cerrar');
+              }
+              console.log(err)
+            });
           //this.router.navigate(['transactions']);
         }else{
           res.errors.forEach(element => {
@@ -193,7 +196,7 @@ export class RegistrationComponent implements OnInit {
             }
             console.log(element);
           });
-          this._snackBar.open(this.ErrorMessage, 'Cerrar', { duration: 5000 });
+          this._snackBar.show(this.ErrorMessage, 'Cerrar');
         }
       },
       err => console.log(err)

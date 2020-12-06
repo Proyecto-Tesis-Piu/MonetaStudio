@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
+import { SnackBarService } from '../Shared/Snackbar/snack-bar.service';
 import { UserService } from '../Users/shared/user.service';
 import { Feedback } from './feedback.model'
 
@@ -21,7 +21,7 @@ export class ContactusComponent {
     public dialogRef: MatDialogRef<ContactusComponent>,
     private service: UserService,
     protected storageMap: StorageMap,
-    private snack: MatSnackBar) {
+    private snack: SnackBarService) {
 
     this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: string) => {
       this.token = data;
@@ -39,10 +39,10 @@ export class ContactusComponent {
     this.service.submitFeedback(this.feedback, this.token).subscribe(
       res => {
         //console.log(res);
-        this.snack.open('Gracias por tus comentarios, los tomaremos en cuenta.', 'Cerrar', { duration: 5000 });
+        this.snack.show('Gracias por tus comentarios, los tomaremos en cuenta.', 'Cerrar');
       },
       err => {
-        this.snack.open('Se presentó un error al subir tus comentarios. Intentalo de nuevo', 'Cerrar', { duration: 5000 });
+        this.snack.show('Se presentó un error al subir tus comentarios. Intentalo de nuevo', 'Cerrar');
         console.log(err);
       },
       () => { });
