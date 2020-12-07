@@ -135,7 +135,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   public incomeLabels: Array<any>;
   public incomeChartColors: Array<any>;
   public incomeChartColors2: Array<any>;
-  
+
   //public chartType: string = 'doughnut';
 
   //for Horizontal Bar chart
@@ -322,7 +322,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       },
     },
     scales: {
-      yAxes: [{
+      xAxes: [{
         ticks: {
           beginAtZero: true
         }
@@ -605,8 +605,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
     this.generalGraphDataSet = [{ data: [this.generalData.incomeTotal, this.generalData.expenseTotal] }];
     this.generalLabels = ["Ingresos: " + this.generalData.incomePercentage + "%", "Gastos: " + this.generalData.expensePercentage + "%"];
-    
-    if(this.generalData.transactions.length > 0){
+
+    if (this.generalData.transactions.length > 0) {
       this.detailDatasets = this.generalData.transactions.map(category => {
         var dataset;
         if (category.isExpense) {
@@ -618,7 +618,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         return dataset;
 
       });
-    }else{
+    } else {
       this.detailDatasets = [];
     }
     this.detailChartColors = this.generalData.transactions.map(c => {
@@ -629,6 +629,23 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       };
     });
     this.generalChartColors = this.detailChartColors[0];
+    this.refreshGraphs();
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  refreshGraphs() {
+    (async () => {
+      this.selectedGraph = this.selectedGraph === "general" ? "details" : "general";
+      this.selectedVal = this.selectedVal === "expenses" ? "incomes" : "expenses";
+
+      await this.delay(100);
+
+      this.selectedGraph = this.selectedGraph === "general" ? "details" : "general";
+      this.selectedVal = this.selectedVal === "expenses" ? "incomes" : "expenses";
+    })();
   }
 
   hexToRgbA(hex) {

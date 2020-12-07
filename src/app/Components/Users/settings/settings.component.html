@@ -1,0 +1,129 @@
+<div class="settings-container">
+    <mat-button-toggle-group #group="matButtonToggleGroup" [vertical]="true" [value]="tabName"
+        (change)="onTabChange(group.value)" style="border-radius: 5px; width: 200px;">
+        <mat-button-toggle class="no-border button-toggle" value="profile">Perfil</mat-button-toggle>
+        <mat-button-toggle *ngIf="!emailConfirmed" class="no-border button-toggle" value="confirmMail">Confirmar Correo</mat-button-toggle>
+        <mat-button-toggle class="no-border button-toggle" value="changeEmail">Cambiar Correo</mat-button-toggle>
+        <mat-button-toggle class="no-border button-toggle" value="changePassword">Cambiar Contraseña</mat-button-toggle>
+        <mat-button-toggle class="no-border button-toggle" value="test">Haz Nuestro Test</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="settings-content">
+        <div *ngIf="tabName==='profile'" class="profile-container">
+            <form *ngIf="formModel" [formGroup]="formModel" autocomplete="off" (submit)="guardar()">
+                <div class="fields">
+                    <label>Nombre(s)</label>
+                    <mat-form-field class="form-field">
+                        <input matInput [value]="user.firstName" formControlName="firstName" class="input-style"
+                            (keyup)="updateForm($event.srcElement.value, 'firstName')">
+                        <button mat-button *ngIf="user.firstName" matSuffix mat-icon-button aria-label="Clear"
+                            class="input-style" (click)="user.firstName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-error
+                            *ngIf="formModel.get('firstName').touched && formModel.get('firstName').hasError('required')">
+                            Este campo es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <label>Apellido(s)</label>
+                    <mat-form-field class="form-field">
+                        <input matInput [value]="user.lastName" formControlName="lastName" class="input-style"
+                            (keyup)="updateForm($event.srcElement.value, 'lastName')">
+                        <button mat-button *ngIf="user.lastName" matSuffix mat-icon-button aria-label="Clear"
+                            class="input-style" (click)="user.lastName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-error
+                            *ngIf="formModel.get('lastName').touched && formModel.get('lastName').hasError('required')">
+                            Este campo es requerido
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="two-fields">
+                        <label style="width: 50%;">País</label>
+                        <label>Estado</label>
+                    </div>
+
+                    <div class="two-fields">
+                        <mat-form-field class="form-field">
+                            <mat-select [value]="user.countryCode" formControlName="countryCode"
+                                (selectionChange)="updateForm($event.value, 'countryCode'); fillStates($event.value)">
+                                <mat-option *ngFor="let country of countryArray" [value]="country.countryCode">
+                                    {{country.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+
+                        <mat-form-field class="form-field">
+                            <mat-select [value]="user.stateCode" formControlName="stateCode"
+                                (selectionChange)="updateForm($event.value, 'stateCode')">
+                                <mat-option *ngFor="let state of stateArray" [value]="state.stateCode">
+                                    {{state.name}}
+                                </mat-option>
+                                <mat-option *ngIf="user.stateName" [value]="user.stateCode">
+                                    {{user.stateName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="two-fields">
+                        <label style="width: 50%;">Fecha de Nacimiento</label>
+                        <label>Sexo</label>
+                    </div>
+
+                    <div class="two-fields">
+                        <mat-form-field class="form-field">
+                            <input matInput [matDatepicker]="picker1" [value]="user.birthDate"
+                                formControlName="birthDate" class="input-style" [formControl]="date"
+                                (dateChange)="updateForm($event.value, 'birthDate')">
+                            <mat-datepicker-toggle matSuffix [for]="picker1" class="no-border"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+
+
+                        <mat-form-field class="form-field">
+                            <mat-select [value]="user.sex" formControlName="sex"
+                                (selectionChange)="updateForm($event.value, 'sex')">
+                                <mat-option value="Female" style="background-color: rgba(0 255 0 10%);">Femenino
+                                </mat-option>
+                                <mat-option value="Male" style="background-color: rgba(255 0 0 10%);">Masculino
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <label>Estado civil</label>
+                    <mat-form-field class="form-field">
+                        <mat-select [value]="user.civilStateString" formControlName="civilStateString"
+                            (selectionChange)="updateForm($event.value, 'civilStateString')">
+                            <mat-option value="Single">Soltero/a</mat-option>
+                            <mat-option value="Married">Casado/a</mat-option>
+                            <mat-option value="Divorced">Divorciado/a</mat-option>
+                            <mat-option value="Widowed">Viudo/a</mat-option>
+                            <mat-option value="FreeUnion">Union Libre</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <label>Ocupación</label>
+                    <mat-form-field class="form-field">
+                        <input matInput [value]="user.job" formControlName="job" class="input-style"
+                            (keyup)="updateForm($event.srcElement.value, 'job')">
+                        <button mat-button *ngIf="user.job" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="user.job=''" class="input-style">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <button mat-flat-button class="new-user" type="submit" [disabled]="!formModel.valid">
+                        Crear cuenta</button>
+
+                </div>
+            </form>
+        </div>
+        <div *ngIf="tabName==='confirmMail'">Confirmar Correo</div>
+        <div *ngIf="tabName==='changeEmail'">Cambiar Correo</div>
+        <div *ngIf="tabName==='changePassword'">Cambiar Contraseña</div>
+        <div *ngIf="tabName==='test'">Test</div>
+    </div>
+</div>

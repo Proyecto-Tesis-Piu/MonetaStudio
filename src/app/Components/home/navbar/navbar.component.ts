@@ -4,6 +4,7 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
 import { LoginDialogComponent } from '../../Users/login/login.component';
 import { RegistrationComponent } from '../../Users/registration/registration.component';
+import { UserSettingsComponent } from '../../Users/settings/settings.component';
 
 @Component({
   selector: 'app-navbar',
@@ -49,6 +50,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   newUser(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
+  }
+
+  openSettings(): void {
+    const dialogRef = this.dialog.open(UserSettingsComponent, {});
   }
 
   scrollToElement(selector) {

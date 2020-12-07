@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NewsService } from "../service/news.service";
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NewComponent implements OnInit, AfterViewInit {
   public href: string = "";
   public web: string = "";
-  public message: string = "copiada en el portapapeles";
+  //public message: string = "copiada en el portapapeles";
 
   noticia: any = {};
 
@@ -23,7 +23,7 @@ export class NewComponent implements OnInit, AfterViewInit {
   constructor(private activated: ActivatedRoute,
     private _service: NewsService,
     private router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: SnackBarService) {
 
     this.activated.params.subscribe(params => {
       this.noticia = this._service.getNew(params['i']);
@@ -44,7 +44,7 @@ export class NewComponent implements OnInit, AfterViewInit {
   }
 
   openCustomSnackBar() {
-    this._snackBar.open("Copiado a portapapeles", "Cerrar", { duration: 2000 });
+    this._snackBar.show("Copiado a portapapeles", "Cerrar", { duration: 2000 });
   }
 
 }

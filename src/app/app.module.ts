@@ -32,6 +32,7 @@ import { LegalComponent } from './Components/Users/legal/legal.component';
 import { ConfirmMailComponent } from './Components/Users/confirm-mail/confirm-mail.component';
 import { ForgotPasswordComponent } from './Components/Users/forgot-password/forgot-password.component';
 import { SnackBarService } from './Components/Shared/Snackbar/snack-bar.service';
+import { UserSettingsComponent } from './Components/Users/settings/settings.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -83,6 +84,7 @@ import { MatChipsModule } from '@angular/material/chips';
     LegalComponent,
     ConfirmMailComponent,
     ForgotPasswordComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,
