@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component'
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { AuthGuard } from './Components/Users/shared/auth.guard';
-import { NewsComponent } from './Components/new/News/news.component';
-import { NewComponent } from './Components/new/New/new.component';
+import { ArticlesComponent } from './Components/article/articles/articles.component';
+import { ArticleComponent } from './Components/article/article/article.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ConfirmMailComponent } from "./Components/Users/confirm-mail/confirm-mail.component";
 import { UserComponent } from './Components/Users/user.component';
@@ -19,8 +19,8 @@ const routes: Routes = [
   //]},
 
   //{path: 'User/ConfirmMail/:t', component: ConfirmMailComponent},
-  {path: 'news', component: NewsComponent},
-  {path: 'news/new/:i', component: NewComponent},
+  {path: 'articles', component: ArticlesComponent},
+  {path: 'articles/article/:i', component: ArticleComponent},
   {path: 'aboutus', component: AboutusComponent},
   {path: 'ForgotPassword', component: ForgotPasswordComponent},
   {

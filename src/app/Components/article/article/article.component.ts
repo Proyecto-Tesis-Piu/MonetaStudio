@@ -1,19 +1,18 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { NewsService } from "../service/news.service";
+import { ArticlesService } from "../service/articles.service";
 import { Router } from '@angular/router';
 import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
 
 
 @Component({
-  selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.css']
 })
-export class NewComponent implements OnInit, AfterViewInit {
+export class ArticleComponent implements OnInit, AfterViewInit {
   public href: string = "";
   public web: string = "";
-  //public message: string = "copiada en el portapapeles";
 
   noticia: any = {};
 
@@ -21,19 +20,19 @@ export class NewComponent implements OnInit, AfterViewInit {
 
 
   constructor(private activated: ActivatedRoute,
-    private _service: NewsService,
+    private _service: ArticlesService,
     private router: Router,
     private _snackBar: SnackBarService) {
 
     this.activated.params.subscribe(params => {
-      this.noticia = this._service.getNew(params['i']);
+      this.noticia = this._service.getArticle(params['i']);
     })
   }
 
   ngAfterViewInit(): void {
     document.getElementById("newsBody").innerHTML = this.noticia.bio;
-    //document.getElementById("tags").innerHTML = this.noticia.tags;
-    //document.getElementById("biblio").innerHTML = this.noticia.biblio;
+    //document.getElementById("tags").innerHTML = this.articulo.tags;
+    //document.getElementById("biblio").innerHTML = this.articulo.biblio;
   }
 
 
