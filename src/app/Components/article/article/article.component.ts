@@ -30,7 +30,7 @@ export class ArticleComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    document.getElementById("newsBody").innerHTML = this.noticia.bio;
+    document.getElementById("articleBody").innerHTML = this.noticia.bio;
     //document.getElementById("tags").innerHTML = this.articulo.tags;
     //document.getElementById("biblio").innerHTML = this.articulo.biblio;
   }
