@@ -10,7 +10,7 @@
                 </button>
                 <button mat-flat-button [routerLink]="['articles']" (click)="openSidenav = false;"
                     class="no-border sidebar-button" [disabled]="router.url === '/articles'">
-                    <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Noticias
+                    <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Artículos
                 </button>
                 <button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="!token"
                     class="no-border sidebar-button">

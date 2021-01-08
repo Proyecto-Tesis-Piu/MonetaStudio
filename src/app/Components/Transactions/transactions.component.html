@@ -151,7 +151,6 @@
             </mat-button-toggle-group>
 
             <div class="bar-graph-container">
-                <!-- -->
                 <!--mat-list class="categories-list">
                         <mat-list-item class="list-item" *ngFor="let category of expenses; let i = index">
                             <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon>
@@ -175,8 +174,6 @@
                     (chartHover)="chartHovered($event)">
                 </canvas>
 
-
-
                 <!--<mat-list class="categories-list">
                         <mat-list-item class="list-item" *ngFor="let category of incomes; let i = index">
                             <!-- <mat-icon mat-list-icon>{{category.icon}}</mat-icon>
@@ -192,7 +189,7 @@
 
                 <canvas *ngIf="selectedVal === 'incomes'" mdbChart chartType="horizontalBar"
                     style="height: 100%; width: 100%; max-height: 100%; max-width: 100%;"
-                    [datasets]="incomeDatasetsAmount" [labels]="incomeLabels" [colors]="incomeChartColors2"
+                    [datasets]="incomeDatasetsAmount" [labels]="incomeLabels" [colors]="incomeChartColors"
                     [options]="chartOptionsHorizontalBar" [legend]="false" (chartClick)="chartClicked($event)"
                     (chartHover)="chartHovered($event)">
                 </canvas>

@@ -326,6 +326,11 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         ticks: {
           beginAtZero: true
         }
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
       }]
     }
 
@@ -450,14 +455,13 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     protected storageMap: StorageMap) {
 
     var date = new Date();
-
-    //this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
-
-    //this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-
-    this.fromDate = new Date(2020, 10, 1);
-
-    this.toDate = new Date(2020, 10, 30);
+    //Production, uncomment when pushing to repo, comment when testing
+    this.fromDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    this.toDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    
+    //Testing, uncomment when testing, comment when pushing to repo
+    //this.fromDate = new Date(2020, 10, 1);
+    //this.toDate = new Date(2020, 10, 30);
 
     this.generalData = new GeneralData();
 
