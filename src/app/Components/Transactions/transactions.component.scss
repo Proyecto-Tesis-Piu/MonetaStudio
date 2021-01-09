@@ -389,8 +389,13 @@ mat-button-toggle {
 }
 
 .containerbody {
-    margin-top: -7vh;
+    top: 0;
+    position: absolute;
     overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 7px 0px;
 }
 
 .container-transaction {
