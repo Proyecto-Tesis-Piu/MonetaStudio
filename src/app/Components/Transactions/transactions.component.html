@@ -142,7 +142,7 @@
             </div>
         </div>
 
-        <div class="flex-item main-block">
+        <div class="flex-item main-block" style="min-height: 300px; padding: 10px 1%;">
 
             <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedVal"
                 (change)="onValChange(group.value)">
@@ -203,7 +203,7 @@
             </div>
         </div>
 
-        <div class="flex-item main-block calendar-block">
+        <div class="flex-item main-block calendar-block" style="min-height: 300px; padding: 10px 1%;">
             <div class="calendar-item">
                 <div class="input-box-container">
                     <input type="hidden" angular-mydatepicker name="mydate" [(ngModel)]="model"
