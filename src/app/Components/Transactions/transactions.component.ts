@@ -336,7 +336,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   };
 
-  public chartOptionsStackedBar: any = {
+  /* public chartOptionsStackedBar: any = {
     responsive: true,
     tooltips: {
       // Disable the on-canvas tooltip
@@ -425,9 +425,9 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       xAxes: [{
         stacked: true
       }],
-    }
+    } 
 
-  };
+  }; */
 
   //for datePicker
   myDpOptions: IAngularMyDpOptions = {
