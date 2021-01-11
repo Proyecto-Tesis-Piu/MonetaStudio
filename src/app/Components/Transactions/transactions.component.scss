@@ -35,7 +35,7 @@
     max-width: 80vw;
     font-family: mus !important;
     height: 20vh;
-    margin-left: 4vw;
+    padding-left: 1vw;
 }
 
 .graph h1 {
@@ -47,8 +47,7 @@
 
 mat-button-toggle-group {
     border-radius: 8px;
-    margin: 10px 1% 0px;
-    width: 98%;
+    width: 100%;
 }
 
 mat-button-toggle {
@@ -112,6 +111,7 @@ mat-button-toggle {
     margin: 0px;
     width: 75%;
     height: 100%;
+    overflow-x: auto;
 }
 
 .category {
@@ -374,9 +374,9 @@ mat-button-toggle {
 
 /* Flex box*/
 .flex-item {
-    width: 45%;
-    margin-left: 3vh;
-    margin-right: 3vh;
+    width: 47%;
+    min-width: 420px;
+    margin: 0px 10px;
 }
 
 .main-block {
@@ -384,28 +384,40 @@ mat-button-toggle {
     border-radius: 25px;
     height: 36vh;
     max-width: 80vw;
-    justify-content: flex-start;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     padding: 1%;
+    box-sizing: border-box;
 }
 
 .containerbody {
     top: 0;
     position: absolute;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     width: 100%;
     height: 100%;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
+    padding: 20px 6%;
 }
 
 .container-transaction {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     min-width: 77vw;
     max-width: 90vw;
     margin: 0px auto;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.transaction-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 ::ng-deep .tooltip-bar {
@@ -417,8 +429,7 @@ mat-button-toggle {
 }
 
 .bar-graph-container {
-    height: calc(67% - 9px);
-    margin-bottom: 9px;
+    height: calc(67%);
     display: block;
 }
 
@@ -529,4 +540,10 @@ mat-button-toggle {
     height: 100%;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.calendar-container {
+    min-width: 266px;
+    min-height: 291px;
 }
