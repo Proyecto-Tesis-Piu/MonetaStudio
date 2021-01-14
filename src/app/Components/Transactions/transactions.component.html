@@ -2,158 +2,6 @@
 
     <div class="container-transaction">
         <div class="transaction-row">
-            <div class="flex-item main-block" style="min-height: 128px;">
-                <div>
-                    <div class="main-block-header">
-                        <h1>GASTOS</h1>
-                        <h1>{{generalData.expenseTotal | currency}}</h1>
-                    </div>
-
-                    <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
-                        class="custom-tree disable-text-select">
-                        <!-- This is the tree node template for leaf nodes -->
-                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                            (click)="handleTransaction($event, node)" matRipple>
-                            <button mat-icon-button class="transaction-action-button">
-                                <mat-icon class="trash-icon material-icons-round transaction-action-icon">delete
-                                </mat-icon>
-                            </button>
-                            <div class="transaction-text">
-                                <div>
-                                    <strong>{{node.concept}}</strong><br>
-                                    {{node.date | date}}
-                                </div>
-                                <div class="node-amount"> {{node.amount | currency}} </div>
-                            </div>
-                        </mat-tree-node>
-                        <!-- This is the tree node template for expandable nodes -->
-                        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                            class="tree-node-category" matRipple>
-                            <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
-                                <mat-icon class="mat-icon-rtl-mirror material-icons-round"
-                                    style="vertical-align:initial;">
-                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                                </mat-icon>
-                            </button>
-
-                            <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
-                            <div class="category-text">
-                                <div class="category-name">
-                                    {{node.concept}}
-                                </div>
-                                <div class="node-amount"> {{node.amount | currency}} </div>
-                            </div>
-                        </mat-tree-node>
-                    </mat-tree>
-                </div>
-            </div>
-
-            <div class="flex-item main-block" style="min-height: 128px;">
-                <div>
-                    <div class="main-block-header">
-                        <h1>INGRESOS</h1>
-                        <h1>{{generalData.incomeTotal | currency}}</h1>
-                    </div>
-                    <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
-                        class="custom-tree disable-text-select">
-                        <!-- This is the tree node template for leaf nodes -->
-                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
-                            (click)="handleTransaction($event, node)" matRipple>
-                            <button mat-icon-button class="transaction-action-button">
-                                <mat-icon class="trash-icon material-icons-round transaction-action-icon">delete
-                                </mat-icon>
-                            </button>
-                            <div class="transaction-text">
-                                <div>
-                                    <strong>{{node.concept}}</strong><br>
-                                    {{node.date | date}}
-                                </div>
-                                <div class="node-amount"> {{node.amount | currency}} </div>
-                            </div>
-                        </mat-tree-node>
-                        <!-- This is the tree node template for expandable nodes -->
-                        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
-                            class="tree-node-category" matRipple>
-                            <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
-                                <mat-icon class="mat-icon-rtl-mirror material-icons-round"
-                                    style="vertical-align:initial;">
-                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                                </mat-icon>
-                            </button>
-
-                            <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
-                            <div class="category-text">
-                                <div class="category-name">
-                                    {{node.concept}}
-                                </div>
-                                <div class="node-amount"> {{node.amount | currency}} </div>
-                            </div>
-                        </mat-tree-node>
-                    </mat-tree>
-
-                    <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
-                <mat-list-item class="list-item" *ngFor="let transaction of transactionsARR">
-                    <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
-                        matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
-                    <div mat-line>{{transaction.concept}}</div>
-                    <div mat-line> {{transaction.date | date}} </div>
-                    <div style="float: right;"> {{transaction.amount | currency}} </div>
-                </mat-list-item>
-            </mat-list> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="transaction-row">
-            <div class="flex-item graph" style="min-height: 128px;">
-                <h1>Categorias Gastos </h1>
-                <div class="graph-container">
-                    <div class="categories-container disable-text-select">
-                        <div *ngFor="let trans of expenses; let i = index" class="category">
-                            <mat-icon mat-list-icon class="material-icons-round" [ngStyle]="{'color': trans.color}">lens
-                            </mat-icon>
-                            {{trans.concept}}
-                        </div>
-                    </div>
-                    <div class="spinner-container2">
-                        <canvas mdbChart chartType="doughnut" style="max-width: 100%; max-height: 100%;"
-                            [datasets]="expenseDatasets" [labels]="expenseLabels" [colors]="expenseChartColors"
-                            [options]="chartOptions" [legend]="false" (chartHover)="chartHovered($event)"
-                            (chartClick)="chartClicked($event)">
-                        </canvas>
-                        <div id="chartjs-tooltip">
-                            <table></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-item graph" style="min-height: 128px;">
-                <h1>Categorias Ingresos</h1>
-                <div class="graph-container">
-                    <div class="categories-container disable-text-select">
-                        <div *ngFor="let trans of incomes; let i = index" class="category disable-text-select">
-                            <mat-icon mat-list-icon class="material-icons-round" [ngStyle]="{'color': trans.color}">lens
-                            </mat-icon>
-                            {{trans.concept}}
-                        </div>
-                    </div>
-                    <div class="spinner-container2">
-                        <canvas mdbChart chartType="doughnut" style="max-width: 100%; max-height: 100%;"
-                            [datasets]="incomeDatasets" [labels]="incomeLabels" [colors]="incomeChartColors"
-                            [options]="chartOptions" [legend]="false" (chartHover)="chartHovered($event)"
-                            (chartClick)="chartClicked($event)">
-                        </canvas>
-                        <!-- <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
-                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
-                        [value]="trans.cumulativePercentage" style="height: 0px;">
-                    </mat-progress-spinner> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="transaction-row">
             <div class="flex-item main-block" style="min-height: 300px; padding: 10px 1%;">
 
                 <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedVal"
@@ -209,9 +57,9 @@
 
                 <div class="button-container">
                     <button mat-button class="create-transaction-button no-border"
-                        (click)="createCategoriesDialog()">Categoría</button>
+                        (click)="createCategoriesDialog()">Administrar Categorías</button>
                     <button mat-button class="create-transaction-button no-border"
-                        (click)="createTransactionDialog()">Transacción</button>
+                        (click)="createTransactionDialog()">Crear Transacción</button>
                 </div>
             </div>
 
@@ -276,6 +124,158 @@
                     </div>
 
                 </div-->
+                </div>
+            </div>
+        </div>
+
+        <div class="transaction-row">
+            <div class="flex-item graph" style="min-height: 128px;">
+                <h1>Categorias Gastos </h1>
+                <div class="graph-container">
+                    <div class="categories-container disable-text-select">
+                        <div *ngFor="let trans of expenses; let i = index" class="category">
+                            <mat-icon mat-list-icon class="material-icons-round" [ngStyle]="{'color': trans.color}">lens
+                            </mat-icon>
+                            {{trans.concept}}
+                        </div>
+                    </div>
+                    <div class="spinner-container2">
+                        <canvas mdbChart chartType="doughnut" style="max-width: 100%; max-height: 100%;"
+                            [datasets]="expenseDatasets" [labels]="expenseLabels" [colors]="expenseChartColors"
+                            [options]="chartOptions" [legend]="false" (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)">
+                        </canvas>
+                        <div id="chartjs-tooltip">
+                            <table></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-item graph" style="min-height: 128px;">
+                <h1>Categorias Ingresos</h1>
+                <div class="graph-container">
+                    <div class="categories-container disable-text-select">
+                        <div *ngFor="let trans of incomes; let i = index" class="category disable-text-select">
+                            <mat-icon mat-list-icon class="material-icons-round" [ngStyle]="{'color': trans.color}">lens
+                            </mat-icon>
+                            {{trans.concept}}
+                        </div>
+                    </div>
+                    <div class="spinner-container2">
+                        <canvas mdbChart chartType="doughnut" style="max-width: 100%; max-height: 100%;"
+                            [datasets]="incomeDatasets" [labels]="incomeLabels" [colors]="incomeChartColors"
+                            [options]="chartOptions" [legend]="false" (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)">
+                        </canvas>
+                        <!-- <mat-progress-spinner *ngFor="let trans of incomes; let i = index" [ngClass]="'custom-spinner'+i"
+                        [diameter]="100" [strokeWidth]="60" [ngStyle]="{'z-index':i}" mode="determinate"
+                        [value]="trans.cumulativePercentage" style="height: 0px;">
+                    </mat-progress-spinner> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="transaction-row">
+            <div class="flex-item main-block" style="min-height: 128px;">
+                <div style="max-height: 100%;">
+                    <div class="main-block-header">
+                        <h1>GASTOS</h1>
+                        <h1>{{generalData.expenseTotal | currency}}</h1>
+                    </div>
+
+                    <mat-tree [dataSource]="dataSourceExpenses" [treeControl]="treeControl"
+                        class="custom-tree disable-text-select">
+                        <!-- This is the tree node template for leaf nodes -->
+                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
+                            (click)="handleTransaction($event, node)" matRipple>
+                            <button mat-icon-button class="transaction-action-button">
+                                <mat-icon class="trash-icon material-icons-round transaction-action-icon">delete
+                                </mat-icon>
+                            </button>
+                            <div class="transaction-text">
+                                <div>
+                                    <strong>{{node.concept}}</strong><br>
+                                    {{node.date | date}}
+                                </div>
+                                <div class="node-amount"> {{node.amount | currency}} </div>
+                            </div>
+                        </mat-tree-node>
+                        <!-- This is the tree node template for expandable nodes -->
+                        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+                            class="tree-node-category" matRipple>
+                            <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
+                                <mat-icon class="mat-icon-rtl-mirror material-icons-round"
+                                    style="vertical-align:initial;">
+                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                            </button>
+
+                            <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
+                            <div class="category-text">
+                                <div class="category-name">
+                                    {{node.concept}}
+                                </div>
+                                <div class="node-amount"> {{node.amount | currency}} </div>
+                            </div>
+                        </mat-tree-node>
+                    </mat-tree>
+                </div>
+            </div>
+
+            <div class="flex-item main-block" style="min-height: 128px;">
+                <div style="max-height: 100%;">
+                    <div class="main-block-header">
+                        <h1>INGRESOS</h1>
+                        <h1>{{generalData.incomeTotal | currency}}</h1>
+                    </div>
+                    <mat-tree [dataSource]="dataSourceIncomes" [treeControl]="treeControl"
+                        class="custom-tree disable-text-select">
+                        <!-- This is the tree node template for leaf nodes -->
+                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="tree-node"
+                            (click)="handleTransaction($event, node)" matRipple>
+                            <button mat-icon-button class="transaction-action-button">
+                                <mat-icon class="trash-icon material-icons-round transaction-action-icon">delete
+                                </mat-icon>
+                            </button>
+                            <div class="transaction-text">
+                                <div>
+                                    <strong>{{node.concept}}</strong><br>
+                                    {{node.date | date}}
+                                </div>
+                                <div class="node-amount"> {{node.amount | currency}} </div>
+                            </div>
+                        </mat-tree-node>
+                        <!-- This is the tree node template for expandable nodes -->
+                        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+                            class="tree-node-category" matRipple>
+                            <button mat-icon-button [attr.aria-label]="'toggle ' + node.concept" class="expand-button">
+                                <mat-icon class="mat-icon-rtl-mirror material-icons-round"
+                                    style="vertical-align:initial;">
+                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                            </button>
+
+                            <mat-icon mat-list-icon class="material-icons-round category-icon">{{node.icon}}</mat-icon>
+                            <div class="category-text">
+                                <div class="category-name">
+                                    {{node.concept}}
+                                </div>
+                                <div class="node-amount"> {{node.amount | currency}} </div>
+                            </div>
+                        </mat-tree-node>
+                    </mat-tree>
+
+                    <!-- <mat-list style="overflow-y: scroll; height: 25vh; padding-top: 0px;">
+                <mat-list-item class="list-item" *ngFor="let transaction of transactionsARR">
+                    <mat-icon mat-list-icon [matTooltip]="transaction.categoryName" [matTooltipPosition]="'below'"
+                        matTooltipClass="tooltip-icon">{{transaction.categoryIcon}}</mat-icon>
+                    <div mat-line>{{transaction.concept}}</div>
+                    <div mat-line> {{transaction.date | date}} </div>
+                    <div style="float: right;"> {{transaction.amount | currency}} </div>
+                </mat-list-item>
+            </mat-list> -->
                 </div>
             </div>
         </div>

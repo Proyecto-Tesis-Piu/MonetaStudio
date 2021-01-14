@@ -1,6 +1,6 @@
 export class Transaction {
     concept: string = "";
-    date?: Date;
+    date?: Date = new Date();
     amount: number = 0;
     isExpense?: boolean;
     childrenTransactions?:Transaction[];
@@ -17,7 +17,7 @@ export class Transaction {
 export class TransactionFlatNode {
     expandable: boolean;
     concept: string = "";
-    date?: Date;
+    date?: Date = new Date();
     amount: number = 0;
     isExpense?: boolean;
     id?:string;
