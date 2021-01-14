@@ -84,6 +84,7 @@ mat-button-toggle {
 .create-transaction-button:hover {
     background-color: white;
     color: #6a20e1;
+    @include mat-elevation(8);
 }
 
 ::ng-deep .no-border:focus:active:hover {
