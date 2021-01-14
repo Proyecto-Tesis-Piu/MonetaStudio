@@ -31,6 +31,7 @@
     width: 60px;
     height: 60px;
     margin-left: 10px;
+    margin-bottom: 10px;
     @include mat-elevation(2);
     transition: .5s;
 }

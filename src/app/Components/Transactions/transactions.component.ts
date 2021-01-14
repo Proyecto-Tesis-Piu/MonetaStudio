@@ -607,8 +607,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       borderWidth: 0
     }];
 
-    this.generalGraphDataSet = [{ data: [this.generalData.incomeTotal, this.generalData.expenseTotal] }];
-    this.generalLabels = ["Ingresos: " + this.generalData.incomePercentage + "%", "Gastos: " + this.generalData.expensePercentage + "%"];
+    this.generalGraphDataSet = [{ data: [this.generalData.expenseTotal, this.generalData.incomeTotal] }];
+    this.generalLabels = ["Gastos: " + this.generalData.expensePercentage + "%", "Ingresos: " + this.generalData.incomePercentage + "%"];
 
     if (this.generalData.transactions.length > 0) {
       this.detailDatasets = this.generalData.transactions.map(category => {
@@ -627,8 +627,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     }
     this.detailChartColors = this.generalData.transactions.map(c => {
       return {
-        backgroundColor: ['rgba(124,252,0,.5)', 'rgba(255,0,0,.5)'],
-        borderColor: ['rgba(124,252,0,1)', 'rgba(255,0,0,1)'],
+        backgroundColor: ['rgba(255,0,0,.5)', 'rgba(124,252,0,.5)'],
+        borderColor: ['rgba(255,0,0,1)', 'rgba(124,252,0,1)'],
         borderWidth: 2
       };
     });
