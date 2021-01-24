@@ -82,6 +82,24 @@
     border-top-width: 0px;
 }
 
+.settings-button {
+    background-color: #6a20e1;
+    border: 1px #6a20e1 solid;
+    transition: .3s;
+}
+
+::ng-deep .settings-button > span {
+    color: #ffffff;
+}
+
+.settings-button:hover {
+    background-color: #ffffff;
+}
+
+::ng-deep .settings-button:hover > span{
+    color: #6a20e1;
+}
+
 .input-style {
     color: black;
 }
@@ -106,10 +124,9 @@
 }
 
 /* profile */
-.profile-container {
+.page-container {
     display: flex;
     flex-flow: column nowrap;
-    
 }
 
 .fields {
@@ -130,7 +147,7 @@
 }
 
 .fields label {
-    font-family: mus;
+    /*font-family: mus;*/
     font-size: 20px;
     align-self: flex-start;
 }

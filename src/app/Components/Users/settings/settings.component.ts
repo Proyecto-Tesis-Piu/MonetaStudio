@@ -15,6 +15,8 @@ import { State } from '../../Shared/Countries/states.model';
 import { User } from '../shared/user.model';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { NewPassword } from '../shared/new-password.model';
+import { AuthService } from '@auth0/auth0-angular';
 
 
 const moment = _rollupMoment || _moment;
@@ -59,6 +61,8 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   countryArray: Country[] = [];
   stateArray: State[] = [];
   formModel: FormGroup;
+  passwordFormModel: FormGroup;
+  passwordRequest: NewPassword;
   user: User;
   date = new FormControl(moment());
   ErrorMessage: any;
@@ -66,22 +70,32 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   emailConfirmed: boolean;
   tokenSubscription: Subscription;
   emailConfirmedSubscription: Subscription;
+  hideNew: boolean;
+  hideOld: boolean;
 
   constructor(public dialogRef: MatDialogRef<UserSettingsComponent>,
     private service: UserService,
     private _snackBar: SnackBarService,
     protected storageMap: StorageMap,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private auth: AuthService) {
+
+    if(auth.user$){
+      console.log(auth.user$)
+    }
 
     this.service.getCountries().subscribe((countries: Country[]) => {
       this.countryArray = countries;
     });
 
     this.tabName = "profile";
+    
+    this.hideOld = true;
+    this.hideNew = true;
 
     this.emailConfirmedSubscription = this.storageMap.watch('emailConfirmed', { type: 'boolean' })
-      .subscribe((result) => { 
-        this.emailConfirmed = result; 
+      .subscribe((result) => {
+        this.emailConfirmed = result;
       });
 
     this.tokenSubscription = this.storageMap.watch('token', { type: 'string' })
@@ -113,7 +127,15 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
           }
         )
       });
+    
+    this.passwordRequest = new NewPassword();
 
+    this.passwordFormModel = this.fb.group({
+      //validators van aqui
+      oldPassword: ["", Validators.required],
+      newPassword: ["", [Validators.required, Validators.minLength(8), this.validatePassword]],
+      passwordConfirm: ['', Validators.required]
+    }, { validator: this.comparePasswords });
   }
 
   ngOnInit(): void { }
@@ -140,7 +162,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   comparePasswords(fb: FormGroup) {
     let confirmPwdCtl = fb.get('passwordConfirm');
     if (confirmPwdCtl.errors == null || 'passwordMismatch' in confirmPwdCtl.errors) {
-      if (fb.get('password').value != confirmPwdCtl.value) {
+      if (fb.get('newPassword').value != confirmPwdCtl.value) {
         confirmPwdCtl.setErrors({ passwordMismatch: true });
       } else {
         confirmPwdCtl.setErrors(null);
@@ -162,5 +184,9 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   updateForm(value: any, property: string) {
     this.user[property] = value;
     //console.log(this.user);
+  }
+
+  updatePasswordForm(value: any, property: string) {
+    this.passwordRequest[property] = value;
   }
 }

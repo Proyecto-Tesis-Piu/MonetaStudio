@@ -2,13 +2,14 @@
     <mat-button-toggle-group #group="matButtonToggleGroup" [vertical]="true" [value]="tabName"
         (change)="onTabChange(group.value)" style="border-radius: 5px; width: 200px;">
         <mat-button-toggle class="no-border button-toggle" value="profile">Perfil</mat-button-toggle>
-        <mat-button-toggle *ngIf="!emailConfirmed" class="no-border button-toggle" value="confirmMail">Confirmar Correo</mat-button-toggle>
+        <mat-button-toggle *ngIf="!emailConfirmed" class="no-border button-toggle" value="confirmMail">Confirmar Correo
+        </mat-button-toggle>
         <mat-button-toggle class="no-border button-toggle" value="changeEmail">Cambiar Correo</mat-button-toggle>
         <mat-button-toggle class="no-border button-toggle" value="changePassword">Cambiar Contraseña</mat-button-toggle>
         <mat-button-toggle class="no-border button-toggle" value="test">Haz Nuestro Test</mat-button-toggle>
     </mat-button-toggle-group>
     <div class="settings-content">
-        <div *ngIf="tabName==='profile'" class="profile-container">
+        <div *ngIf="tabName==='profile'" class="page-container">
             <form *ngIf="formModel" [formGroup]="formModel" autocomplete="off" (submit)="guardar()">
                 <div class="fields">
                     <label>Nombre(s)</label>
@@ -79,7 +80,7 @@
                                 formControlName="birthDate" class="input-style" [formControl]="date"
                                 (dateChange)="updateForm($event.value, 'birthDate')">
                             <mat-datepicker-toggle matSuffix [for]="picker1" class="no-border"></mat-datepicker-toggle>
-                            <mat-datepicker #picker1></mat-datepicker>
+                            <mat-datepicker #picker1 startView="multi-year"></mat-datepicker>
                         </mat-form-field>
 
 
@@ -115,15 +116,83 @@
                             <mat-icon>close</mat-icon>
                         </button>
                     </mat-form-field>
-                    <button mat-flat-button class="new-user" type="submit" [disabled]="!formModel.valid">
+                    <button mat-flat-button class="settings-button" type="submit" [disabled]="!formModel.valid">
                         Crear cuenta</button>
 
                 </div>
             </form>
         </div>
-        <div *ngIf="tabName==='confirmMail'">Confirmar Correo</div>
+        <div *ngIf="tabName==='confirmMail'" class="page-container">
+            <div class="fields">
+                <label>Hemos notado que no has confirmado tu correo...</label>
+                <button mat-flat-button class="settings-button" style="margin-top: 20px;">Re-enviar correo de
+                    confirmacion</button>
+            </div>
+        </div>
         <div *ngIf="tabName==='changeEmail'">Cambiar Correo</div>
-        <div *ngIf="tabName==='changePassword'">Cambiar Contraseña</div>
+        <div *ngIf="tabName==='changePassword'">
+            <form *ngIf="passwordFormModel" [formGroup]="passwordFormModel" autocomplete="off" (submit)="guardar()">
+                <div class="fields">
+                    <label>Cambiar Contraseña</label>
+
+                    <label>Antigua Contraseña</label>
+                    <mat-form-field class="form-field">
+                        <input matInput [type]="hideOld ? 'password' : 'text'" [value]="passwordRequest.oldPassword" class="input-style"
+                            formControlName="oldPassword"
+                            (keyup)="updatePasswordForm($event.srcElement.value, 'oldPassword')">
+                        <button mat-button *ngIf="passwordRequest.oldPassword" matSuffix mat-icon-button
+                            aria-label="Clear" class="input-style" (click)="passwordRequest.oldPassword=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-icon mat-suffix class="password-visibility" (click)="hideOld = !hideOld">{{hideOld ? 'visibility' : 'visibility_off'}}
+                        </mat-icon>
+                        <mat-error
+                            *ngIf="passwordFormModel.get('oldPassword').touched && passwordFormModel.get('oldPassword').hasError('required')">
+                            Este campo es requerido.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <label>Nueva Contraseña</label>
+                    <mat-form-field class="form-field">
+                        <input matInput [type]="hideNew ? 'password' : 'text'" [value]="passwordRequest.newPassword" class="input-style"
+                            formControlName="newPassword"
+                            (keyup)="updatePasswordForm($event.srcElement.value, 'newPassword')">
+                        <button mat-button *ngIf="passwordRequest.newPassword" matSuffix mat-icon-button
+                            aria-label="Clear" class="input-style" (click)="passwordRequest.newPassword=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-icon mat-suffix class="password-visibility" (click)="hideNew = !hideNew">{{hideNew ? 'visibility' : 'visibility_off'}}
+                        </mat-icon>
+                        <mat-error
+                            *ngIf="passwordFormModel.get('newPassword').touched && passwordFormModel.get('newPassword').hasError('required')">
+                            Este campo es requerido.
+                        </mat-error>
+                        <mat-error
+                            *ngIf="passwordFormModel.get('newPassword').touched && passwordFormModel.get('newPassword').hasError('minlength')">
+                            Debe contener mínimo 8 caracteres alfanuméricos.
+                        </mat-error>
+                        <mat-error
+                            *ngIf="passwordFormModel.get('newPassword').touched && passwordFormModel.get('newPassword').errors?.passwordInvalid">
+                            Debe contener mínimo 1 caracter numérico.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <label style="margin-top: 7px;">Confirmación de contraseña</label>
+                    <mat-form-field class="form-field">
+                        <input matInput type="password" formControlName="passwordConfirm" class="input-style">
+                        <mat-error
+                            *ngIf="passwordFormModel.get('passwordConfirm').touched && passwordFormModel.get('passwordConfirm').hasError('required')">
+                            Este campo es requerido.
+                        </mat-error>
+                        <mat-error
+                            *ngIf="passwordFormModel.get('passwordConfirm').touched && passwordFormModel.get('passwordConfirm').hasError('passwordMismatch')">
+                            Las contraseñas no coinciden
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+            </form>
+        </div>
         <div *ngIf="tabName==='test'">Test</div>
     </div>
 </div>
