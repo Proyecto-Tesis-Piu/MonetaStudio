@@ -52,9 +52,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
 
-  openSettings(): void {
+  /*openSettings(): void {
     const dialogRef = this.dialog.open(UserSettingsComponent, {});
-  }
+  }*/
 
   scrollToElement(selector) {
     const element = document.getElementById(selector)

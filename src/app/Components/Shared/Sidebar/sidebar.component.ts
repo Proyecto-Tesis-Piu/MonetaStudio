@@ -41,9 +41,9 @@ export class SidebarComponent {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
 
-  openSettings(): void {
+  /*openSettings(): void {
     const dialogRef = this.dialog.open(UserSettingsComponent, {});
-  }
+  }*/
 
   menuButtonClick(){
     this.openSidenav = !this.openSidenav;

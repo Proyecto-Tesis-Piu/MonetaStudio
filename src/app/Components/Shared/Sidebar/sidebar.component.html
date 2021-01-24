@@ -20,10 +20,10 @@
                     class="no-border sidebar-button" [disabled]="router.url === '/transactions'">
                     <mat-icon class="material-icons-round lens">payment</mat-icon> Transacciones
                 </button>
-                <button mat-flat-button (click)="openSidenav = false; openSettings();" *ngIf="token"
+                <!--button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="token"
                     class="no-border sidebar-button">
                     <mat-icon class="material-icons-round lens">settings</mat-icon> Ajustes
-                </button>
+                </button-->
             </div>
             <div class="sidebar-logout-section">
                 <button mat-raised-button class="button-logout no-border" (click)="openSidenav = false; openDialog();"
