@@ -8,9 +8,9 @@
                     class="no-border sidebar-button" [disabled]="router.url === '/home'">
                     <mat-icon class="material-icons-round lens">monetization_on</mat-icon> Moneta Studio
                 </button>
-                <button mat-flat-button [routerLink]="['news']" (click)="openSidenav = false;"
-                    class="no-border sidebar-button" [disabled]="router.url === '/news'">
-                    <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Noticias
+                <button mat-flat-button [routerLink]="['articles']" (click)="openSidenav = false;"
+                    class="no-border sidebar-button" [disabled]="router.url === '/articles'">
+                    <mat-icon class="material-icons-round lens">import_contacts</mat-icon> Artículos
                 </button>
                 <button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="!token"
                     class="no-border sidebar-button">
@@ -20,10 +20,10 @@
                     class="no-border sidebar-button" [disabled]="router.url === '/transactions'">
                     <mat-icon class="material-icons-round lens">payment</mat-icon> Transacciones
                 </button>
-                <button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="token"
+                <!--button mat-flat-button (click)="openSidenav = false; openDialog2();" *ngIf="token"
                     class="no-border sidebar-button">
-                    <mat-icon class="material-icons-round lens">settings</mat-icon> Modificar Datos
-                </button>
+                    <mat-icon class="material-icons-round lens">settings</mat-icon> Ajustes
+                </button-->
             </div>
             <div class="sidebar-logout-section">
                 <button mat-raised-button class="button-logout no-border" (click)="openSidenav = false; openDialog();"

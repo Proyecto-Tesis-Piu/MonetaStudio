@@ -17,9 +17,9 @@ import { TransactionService } from './Components/Transactions/transactions.servi
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
 import { NewTransactionComponent } from './Components/Transactions/new-transaction/new-transaction.component';
 import { DeleteTransactionComponentDialog } from './Components/Transactions/delete-transaction/delete-transaction.component';
-import { NewsService } from "./Components/new/service/news.service";
-import { NewsComponent } from "./Components/new/News/news.component";
-import { NewComponent } from "./Components/new/New/new.component";
+import { ArticlesService } from "./Components/article/service/articles.service";
+import { ArticlesComponent } from "./Components/article/articles/articles.component";
+import { ArticleComponent } from "./Components/article/article/article.component";
 //import { TreeChecklistExample } from './Components/new/New/tree-checklist-example/tree-checklist-example';
 import { CategoriesComponent } from './Components/Transactions/categories/categories.component';
 import { IconSelectionDialogComponent } from './Components/Transactions/icon-selection-dialog/icon-selection-dialog.component';
@@ -30,6 +30,9 @@ import { NavbarComponent } from "./Components/home/navbar/navbar.component";
 import { SidebarComponent } from './Components/Shared/Sidebar/sidebar.component';
 import { LegalComponent } from './Components/Users/legal/legal.component';
 import { ConfirmMailComponent } from './Components/Users/confirm-mail/confirm-mail.component';
+import { ForgotPasswordComponent } from './Components/Users/forgot-password/forgot-password.component';
+import { SnackBarService } from './Components/Shared/Snackbar/snack-bar.service';
+import { UserSettingsComponent } from './Components/Users/settings/settings.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -55,7 +58,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { ForgotPasswordComponent } from './Components/Users/forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -67,8 +70,8 @@ import { ForgotPasswordComponent } from './Components/Users/forgot-password/forg
     UserComponent,
     VideoTutorialComponent,
     NewTransactionComponent,
-    NewComponent,
-    NewsComponent,
+    ArticleComponent,
+    ArticlesComponent,
     DeleteTransactionComponentDialog,
     //TreeChecklistExample,
     CategoriesComponent,
@@ -81,6 +84,7 @@ import { ForgotPasswordComponent } from './Components/Users/forgot-password/forg
     LegalComponent,
     ConfirmMailComponent,
     ForgotPasswordComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +119,7 @@ import { ForgotPasswordComponent } from './Components/Users/forgot-password/forg
     MatCheckboxModule,
     MatChipsModule
   ],
-  providers: [UserService, AuthGuard, TransactionService, NewsService],
+  providers: [UserService, AuthGuard, TransactionService, ArticlesService, SnackBarService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

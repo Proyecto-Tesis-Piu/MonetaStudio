@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { LoginDialogComponent } from 'src/app/Components/Users/login/login.component';
 import { RegistrationComponent } from 'src/app/Components/Users/registration/registration.component';
 import { Router } from '@angular/router';
+import { UserSettingsComponent } from '../../Users/settings/settings.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -27,6 +28,7 @@ export class SidebarComponent {
 
   logout(): void {
     this.storageMap.delete('token').subscribe(() => {});
+    this.storageMap.delete('emailConfirmed').subscribe(() => { });
     localStorage.removeItem('token');
     window.location.reload();
   }
@@ -38,6 +40,10 @@ export class SidebarComponent {
   openDialog2(): void {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
+
+  /*openSettings(): void {
+    const dialogRef = this.dialog.open(UserSettingsComponent, {});
+  }*/
 
   menuButtonClick(){
     this.openSidenav = !this.openSidenav;

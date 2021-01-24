@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
 import { IconSelectionDialogComponent } from '../icon-selection-dialog/icon-selection-dialog.component';
 import { Transaction } from '../transaction.model';
 import { TransactionService } from '../transactions.service';
 import { ColorSelectionComponent } from '../color-selection/color-selection.component';
+import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   constructor(public dialogRef: MatDialogRef<CategoriesComponent>,
     private service: TransactionService,
     public dialog: MatDialog,
-    public _snackBar: MatSnackBar,
+    public _snackBar: SnackBarService,
     protected storageMap: StorageMap) {
 
     this.tokenSubscription = this.storageMap.watch('token', { type: 'string' }).subscribe((data: String) => {
@@ -159,9 +159,12 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this._snackBar.open("Categoría agregada", "Cerrar", { duration: 5000 });
+      this._snackBar.show("Categoría agregada", "Cerrar");
     },
       err => {
+        if(err.status == 409){
+          this._snackBar.show(err.error, 'Cerrar');
+        }
         console.log(err);
       },
       () => {
@@ -187,7 +190,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this._snackBar.open("Categoría guardada", "Cerrar", { duration: 5000 });
+      this._snackBar.show("Categoría guardada", "Cerrar");
     },
       err => {
         console.log(err);
@@ -215,7 +218,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this._snackBar.open("Categoría eliminada", "Cerrar", { duration: 5000 });
+      this._snackBar.show("Categoría eliminada", "Cerrar");
     },
       err => {
         console.log(err);
