@@ -91,3 +91,12 @@
     flex-flow: column nowrap;
     /*padding: 20px 20%;*/
 }
+
+.login-link {
+    color: #007bff !important;
+    cursor: pointer !important;
+}
+
+.login-link:hover{
+    text-decoration: underline !important;
+}

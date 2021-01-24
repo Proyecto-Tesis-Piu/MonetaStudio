@@ -15,7 +15,8 @@
             </mat-form-field>
         </div>
     </form>
-    <!--a [routerLink]="['/ForgotPassword']" mat-dialog-close> ¿Has olvidado la contraseña? </a-->
+    <!--a class="login-link" [routerLink]="['/ForgotPassword']" mat-dialog-close> ¿Has olvidado la contraseña? </a-->
+    <div style="color: black;">¿No tienes cuenta? <a class="login-link" (click)="newUser();" mat-dialog-close>Regístrate</a></div>
     <button mat-raised-button class="login-button no-border" (click)="submit_onClick()"
         [disabled]="loginForm.invalid">Iniciar
         Sesión</button>

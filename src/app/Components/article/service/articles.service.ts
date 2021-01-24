@@ -5,9 +5,9 @@ import { Injectable } from "@angular/core";
   providedIn: 'root'
 })
 
-export class NewsService {
+export class ArticlesService {
 
-  private noticia: Noticia[] = [
+  private article: Articulo[] = [
     {
       nombre: "Educación Financiera",
       resumen: "Existe varias definiciones de educación financiera: La OCDE lo define como un proceso mediante el cual los individuos adquieren una mejor comprensión de los conceptos",
@@ -15,7 +15,7 @@ export class NewsService {
       img: "assets/img/aquaman.png",
       fecha: "13 de noviembre del 2020",
       autor: "Moneta Studio",
-      cover: "../../../assets/img/news/1-EducacionFinanciera.jpg",
+      cover: "../../../assets/img/articles/1-EducacionFinanciera.jpg",
       tags: ["Educacion", "Finanzas", "Productos Financieros"],
       biblio: ["OCDE. (2005). Improving Financial Literacy: Analysis of Issues and Policies. France : Organization for Economic Co-operation and Development (OECD).", "Financial Literacy and Education Commission. (2011). Promoting Financial Success in the United States: National Strategy for Financial Literacy, https://files.eric.ed.gov/fulltext/ED524620.pdf", "European Union. (2016). Financial Education for all. Visits and Publications, Second Edition, 68. 2020, De EESC Base de datos."]
     },
@@ -26,7 +26,7 @@ export class NewsService {
       img: "assets/img/aquaman.png",
       fecha: "20 de noviembre del 2020",
       autor: "Moneta Studio",
-      cover: "../../../assets/img/news/2-ProductosFinancieros",
+      cover: "../../../assets/img/articles/2-ProductosFinancieros",
       tags: ["Educacion", "Finanzas", "Productos Financieros"],
       biblio: ["Juanma Caurin. (2018). Productos financieros. 16 de noviembre del 2020, de economiasimple Sitio web: https://www.economiasimple.net/productos-financieros", "David Méndez. (2019). Producto financiero. 16 de noviembre del 2020, de numdea Sitio web: https://numdea.com/producto-financiero.html"]
     }*/
@@ -36,17 +36,17 @@ export class NewsService {
   constructor() {
   }
 
-  getNews() {
-    return this.noticia;
+  getArticles() {
+    return this.article;
   }
 
-  getNew(idx: string) {
-    return this.noticia[idx]
+  getArticle(idx: string) {
+    return this.article[idx]
   }
 
 }
 
-export interface Noticia {
+export interface Articulo {
   resumen: string;
   nombre: string;
   bio: string;
