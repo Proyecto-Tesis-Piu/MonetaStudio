@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Transaction, TransactionFlatNode } from "./transaction.model";
+import { Transaction, TransactionFlatNode } from "../../Models/transaction.model";
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { MatDialog } from '@angular/material/dialog';
 import { NewTransactionComponent } from './new-transaction/new-transaction.component';
-import { TransactionService } from './transactions.service'
+import { TransactionService } from '../../Services/transactions.service'
 import { DeleteTransactionComponentDialog } from './delete-transaction/delete-transaction.component';
 import { IAngularMyDpOptions, IMyDateModel, IMyMarkedDates, IMyRangeDateSelection, IMyDate } from 'angular-mydatepicker';
-import { CalendarDate, GeneralData } from './calendarDate.model';
+import { CalendarDate, GeneralData } from '../../Models/calendarDate.model';
 import { CategoriesComponent } from './categories/categories.component';
 import { Subscription } from 'rxjs';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { SnackBarService } from '../Shared/Snackbar/snack-bar.service';
+import { SnackBarService } from '../../Services/snack-bar.service';
 
 const transactionTree: Transaction[] = [
   {

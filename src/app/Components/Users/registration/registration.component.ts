@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormGroupDirective, NgForm, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { User } from '../shared/user.model';
-import { Country } from '../../Shared/Countries/countries.model';
-import { State } from '../../Shared/Countries/states.model';
-import { UserService } from '../shared/user.service';
+import { User } from '../../../Models/user.model';
+import { Country } from '../../../Models/Countries/countries.model';
+import { State } from '../../../Models/Countries/states.model';
+import { UserService } from '../../../Services/user.service';
 
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -13,7 +13,7 @@ import { default as _rollupMoment } from 'moment';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LegalComponent } from '../legal/legal.component';
-import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
+import { SnackBarService } from '../../../Services/snack-bar.service';
 
 const moment = _rollupMoment || _moment;
 

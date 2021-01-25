@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component'
 import { TransactionsComponent } from './Components/Transactions/transactions.component';
-import { AuthGuard } from './Components/Users/shared/auth.guard';
+import { AuthGuard } from './shared/auth.guard';
 import { ArticlesComponent } from './Components/article/articles/articles.component';
-import { ArticleComponent } from './Components/article/article/article.component';
+import { ArticleComponent } from './Components/article/article.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ConfirmMailComponent } from "./Components/Users/confirm-mail/confirm-mail.component";
-import { UserComponent } from './Components/Users/user.component';
+//import { UserComponent } from './Components/Users/user.component';
 import { ForgotPasswordComponent } from "./Components/Users/forgot-password/forgot-password.component";
 
 const routes: Routes = [

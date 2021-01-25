@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user.model';
+import { User } from '../Models/user.model';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { BaseService } from '../../../Services/base.service'
-import { Feedback } from '../../contactus/feedback.model';
+import { BaseService } from './base.service'
+import { Feedback } from '../Models/feedback.model';
 
 const httpOptions = {
   headers: new HttpHeaders({

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { UserService } from '../shared/user.service';
+import { UserService } from '../../Services/user.service';
 
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
@@ -9,14 +9,13 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/mat
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
-import { Country } from '../../Shared/Countries/countries.model';
-import { State } from '../../Shared/Countries/states.model';
-import { User } from '../shared/user.model';
+import { SnackBarService } from '../../Services/snack-bar.service';
+import { Country } from '../../Models/Countries/countries.model';
+import { State } from '../../Models/Countries/states.model';
+import { User } from '../../Models/user.model';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { NewPassword } from '../shared/new-password.model';
-import { AuthService } from '@auth0/auth0-angular';
+import { NewPassword } from '../../Models/new-password.model';
 
 
 const moment = _rollupMoment || _moment;
@@ -77,12 +76,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
     private service: UserService,
     private _snackBar: SnackBarService,
     protected storageMap: StorageMap,
-    private fb: FormBuilder,
-    private auth: AuthService) {
-
-    if(auth.user$){
-      console.log(auth.user$)
-    }
+    private fb: FormBuilder) {
 
     this.service.getCountries().subscribe((countries: Country[]) => {
       this.countryArray = countries;

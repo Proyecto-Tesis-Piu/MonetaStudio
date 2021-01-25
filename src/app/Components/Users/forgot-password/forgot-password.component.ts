@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { UserService } from '../shared/user.service';
-import { User } from '../shared/user.model';
+import { UserService } from '../../../Services/user.service';
+import { User } from '../../../Models/user.model';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 

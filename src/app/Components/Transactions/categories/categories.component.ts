@@ -3,10 +3,10 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
 import { IconSelectionDialogComponent } from '../icon-selection-dialog/icon-selection-dialog.component';
-import { Transaction } from '../transaction.model';
-import { TransactionService } from '../transactions.service';
+import { Transaction } from '../../../Models/transaction.model';
+import { TransactionService } from '../../../Services/transactions.service';
 import { ColorSelectionComponent } from '../color-selection/color-selection.component';
-import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
+import { SnackBarService } from '../../../Services/snack-bar.service';
 
 
 @Component({
