@@ -1,9 +1,8 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { ArticlesService } from "../service/articles.service";
+import { ArticlesService } from "../../Services/articles.service";
 import { Router } from '@angular/router';
-import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
-
+import { SnackBarService } from '../../Services/snack-bar.service';
 
 @Component({
   selector: 'app-article',

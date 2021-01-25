@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { UserService } from '../shared/user.service';
+import { UserService } from '../../../Services/user.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage'
-import { SnackBarService } from '../../Shared/Snackbar/snack-bar.service';
+import { SnackBarService } from '../../../Services/snack-bar.service';
 import { RegistrationComponent } from '../registration/registration.component';
 
 @Component({

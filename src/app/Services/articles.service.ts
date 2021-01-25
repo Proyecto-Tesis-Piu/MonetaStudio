@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Article } from '../Models/article.model'
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Injectable } from "@angular/core";
 
 export class ArticlesService {
 
-  private article: Articulo[] = [
+  private article: Article[] = [
     {
       nombre: "Educación Financiera",
       resumen: "Existe varias definiciones de educación financiera: La OCDE lo define como un proceso mediante el cual los individuos adquieren una mejor comprensión de los conceptos",
@@ -45,16 +46,3 @@ export class ArticlesService {
   }
 
 }
-
-export interface Articulo {
-  resumen: string;
-  nombre: string;
-  bio: string;
-  img: string;
-  fecha: string;
-  autor: string;
-  cover: string;
-  tags: string[];
-  biblio: string[];
-}
-

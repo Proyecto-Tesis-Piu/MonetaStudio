@@ -4,7 +4,7 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
 import { LoginDialogComponent } from '../../Users/login/login.component';
 import { RegistrationComponent } from '../../Users/registration/registration.component';
-import { UserSettingsComponent } from '../../Users/settings/settings.component';
+//import { UserSettingsComponent } from '../../settings/settings.component';
 
 @Component({
   selector: 'app-navbar',

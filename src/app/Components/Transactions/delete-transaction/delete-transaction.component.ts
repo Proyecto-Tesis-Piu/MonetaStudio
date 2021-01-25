@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Transaction } from '../transaction.model';
+import { Transaction } from '../../../Models/transaction.model';
 
 @Component({
   selector: 'app-delete-transaction',

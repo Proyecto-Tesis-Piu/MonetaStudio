@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { LoginDialogComponent } from 'src/app/Components/Users/login/login.component';
 import { RegistrationComponent } from 'src/app/Components/Users/registration/registration.component';
 import { Router } from '@angular/router';
-import { UserSettingsComponent } from '../../Users/settings/settings.component';
+//import { UserSettingsComponent } from '../../settings/settings.component';
 
 @Component({
   selector: 'app-sidebar',
