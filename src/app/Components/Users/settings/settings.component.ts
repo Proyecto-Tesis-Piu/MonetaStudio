@@ -16,7 +16,6 @@ import { User } from '../shared/user.model';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { NewPassword } from '../shared/new-password.model';
-import { AuthService } from '@auth0/auth0-angular';
 
 
 const moment = _rollupMoment || _moment;
@@ -77,12 +76,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
     private service: UserService,
     private _snackBar: SnackBarService,
     protected storageMap: StorageMap,
-    private fb: FormBuilder,
-    private auth: AuthService) {
-
-    if(auth.user$){
-      console.log(auth.user$)
-    }
+    private fb: FormBuilder) {
 
     this.service.getCountries().subscribe((countries: Country[]) => {
       this.countryArray = countries;
