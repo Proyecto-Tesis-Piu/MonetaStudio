@@ -6,6 +6,7 @@ import { VideoTutorialComponent } from '../home/video-tutorial/video-tutorial.co
 import { ContactusComponent } from '../contactus/contactus.component';
 import { StorageMap } from '@ngx-pwa/local-storage'
 import { Subscription } from 'rxjs';
+import { BaseService } from 'src/app/Services/base.service';
 
 @Component({
   selector: 'app-home',
@@ -18,11 +19,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   tokenSubscription:Subscription;
 
   constructor(public dialog: MatDialog,
-    protected storageMap: StorageMap) {
+    protected storageMap: StorageMap,
+    private wakeupService: BaseService) {
       this.tokenSubscription = this.storageMap.watch('token', {type : 'string'}).subscribe((data:String) => {
         this.token = data;
         //console.log("navbar token update: " + data);
       });
+      this.wakeupService.wakeUp().subscribe((res) => { console.log(JSON.stringify({res})); });
      }
 
   ngOnInit() { }
