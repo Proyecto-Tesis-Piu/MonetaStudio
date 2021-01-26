@@ -75,15 +75,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 
-const fbLoginOptions = {
-  scope: 'user_birthday,user_hometown,user_location,user_gender,user_age_range,email,public_profile',
-  //return_scopes: true,
-  //enable_profile_selector: true,
-  fields: 'email,first_name,name,id,last_name,age_range,birthday,gender,hometown,location,middle_name,picture.type(large)',
-  accessToken: '79e1498519972262ac9e10464fc4e933',
-  locale: 'es_MX',
-  version: 'v9.0'
-};
+import * as config from "./social_configs.json"
 
 @NgModule({
   declarations: [
@@ -163,7 +155,7 @@ const fbLoginOptions = {
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('881655689304922', fbLoginOptions)
+            provider: new FacebookLoginProvider('881655689304922', config.fbLoginOptions)
           }
         ]
       } as SocialAuthServiceConfig,
