@@ -75,7 +75,12 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 
-import * as config from "./social_configs.json"
+const fbLoginOptions = {
+  scope: 'user_birthday,user_hometown,user_location,user_gender,user_age_range,email,public_profile',
+  fields: 'email,first_name,name,id,last_name,age_range,birthday,gender,hometown,location,middle_name,picture.type(large)',
+  locale: 'es_MX',
+  version: 'v9.0'
+};
 
 @NgModule({
   declarations: [
@@ -149,13 +154,13 @@ import * as config from "./social_configs.json"
       useValue: {
         autoLogin: false,
         providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('clientId')
-          },
+          //{
+            //id: GoogleLoginProvider.PROVIDER_ID,
+            //provider: new GoogleLoginProvider('clientId')
+          //},
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('881655689304922', config.fbLoginOptions)
+            provider: new FacebookLoginProvider('881655689304922', fbLoginOptions)
           }
         ]
       } as SocialAuthServiceConfig,
