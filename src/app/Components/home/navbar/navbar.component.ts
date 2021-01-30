@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Subscription } from 'rxjs';
+import { from, Subscription } from 'rxjs';
 import { LoginDialogComponent } from '../../Users/login/login.component';
 import { RegistrationComponent } from '../../Users/registration/registration.component';
+import { AuthService } from '@auth0/auth0-angular';
 //import { UserSettingsComponent } from '../../settings/settings.component';
 
 @Component({
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   showFiller = false;
 
   constructor(public dialog: MatDialog,
-    protected storageMap: StorageMap) { }
+    protected storageMap: StorageMap,
+    public auth: AuthService) { }
 
   ngOnInit() {
     this.tokenSubscription = this.storageMap.watch('token', { type: 'string' })
@@ -32,6 +34,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         this.emailConfirmed = result;
       });
+
+    this.auth.user$.subscribe(user => {
+      console.log(user);
+    });
+
+    this.auth.idTokenClaims$.subscribe(user => {
+      console.log(user);
+    });
   }
 
   ngOnDestroy() {
@@ -55,6 +65,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   /*openSettings(): void {
     const dialogRef = this.dialog.open(UserSettingsComponent, {});
   }*/
+
+  auth0Logout() {
+    this.auth.logout({ returnTo: window.location.origin })
+  }
+
+  auth0Login() {
+    this.auth.loginWithRedirect();
+  }
 
   scrollToElement(selector) {
     const element = document.getElementById(selector)

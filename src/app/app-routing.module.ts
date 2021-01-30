@@ -11,29 +11,30 @@ import { ConfirmMailComponent } from "./Components/Users/confirm-mail/confirm-ma
 import { ForgotPasswordComponent } from "./Components/Users/forgot-password/forgot-password.component";
 
 const routes: Routes = [
-  {path:'home', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   //{path:'user', component: UserComponent, children: [
-    {path:'user/ConfirmMail/:t', component: ConfirmMailComponent },
-    //{path:'user/ResetPassword/:r', component: ResetPasswordComponent },
-    //{path:'create', component: RegistrationComponent },
+  { path: 'user/ConfirmMail/:t', component: ConfirmMailComponent },
+  //{path:'user/ResetPassword/:r', component: ResetPasswordComponent },
+  //{path:'create', component: RegistrationComponent },
   //]},
 
   //{path: 'User/ConfirmMail/:t', component: ConfirmMailComponent},
-  {path: 'articles', component: ArticlesComponent},
-  {path: 'articles/article/:i', component: ArticleComponent},
-  {path: 'aboutus', component: AboutusComponent},
-  {path: 'ForgotPassword', component: ForgotPasswordComponent},
+  { path: 'articles', component: ArticlesComponent },
+  { path: 'articles/article/:i', component: ArticleComponent },
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'ForgotPassword', component: ForgotPasswordComponent },
   {
-    path:'transactions', component: TransactionsComponent, 
+    path: 'transactions', component: TransactionsComponent,
     canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [AuthGuard]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

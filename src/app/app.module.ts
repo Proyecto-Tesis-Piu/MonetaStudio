@@ -1,6 +1,7 @@
 //Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { AppComponent } from './app.component';
 
 //Third parties
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -15,7 +16,6 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 
 //Components
-import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { VideoTutorialComponent } from './Components/home/video-tutorial/video-tutorial.component';
 import { RegistrationComponent } from './Components/Users/registration/registration.component';
@@ -75,12 +75,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 
-const fbLoginOptions = {
-  scope: 'user_birthday,user_hometown,user_location,user_gender,user_age_range,email,public_profile',
-  fields: 'email,first_name,name,id,last_name,age_range,birthday,gender,hometown,location,middle_name,picture.type(large)',
-  locale: 'es_MX',
-  version: 'v9.0'
-};
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -141,30 +136,18 @@ const fbLoginOptions = {
     ClipboardModule,
     MatCheckboxModule,
     MatChipsModule,
-    SocialLoginModule
+    AuthModule.forRoot({
+      domain: 'monetastudio.us.auth0.com',
+      clientId: 'CSpWV6Y9cZcQMlNsF2sGzxsCdKJ6VbZ1',
+      audience: 'https://monetastudio.us.auth0.com/api/v2/'
+    }),
   ],
   providers: [
     UserService,
     AuthGuard,
     TransactionService,
     ArticlesService,
-    SnackBarService,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          //{
-            //id: GoogleLoginProvider.PROVIDER_ID,
-            //provider: new GoogleLoginProvider('clientId')
-          //},
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('881655689304922', fbLoginOptions)
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
+    SnackBarService
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
