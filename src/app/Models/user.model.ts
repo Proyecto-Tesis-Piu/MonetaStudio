@@ -11,3 +11,13 @@ export class User {
     stateCode: string = '';
     stateName: string;
 }
+
+export class UserAuth0 {
+    email: string = '';
+    emailVerified: string = '';
+    lastName: string = '';
+    firstName: string = '';
+    userName: string = '';
+    provider: string = '';
+    providerId: string = '';
+}

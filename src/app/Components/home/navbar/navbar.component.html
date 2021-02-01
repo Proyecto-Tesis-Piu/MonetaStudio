@@ -19,22 +19,32 @@
                 [routerLink]="['/transactions']">Transacciones</a-->
 
             <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-                <a style="background-color: red;" class="no-border navbar-button navbar-logout-button"
-                    (click)="auth0Logout()">
-                    Cerrar Sesion
+                <a id="navbar-session-menu" [matMenuTriggerFor]="menu"
+                    *ngIf="auth.user$ | async as user" class="line">
+                    <span>Hola,&nbsp;</span>
+                    <span style="color: #6a20e1;" *ngIf="user.given_name">{{user.given_name}}</span>
+                    <span style="color: #6a20e1;" *ngIf="!user.given_name">{{user.nickname}}</span>
+                    <img src="{{user.picture}}" class="profile-pic">
                 </a>
+                <mat-menu #menu="matMenu">
+                    <button  mat-menu-item>Item 1</button>
+                    <button style="background-color: red;" (click)="auth0Logout()" mat-menu-item>Cerrar Sesion</button>
+                </mat-menu>
+                <!--a style="background-color: red;" class="no-border navbar-button navbar-logout-button"
+                    >
+                    Cerrar Sesion
+                </a-->
 
                 <a style="color: black;" class="line no-border" [routerLink]="['/transactions']">Transacciones</a>
+
+
             </ng-container>
 
             <ng-template #loggedOut>
                 <a class="no-border navbar-button navbar-login-button" (click)="auth0Login()">Iniciar Sesion</a>
             </ng-template>
 
-            <ul *ngIf="auth.user$ | async as user">
-                <li>{{ user.name }}</li>
-                <li>{{ user.email }}</li>
-            </ul>
+
 
             <a style="color: black;" class="line no-border" [routerLink]="['/articles']">Artículos</a>
         </div>

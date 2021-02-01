@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { from, Subscription } from 'rxjs';
@@ -14,27 +14,15 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  token: String;
+  /* token: String;
   emailConfirmed: boolean;
   tokenSubscription: Subscription;
-  emailConfirmedSubscription: Subscription;
+  emailConfirmedSubscription: Subscription; */
   showFiller = false;
 
   constructor(public dialog: MatDialog,
     protected storageMap: StorageMap,
-    public auth: AuthService) { }
-
-  ngOnInit() {
-    this.tokenSubscription = this.storageMap.watch('token', { type: 'string' })
-      .subscribe((result) => {
-        this.token = result;
-      });
-
-    this.emailConfirmedSubscription = this.storageMap.watch('emailConfirmed', { type: 'boolean' })
-      .subscribe((result) => {
-        this.emailConfirmed = result;
-      });
-
+    public auth: AuthService) { 
     this.auth.user$.subscribe(user => {
       console.log(user);
     });
@@ -44,11 +32,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.tokenSubscription.unsubscribe();
+  ngOnInit() {
+    /*this.tokenSubscription = this.storageMap.watch('token', { type: 'string' })
+      .subscribe((result) => {
+        this.token = result;
+      });
+
+    this.emailConfirmedSubscription = this.storageMap.watch('emailConfirmed', { type: 'boolean' })
+      .subscribe((result) => {
+        this.emailConfirmed = result;
+      });*/
   }
 
-  logout() {
+  ngOnDestroy() {
+    //this.tokenSubscription.unsubscribe();
+  }
+
+  /*logout() {
     this.storageMap.delete('token').subscribe(() => { });
     this.storageMap.delete('emailConfirmed').subscribe(() => { });
     localStorage.removeItem('token');
@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
 
-  /*openSettings(): void {
+  openSettings(): void {
     const dialogRef = this.dialog.open(UserSettingsComponent, {});
   }*/
 

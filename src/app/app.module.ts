@@ -1,19 +1,20 @@
 //Core
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Third parties
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { AuthModule } from '@auth0/auth0-angular';
 
 //Modules
 import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './app.component';
 
 //Components
 import { HomeComponent } from './Components/home/home.component';
@@ -55,27 +56,23 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from "@angular/common/http";
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
-import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 
-import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -136,6 +133,7 @@ import { AuthModule } from '@auth0/auth0-angular';
     ClipboardModule,
     MatCheckboxModule,
     MatChipsModule,
+    MatMenuModule,
     AuthModule.forRoot({
       domain: 'monetastudio.us.auth0.com',
       clientId: 'CSpWV6Y9cZcQMlNsF2sGzxsCdKJ6VbZ1',
