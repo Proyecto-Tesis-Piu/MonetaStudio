@@ -1,27 +1,25 @@
+<div class="navbar-top-margin"></div>
 <div class="navbar">
-    <div class="navbar-top-margin" >
-        <div class="navbar-container">
-            <a style="color: black;" class="line no-border" (click)="scrollToElement('MonetaStudio')"> MonetaStudio </a>
-            <div class="navbar-menu">
-                <a style="background-color: red;" class="no-border navbar-button navbar-logout-button" *ngIf="token"
-                    (click)="logout()">Cerrar
-                    Sesión</a>
-    
-                <a class="no-border navbar-button navbar-login-button" *ngIf="!token" (click)="openDialog()">Iniciar
-                    Sesión</a>
-    
-                <!--a style="color: black;" class="line no-border" *ngIf="token" (click)="openSettings()">
+    <div class="navbar-container">
+        <a style="color: black;" class="line no-border" (click)="scrollToElement('MonetaStudio')"> MonetaStudio </a>
+        <div class="navbar-menu">
+            <a style="background-color: red;" class="no-border navbar-button navbar-logout-button" *ngIf="token"
+                (click)="logout()">Cerrar
+                Sesión</a>
+
+            <a class="no-border navbar-button navbar-login-button" *ngIf="!token" (click)="openDialog()">Iniciar
+                Sesión</a>
+
+            <!--a style="color: black;" class="line no-border" *ngIf="token" (click)="openSettings()">
                     <div style="display: flex;">Ajustes<div *ngIf="!emailConfirmed" class="badge pulsate"></div></div>
                 </a-->
-    
-                <a style="color: black;" class="line no-border" *ngIf="!token" (click)="newUser()">Regístrate</a>
-    
-                <a style="color: black;" class="line no-border" *ngIf="token"
-                    [routerLink]="['/transactions']">Transacciones</a>
-    
-                <a style="color: black;" class="line no-border" [routerLink]="['/articles']">Artículos</a>
-            </div>
-    
+
+            <a style="color: black;" class="line no-border" *ngIf="!token" (click)="newUser()">Regístrate</a>
+
+            <a style="color: black;" class="line no-border" *ngIf="token"
+                [routerLink]="['/transactions']">Transacciones</a>
+
+            <a style="color: black;" class="line no-border" [routerLink]="['/articles']">Artículos</a>
         </div>
     </div>
     <div id="grad1"></div>
