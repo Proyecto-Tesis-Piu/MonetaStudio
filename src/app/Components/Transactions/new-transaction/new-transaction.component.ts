@@ -7,8 +7,8 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { Subscription } from 'rxjs';
-import { Transaction, TransactionFlatNode } from '../transaction.model';
-import { TransactionService } from '../transactions.service';
+import { Transaction, TransactionFlatNode } from '../../../Models/transaction.model';
+import { TransactionService } from '../../../Services/transactions.service';
 
 const moment = _rollupMoment || _moment;
 

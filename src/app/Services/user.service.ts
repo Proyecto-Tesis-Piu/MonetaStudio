@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user.model';
+import { HttpHeaders } from '@angular/common/http';
+import { User } from '../Models/user.model';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { BaseService } from '../../../Services/base.service'
-import { Feedback } from '../../contactus/feedback.model';
+import { BaseService } from './base.service'
+import { Feedback } from '../Models/feedback.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,9 +20,7 @@ const httpOptions = {
 export class UserService extends BaseService {
 
   serviceUrl: string = this.baseUrl + "User";
-  
-  constructor(private http: HttpClient) { super() }
-  
+    
   public register (user: User): Observable<User> {
     return this.http.post<User>(this.serviceUrl + '/Register', user, httpOptions)
       .pipe(

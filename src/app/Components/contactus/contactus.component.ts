@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Subscription } from 'rxjs';
-import { SnackBarService } from '../Shared/Snackbar/snack-bar.service';
-import { UserService } from '../Users/shared/user.service';
-import { Feedback } from './feedback.model'
+import { SnackBarService } from '../../Services/snack-bar.service';
+import { UserService } from '../../Services/user.service';
+import { Feedback } from '../../Models/feedback.model'
 
 @Component({
   selector: 'app-contactus',

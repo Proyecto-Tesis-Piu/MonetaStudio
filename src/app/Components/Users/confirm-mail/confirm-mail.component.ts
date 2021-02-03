@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { UserService } from "../shared/user.service";
+import { UserService } from "../../../Services/user.service";
 
 @Component({
   selector: 'app-confirm-mail',
