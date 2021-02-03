@@ -5,11 +5,11 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 //Third parties
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+/*import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
   GoogleLoginProvider,
   FacebookLoginProvider
-} from 'angularx-social-login';
+} from 'angularx-social-login';*/
 
 //Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -141,7 +141,7 @@ const fbLoginOptions = {
     ClipboardModule,
     MatCheckboxModule,
     MatChipsModule,
-    SocialLoginModule
+    //SocialLoginModule
   ],
   providers: [
     UserService,
@@ -149,7 +149,7 @@ const fbLoginOptions = {
     TransactionService,
     ArticlesService,
     SnackBarService,
-    {
+    /*{
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,
@@ -164,7 +164,7 @@ const fbLoginOptions = {
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    }*/
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

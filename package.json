@@ -29,7 +29,6 @@
     "@ngx-pwa/local-storage": "^10.1.0",
     "angular-bootstrap-md": "^10.0.0",
     "angular-mydatepicker": "^0.10.2",
-    "angularx-social-login": "^3.5.4",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.2",
     "chart.js": "^2.9.3",
