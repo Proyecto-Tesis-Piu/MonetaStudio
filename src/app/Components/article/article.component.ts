@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ArticlesService } from "../../Services/articles.service";
 import { Router } from '@angular/router';
 import { SnackBarService } from '../../Services/snack-bar.service';
-import { Article } from 'src/app/Models/article.model';
+import { Article } from '../../Models/article.model';
 
 @Component({
   selector: 'app-article',
