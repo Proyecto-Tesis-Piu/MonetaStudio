@@ -9,12 +9,14 @@ import { Article } from '../../../Models/article.model';
 })
 export class ArticlesComponent implements OnInit {
 
-  noticias:Article[] = [];
+  articles:Article[] = [];
 
   constructor( private ArticlesService:ArticlesService) { }
 
   ngOnInit(): void {
-    this.noticias = this.ArticlesService.getArticles();
+    this.ArticlesService.getArticles().subscribe((item:Article[]) => {
+      this.articles = item;
+    });
   }
 
 }
