@@ -6,6 +6,9 @@ import { StorageMap } from '@ngx-pwa/local-storage'
 import { SnackBarService } from '../../../Services/snack-bar.service';
 import { RegistrationComponent } from '../registration/registration.component';
 
+/*import { SocialAuthService, SocialUser } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";*/
+
 @Component({
   selector: 'app-dialog-login',
   templateUrl: './login.component.html',
@@ -13,14 +16,25 @@ import { RegistrationComponent } from '../registration/registration.component';
 })
 export class LoginDialogComponent implements OnInit {
   loginForm: FormGroup;
+  //user: SocialUser;
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
     public formBuilder: FormBuilder,
     public service: UserService,
     private _snackBar: SnackBarService,
     protected storageMap: StorageMap,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    //private authService: SocialAuthService
   ) {
+    /*this.authService.authState.subscribe((user) => {
+      this.user = user;
+      if(user){ 
+        this.dialogRef.close(); 
+        console.log(user);
+        this.storageMap.set('token', JSON.stringify(user)).subscribe(() => { });
+        localStorage.setItem('token', JSON.stringify(user));
+      }
+    });*/
     this.loginForm = new FormGroup({
       userEmail: new FormControl(''),
       password: new FormControl('')
@@ -57,7 +71,20 @@ export class LoginDialogComponent implements OnInit {
     }
   }
   
+  /*signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+  }*/
+
   newUser(): void {
+    this.dialogRef.close();
     const dialogRef = this.dialog.open(RegistrationComponent, {});
   }
 }

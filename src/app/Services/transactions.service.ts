@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Transaction } from '../Models/transaction.model';
 import { BaseService } from './base.service'
 
-const httpOptions = {
+/*const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'observe': 'response'
     })
-};
+};*/
 
 @Injectable({
     providedIn: 'root'
@@ -17,8 +17,6 @@ const httpOptions = {
 export class TransactionService extends BaseService {
 
     serviceUrl: string = this.baseUrl + "Transactions";
-
-    constructor(private http: HttpClient) { super() }
 
     public getCategories(token: String) {
         var tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + token });

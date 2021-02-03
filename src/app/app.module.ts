@@ -5,6 +5,11 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 //Third parties
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsModule, WavesModule } from 'angular-bootstrap-md';
+/*import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';*/
 
 //Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -70,6 +75,13 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 
+const fbLoginOptions = {
+  scope: 'user_birthday,user_hometown,user_location,user_gender,user_age_range,email,public_profile',
+  fields: 'email,first_name,name,id,last_name,age_range,birthday,gender,hometown,location,middle_name,picture.type(large)',
+  locale: 'es_MX',
+  version: 'v9.0'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,9 +140,32 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSlideToggleModule,
     ClipboardModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    //SocialLoginModule
   ],
-  providers: [UserService, AuthGuard, TransactionService, ArticlesService, SnackBarService],
+  providers: [
+    UserService,
+    AuthGuard,
+    TransactionService,
+    ArticlesService,
+    SnackBarService,
+    /*{
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          //{
+            //id: GoogleLoginProvider.PROVIDER_ID,
+            //provider: new GoogleLoginProvider('clientId')
+          //},
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('881655689304922', fbLoginOptions)
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }*/
+  ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

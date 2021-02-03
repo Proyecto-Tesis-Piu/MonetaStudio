@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ArticlesService } from "../../Services/articles.service";
 import { Router } from '@angular/router';
 import { SnackBarService } from '../../Services/snack-bar.service';
+import { Article } from 'src/app/Models/article.model';
 
 @Component({
   selector: 'app-article',
@@ -13,7 +14,7 @@ export class ArticleComponent implements OnInit, AfterViewInit {
   public href: string = "";
   public web: string = "";
 
-  noticia: any = {};
+  article: Article;
 
   //@ViewChild("test", { static: true }) test: ElementRef;
 
@@ -24,12 +25,14 @@ export class ArticleComponent implements OnInit, AfterViewInit {
     private _snackBar: SnackBarService) {
 
     this.activated.params.subscribe(params => {
-      this.noticia = this._service.getArticle(params['i']);
+      this._service.getArticle(params['i']).subscribe((article: Article) => {
+        this.article = article;
+      });
     })
   }
 
   ngAfterViewInit(): void {
-    document.getElementById("articleBody").innerHTML = this.noticia.bio;
+    document.getElementById("articleBody").innerHTML = this.article.text;
     //document.getElementById("tags").innerHTML = this.articulo.tags;
     //document.getElementById("biblio").innerHTML = this.articulo.biblio;
   }

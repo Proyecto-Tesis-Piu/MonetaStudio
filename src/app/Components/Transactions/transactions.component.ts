@@ -618,9 +618,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         } else {
           dataset = { data: [category.amount, 0], label: category.concept };
         }
-        console.log(dataset);
+        //console.log(dataset);
         return dataset;
-
       });
     } else {
       this.detailDatasets = [];

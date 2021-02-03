@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { User } from '../Models/user.model';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -20,9 +20,7 @@ const httpOptions = {
 export class UserService extends BaseService {
 
   serviceUrl: string = this.baseUrl + "User";
-  
-  constructor(private http: HttpClient) { super() }
-  
+    
   public register (user: User): Observable<User> {
     return this.http.post<User>(this.serviceUrl + '/Register', user, httpOptions)
       .pipe(

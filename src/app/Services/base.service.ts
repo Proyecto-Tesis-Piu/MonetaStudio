@@ -10,6 +10,8 @@ export abstract class BaseService {
   //baseUrl:string = "http://localhost:49755/api/"; //local (add to proxyconfig.json)
   baseUrl:string = "https://monetaapi.azurewebsites.net/api/"; //production
 
+  constructor(protected http: HttpClient) { }
+
   protected handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -29,5 +31,9 @@ export abstract class BaseService {
   protected extractData(res: Response) {
     let body = res.json();
     return body;
-  }   
+  }
+
+  public wakeUp(){
+    return this.http.get(this.baseUrl + 'external');
+  }
 }

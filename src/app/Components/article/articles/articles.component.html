@@ -1,12 +1,12 @@
 <div class="flex-box animate-in">
 
-    <div class="card" *ngFor="let item of noticias; let i = index">
-        <img class="card-img-top" src="{{item.cover}}" alt="Card image cap">
+    <div class="card" *ngFor="let item of articles">
+        <img class="card-img-top" src="{{item.image}}" alt="Card image cap">
         <div class="card-body"><!--no quitar clase card-body (heredada)-->
-            <h5 class="card-title">{{item.nombre}}</h5>
-            <p id="info" class="card-text">{{item.resumen}}</p>
-            <p class="card-text"><small class="text-muted" >{{item.fecha}}</small></p>
-            <button [routerLink]="['/articles/article',i]" type="button" style="background-color: cornflowerblue; color: white;"
+            <h5 class="card-title">{{item.title}}</h5>
+            <p id="info" class="card-text">{{item.shortText}}</p>
+            <p class="card-text"><small class="text-muted" >{{item.date}}</small></p>
+            <button [routerLink]="['/articles/article',item.id]" type="button" style="background-color: cornflowerblue; color: white;"
                 class="btn btn primary btn-block">Ver
                 más</button>
 
