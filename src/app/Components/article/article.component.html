@@ -1,15 +1,15 @@
 <div class="container animate-in">
     <div class="box">
-        <h1>{{noticia.nombre}}</h1>
+        <h1>{{article.title}}</h1>
         <div class="description">
-            <h2>Autor: {{noticia.autor}}</h2>
-            <h3>{{noticia.fecha}}</h3>
+            <h2>Autor: {{article.author}}</h2>
+            <h3>{{article.date}}</h3>
         </div>
         <hr>
-        <img src="{{noticia.cover}}" alt="Card image cap"> <br>
+        <img src="{{article.image}}" alt="Card image cap"> <br>
         <div class="tag">
             <h3>Palabras claves: </h3>
-            <mat-chip-list *ngFor="let tags of noticia.tags" aria-label="Fish selection">
+            <mat-chip-list *ngFor="let tags of article.tags" aria-label="Fish selection">
                 <mat-chip class="chips">{{tags}}</mat-chip>
             </mat-chip-list>
         </div>
@@ -25,6 +25,6 @@
         </h3>
         <hr>
         <h3 style="font-weight: bold;">Bibliografía:</h3>
-        <div *ngFor="let biblio of noticia.biblio"> {{biblio}} <br><br> </div>
+        <div *ngFor="let biblio of article.bibliography"> {{biblio}} <br><br> </div>
     </div>
 </div>

@@ -1,12 +1,12 @@
 export interface Article {
-    resumen: string;
-    nombre: string;
-    bio: string;
-    img: string;
-    fecha: string;
-    autor: string;
-    cover: string;
+    id: string;
+    shortText: string;
+    title: string;
+    text: string;
+    date: string;
+    author: string;
+    image: string;
     tags: string[];
-    biblio: string[];
+    bibliography: string[];
   }
   
