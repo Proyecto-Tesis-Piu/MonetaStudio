@@ -23,8 +23,10 @@
                 </mat-icon>
             </button>
         </h3>
-        <hr>
-        <h3 style="font-weight: bold;">Bibliografía:</h3>
-        <div *ngFor="let biblio of article.bibliography"> {{biblio}} <br><br> </div>
+        <div *ngIf="article.bibliography">
+            <hr>
+            <h3 style="font-weight: bold;">Bibliografía:</h3>
+            <div *ngFor="let biblio of article.bibliography"> {{biblio}} <br><br> </div>
+        </div>
     </div>
 </div>
