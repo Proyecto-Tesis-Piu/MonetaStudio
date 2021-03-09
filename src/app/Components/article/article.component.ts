@@ -49,6 +49,7 @@ export class ArticleComponent implements OnInit, AfterViewInit {
               var link: HTMLElement = document.createElement("a");
               link.innerText = item.url;
               link.setAttribute("href", item.url);
+              link.setAttribute("target","_blank");
               div.appendChild(link);
             }
             var br: HTMLElement = document.createElement("br");
