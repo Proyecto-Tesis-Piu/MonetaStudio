@@ -6,13 +6,6 @@
             <h3>{{article.date}}</h3>
         </div>
         <hr>
-<<<<<<< HEAD
-        <img src="{{article.image}}" alt="Card image cap"> <br>
-        <div class="tag">
-            <h3>Etiquetas: </h3>
-            <mat-chip-list *ngFor="let tags of article.tags" aria-label="Fish selection">
-                <mat-chip class="chips">{{tags}}</mat-chip>
-=======
         <img *ngIf="article" src="{{article.image}}" alt="Card image cap">
         <div *ngIf="article && article.caption" style="text-align: center; color: #777777;">{{article.caption}}</div>
         <br>
@@ -20,7 +13,6 @@
             <h3>Etiquetas: </h3>
             <mat-chip-list aria-label="Fish selection">
                 <mat-chip *ngFor="let tags of article.tags" class="chips">{{tags}}</mat-chip>
->>>>>>> 2eee58ca0c494d2eb4e479d529a65c3c6593fc86
             </mat-chip-list>
         </div>
         <div id="articleBody"></div>
@@ -33,14 +25,6 @@
                 </mat-icon>
             </button>
         </h3>
-<<<<<<< HEAD
-        <div *ngIf="article.bibliography">
-            <hr>
-            <h3 style="font-weight: bold;">Bibliografía:</h3>
-            <div *ngFor="let biblio of article.bibliography"> {{biblio}} <br><br> </div>
-        </div>
-=======
         <div id="bibliographies"></div>
->>>>>>> 2eee58ca0c494d2eb4e479d529a65c3c6593fc86
     </div>
 </div>
