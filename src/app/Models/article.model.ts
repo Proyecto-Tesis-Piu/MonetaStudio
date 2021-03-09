@@ -7,6 +7,11 @@ export interface Article {
     author: string;
     image: string;
     tags: string[];
-    bibliography: string[];
+    bibliography: Bibliography[];
+    caption?: string;
   }
   
+export interface Bibliography {
+  text: string;
+  url?: string;
+}
